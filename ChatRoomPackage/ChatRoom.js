@@ -51,7 +51,26 @@ function prepareContextLayout(ctx,settings) {
     if(settings.style=='classic'){
         $('#ChatRoom').css('bottom','0')
             .css('right','40px');
+        createClickOnTopBarPopUpAnimation();
     }
 
+}
+
+function createClickOnTopBarPopUpAnimation() {
+    $('#topBar').click(function () {
+        var mainBlock = $('#httpTesting');
+        if(mainBlock.is(':visible')){
+            var wrapper = $('#chatRoomWrapper');
+            mainBlock.css('display','block');
+            var HH = mainBlock.height();
+            wrapper.css('bottom',HH+'px');
+            mainBlock.animate({bottom:0},1000);
+        }
+        else{
+            mainBlock.animate({bottom:0},1000,function () {
+                mainBlock.css('display','none');
+            });
+        }
+    });
 }
 
