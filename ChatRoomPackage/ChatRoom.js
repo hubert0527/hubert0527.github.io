@@ -21,10 +21,57 @@ function ChatRoom(ctx, settings) {
 
     // add controls to the items in context, like buttons or something else
 
-    // blablabla
-
+    // BLABLABLA still constructing
 
 }
+
+/**
+ * Insert layout for context object
+ */
+function prepareContextLayout(ctx,settings) {
+
+    $.get( "./ChatRoomPackage/ChatRoom.html", function( data ) {
+        ctx.innerHTML = data;
+        loadScriptsForChatRoomHtml(settings);
+    });
+
+}
+
+/**
+ * Add script here for ChatRoom.html here!
+ * @param settings
+ */
+function loadScriptsForChatRoomHtml(settings) {
+
+    // TODO: this would be the default layout if user set nothing
+    if(!settings || !settings.style || settings.style=='default'){
+        $('#ChatRoom').css('bottom','0')
+            .css('right','40px');
+        createClickOnTopBarPopUpAnimation();
+    }
+}
+
+/**
+ * Create animation of showing and hiding chat room while clicking on top bar
+ */
+var mainBlockOriginalHeight;
+function createClickOnTopBarPopUpAnimation() {
+
+    var mainBlock = $('#mainContent');
+    mainBlockOriginalHeight = mainBlock.height();
+    mainBlock.height(0);
+
+    $('#topBar').click(function () {
+        if(!mainBlock.is(':visible') || mainBlock.height()==0){
+            mainBlock.animate({height:mainBlockOriginalHeight},'fast');
+        }
+        else{
+            mainBlock.animate({height:0},'fast');
+        }
+    });
+}
+
+
 
 /**
  * Simple toString method for debugging
@@ -34,44 +81,3 @@ function ChatRoom(ctx, settings) {
 ChatRoom.prototype.toString = function toString() {
     return this.ip + ':' + this.port + ' ' + this.style;
 };
-
-/**
- * Insert layout for context object
- */
-function prepareContextLayout(ctx,settings) {
-
-    // ctx.innerHTML='<object type="text/html" data="./ChatRoomPackage/ChatRoom.html" ></object>';
-
-    // this only works on internet, can't work with 'file://' path
-    // the only way to test this locally is use IE (XDDD)
-    $.get( "./ChatRoomPackage/ChatRoom.html", function( data ) {
-        ctx.innerHTML = data;
-
-        if(settings.style=='classic'){
-            $('#ChatRoom').css('bottom','0')
-                .css('right','40px');
-            createClickOnTopBarPopUpAnimation();
-        }
-
-    });
-
-}
-
-function createClickOnTopBarPopUpAnimation() {
-    $('#topBar').click(function () {
-        var mainBlock = $('#httpTesting');
-        if(mainBlock.is(':visible')){
-            mainBlock.animate({bottom:0},'fast',function () {
-                mainBlock.css('display','none');
-            });
-        }
-        else{
-            var wrapper = $('#chatRoomWrapper');
-            mainBlock.css('display','block');
-            var HH = mainBlock.height();
-            wrapper.css('bottom',HH+'px');
-            mainBlock.animate({bottom:0},'fast');
-        }
-    });
-}
-
