@@ -61,7 +61,7 @@ function createClickOnTopBarPopUpAnimation() {
     $('#topBar').click(function () {
         var mainBlock = $('#httpTesting');
         if(mainBlock.is(':visible')){
-            mainBlock.animate({bottom:0},1000,function () {
+            mainBlock.animate({bottom:0},'fast',function () {
                 mainBlock.css('display','none');
             });
         }
@@ -70,7 +70,7 @@ function createClickOnTopBarPopUpAnimation() {
             mainBlock.css('display','block');
             var HH = mainBlock.height();
             wrapper.css('bottom',HH+'px');
-            mainBlock.animate({bottom:0},1000);
+            mainBlock.animate({bottom:0},'fast');
         }
     });
 }
