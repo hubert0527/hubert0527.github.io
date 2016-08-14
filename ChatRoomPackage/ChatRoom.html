@@ -1,6 +1,6 @@
 <div id="chatRoomWrapper">
     <div id="topBar">
-
+        <h5 id="someoneAnonymous">Anonymous</h5>
     </div>
     <div id="httpTesting">
         <button>GET</button>
@@ -11,11 +11,38 @@
 </div>
 
 <style>
-    #chatRoomWrapper{
-        position: fixed;
-        width: 250px;
-        height: 100px;
-        bottom: 0;
-        right: 40px;
+    #topBar{
+        background-color: #2aabd2;
+        height: 30px;
+        cursor: pointer;
+    }
+    #someoneAnonymous{
+        line-height: 30px;
+        margin-left: 5%;
+    }
+    #httpTesting{
+        display: none;
+    }
+    #httpTesting button{
+        margin: 5px;
     }
 </style>
+
+<!-- some controls which has nothing to do with data flow will be write here -->
+<script>
+    $('#topBar').click(function () {
+        var mainBlock = $('#httpTesting');
+        if(mainBlock.is(':visible')){
+            var wrapper = $('#chatRoomWrapper');
+            mainBlock.css('display','block');
+            var HH = mainBlock.height();
+            wrapper.css('bottom',HH+'px');
+            mainBlock.animate({bottom:0},1000);
+        }
+        else{
+            mainBlock.animate({bottom:0},1000,function () {
+                mainBlock.css('display','none');
+            });
+        }
+    });
+</script>
