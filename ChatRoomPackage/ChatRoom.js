@@ -46,13 +46,14 @@ function prepareContextLayout(ctx,settings) {
     // the only way to test this locally is use IE (XDDD)
     $.get( "./ChatRoomPackage/ChatRoom.html", function( data ) {
         ctx.innerHTML = data;
-    });
 
-    if(settings.style=='classic'){
-        $('#ChatRoom').css('bottom','0')
-            .css('right','40px');
-        createClickOnTopBarPopUpAnimation();
-    }
+        if(settings.style=='classic'){
+            $('#ChatRoom').css('bottom','0')
+                .css('right','40px');
+            createClickOnTopBarPopUpAnimation();
+        }
+
+    });
 
 }
 
