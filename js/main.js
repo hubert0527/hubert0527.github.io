@@ -4,7 +4,7 @@ $(document).ready(function () {
     var settings = {
         ip: '1.2.3.4',
         port: '1234',
-        style: 'classic'
+        style: 'default'
     };
     var chatRoom = new ChatRoom(ctx,settings);
 
