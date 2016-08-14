@@ -61,16 +61,16 @@ function createClickOnTopBarPopUpAnimation() {
     $('#topBar').click(function () {
         var mainBlock = $('#httpTesting');
         if(mainBlock.is(':visible')){
+            mainBlock.animate({bottom:0},1000,function () {
+                mainBlock.css('display','none');
+            });
+        }
+        else{
             var wrapper = $('#chatRoomWrapper');
             mainBlock.css('display','block');
             var HH = mainBlock.height();
             wrapper.css('bottom',HH+'px');
             mainBlock.animate({bottom:0},1000);
-        }
-        else{
-            mainBlock.animate({bottom:0},1000,function () {
-                mainBlock.css('display','none');
-            });
         }
     });
 }
