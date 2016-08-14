@@ -17,7 +17,7 @@ function ChatRoom(ctx, settings) {
     this.style = settings['style'];
 
     // insert simple html layout for context
-    prepareContextLayout(ctx);
+    prepareContextLayout(ctx,settings);
 
     // add controls to the items in context, like buttons or something else
 
@@ -38,23 +38,20 @@ ChatRoom.prototype.toString = function toString() {
 /**
  * Insert layout for context object
  */
-function prepareContextLayout(ctx) {
-    // the simple layout is in ChatRoom.html, find a way to insert html layout
-    // Recommendations:
-    //     1. load ChatRoom.html as string and use 'append()' to create layout
-    //     2. use append({'tag1','tag2',...}.join()); to create html layout,
-    //          but changing layout in future will be painful
-    //     3. Find your way
-    //
-    // IMPORTANT:
-    //     1. How to insert CSS rules?
-    //     2. Responsive to most browsers
+function prepareContextLayout(ctx,settings) {
 
-    // ctx.innerHTML = new File('./ChatRoom.html');
+    // ctx.innerHTML='<object type="text/html" data="./ChatRoomPackage/ChatRoom.html" ></object>';
 
+    // this only works on internet, can't work with 'file://' path
+    // the only way to test this locally is use IE (XDDD)
     $.get( "./ChatRoomPackage/ChatRoom.html", function( data ) {
         ctx.innerHTML = data;
     });
+
+    if(settings.style=='classic'){
+        $('#ChatRoom').css('bottom','0')
+            .css('right','40px');
+    }
 
 }
 

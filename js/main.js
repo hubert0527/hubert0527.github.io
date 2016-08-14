@@ -1,6 +1,6 @@
 
 $(document).ready(function () {
-    var ctx = $('#chatRoomDivAtHere')[0];
+    var ctx = $('#ChatRoom')[0];
     var settings = {
         ip: '1.2.3.4',
         port: '1234',
