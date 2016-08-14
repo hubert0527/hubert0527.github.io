@@ -52,7 +52,7 @@ function prepareContextLayout(ctx) {
 
     // ctx.innerHTML = new File('./ChatRoom.html');
 
-    $.get( "./ChatRoom.html", function( data ) {
+    $.get( "./ChatRoomPackage/ChatRoom.html", function( data ) {
         ctx.innerHTML = data;
     });
 
