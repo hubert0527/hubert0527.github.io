@@ -3,11 +3,26 @@
         <h5 id="someoneAnonymous">Anonymous</h5>
     </div>
     <div id="mainContent">
-        <div id="httpTesting">
-            <button>GET</button>
-            <button>POST</button>
-            <button>PUT</button>
-            <button>DELETE</button>
+        <div id="mainContentWrapper">
+            <div id="httpTesting">
+                <button id="getBtn">GET</button>
+                <button id="postBtn">POST</button>
+                <button id="putBtn">PUT</button>
+                <button id="deleteBtn">DELETE</button>
+            </div>
+            <hr>
+            <div>
+                <p>輸入server目標:</p>
+                <input id="serverInput">
+                <button id="serverSettingButton" class="iBtn">確認</button>
+            </div>
+            <div>
+                <p>輸入訊息:</p>
+                <input id="messageInput">
+                <button id="submitMessageButton" class="iBtn">確認</button>
+                <p>server回應：</p>
+                <span id="serverResponse"></span>
+            </div>
         </div>
     </div>
 </div>
@@ -22,8 +37,26 @@
         line-height: 30px;
         margin-left: 5%;
     }
+    #mainContent{
+        background-color: white;
+    }
+    #mainContentWrapper{
+        padding: 5px 5%;
+    }
     #httpTesting button{
         margin: 5px;
+    }
+    #serverInput{
+        display: inline-block;
+    }
+    #messageInput{
+        display: inline-block;
+    }
+    .iBtn{
+        display: inline-block;
+    }
+    #serverResponse{
+        color: red;
     }
 </style>
 
