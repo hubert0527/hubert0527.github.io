@@ -3,31 +3,39 @@
         <h5 id="someoneAnonymous">Anonymous</h5>
     </div>
     <div id="mainContent">
-        <div id="mainContentWrapper">
+        <div id="testAreaWrapper">
             <div id="httpTesting">
                 <button id="getBtn">GET</button>
                 <button id="postBtn">POST</button>
                 <button id="putBtn">PUT</button>
                 <button id="deleteBtn">DELETE</button>
             </div>
-            <hr>
             <div>
-                <p>輸入server目標:</p>
-                <input id="serverInput">
-                <button id="serverSettingButton" class="iBtn">確認</button>
-            </div>
-            <div>
-                <p>輸入訊息:</p>
-                <input id="messageInput">
-                <button id="submitMessageButton" class="iBtn">確認</button>
-                <p>server回應：</p>
-                <span id="serverResponse"></span>
+                <input id="serverInput" placeholder="server IP/url">
+                <!--<button id="serverSettingButton" class="iBtn">確認</button>-->
             </div>
         </div>
+        <div>
+            <div id="chatRoomMessageArea">
+            </div>
+            <div id="messageInputWrapper">
+                <input id="messageInput" placeholder="輸入訊息">
+            </div>
+        </div>
+
     </div>
 </div>
 
 <style>
+    #chatRoomWrapper{
+        font-family: 微軟正黑體, serif;
+    }
+    input{
+        width: 100%;
+    }
+    p{
+        margin: 0.5em;
+    }
     #topBar{
         background-color: #2aabd2;
         height: 30px;
@@ -38,19 +46,23 @@
         margin-left: 5%;
     }
     #mainContent{
+        height: 100% ;
         background-color: white;
     }
-    #mainContentWrapper{
+    #testAreaWrapper{
         padding: 5px 5%;
     }
     #httpTesting button{
-        margin: 5px;
+        margin: 0 5px;
+        height: 15px;
+        line-height: 10px;
+        font-size: 0.2em;
     }
     #serverInput{
         display: inline-block;
     }
-    #messageInput{
-        display: inline-block;
+    #chatRoomMessageArea{
+        overflow-y: scroll;
     }
     .iBtn{
         display: inline-block;
@@ -58,5 +70,30 @@
     #serverResponse{
         color: red;
     }
+    .serverMessageItem{
+        width: 70%;
+        margin-right: 30%;
+        background-color: grey;
+        color: white;
+    }
+    .userMessageItem{
+        width: 70%;
+        margin-left: 30%;
+        background-color: blue;
+        color: white;
+    }
+    .systemMessageItem{
+        width: 70%;
+        margin:auto;
+        color: grey;
+        font-weight: 900;
+        font-size: 0.8em;
+    }
+    .messageItem{
+        padding: 0.2em 0.5em;
+        border-radius: 10px;
+        margin-top: 3px;
+    }
+
 </style>
 
