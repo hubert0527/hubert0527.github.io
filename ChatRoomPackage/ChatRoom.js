@@ -36,7 +36,7 @@
  *
  *          right: (Number)(priority)
  *              chatRoom box distance to window right in px
- *                  (default: 20% window width)
+ *                  (default: 30px)
  *
  *          bottom: (Number)(priority)
  *              chatRoom box distance to window bottom in px
@@ -162,7 +162,7 @@ function createSettingInst(settings) {
     // deal with position
     if(chatRoomSettings.position==undefined){
         chatRoomSettings.position={};
-        chatRoomSettings.position.right = WW*0.2;
+        chatRoomSettings.position.right = 30;
         chatRoomSettings.position.bottom = 0;
     }
     else if(chatRoomSettings.position.DONT==true){
@@ -170,7 +170,7 @@ function createSettingInst(settings) {
     }
     else {
         if (chatRoomSettings.position.right == undefined && chatRoomSettings.position.left == undefined) {
-            chatRoomSettings.position.right = WW * 0.2;
+            chatRoomSettings.position.right = 30;
         }
         if (chatRoomSettings.position.bottom == undefined && chatRoomSettings.position.top == undefined) {
             chatRoomSettings.position.bottom = 0;
@@ -194,9 +194,11 @@ function createSettingInst(settings) {
 
 function createSocket(url) {
 
-    console.log('create socket: ws://'+url);
+    var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
 
-    socketInst = new WebSocket("ws://"+url);
+    console.log('create socket: '+ ws_scheme +'://'+url);
+
+    socketInst = new WebSocket(ws_scheme+"://"+url);
 
     socketInst.onerror = function(e) {
         socketInst = null;
