@@ -48,84 +48,84 @@
         <div class="row w">
             <h2 class="col-xs-12">範例：(預設阻擋頁)</h2>
             <button type="button" class="col-xs-12 btn btn-default showCodeExample">顯示/關閉範例</button>
-            <div class="col-xs-12" id="codeExample" style="display: none;"><pre><code>
-                &lt;div id="nerdTimerBlockerWrapper"&gt;
-                    &lt;div style="width:80%;padding:20vh 10vw;"&gt;
-                        &lt;div style="text-align: center;height:15vh;"&gt;
-                            &lt;h1 id="nerdTimerMainMessage"&gt;&lt;/h1&gt;
-                        &lt;/div&gt;
-                        &lt;div style="width: 60%;bottom: 25vh;margin:0 10%;position: fixed;"&gt;
-                            &lt;button class="nerdTimerBlockerBtn" id="nerdTimerCloseIt"&gt;
-                                &lt;div&gt;
-                                    &lt;p&gt;在這頁面暫時關閉&lt;/p&gt;
-                                &lt;/div&gt;
-                            &lt;/button&gt;
-                            &lt;button class="nerdTimerBlockerBtn" id="nerdTimerRemindMeLater"&gt;&lt;div&gt;
-                                &lt;p&gt;再給我&lt;/p&gt;
-                                &lt;p id="nerdTimerRemindMeLaterTime"&gt;5&lt;/p&gt;
-                                &lt;p&gt;分鐘&lt;/p&gt;
-                            &lt;/div&gt;&lt;/button&gt;
-                        &lt;/div&gt;
-                    &lt;/div&gt;
-                    &lt;span style="height: 100%;display: inline-block"&gt;&lt;/span&gt;
+            <div class="col-xs-12" id="codeExample" style="display: none;"><pre style="padding: 1% 15%;"><code>
+&lt;div id="nerdTimerBlockerWrapper"&gt;
+    &lt;div style="width:80%;padding:20vh 10vw;"&gt;
+        &lt;div style="text-align: center;height:15vh;"&gt;
+            &lt;h1 id="nerdTimerMainMessage"&gt;&lt;/h1&gt;
+        &lt;/div&gt;
+        &lt;div style="width: 60%;bottom: 25vh;margin:0 10%;position: fixed;"&gt;
+            &lt;button class="nerdTimerBlockerBtn" id="nerdTimerCloseIt"&gt;
+                &lt;div&gt;
+                    &lt;p&gt;在這頁面暫時關閉&lt;/p&gt;
                 &lt;/div&gt;
+            &lt;/button&gt;
+            &lt;button class="nerdTimerBlockerBtn" id="nerdTimerRemindMeLater"&gt;&lt;div&gt;
+                &lt;p&gt;再給我&lt;/p&gt;
+                &lt;p id="nerdTimerRemindMeLaterTime"&gt;5&lt;/p&gt;
+                &lt;p&gt;分鐘&lt;/p&gt;
+            &lt;/div&gt;&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span style="height: 100%;display: inline-block"&gt;&lt;/span&gt;
+&lt;/div&gt;
 
-                &lt;style&gt;
-                    #nerdTimerMainMessage{
-                        font-family:"微軟正黑體",serif !important;
-                        font-size:15vh;
-                        font-weight: bolder;
-                        color: black;
-                    }
-                    #nerdTimerRemindMeLater p{
-                        display: inline-block;
-                    }
-                    #nerdTimerBlockerWrapper{
-                        background-color: #888888;
-                        opacity: 0.7;
-                        height: 100vh;
-                        width: 100vw;
-                        top:0;
-                        left: 0;
-                    }
-                    .nerdTimerBlockerBtn{
-                        float: left;
-                        width: 39%;
-                        height: 12vh;
-                        margin: 0 5%;
-                        border: none;
-                        border-radius: 5px;
-                        box-shadow: 0 0 10px black;
-                        transition-duration: 0.4s;
-                        overflow: hidden;
-                        text-align: center;
-                        background-image: none;
-                    }
-                    .nerdTimerBlockerBtn p{
-                        color: black;
-                        margin: 0;
-                        font-size: 3vh;
-                        font-weight: bolder;
-                        font-family:"微軟正黑體",serif !important;
-                    }
-                    #nerdTimerRemindMeLater{
-                        background-color: #00a5ff;
-                    }
-                    #nerdTimerRemindMeLater:hover{
-                        background-color: white;
-                        box-shadow: 0 0 0 black;
-                    }
-                    #nerdTimerCloseIt{
-                        background-color: red;
-                    }
-                    #nerdTimerCloseIt:hover{
-                        background-color: white;
-                        box-shadow: 0 0 0 black;
-                    }
-                &lt;/style&gt;
-                &lt;script&gt;
-                    console.log('Hello, world!');
-                &lt;/script&gt;
+&lt;style&gt;
+    #nerdTimerMainMessage{
+        font-family:"微軟正黑體",serif !important;
+        font-size:15vh;
+        font-weight: bolder;
+        color: black;
+    }
+    #nerdTimerRemindMeLater p{
+        display: inline-block;
+    }
+    #nerdTimerBlockerWrapper{
+        background-color: #888888;
+        opacity: 0.7;
+        height: 100vh;
+        width: 100vw;
+        top:0;
+        left: 0;
+    }
+    .nerdTimerBlockerBtn{
+        float: left;
+        width: 39%;
+        height: 12vh;
+        margin: 0 5%;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 0 10px black;
+        transition-duration: 0.4s;
+        overflow: hidden;
+        text-align: center;
+        background-image: none;
+    }
+    .nerdTimerBlockerBtn p{
+        color: black;
+        margin: 0;
+        font-size: 3vh;
+        font-weight: bolder;
+        font-family:"微軟正黑體",serif !important;
+    }
+    #nerdTimerRemindMeLater{
+        background-color: #00a5ff;
+    }
+    #nerdTimerRemindMeLater:hover{
+        background-color: white;
+        box-shadow: 0 0 0 black;
+    }
+    #nerdTimerCloseIt{
+        background-color: red;
+    }
+    #nerdTimerCloseIt:hover{
+        background-color: white;
+        box-shadow: 0 0 0 black;
+    }
+&lt;/style&gt;
+&lt;script&gt;
+    console.log('Hello, world!');
+&lt;/script&gt;
             </code></pre></div>
             <button type="button" class="col-xs-12 btn btn-default showCodeExample" id="secondBtn" style="display: none;">顯示/關閉範例</button>
 

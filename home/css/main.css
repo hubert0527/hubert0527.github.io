@@ -34,6 +34,19 @@ body{
     margin-top: 13px;
 }
 
+#pageContent{
+    margin-top: 100px;
+}
+
+
+
+#footer{
+    height: 200px;
+    margin-top: 150px;
+    background-color: grey;
+}
+
+
 /* large screen */
 @media (min-width: 768px) {
     #brand{
