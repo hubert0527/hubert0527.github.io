@@ -1,0 +1,49 @@
+html,body{
+    font-family: serif, 微軟正黑體 !important;
+}
+body{
+    margin-top: 60px;
+}
+.navbar{
+    background-color: black;
+    height: 60px;
+}
+#brand{
+    margin: 0;
+    padding: 15px 30px;
+}
+#brand:hover{
+    color: orange;
+}
+.navItem{
+    padding: 15px 20px;
+    margin: 0;
+    line-height: 30px;
+    height: 60px;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+}
+.navItem:hover{
+    color: green;
+}
+.icon-bar{
+     background-color: white;
+}
+#drop_down_button{
+    margin-top: 13px;
+}
+
+/* large screen */
+@media (min-width: 768px) {
+    #brand{
+        margin-left: -15px;
+    }
+}
+
+/* small screen */
+@media (max-width: 768px) {
+    .navbar-collapse {
+        background-color: grey;
+    }
+}

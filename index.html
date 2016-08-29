@@ -1,39 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="UTF-8">
+    <title>Hubert Lin</title>
 
-        <title>TEST</title>
+    <script src="myHomePageResources/lib/jquery/jquery-1.11.3.min.js"></script>
+    <script src="myHomePageResources/lib/bootstrap/bootstrap.min.js"></script>
+    <script src="myHomePageResources/js/main.js"></script>
 
-        <!-- Bootstrap -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="myHomePageResources/lib/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="myHomePageResources/css/main.css">
+</head>
+<body>
 
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="js/jquery-1.11.3.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/smooth_scroll.js"></script>
-        <script src="ChatRoomPackage/ChatRoom.js"></script>
-        <script src="js/main.js"></script>
+    <nav id="nav" class="navbar navbar-fixed-top">
+        <div class="container-fluid">
 
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-          <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
-    </head>
-    <body>
-
-        <div style="width: 100vw;height: 100vh;background-color: #aaaaaa">
-            <h1 style="line-height: 20vh;text-align: center;margin: 0;padding-top: 40vh;font-size: 20vh;">EMPTY PAGE</h1>
+            <div class="navbar-header">
+                <h1 id="brand" class="navbar-brand navItem">Hubert Lin</h1>
+                <button id="drop_down_button" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav" id="navbar_link">
+                    <li class="navItem">作品集</li>
+                    <li class="navItem">隨筆</li>
+                    <li class="navItem">關於我</li>
+                </ul>
+                <div class="nav navbar-nav navbar-right">
+                    <div class="navItem" style="display: flex;align-items: center;">
+                        <p class="glyphicon glyphicon-envelope"></p>
+                        <p style="padding-left: 15px;">Contact</p>
+                    </div>
+                </div>
+            </div>
         </div>
+    </nav>
 
-        <div id="ChatRoom" style="position: fixed;"></div>
+    <div></div>
 
-    </body>
+</body>
 </html>
