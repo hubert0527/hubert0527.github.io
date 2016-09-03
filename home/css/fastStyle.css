@@ -1,0 +1,15 @@
+.b{
+    font-weight: 900;
+}
+.c{
+    text-align: center;
+}
+.indent1{
+    padding-left: 10%;
+}
+.indent2{
+    padding-left: 20%;
+}
+.ib{
+    display: inline-block;
+}

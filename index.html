@@ -4,20 +4,23 @@
     <meta charset="UTF-8">
     <title>Hubert Lin</title>
 
-    <script src="home/lib/jquery/jquery-1.11.3.min.js"></script>
-    <script src="home/lib/bootstrap/bootstrap.min.js"></script>
-    <script src="home/js/main.js"></script>
-
     <link rel="stylesheet" href="home/lib/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="home/css/main.css">
+    <link rel="stylesheet" href="home/css/fastStyle.css">
+
+    <script src="home/lib/jquery/jquery-1.11.3.min.js"></script>
+    <script src="home/js/jquery.easing.js"></script>
+    <script src="home/lib/bootstrap/bootstrap.min.js"></script>
+    <script src="home/js/main.js"></script>
+    <script src="home/js/smooth_scroll.js"></script>
+
 </head>
-<body>
+<body class="preload" style="overflow-x: hidden;">
 
     <nav id="nav" class="navbar navbar-fixed-top">
         <div class="container-fluid">
-
             <div class="navbar-header">
-                <h1 id="brand" class="navbar-brand navItem">Hubert Lin</h1>
+                <h1 id="brand" class="navbar-brand navItem b">Hubert Lin</h1>
                 <button id="drop_down_button" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -26,31 +29,51 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav" id="navbar_link">
-                    <li class="navItem">作品集</li>
-                    <li class="navItem">隨筆</li>
-                    <li class="navItem">關於我</li>
+                    <li class="navItem b">作品集</li>
+                    <li class="navItem b">隨筆</li>
+                    <li class="navItem b">關於我</li>
                 </ul>
                 <div class="nav navbar-nav navbar-right">
-                    <div class="navItem" style="display: flex;align-items: center;">
-                        <p class="glyphicon glyphicon-envelope"></p>
-                        <p style="padding-left: 15px;">Contact</p>
+                    <div class="navItem" style="display: flex;align-items: stretch;">
+                        <p class="glyphicon glyphicon-envelope contact"></p>
+                        <p class="contact" style="padding-left: 15px;">Contact</p>
                     </div>
                 </div>
             </div>
         </div>
     </nav>
 
-    <div id="pageContent">
-        <div class="container">
-            <div class="col-xs-12 col-sm-3">
+    <div id="pageContent" style="position: relative;">
+        <div id="topImageWrapper" class="container-fluid" style="width: 100vw;height: calc(100vh - 50px);overflow: hidden;position: relative;">
+            <div class="row">
+                <img id="topImage" src="home/img/topNarrow.jpg" style="width: 100vw;">
+
+                <!--black shadow part-->
+                <div id="topImageShadow" style="width: 100%;height: 22%;top:78%;left:0;position: absolute;">
+                    <div style="position:absolute;top:0;left:0;width: 100vw;height: 30%;">
+                        <div class="glyphicon glyphicon-chevron-down" id="goDownBtn"></div>
+                    </div>
+                    <div style="height: 100%;background-color: black;opacity: 0.3;">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container" style="margin-top: 50px;position: relative;">
+
+            <div class="col-xs-12 col-sm-4">
                 <div class="row">
                     <div class="col-xs-6 col-sm-12">
-                        <img class="img-responsive img-circle" src="home/img/me_small.jpg">
+                        <img id="me" class="img-responsive img-circle" src="home/img/me_small.jpg">
                     </div>
                     <div class="col-xs-6 col-sm-12">
-                        <h2>林杰 Hubert Lin</h2>
-                        <div class="col-xs-push-1">
-                            <h3>專長/興趣</h3>
+                        <h2 class="b">林杰 Hubert Lin</h2>
+                    </div>
+                    <div class="col-xs-6 col-sm-12">
+                        <h3 class="indent1">專長/興趣</h3>
+                        <div class="indent2">
                             <p>學會任何有趣的東西</p>
                             <p>看小說、寫小說</p>
                             <p>看漫畫、動畫</p>
@@ -59,12 +82,50 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xs-11 col-sm-8 col-xs-push-1">
+            <div class="col-xs-11 col-sm-7 col-xs-push-1">
                 <div class="row">
                     <h3>學歷</h3>
-                    <p>國立清華大學資訊工程學系(2015~2018)</p>
-                    <p>國立清華大學理學院學士班(物理/數學)(2013~2015轉系)</p>
-                    <p>台北市立建國高級中學</p>
+                    <div class="indent1">
+                        <p>國立清華大學資訊工程學系(2015~2018)</p>
+                        <p>國立清華大學理學院學士班(物理/數學)(2013~2015轉系)</p>
+                        <p>台北市立建國高級中學</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <h3>技能</h3>
+                    <div id="skill" class="indent1">
+                        <div>
+                            <h4 class="ib">Java</h4>
+                            <div class="skillRate" title="9"></div>
+                            <p>Android</p>
+                            <p>Jersey(RESTful)</p>
+                        </div>
+                        <div>
+                            <h4 class="ib">C/C++</h4>
+                            <p></p>
+                        </div>
+                        <div>
+                            <h4 class="ib">Python</h4>
+                            <p>Django</p>
+                        </div>
+                        <div>
+                            <h4 class="ib">HTML/CSS/JavaScript(ES5)</h4>
+                            <p>2 websites</p>
+                            <p>Google extension</p>
+                        </div>
+                        <div>
+                            <h4 class="ib">Other skills</h4>
+                            <p>MySQL, Verilog, Arduino, </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <h3>個人特質</h3>
+                    <div class="indent1">
+                        <p>國立清華大學資訊工程學系(2015~2018)</p>
+                        <p>國立清華大學理學院學士班(物理/數學)(2013~2015轉系)</p>
+                        <p>台北市立建國高級中學</p>
+                    </div>
                 </div>
             </div>
         </div>

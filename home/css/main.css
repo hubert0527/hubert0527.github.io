@@ -2,27 +2,41 @@ html,body{
     font-family: serif, 微軟正黑體 !important;
 }
 body{
-    margin-top: 60px;
+    margin-top: 50px;
+}
+.preload{
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
 }
 .navbar{
     background-color: black;
-    height: 60px;
+    height: 50px;
 }
 #brand{
     margin: 0;
-    padding: 15px 30px;
+    padding: 13px 30px;
+    font-size: 24px;
+    line-height: 24px;
 }
 #brand:hover{
     color: orange;
 }
 .navItem{
-    padding: 15px 20px;
+    padding: 18px 20px;
     margin: 0;
-    line-height: 30px;
-    height: 60px;
-    font-size: 30px;
+    line-height: 14px;
+    height: 50px;
+    font-size: 14px;
     cursor: pointer;
     color: white;
+    transition-delay: .05s;
+    transition-duration: .4s;
+}
+.contact{
+    line-height: 14px;
+    font-size: 14px;
 }
 .navItem:hover{
     color: green;
@@ -34,11 +48,44 @@ body{
     margin-top: 13px;
 }
 
-#pageContent{
-    margin-top: 100px;
+
+#goDownBtn{
+    height:6vh;
+    width:6vh;
+    background-color: #2b2b2b;
+    margin:-2vh auto 0;
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+    z-index: 1;
+    text-align: center;
+    font-size: 2vh;
+    color:white;
+    border: 0.5vh white solid;
+    cursor: pointer;
+    text-decoration: none !important;
+    transition-duration: .4s;
+}
+#goDownBtn:before{
+    transition-duration: .7s;
+    display: block;
+    margin: auto;
+}
+#goDownBtn:hover:before {
+    color: #2b2b2b;
+    transform: translateY(1vh);
+}
+#goDownBtn:hover{
+    background-color: white;
+    border: 1vh #2b2b2b double;
 }
 
-
+#me{
+    margin-bottom: 30px;
+}
+#skill p{
+    margin-left: 10%;
+}
 
 #footer{
     height: 200px;
