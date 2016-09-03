@@ -1,5 +1,6 @@
 html,body{
     font-family: serif, 微軟正黑體 !important;
+    min-width: 400px;
 }
 body{
     margin-top: 50px;
@@ -86,6 +87,7 @@ body{
 #skill p{
     margin-left: 10%;
 }
+
 
 #footer{
     height: 200px;

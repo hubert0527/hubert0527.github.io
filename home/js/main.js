@@ -1,14 +1,21 @@
 
 $(document).ready(function () {
     dealTopImage();
+    prepareLayout();
     // createSkillRatingBar();
 });
 
 $(window).load(function () {
-
     init();
-
 });
+
+$(window).resize(function () {
+    prepareLayout();
+});
+
+function prepareLayout() {
+    dealAllAboutMe();
+}
 
 function init() {
 
@@ -104,6 +111,27 @@ function dealTopImage() {
 
 
     });
+}
+
+function dealAllAboutMe() {
+    var HH = window.innerWidth;
+    if(HH>=992) {
+        var hh = $('#myBasicInfo').height();
+        $('#separator').height(hh * 0.9).width(0).css('margin', hh * 0.05 + 'px ' + ' auto').css('display','block');
+
+        $('#profilePictureDiv').css('margin','auto');
+    }
+    else{
+        var p = $('#myBasicInfo');
+        var ww = p.width();
+        var hh = p.height();
+        $('#separator').width(ww * 0.9).height(0).css('margin',ww*0.05+'px').css('display','block');
+
+        var pp = $('#profilePictureDiv');
+        var mh = pp.height();
+        pp.css('margin',(hh-mh)/2+'px auto');
+    }
+
 }
 
 function browserDetect() {
