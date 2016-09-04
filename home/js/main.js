@@ -20,11 +20,27 @@ function prepareLayout() {
 
 function init() {
 
+    showTopImage();
     grabMouseScroll();
 
     calcTopBgPos();
     browserDetect();
 
+}
+
+/**
+ * originally set invisible cuz image will have a jump on page load (due to the margin setting)
+ */
+function showTopImage() {
+    var topImg = $('#topImage');
+    if(topImg[0].complete){
+        topImg.css('visibility','visible');
+    }
+    else{
+        topImg.load(function () {
+           $(this).css('visibility','visible');
+        });
+    }
 }
 
 function createSkillRatingBar() {
