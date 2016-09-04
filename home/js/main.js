@@ -20,12 +20,23 @@ function prepareLayout() {
 
 function init() {
 
+    browserDetect();
+
+    setIconHoverAnimation();
     showTopImage();
     grabMouseScroll();
 
     calcTopBgPos();
-    browserDetect();
 
+}
+
+function setIconHoverAnimation() {
+    $('.iconLink').mouseover(function () {
+        $(this).children().css({'background-color': 'orange'});
+    })
+        .mouseleave(function () {
+        $(this).children().css({'background-color': 'white'});
+    });
 }
 
 /**
@@ -134,8 +145,8 @@ function calcTopBgPos(e) {
         var shadowHeight = (wrapperHeight)*0.32;
         $('#topImageShadow').height(shadowHeight);
 
-        var btnHeight = WW/HH>1 ? '5vh' : '5vw';
-        shadowHeader.css('padding-top',btnHeight).css('font-size',shadowHeight/6);
+        var headerTopMargin = WW/HH>1 ? '6vh' : '5vw';
+        shadowHeader.css('padding-top',headerTopMargin).css('font-size',shadowHeight/6);
         $('#shadowQuoteWrapper').height(shadowHeight-shadowHeader.outerHeight());
         $('#shadowQuote').css('font-size',shadowHeight/10);
     }

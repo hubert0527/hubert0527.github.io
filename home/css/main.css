@@ -52,6 +52,21 @@ body{
     transition-delay: .05s;
     transition-duration: .4s;
 }
+.iconLink{
+    padding: 16px 5%;
+    height: 50px;
+    min-width: 28px;
+    line-height: 28px;
+}
+.iconLink img{
+    background-color: white;
+    transition-delay: .05s;
+    transition-duration: .4s;
+}
+.navbar-right{
+    float: right;
+}
+
 .contact{
     line-height: 14px;
     font-size: 14px;
