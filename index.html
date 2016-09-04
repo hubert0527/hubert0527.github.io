@@ -15,12 +15,12 @@
     <script src="home/js/smooth_scroll.js"></script>
 
 </head>
-<body class="preload" style="overflow-x: hidden;">
+<body style="overflow-x: hidden;">
 
-    <nav id="nav" class="navbar navbar-fixed-top">
+    <nav id="nav" class="navbar navbar-fixed-top mw">
         <div class="container-fluid">
             <div class="navbar-header">
-                <h1 id="brand" class="navbar-brand navItem b">Hubert Lin</h1>
+                <h1 id="brand" class="navbar-brand navItem b9 fs1">Hubert Lin</h1>
                 <button id="drop_down_button" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -29,9 +29,9 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav" id="navbar_link">
-                    <li class="navItem b">作品集</li>
-                    <li class="navItem b">隨筆</li>
-                    <li class="navItem b">關於我</li>
+                    <li class="navItem b9">作品集</li>
+                    <li class="navItem b9">隨筆</li>
+                    <li class="navItem b9">關於我</li>
                 </ul>
                 <div class="nav navbar-nav navbar-right">
                     <div class="navItem" style="display: flex;align-items: stretch;">
@@ -43,48 +43,54 @@
         </div>
     </nav>
 
-    <div id="pageContent" style="position: relative;">
-        <div id="topImageWrapper" class="container-fluid" style="width: 100vw;height: calc(100vh - 50px);overflow: hidden;position: relative;min-width: 400px;">
-            <div class="row" style="position: relative;">
-                <img id="topImage" src="home/img/topNarrow.jpg" style="width: 100vw;">
+    <div id="pageContent" style="position: relative;" class="mw">
+        <div id="topImageDivWrapper" class="container-fluid mw" style="width: 100vw;height: calc(100vh - 50px);overflow: hidden;position: relative;">
+            <div id="imageWrapper" class="row" style="position: relative;">
+                <img id="topImage" class="mw" src="home/img/topNarrow.jpg" style="width: 100vw;">
 
                 <!--black shadow part-->
-                <div id="topImageShadow" style="width: 100%;height: 28%;top:72%;left:0;position: absolute;">
+                <div id="topImageShadow" style="width: 100%;left:0;top:68%;position: absolute;">
                     <div style="position:absolute;top:0;left:0;width: 100vw;height: 30%;">
                         <div class="glyphicon glyphicon-chevron-down" id="goDownBtn"></div>
                     </div>
-                    <div style="height: 100%;background-color: black;opacity: 0.5;">
-
+                    <div style="height: 100%;background-color: rgba(0,0,0,0.5);text-align: center;color: white;">
+                        <h2 id="shadowHeader" style="margin: 0;opacity: 1.5;text-align: center;width: 100vw">~ ‧ ~~ ‧ ~~~ ‧ ~~ Hubert Lin ~~ ‧ ~~~ ‧ ~~ ‧ ~</h2>
+                        <div id="shadowQuoteWrapper" style="display: flex;align-items: center;">
+                            <h4 id="shadowQuote" style="width: 100vw;margin: 0;">Waiting for a nice team to work with.</h4>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
 
-        <div id="allAboutMePage" class="container-fluid" style="margin-top: 50px;position: relative;">
+        <div id="allAboutMePage" class="container" style="margin-top: 50px;position: relative;">
             <div class="row">
                 <div id="myBasicInfo" class="col-xs-12 col-md-3" style="text-align: center;">
                     <div>
-                        <div id="profilePictureDiv" class="col-xs-4 col-xs-push-1 col-md-8 col-md-push-2">
+                        <div id="profilePictureDiv" class="col-xs-4 col-xs-push-1 col-md-10 col-md-push-1">
                             <img id="me" class="img-responsive img-circle" src="home/img/me_small.jpg" style="margin: auto;">
-                            <h2 class="b" style="font-size: 2.5em;">林杰 Hubert</h2>
-                            <p style="word-break: break-all;font-size: 1.2em;">hubert052702@yahoo.com.tw</p>
-                        </div>
-                        <div class="col-xs-6 col-xs-push-1 col-md-8 col-md-push-2">
                             <div>
-                                <h3 style="margin: 30px auto 15px;font-size: 2em;">學歷</h3>
-                                <div style="font-size: 1.33em;">
-                                    <p>國立清華大學資訊工程學系<br>(2015~2018)</p>
-                                    <p>國立清華大學理學院學士班<br>(物理/數學)<br>(2013~2015)[轉系]</p>
-                                    <p>台北市立建國高級中學<br>(2010~2013)</p>
+                                <h2 class="b9 fs1">林杰 Hubert</h2>
+                                <p class="fs4">hubert052702@yahoo.com.tw</p>
+                            </div>
+                        </div>
+                        <div class="col-xs-8 col-md-10 col-md-push-1">
+
+                            <div>
+                                <h3 class="fs2 b6" style="margin: 5vh auto 15px;">學歷</h3>
+                                <div class="fs4">
+                                    <p>國立清華大學資訊工程學系</p>
+                                    <p>國立清華大學理學院學士班<br>(物理/數學)[轉系]</p>
+                                    <p>台北市立建國高級中學</p>
                                 </div>
                             </div>
+
                             <div>
-                                <h3 style="margin: 35px auto 15px;font-size: 2em;">專長/興趣</h3>
-                                <div style="font-size: 1.33em;">
-                                    <p>學會任何有趣的東西</p>
+                                <h3 class="fs2 b6" style="margin: 5vh auto 15px;">興趣</h3>
+                                <div class="fs4">
+                                    <p>學會覺得有趣的東西</p>
                                     <p>看小說、寫小說</p>
-                                    <p>看漫畫、動畫</p>
                                     <p>吃美食、做失敗的美食</p>
                                 </div>
                             </div>
@@ -92,46 +98,74 @@
                     </div>
                 </div>
 
-                <div id="separator" class="col-xs-1 col-md-1">
+                <div id="separator" class="col-xs-12 col-md-1">
                     <div style="width: 100%;height: 100%;border: 2px black solid;padding: 0;margin: auto;bottom: 0;"></div>
                 </div>
 
-                <div class="col-xs-11 col-md-8">
+                <div class="col-xs-12 col-md-8">
 
                     <div class="row">
-                        <h3>技能</h3>
-                        <div id="skill" class="indent1">
+                        <div class="col-xs-10 col-xs-push-1 col-md-11">
+
                             <div>
-                                <h4 class="ib">Java</h4>
-                                <div class="skillRate" title="9"></div>
-                                <p>Android</p>
-                                <p>Jersey(RESTful)</p>
+                                <h3 class="fs2" style="margin-top: 6vh;">簡介</h3>
+                                <div class="row" style="margin-top: 4vh">
+                                    <div class="col-xs-12 fs4" style="line-height: 150%;">
+                                        <p>&emsp;&emsp;曾經只是個覺得駭客好帥的廢物大學生，完全不覺得寫程式有趣，不過在經過幾位貴人的提點與教學後，開始覺得在程式碼間打滾還滿有趣的，並開始為能成為頂尖programmer努力，此時此刻應該也在網路上四處邊看邊學。</p>
+                                        <p>&emsp;&emsp;個人對各項軟體、技術、工具都十分感興趣，但還沒決定未來要走向什麼領域，也許在未來某天能遇上一群有熱情與拚勁的夥伴，就會停下腳步，認真做一場夢吧！</p>
+                                    </div>
+                                </div>
                             </div>
+
                             <div>
-                                <h4 class="ib">C/C++</h4>
-                                <p></p>
+                                <h3 class="fs2" style="margin-top: 6vh;">個人特質</h3>
+                                <div class="row" style="margin-top: 4vh">
+                                    <div class="col-xs-12 fs4">
+                                        <p>學習、歸納速度快，能快速應用新知識、切入新領域</p>
+                                        <p>直覺敏銳，習慣拆解問題，善於尋找問題根源並解決</p>
+                                        <p>喜歡學習，也樂於分享知識與想法</p>
+                                    </div>
+                                </div>
                             </div>
+
                             <div>
-                                <h4 class="ib">Python</h4>
-                                <p>Django</p>
+                                <h3 class="fs2">技能</h3>
+                                <div id="skill">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <h4 class="fs3">Java</h4>
+                                            <div class="skillRate" title="9"></div>
+                                            <div class="fs4">
+                                                <p>Android app</p>
+                                                <p>Jersey(RESTful)</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <h4 class="fs3">JavaScript(ES5)</h4>
+                                            <div class="fs4">
+                                                <p>2個網站</p>
+                                                <p>Google extension</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <h4 class="fs3">C/C++</h4>
+                                            <div class="fs4">
+                                                <p>無專案經驗</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <h4 class="fs3">Other skills</h4>
+                                            <div class="fs4">
+                                                <p>MySQL</p>
+                                                <p>Python</p>
+                                                <p>Verilog</p>
+                                                <p>Arduino</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div>
-                                <h4 class="ib">HTML/CSS/JavaScript(ES5)</h4>
-                                <p>2 websites</p>
-                                <p>Google extension</p>
-                            </div>
-                            <div>
-                                <h4 class="ib">Other skills</h4>
-                                <p>MySQL, Verilog, Arduino, </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <h3>個人特質</h3>
-                        <div class="indent1">
-                            <p>國立清華大學資訊工程學系(2015~2018)</p>
-                            <p>國立清華大學理學院學士班(物理/數學)(2013~2015轉系)</p>
-                            <p>台北市立建國高級中學</p>
+
                         </div>
                     </div>
                 </div>

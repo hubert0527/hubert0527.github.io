@@ -3,6 +3,7 @@ $(document).ready(function () {
     dealTopImage();
     prepareLayout();
     // createSkillRatingBar();
+    // $('body').removeClass('preload');
 });
 
 $(window).load(function () {
@@ -19,19 +20,10 @@ function prepareLayout() {
 
 function init() {
 
-    $("body").removeClass('preload');
+    grabMouseScroll();
 
+    calcTopBgPos();
     browserDetect();
-
-
-    if ('onmousewheel' in window) {
-        window.onmousewheel = wheelHandler;
-    } else if ('onmousewheel' in document) {
-        document.onmousewheel = wheelHandler;
-    } else if ('addEventListener' in window) {
-        window.addEventListener("mousewheel", wheelHandler, false);
-        window.addEventListener("DOMMouseScroll", wheelHandler, false);
-    }
 
 }
 
@@ -62,36 +54,8 @@ function createSkillRatingBar() {
 var topImageScrolling = false;
 function dealTopImage() {
 
-    var HH = $(window).height();
-    var WW = $(window).width();
-
-    var imgHeight = WW * 1004 / 1234; // aspect original image ratio
-    var remainHeight = imgHeight - HH;
-    if(imgHeight<=HH) {
-        $('#topImageWrapper').height(imgHeight);
-        remainHeight = 0;
-    }
-
-    function calcTopBgPos(e) {
-        var curPos = $(window).scrollTop();
-        var scrolledRatio = curPos/HH;
-        var marginTop = (HH+remainHeight) * scrolledRatio - remainHeight;
-        $('#topImage').css({marginTop: marginTop + 'px'}, 1);
-
-    }
-
-    calcTopBgPos();
-
     $(document).scroll(calcTopBgPos);
     $(window).resize(function () {
-        HH = $(window).height();
-        WW = $(window).width();
-        imgHeight = WW * 1004 / 1234; // aspect original image ratio
-        remainHeight = imgHeight - HH;
-        if(imgHeight<=HH) {
-            $('#topImageWrapper').height(imgHeight);
-            remainHeight = 0;
-        }
         calcTopBgPos();
     });
 
@@ -99,7 +63,7 @@ function dealTopImage() {
 
         topImageScrolling = true;
 
-        var wh = $('#topImageWrapper').height();
+        var wh = $('#topImageDivWrapper').height();
         var cur = $(document).scrollTop();
         var dist = wh-cur;
 
@@ -111,6 +75,54 @@ function dealTopImage() {
 
 
     });
+}
+
+function calcTopBgPos(e) {
+    var HH = $(window).outerHeight();
+    var WW = $(window).outerWidth();
+
+    var imgHeight = WW * 1004 / 1234; // aspect original image ratio
+    var remainHeight = imgHeight - (HH-50);
+    var wrapper = $('#topImageDivWrapper');
+    var wrapperHeight;
+    var viewPortRatio = (HH-50)/WW;
+
+    var shadowHeader = $('#shadowHeader');
+
+    // if screen is too square, the go-down button mat overlap Yi-Shen
+    if(viewPortRatio>0.68){
+        var oneThird = imgHeight/3;
+        wrapperHeight = oneThird*2;
+        wrapper.height(wrapperHeight);
+        remainHeight = oneThird;
+        console.log('oneThird='+oneThird);
+    }
+    else{
+        // css calc seems won't update automatically
+        wrapperHeight = HH-50;
+        wrapper.height(wrapperHeight);
+    }
+
+    // deal with shadow part
+    dealWithTopShadow();
+
+
+
+    // find and set top image margin top
+    var curPos = $(window).scrollTop();
+    var scrolledRatio = curPos/wrapperHeight;
+    var marginTop = (imgHeight) * scrolledRatio - remainHeight;
+    $('#topImage').css({marginTop: marginTop + 'px'}, 1);
+
+    function dealWithTopShadow() {
+        var shadowHeight = (wrapperHeight)*0.32;
+        $('#topImageShadow').height(shadowHeight);
+
+        var btnHeight = WW/HH>1 ? '5vh' : '5vw';
+        shadowHeader.css('padding-top',btnHeight).css('font-size',shadowHeight/6);
+        $('#shadowQuoteWrapper').height(shadowHeight-shadowHeader.outerHeight());
+        $('#shadowQuote').css('font-size',shadowHeight/10);
+    }
 }
 
 function dealAllAboutMe() {
@@ -149,17 +161,25 @@ function browserDetect() {
     window.isChrome = !!window.chrome && !!window.chrome.webstore;
 }
 
+function grabMouseScroll() {
+    if ('onmousewheel' in window) {
+        window.onmousewheel = wheelHandler;
+    } else if ('onmousewheel' in document) {
+        document.onmousewheel = wheelHandler;
+    } else if ('addEventListener' in window) {
+        window.addEventListener("mousewheel", wheelHandler, false);
+        window.addEventListener("DOMMouseScroll", wheelHandler, false);
+    }
+}
+
 // code use from
 // http://stackoverflow.com/questions/3656592/how-to-programmatically-disable-page-scrolling-with-jquery
 function wheelHandler(event) {
-
 
     if(topImageScrolling) {
         $('body,html').stop();
         topImageScrolling = false;
     }
-
-    console.log('!!');
 
     var delta = 0;
     if (event.wheelDelta) delta = event.wheelDelta / 120;

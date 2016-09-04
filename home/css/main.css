@@ -1,6 +1,20 @@
 html,body{
     font-family: serif, 微軟正黑體 !important;
-    min-width: 400px;
+    position: relative;
+}
+img{
+
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    -o-user-select: none !important;
+
+    -webkit-user-drag: none !important;
+    -khtml-user-drag: none !important;
+    -moz-user-drag: none !important;
+    -o-user-drag: none !important;
+    user-drag: none !important;
 }
 body{
     margin-top: 50px;
@@ -11,6 +25,7 @@ body{
   -ms-transition: none !important;
   -o-transition: none !important;
 }
+
 .navbar{
     background-color: black;
     height: 50px;
@@ -24,12 +39,14 @@ body{
 #brand:hover{
     color: orange;
 }
+#myNavbar{
+    background-color: black;
+}
 .navItem{
     padding: 18px 20px;
     margin: 0;
     line-height: 14px;
     height: 50px;
-    font-size: 14px;
     cursor: pointer;
     color: white;
     transition-delay: .05s;
@@ -46,39 +63,43 @@ body{
      background-color: white;
 }
 #drop_down_button{
-    margin-top: 13px;
+    margin-top: 8px;
 }
 
 
-#goDownBtn{
-    height:6vh;
-    width:6vh;
+#goDownBtn, #goDownBtn:active{
     background-color: #2b2b2b;
-    margin:-2vh auto 0;
     display: flex;
     align-items: center;
     border-radius: 50%;
     z-index: 1;
     text-align: center;
-    font-size: 2vh;
     color:white;
-    border: 0.5vh white solid;
     cursor: pointer;
     text-decoration: none !important;
     transition-duration: .4s;
+
+    height:6vh;
+    width:6vh;
+    border: 0.6vh white solid;
+    margin:-2vh auto 0;
+    font-size: 2vh;
 }
-#goDownBtn:before{
+#goDownBtn:before, #goDownBtn:active:before{
     transition-duration: .7s;
     display: block;
     margin: auto;
 }
 #goDownBtn:hover:before {
     color: #2b2b2b;
-    transform: translateY(1vh);
+    transform: translateY(2vh);
 }
 #goDownBtn:hover{
+    height:9vh;
+    width:9vh;
+    margin:-3vh auto 0;
     background-color: white;
-    border: 1vh #2b2b2b double;
+    border: 1.5vh #2b2b2b double;
 }
 
 #me{
@@ -87,7 +108,9 @@ body{
 #skill p{
     margin-left: 10%;
 }
-
+#skill > div{
+    margin-top: 3vh;
+}
 
 #footer{
     height: 200px;
@@ -95,17 +118,41 @@ body{
     background-color: grey;
 }
 
-
-/* large screen */
-@media (min-width: 768px) {
+/* md */
+@media (min-width: 992px) {
     #brand{
         margin-left: -15px;
     }
+    .container{
+        width: 90%;
+    }
 }
 
-/* small screen */
-@media (max-width: 768px) {
-    .navbar-collapse {
-        background-color: grey;
+/* sm */
+@media (max-width: 992px) {
+
+}
+
+/* xs */
+@media (max-width: 769px) {
+
+}
+
+/*for smart phones*/
+@media (max-aspect-ratio: 1/1){
+    #goDownBtn{
+        height:6vw;
+        width:6vw;
+        border: 0.6vw white solid;
+        margin:-3vw auto 0;
+        font-size: 2vw;
+    }
+    #goDownBtn:hover:before {
+        transform: translateY(2vw);
+    }
+    #goDownBtn:hover{
+        height:9vw;
+        width:9vw;
+        border: 2vw #2b2b2b double;
     }
 }

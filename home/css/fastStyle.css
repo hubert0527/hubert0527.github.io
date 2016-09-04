@@ -1,5 +1,8 @@
-.b{
+.b9{
     font-weight: 900;
+}
+.b6{
+    font-weight: 600;
 }
 .c{
     text-align: center;
@@ -12,4 +15,55 @@
 }
 .ib{
     display: inline-block;
+}
+.mw{
+}
+
+/* md */
+@media (min-width: 992px) {
+    .fs1{
+        font-size: 2.5vw;
+    }
+    .fs2{
+        font-size: 1.66vw;
+    }
+    .fs3{
+        font-size: 1.33vw;
+    }
+    .fs4{
+        font-size: 1vw;
+    }
+    .fs5{
+        font-size: 0.8vw;
+    }
+    .fs6{
+        font-size: 0.66vw;
+    }
+}
+
+/* sm */
+@media (max-width: 992px) {
+    .fs1{
+        font-size: 3.5vw;
+    }
+    .fs2{
+        font-size: 3vw;
+    }
+    .fs3{
+        font-size: 2.5vw;
+    }
+    .fs4{
+        font-size: 2vw;
+    }
+    .fs5{
+        font-size: 1.5vw;
+    }
+    .fs6{
+        font-size: 1vw;
+    }
+}
+
+/* xs */
+@media (max-width: 769px) {
+
 }
