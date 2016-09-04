@@ -1,4 +1,6 @@
 
+var NAV_BAR_HH = 70;
+
 $(document).ready(function () {
     dealTopImage();
     prepareLayout();
@@ -109,10 +111,10 @@ function calcTopBgPos(e) {
     var WW = $(window).outerWidth();
 
     var imgHeight = WW * 1004 / 1234; // aspect original image ratio
-    var remainHeight = imgHeight - (HH-50);
+    var remainHeight = imgHeight - (HH-NAV_BAR_HH);
     var wrapper = $('#topImageDivWrapper');
     var wrapperHeight;
-    var viewPortRatio = (HH-50)/WW;
+    var viewPortRatio = (HH-NAV_BAR_HH)/WW;
 
     var shadowHeader = $('#shadowHeader');
 
@@ -126,7 +128,7 @@ function calcTopBgPos(e) {
     }
     else{
         // css calc seems won't update automatically
-        wrapperHeight = HH-50;
+        wrapperHeight = HH-NAV_BAR_HH;
         wrapper.height(wrapperHeight);
     }
 

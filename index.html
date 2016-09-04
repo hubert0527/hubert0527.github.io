@@ -45,20 +45,20 @@
                                 <img style="height: 100%;display: block;" src="home/img/linkedInIcon.png">
                             </div>
                         </a>
-                        <a class="f b" target="_blank" onclick="sendEMail()">
+                        <a class="f b" target="_blank" href="mailto:hubert052702@yahoo.com.tw">
                             <div class="navItem iconLink">
                                     <img style="height: 100%;display: block;" src="home/img/fbIcon.png">
                             </div>
-                            <script>
-                                function sendEMail() {
-                                    window.open('mailto:hubert052702@yahoo.com.tw');
-                                }
-                            </script>
                         </a>
-                        <a class="f b" target="_blank" href="">
+                        <a class="f b" href="mailto:hubert052702@yahoo.com.tw" data-toggle="popover" title="" data-content="hubert052702@yahoo.com.tw" data-placement="bottom">
                             <div class="navItem iconLink">
                                 <img style="height: 100%;display: block;" src="home/img/eMailIcon.png">
                             </div>
+                            <script>
+                                $(document).ready(function(){
+                                    $('[data-toggle="popover"]').popover();
+                                });
+                            </script>
                         </a>
                         <!--<div class="navItem" style="display: inline-flex;align-items: stretch;margin-left: 2vw;">-->
                             <!--<p class="glyphicon glyphicon-envelope contact"></p>-->

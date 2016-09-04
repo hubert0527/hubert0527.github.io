@@ -17,7 +17,7 @@ img{
     user-drag: none !important;
 }
 body{
-    margin-top: 50px;
+    margin-top: 70px;
 }
 .preload{
   -webkit-transition: none !important;
@@ -28,13 +28,13 @@ body{
 
 .navbar{
     background-color: black;
-    height: 50px;
+    height: 70px;
 }
 #brand{
     margin: 0;
-    padding: 13px 30px;
-    font-size: 24px;
-    line-height: 24px;
+    padding: 20px 30px;
+    font-size: 30px;
+    line-height: 30px;
 }
 #brand:hover{
     color: orange;
@@ -43,20 +43,21 @@ body{
     background-color: black;
 }
 .navItem{
-    padding: 18px 20px;
+    padding: 25px 20px;
     margin: 0;
-    line-height: 14px;
-    height: 50px;
+    line-height: 20px;
+    font-size: 20px;
+    height: 70px;
     cursor: pointer;
     color: white;
     transition-delay: .05s;
     transition-duration: .4s;
 }
 .iconLink{
-    padding: 16px 5%;
-    height: 50px;
-    min-width: 28px;
-    line-height: 28px;
+    padding: 19px 0.7vw;
+    height: 70px;
+    min-width: 32px;
+    line-height: 32px;
 }
 .iconLink img{
     background-color: white;
@@ -78,7 +79,7 @@ body{
      background-color: white;
 }
 #drop_down_button{
-    margin-top: 8px;
+    margin-top: 18.125px;
 }
 
 
@@ -150,7 +151,9 @@ body{
 
 /* xs */
 @media (max-width: 769px) {
-
+    .iconLink{
+        padding: 19px 2vw;
+    }
 }
 
 /*for smart phones*/
