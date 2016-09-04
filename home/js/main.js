@@ -90,6 +90,8 @@ function dealTopImage() {
 
     $('#goDownBtn').click(function () {
 
+        $(this).blur();
+
         topImageScrolling = true;
 
         var wh = $('#topImageDivWrapper').height();

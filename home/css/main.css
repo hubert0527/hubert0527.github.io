@@ -83,7 +83,7 @@ body{
 }
 
 
-#goDownBtn, #goDownBtn:active{
+#goDownBtn, #goDownBtn:active, #goDownBtn:visited{
     background-color: #2b2b2b;
     display: flex;
     align-items: center;
@@ -101,7 +101,7 @@ body{
     margin:-2vh auto 0;
     font-size: 2vh;
 }
-#goDownBtn:before, #goDownBtn:active:before{
+#goDownBtn:before, #goDownBtn:active:before, #goDownBtn:visited:before{
     transition-duration: .7s;
     display: block;
     margin: auto;
@@ -165,10 +165,10 @@ body{
         margin:-3vw auto 0;
         font-size: 2vw;
     }
-    #goDownBtn:hover:before {
+    #goDownBtn:hover:before, #goDownBtn:active:before, #goDownBtn:visited:before {
         transform: translateY(2vw);
     }
-    #goDownBtn:hover{
+    #goDownBtn:hover, #goDownBtn:active, #goDownBtn:visited{
         height:9vw;
         width:9vw;
         border: 2vw #2b2b2b double;
