@@ -184,7 +184,7 @@ function calcTopBgPos(e) {
     // find and set top image margin top
     var curPos = $(window).scrollTop();
     if(curPos<0){
-        $('body').css('marginTop',curPos+70+'px');
+        $('body,html').css('marginTop',curPos+70+'px');
         return;
     }
 
