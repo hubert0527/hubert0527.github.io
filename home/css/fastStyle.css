@@ -13,11 +13,29 @@
 .indent2{
     padding-left: 20%;
 }
+.abs{
+    position: absolute;
+}
 .b{
     display: block;
 }
 .ib{
     display: inline-block;
+}
+.sb2{
+    margin-top: 2vh;
+}
+.sb3{
+    margin-top: 3vh;
+}
+.sb5{
+    margin-top: 5vh;
+}
+.sb8{
+    margin-top: 8vh;
+}
+.fl{
+    float: left;
 }
 .mw{
 }
@@ -38,13 +56,13 @@
         font-size: 1.33vw;
     }
     .fs4{
-        font-size: 1vw;
+        font-size: 1.2vw;
     }
     .fs5{
-        font-size: 0.8vw;
+        font-size: 1vw;
     }
     .fs6{
-        font-size: 0.66vw;
+        font-size: 0.9vw;
     }
 }
 
@@ -60,17 +78,36 @@
         font-size: 2.5vw;
     }
     .fs4{
-        font-size: 2vw;
+        font-size: 2.2vw;
     }
     .fs5{
-        font-size: 1.5vw;
+        font-size: 1.8vw;
     }
     .fs6{
-        font-size: 1vw;
+        font-size: 1.5vw;
+    }
+    .smallScreenHide{
+        display: none;
     }
 }
 
 /* xs */
 @media (max-width: 769px) {
 
+}
+
+/*for smart phones*/
+@media (max-aspect-ratio: 1/1){
+    .sb2{
+        margin-top: 2vw;
+    }
+    .sb3{
+        margin-top: 3vw;
+    }
+    .sb5{
+        margin-top: 5vw;
+    }
+    .sb8{
+        margin-top: 8vw;
+    }
 }

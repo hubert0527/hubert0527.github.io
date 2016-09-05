@@ -4,7 +4,8 @@ var NAV_BAR_HH = 70;
 $(document).ready(function () {
     dealTopImage();
     prepareLayout();
-    // createSkillRatingBar();
+    createSkillRatingBar();
+    adjustApiListPos();
     // $('body').removeClass('preload');
 });
 
@@ -14,6 +15,8 @@ $(window).load(function () {
 
 $(window).resize(function () {
     prepareLayout();
+    createSkillRatingBar();
+    adjustApiListPos();
 });
 
 function prepareLayout() {
@@ -57,26 +60,90 @@ function showTopImage() {
 }
 
 function createSkillRatingBar() {
-    $('.skillRate').each(function (i, inst) {
-        var rate = $(inst).attr('title');
-        $(this).css('display','inline-block');
 
-        var parentW = $(this).parent().innerWidth();
-        var sib = $(this).siblings('h4');
-        var sibW = sib.outerWidth();
-        var sibH = sib.innerHeight();
+    // var max=0;
+    // // make all skill lang same width
+    // $('.skillLang').each(function (i, inst) {
+    //     var ww = $(inst).width();
+    //     if(ww>max){
+    //         max = ww;
+    //     }
+    //     console.log(ww);
+    // }).each(function (i,inst) {
+    //     var p = $(inst).parent();
+    //     var skillLang = $(inst);
+    //     var skillBar = $(inst).siblings('.skillBar');
+    //     var skillRate = $(skillBar.children()[0]);
+    //     var skillRateShadow = $(skillBar.children()[1]);
+    //
+    //     var HH = skillLang.height();
+    //     var WW = p.width();
+    //     var ow = p.outerWidth();
+    //     var margin = (ow-WW)/2;
+    //     var rate = parseInt(p.find('.skillRate').text());
+    //     var hh = skillBar.height();
+    //
+    //     skillBar.width(WW-max-10).css({'bottom':0,'left':max+margin+10+'px','height':HH*0.7+'px','margin':HH*0.15+'px 0'});
+    //     skillRate.css({
+    //         'width':((WW-max-10)*rate/10)+'px',
+    //         'border-radius':hh+'px',
+    //         'font-size':HH*0.5+'px',
+    //         'line-height':HH*0.7+'px'
+    //     });
+    //     skillRateShadow.css({
+    //         'width':(WW-max-10)+'px',
+    //         'border-radius':hh+'px'
+    //     });
+    //
+    // });
 
-        var remainW = parentW-sibW;
+    $('.skillLang').each(function (i, inst) {
+        var p = $(inst).parent();
+        var skillLang = $(inst);
+        var skillBar = $(inst).siblings('.skillBar');
+        var skillRate = $(skillBar.children()[0]);
+        var skillRateShadow = $(skillBar.children()[1]);
 
-        $(this).css({
-            width: (remainW*0.8)+'px',
-            height: (sibH*0.8)+'px',
-            padding: (sibH*0.1)+'px ' + (remainW*0.1)+'px',
-            display: 'inline-block',
-            backgroundColor: 'red'
+        var HH = skillLang.height();
+        var WW = p.width();
+        var ow = p.outerWidth();
+        var margin = (ow-WW)/2;
+        var rate = parseInt(p.find('.skillRate').text());
+
+        // var innerMaxWidth = (WW-10) - (HH*0.1)*2;
+
+        skillBar.css({
+            'bottom':0,
+            'width':WW-10+'px',
+            'height':HH*0.7+'px',
+            'margin':HH*0.05+'px 0'
         });
+        skillRateShadow.css({
+            'width':(WW-10)+'px',
+            'height':HH*0.7+'px',
+            'border-radius':HH/2+'px'
+        });
+        skillRate.css({
+            'width':((WW-10)*rate/10)+'px',
+            'border-radius':HH/2+'px',
+            'font-size':HH*0.5+'px',
+            'line-height':HH*0.7+'px',
+            'height':HH*0.7+'px'
+        });
+    });
+}
 
-        console.log(sibH);
+function adjustApiListPos() {
+    var max=0;
+    // make all skill lang same width
+    $('.apiListItem').each(function (i, inst) {
+        var ww = $($(inst).children()[0]).width();
+        if(ww>max){
+            max = ww;
+        }
+        console.log(ww);
+    }).each(function () {
+        var right = $($(inst).children()[1]).width();
     });
 }
 
@@ -84,6 +151,7 @@ var topImageScrolling = false;
 function dealTopImage() {
 
     $(document).scroll(calcTopBgPos);
+    $(document).swipe(calcTopBgPos);
     $(window).resize(function () {
         calcTopBgPos();
     });
@@ -126,7 +194,6 @@ function calcTopBgPos(e) {
         wrapperHeight = oneThird*2;
         wrapper.height(wrapperHeight);
         remainHeight = oneThird;
-        console.log('oneThird='+oneThird);
     }
     else{
         // css calc seems won't update automatically
@@ -149,7 +216,7 @@ function calcTopBgPos(e) {
         var shadowHeight = (wrapperHeight)*0.32;
         $('#topImageShadow').height(shadowHeight);
 
-        var headerTopMargin = WW/HH>1 ? '6vh' : '5vw';
+        var headerTopMargin = WW/HH>1 ? '8vh' : '6vw';
         shadowHeader.css('padding-top',headerTopMargin).css('font-size',shadowHeight/6);
         $('#shadowQuoteWrapper').height(shadowHeight-shadowHeader.outerHeight());
         $('#shadowQuote').css('font-size',shadowHeight/10);
@@ -158,21 +225,40 @@ function calcTopBgPos(e) {
 
 function dealAllAboutMe() {
     var HH = window.innerWidth;
+    var hh;
     if(HH>=992) {
-        var hh = $('#myBasicInfo').height();
-        $('#separator').height(hh * 0.9).width(0).css('margin', hh * 0.05 + 'px ' + ' auto').css('display','block');
+        hh = $('#myBasicInfo').height();
 
+        // clean up unnecessary margin
         $('#profilePictureDiv').css('margin','auto');
+
+        // prepare separator
+        $('#separator').height(hh * 0.9).width(0).css('margin', hh * 0.05 + 'px ' + ' auto').css('display','block');
     }
     else{
-        var p = $('#myBasicInfo');
-        var ww = p.width();
-        var hh = p.height();
+
+        // collapse basic info, one of top block need to vertically align middle
+
+        var right = $('#objectProfile');
+        var left = $('#profilePictureDiv');
+        var left2 = $('#nameAndContactInfo');
+        var rightH = right.outerHeight();
+        // cuz photo may not ready, and my photo aspect 1:1 ratio
+        var leftH = left.width() + left2.outerHeight();
+
+        if(leftH>rightH){
+            hh = leftH;
+            right.css('margin',(hh-rightH)/2+'px auto');
+        }
+        else{
+            hh = rightH;
+            left.css('margin',(hh-leftH)/2+'px auto');
+        }
+
+        // prepare separator
+        var ww = $('#myBasicInfo').width();
         $('#separator').width(ww * 0.9).height(0).css('margin',ww*0.05+'px').css('display','block');
 
-        var pp = $('#profilePictureDiv');
-        var mh = pp.height();
-        pp.css('margin',(hh-mh)/2+'px auto');
     }
 
 }
