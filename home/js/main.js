@@ -180,6 +180,15 @@ function dealTopImage() {
 }
 
 function calcTopBgPos(e) {
+
+    // find and set top image margin top
+    var curPos = $(window).scrollTop();
+    if(curPos<0){
+        e.preventDefault();
+        e.returnValue = false;
+        return;
+    }
+
     var HH = $(window).outerHeight();
     var WW = $(window).outerWidth();
 
@@ -208,9 +217,6 @@ function calcTopBgPos(e) {
     dealWithTopShadow();
 
 
-
-    // find and set top image margin top
-    var curPos = $(window).scrollTop();
     var scrolledRatio = curPos/wrapperHeight;
     var marginTop = (imgHeight) * scrolledRatio - remainHeight;
     $('#topImage').css({marginTop: marginTop + 'px'}, 1);
