@@ -26,6 +26,7 @@ $(window).load(function () {
 
 $(window).resize(function () {
     doLayout();
+    stopAndReMeasureAllRateBarWidth();
 });
 
 function doLayout() {
@@ -41,9 +42,35 @@ function init() {
     setIconHoverAnimation();
     showTopImage();
     grabMouseScroll();
+    setRateBarVibrateAnimation();
+    stopAndReMeasureAllRateBarWidth();
 
     calcTopBgPos();
 
+}
+
+function scrollAnimation() {
+
+    $('.skillBar').each(function (i, inst) {
+        vibrateRateBar(i,inst,'medium',true);
+    });
+}
+
+// function doSomeAnimationOnLoad() {
+//     $('#abilityBlock').load(function () {
+//         $('.skillBar').each(function (i, inst) {
+//             vibrateRateBar(i,inst,'short');
+//         });
+//     });
+// }
+// doSomeAnimationOnLoad();
+
+function setRateBarVibrateAnimation() {
+    $('.skillBar').each(function (i, inst) {
+        $(inst).mouseover(function () {
+            vibrateRateBar(i,this);
+        });
+    });
 }
 
 function setBioRandom() {
@@ -90,6 +117,7 @@ function showTopImage() {
 function createSkillRatingBar() {
 
     $('.skillLang').each(function (i, inst) {
+
         var p = $(inst).parent();
         var skillLang = $(inst);
         var skillBar = $(inst).siblings('.skillBar');
@@ -324,11 +352,12 @@ function grabMouseScroll() {
 // http://stackoverflow.com/questions/3656592/how-to-programmatically-disable-page-scrolling-with-jquery
 function wheelHandler(event) {
 
+    scrollAnimation();
+
     if(topImageScrolling) {
         end = $(window).scrollTop();
         $('body,html').stop();
         topImageScrolling = false;
-
     }
 
     var delta = 0;
@@ -341,7 +370,7 @@ function wheelHandler(event) {
 
 }
 
-var end;
+var end; // record the last window stop position
 var interval;
 var goUp;
 function wheelHandleWorker(delta) {
@@ -404,4 +433,59 @@ function insertCss( tar, dic ) {
     }
 
     document.getElementsByTagName("head")[0].appendChild( style );
+}
+
+var rateBarVibrateInst = [];
+var canReplaceFlag = [];
+var originalWidth = [];
+function vibrateRateBar(index,obj,duration,randomTrigger) {
+
+    var dir = 1;
+    if(randomTrigger){
+        if(Math.random()>0.5) dir = -1;
+    }
+
+    if(canReplaceFlag[index]==false) return;
+    clearInterval(rateBarVibrateInst[index]);
+
+    var amplitude = $(obj).children('.skillRateShadow').width()/10*2;
+    var rateBar = $(obj).children('.skillRate');
+    var dampRatio = 0.99;
+    if(duration=='short'){
+        dampRatio = 0.95;
+    }
+    else if(duration=='medium'){
+        dampRatio = 0.97;
+    }
+    var deg = 90;
+
+    var ww = originalWidth[index];
+
+    rateBarVibrateInst[index] = setInterval(function () {
+        deg += (3.6*dir);
+        amplitude *= dampRatio;
+        if(amplitude<0.01){
+            clearInterval(rateBarVibrateInst[index]);
+            canReplaceFlag[index] = true;
+            return;
+        }
+        var displacement = amplitude*Math.cos(deg/180*3.1415926);
+
+        rateBar.width(ww-displacement);
+
+    },10);
+
+    var i = setInterval(function () {
+        clearInterval(i);
+        canReplaceFlag[i] = true;
+    },1000);
+}
+
+function stopAndReMeasureAllRateBarWidth() {
+    $('.skillRate').each(function (i,inst) {
+        clearInterval(rateBarVibrateInst[i]);
+        var rate = parseInt($(inst).children().text());
+        originalWidth[i] = $(inst).parent().width()*rate/10;
+        $(inst).width(originalWidth[i]);
+    });
 }
