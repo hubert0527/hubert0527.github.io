@@ -151,7 +151,7 @@ var topImageScrolling = false;
 function dealTopImage() {
 
     $(document).scroll(calcTopBgPos);
-    $(document).swipe(calcTopBgPos);
+    $(document).on('swipe',calcTopBgPos);
     $(window).resize(function () {
         calcTopBgPos();
     });
