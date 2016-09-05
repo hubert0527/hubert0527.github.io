@@ -142,12 +142,15 @@ function dealTopImage() {
         $(this).blur();
 
         topImageScrolling = true;
+        clearInterval(interval);
+        interval = undefined;
 
         var wh = $('#topImageDivWrapper').height();
         $(document).stop();
         $(window).stop();
         $('body,html').stop().animate({scrollTop:wh},1500,'swing',function () {
             topImageScrolling = false;
+            end = $(window).scrollTop();
         });
 
 
@@ -160,11 +163,14 @@ function dealFooter() {
         $(this).blur();
 
         topImageScrolling = true;
+        clearInterval(interval);
+        interval = undefined;
 
         $(document).stop();
         $(window).stop();
         $('body,html').stop().animate({scrollTop:0},1500,'swing',function () {
             topImageScrolling = false;
+            end = $(window).scrollTop();
         });
 
 
@@ -319,6 +325,7 @@ function grabMouseScroll() {
 function wheelHandler(event) {
 
     if(topImageScrolling) {
+        end = $(window).scrollTop();
         $('body,html').stop();
         topImageScrolling = false;
 
@@ -358,7 +365,7 @@ function wheelHandleWorker(delta) {
 
             var scrollTop = $(window).scrollTop();
             var step = Math.round((end - scrollTop) / scrollSpeed);
-            if (scrollTop <= 0 ||
+            if (scrollTop < 0 ||
                 scrollTop >= $(window).prop("scrollHeight") - $(window).height() ||
                 goUp && step > -1 ||
                 !goUp && step < 1 ) {
@@ -366,7 +373,9 @@ function wheelHandleWorker(delta) {
                     interval = null;
                     end = null;
             }
-            $(window).scrollTop(scrollTop + step );
+            else{
+                $(window).scrollTop(scrollTop + step );
+            }
 
         }, animationInterval);
     }
