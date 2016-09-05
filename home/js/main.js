@@ -185,7 +185,7 @@ function calcTopBgPos(e) {
     var curPos = $(window).scrollTop();
     if(curPos<0){
         // $('body').css('marginTop',curPos+70+'px');
-        $('html').css('padding-top',-curPos+'px');
+        $('html').css('margin-top',curPos+'px').css('overflow','visible');
         return;
     }
 
