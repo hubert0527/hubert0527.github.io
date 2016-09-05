@@ -1,12 +1,23 @@
 
 var NAV_BAR_HH = 70;
 
+var BIO = [
+    "想到就立刻去做，有趣就馬上動手做，一直空想只是浪費生命",
+    "傾盡全力去幫助那些努力向上、勤勉不懈的人",
+    "等待、尋找一群願意一起努力做好一件事的人",
+    "要求網頁對IE8和手機端都responsive是寫這個網站過程中最愚蠢的錯誤"
+];
+
+
 $(document).ready(function () {
+
+    // prepare bootstrap widget
+    $('[data-toggle="popover"]').popover();
+    $('[data-toggle="tooltip"]').tooltip();
+
     dealTopImage();
-    prepareLayout();
-    createSkillRatingBar();
-    adjustApiListPos();
-    // $('body').removeClass('preload');
+    dealFooter();
+    doLayout();
 });
 
 $(window).load(function () {
@@ -14,12 +25,11 @@ $(window).load(function () {
 });
 
 $(window).resize(function () {
-    prepareLayout();
-    createSkillRatingBar();
-    adjustApiListPos();
+    doLayout();
 });
 
-function prepareLayout() {
+function doLayout() {
+    createSkillRatingBar();
     dealAllAboutMe();
 }
 
@@ -27,12 +37,30 @@ function init() {
 
     browserDetect();
 
+    setBioRandom();
     setIconHoverAnimation();
     showTopImage();
     grabMouseScroll();
 
     calcTopBgPos();
 
+}
+
+function setBioRandom() {
+    var prev,r,ri;
+    setInterval(function () {
+
+        r = Math.random();
+        ri = Math.floor(r * BIO.length);
+
+        if(prev==ri) ri = (ri+1)%BIO.length;
+
+        prev = ri;
+
+        $('#shadowQuote').fadeOut('slow',function () {
+            $(this).text(BIO[ri]).fadeIn('slow');
+        });
+    },5000);
 }
 
 function setIconHoverAnimation() {
@@ -60,42 +88,6 @@ function showTopImage() {
 }
 
 function createSkillRatingBar() {
-
-    // var max=0;
-    // // make all skill lang same width
-    // $('.skillLang').each(function (i, inst) {
-    //     var ww = $(inst).width();
-    //     if(ww>max){
-    //         max = ww;
-    //     }
-    //     console.log(ww);
-    // }).each(function (i,inst) {
-    //     var p = $(inst).parent();
-    //     var skillLang = $(inst);
-    //     var skillBar = $(inst).siblings('.skillBar');
-    //     var skillRate = $(skillBar.children()[0]);
-    //     var skillRateShadow = $(skillBar.children()[1]);
-    //
-    //     var HH = skillLang.height();
-    //     var WW = p.width();
-    //     var ow = p.outerWidth();
-    //     var margin = (ow-WW)/2;
-    //     var rate = parseInt(p.find('.skillRate').text());
-    //     var hh = skillBar.height();
-    //
-    //     skillBar.width(WW-max-10).css({'bottom':0,'left':max+margin+10+'px','height':HH*0.7+'px','margin':HH*0.15+'px 0'});
-    //     skillRate.css({
-    //         'width':((WW-max-10)*rate/10)+'px',
-    //         'border-radius':hh+'px',
-    //         'font-size':HH*0.5+'px',
-    //         'line-height':HH*0.7+'px'
-    //     });
-    //     skillRateShadow.css({
-    //         'width':(WW-max-10)+'px',
-    //         'border-radius':hh+'px'
-    //     });
-    //
-    // });
 
     $('.skillLang').each(function (i, inst) {
         var p = $(inst).parent();
@@ -133,20 +125,6 @@ function createSkillRatingBar() {
     });
 }
 
-function adjustApiListPos() {
-    var max=0;
-    // make all skill lang same width
-    $('.apiListItem').each(function (i, inst) {
-        var ww = $($(inst).children()[0]).width();
-        if(ww>max){
-            max = ww;
-        }
-        console.log(ww);
-    }).each(function () {
-        var right = $($(inst).children()[1]).width();
-    });
-}
-
 var topImageScrolling = false;
 function dealTopImage() {
 
@@ -166,12 +144,26 @@ function dealTopImage() {
         topImageScrolling = true;
 
         var wh = $('#topImageDivWrapper').height();
-        var cur = $(document).scrollTop();
-        var dist = wh-cur;
-
         $(document).stop();
         $(window).stop();
         $('body,html').stop().animate({scrollTop:wh},1500,'swing',function () {
+            topImageScrolling = false;
+        });
+
+
+    });
+}
+
+function dealFooter() {
+    $('#goTopBtn').click(function () {
+
+        $(this).blur();
+
+        topImageScrolling = true;
+
+        $(document).stop();
+        $(window).stop();
+        $('body,html').stop().animate({scrollTop:0},1500,'swing',function () {
             topImageScrolling = false;
         });
 
@@ -233,10 +225,11 @@ function calcTopBgPos(e) {
 }
 
 function dealAllAboutMe() {
-    var HH = window.innerWidth;
+    var WW = window.innerWidth;
     var hh;
-    if(HH>=992) {
-        hh = $('#myBasicInfo').height();
+    if(WW>=992) {
+        // right col is strictly higher than left one
+        hh = $('#moreDetailAboutMe').height();
 
         // clean up unnecessary margin
         $('#profilePictureDiv').css('margin','auto');
@@ -266,7 +259,8 @@ function dealAllAboutMe() {
 
         // prepare separator
         var ww = $('#myBasicInfo').width();
-        $('#separator').width(ww * 0.9).height(0).css('margin',ww*0.05+'px').css('display','block');
+        // $('#separator').width(ww * 0.9).height(0).css('margin',ww*0.05+'px').css('display','block');
+        $('#separator').css('display','none');
 
     }
 
@@ -327,6 +321,7 @@ function wheelHandler(event) {
     if(topImageScrolling) {
         $('body,html').stop();
         topImageScrolling = false;
+
     }
 
     var delta = 0;
@@ -341,6 +336,7 @@ function wheelHandler(event) {
 
 var end;
 var interval;
+var goUp;
 function wheelHandleWorker(delta) {
     delta*=5;
     var animationInterval = 20; //lower is faster

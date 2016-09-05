@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <!--     .... ..- -... . .-. -    .-.. .. -.    .. ...    .... . .-. .    .-.-.- .-.-.-    -->
+    <!--                                                                                       -->
+    <!--                                                                                       -->
+    <!--      __  __           __                     __        __                             -->
+    <!--     /\ \/\ \         /\ \                   /\ \__    /\ \       __                   -->
+    <!--     \ \ \_\ \  __  __\ \ \____     __   _ __\ \ ,_\   \ \ \     /\_\    ___           -->
+    <!--      \ \  _  \/\ \/\ \\ \ '__`\  /'__`\/\`'__\ \ \/    \ \ \  __\/\ \ /' _ `\         -->
+    <!--       \ \ \ \ \ \ \_\ \\ \ \L\ \/\  __/\ \ \/ \ \ \_    \ \ \L\ \\ \ \/\ \/\ \        -->
+    <!--        \ \_\ \_\ \____/ \ \_,__/\ \____\\ \_\  \ \__\    \ \____/ \ \_\ \_\ \_\       -->
+    <!--         \/_/\/_/\/___/   \/___/  \/____/ \/_/   \/__/     \/___/   \/_/\/_/\/_/       -->
+    <!--                                                                                       -->
+    <!--                                                                                       -->
+    <!--                                                                                       -->
+    <!--    --. .-.. .- -..    -.-- --- ..-    ..-. --- ..- -. -..    .... . .-. .    .-.-.-   -->
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -57,11 +73,6 @@
                             <div class="navItem iconLink">
                                 <img style="height: 100%;display: block;" src="home/img/eMailIcon.png">
                             </div>
-                            <script>
-                                $(document).ready(function(){
-                                    $('[data-toggle="popover"]').popover();
-                                });
-                            </script>
                         </a>
                         <!--<div class="navItem" style="display: inline-flex;align-items: stretch;margin-left: 2vw;">-->
                             <!--<p class="glyphicon glyphicon-envelope contact"></p>-->
@@ -82,12 +93,12 @@
                 <div id="topImageShadow" style="width: 100%;left:0;top:68%;position: absolute;">
                     <div style="position: relative;">
                         <div style="position:absolute;top:0;left:0;width: 100vw;height: 30%;">
-                            <div class="glyphicon glyphicon-chevron-down" id="goDownBtn"></div>
+                            <div class="glyphicon glyphicon-chevron-down goToBtn" id="goDownBtn"></div>
                         </div>
                         <div style="height: 100%;background-color: rgba(0,0,0,0.5);text-align: center;color: white;">
                             <h2 id="shadowHeader" style="margin: 0;opacity: 1.5;text-align: center;width: 100vw">~ ‧ ~~ Hubert Lin ~~ ‧ ~</h2>
                             <div id="shadowQuoteWrapper" style="display: flex;align-items: center;">
-                                <h4 id="shadowQuote" style="width: 100vw;margin: 0;">Waiting for a great team to work with.</h4>
+                                <h4 id="shadowQuote" style="width: 100vw;margin: 0;">Always waiting for a great team to work with.</h4>
                             </div>
                         </div>
                         <div id="topDecorationLeft" style="width: 45%;height: 55%;position: absolute;top:0;left:0;">
@@ -102,12 +113,14 @@
         </div>
 
 
-        <div id="allAboutMePage" class="container" style="margin-top: 50px;position: relative;">
+        <div id="allAboutMePage" class="container" style="position: relative;">
             <div class="row">
                 <div id="myBasicInfo" class="col-xs-12 col-md-3" style="text-align: center;">
                     <div>
                         <div id="profilePictureDiv" class="col-xs-4 col-xs-push-1 col-md-10 col-md-push-1">
-                            <img id="me" class="img-responsive img-circle" src="home/img/me_small.jpg" style="margin: auto;">
+                            <a data-toggle="tooltip" data-placement="top" title="photo by 蕭清元">
+                                <img id="me" class="img-responsive img-circle" src="home/img/me_small.jpg" style="margin: auto;">
+                            </a>
                             <div id="nameAndContactInfo">
                                 <h2 class="b9 fs1">林杰 Hubert</h2>
                                 <p class="fs4">hubert052702@yahoo.com.tw</p>
@@ -136,17 +149,17 @@
                     </div>
                 </div>
 
-                <div id="separator" class="col-xs-12 col-md-1">
-                    <div style="width: 100%;height: 100%;border: 2px black solid;padding: 0;margin: auto;bottom: 0;"></div>
+                <div id="separator" class="col-xs-0 col-md-1">
+                    <div style="width: 100%;height: 100%;border: 2px black dashed;padding: 0;margin: auto;bottom: 0;"></div>
                 </div>
 
-                <div class="col-xs-12 col-md-8">
+                <div id="moreDetailAboutMe" class="col-xs-12 col-md-8">
 
                     <div class="row">
                         <div class="col-xs-10 col-xs-push-1 col-md-11">
 
                             <div>
-                                <h3 class="fs2 b" style="margin-top: 6vh;">簡介</h3>
+                                <h3 class="fs2 b rightColumnHeader">簡述</h3>
                                 <div class="row" style="margin-top: 4vh">
                                     <div class="col-xs-12 fs4" style="line-height: 150%;">
                                         <p>&emsp;&emsp;曾經只是個覺得駭客好帥的廢物大學生，完全不覺得寫程式有趣，但經過幾位貴人的提點與教學後，開始覺得在程式碼間打滾還滿有意思的，並努力朝成為頂尖programmer的方向邁進，此時此刻應該也在網路上四處邊看邊學。</p>
@@ -155,115 +168,111 @@
                                 </div>
                             </div>
 
-                            <div class="sb8">
-                                <h3 class="fs2 b" style="margin-top: 6vh;">個人特質</h3>
-                                <div class="row" style="margin-top: 4vh">
-                                    <div class="col-xs-11 col-xs-push-1 fs4">
-                                        <p>學習、歸納速度快，能快速應用新知識、切入新領域</p>
-                                        <p>直覺敏銳，習慣拆解問題，善於尋找問題根源並解決</p>
-                                        <p>喜歡學習，也樂於分享知識與想法</p>
-                                    </div>
-                                </div>
-                            </div>
+                            <!--<div class="sb8">-->
+                                <!--<h3 class="fs2 b" style="margin-top: 6vh;">個人特質</h3>-->
+                                <!--<div class="row" style="margin-top: 4vh">-->
+                                    <!--<div class="col-xs-11 col-xs-push-1 fs4">-->
+                                        <!--<p>學習、歸納速度快，能快速應用新知識、切入新領域</p>-->
+                                        <!--<p>直覺敏銳，習慣拆解問題，善於尋找問題根源並解決</p>-->
+                                        <!--<p>喜歡學習，也樂於分享知識與想法</p>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
 
-                            <div class="sb8">
-                                <div>
-                                    <div class="row">
-                                        <h3 class="fs2 b smallScreenHide">技能</h3>
-                                        <div class="col-xs-12">
-                                            <div class="row">
-                                                <div class="col-xs-12 col-md-6">
-                                                    <h4 id="language" class="fs3 b">語言</h4>
-                                                    <div class="row">
-                                                        <div class="fs4">
+                            <div id="abilityBlock" class="sb8">
 
-                                                            <div class="col-xs-11 col-xs-push-1">
-                                                                <div class="skillLang">Java</div>
-                                                                <div class="skillBar">
-                                                                    <div class="skillRate"><div>8</div></div>
-                                                                    <div class="skillRateShadow"></div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-xs-11 col-xs-push-1">
-                                                                <div class="skillLang">C/C++</div>
-                                                                <div class="skillBar">
-                                                                    <div class="skillRate"><div>8</div></div>
-                                                                    <div class="skillRateShadow"></div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-xs-11 col-xs-push-1">
-                                                                <div class="skillLang">JS(ES5)</div>
-                                                                <div class="skillBar">
-                                                                    <div class="skillRate"><div>7</div></div>
-                                                                    <div class="skillRateShadow"></div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-xs-11 col-xs-push-1">
-                                                                <div class="skillLang">HTML/CSS</div>
-                                                                <div class="skillBar">
-                                                                    <div class="skillRate"><div>6</div></div>
-                                                                    <div class="skillRateShadow"></div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-xs-11 col-xs-push-1">
-                                                                <div class="skillLang">Python</div>
-                                                                <div class="skillBar">
-                                                                    <div class="skillRate"><div>4</div></div>
-                                                                    <div class="skillRateShadow"></div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-xs-11 col-xs-push-1">
-                                                                <div class="skillLang">Swift</div>
-                                                                <div class="skillBar">
-                                                                    <div class="skillRate"><div>3</div></div>
-                                                                    <div class="skillRateShadow"></div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-xs-11 col-xs-push-1">
-                                                                <div class="skillLang">Verilog</div>
-                                                                <div class="skillBar">
-                                                                    <div class="skillRate"><div>4</div></div>
-                                                                    <div class="skillRateShadow"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                    <h3 class="fs2 b smallScreenHide rightColumnHeader">技能</h3>
+
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-6">
+                                        <h4 id="language" class="fs3 b rightColumnHeaderOnlySmall">語言</h4>
+                                        <div class="row">
+                                            <div class="fs4">
+
+                                                <div class="col-xs-11 col-xs-push-1">
+                                                    <div class="skillLang">Java</div>
+                                                    <div class="skillBar">
+                                                        <div class="skillRate"><div>8</div></div>
+                                                        <div class="skillRateShadow"></div>
                                                     </div>
                                                 </div>
-
-
-                                                <div class="col-xs-12 col-md-6">
-                                                    <h4 id="tools" class="fs3 b">工具、API：</h4>
-                                                    <div class="row">
-                                                        <div class="col-xs-11 col-xs-push-1">
-                                                            <div class="fs4">
-                                                                <table>
-                                                                    <tr>
-                                                                        <td>前端:</td>
-                                                                        <td>jQuery, bootstrap, Chart.js</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>後端:</td>
-                                                                        <td>Django(學習中)</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>App:</td>
-                                                                        <td>Android, Qt</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>其他:</td>
-                                                                        <td>MySQL, Git, Vim, GoogleExtension</td>
-                                                                    </tr>
-                                                                </table>
-                                                            </div>
-                                                        </div>
+                                                <div class="col-xs-11 col-xs-push-1">
+                                                    <div class="skillLang">C/C++</div>
+                                                    <div class="skillBar">
+                                                        <div class="skillRate"><div>8</div></div>
+                                                        <div class="skillRateShadow"></div>
                                                     </div>
                                                 </div>
-
+                                                <div class="col-xs-11 col-xs-push-1">
+                                                    <div class="skillLang">JS(ES5)</div>
+                                                    <div class="skillBar">
+                                                        <div class="skillRate"><div>7</div></div>
+                                                        <div class="skillRateShadow"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-11 col-xs-push-1">
+                                                    <div class="skillLang">HTML/CSS</div>
+                                                    <div class="skillBar">
+                                                        <div class="skillRate"><div>6</div></div>
+                                                        <div class="skillRateShadow"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-11 col-xs-push-1">
+                                                    <div class="skillLang">Python</div>
+                                                    <div class="skillBar">
+                                                        <div class="skillRate"><div>4</div></div>
+                                                        <div class="skillRateShadow"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-11 col-xs-push-1">
+                                                    <div class="skillLang">Swift</div>
+                                                    <div class="skillBar">
+                                                        <div class="skillRate"><div>3</div></div>
+                                                        <div class="skillRateShadow"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-11 col-xs-push-1">
+                                                    <div class="skillLang">Verilog</div>
+                                                    <div class="skillBar">
+                                                        <div class="skillRate"><div>3</div></div>
+                                                        <div class="skillRateShadow"></div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
 
+
+                                    <div class="col-xs-12 col-md-6">
+                                        <h4 id="tools" class="fs3 b rightColumnHeaderOnlySmall">工具、API：</h4>
+                                        <div class="row">
+                                            <div class="col-xs-11 col-xs-push-1">
+                                                <div class="fs4">
+                                                    <table>
+                                                        <tr>
+                                                            <td>前端:</td>
+                                                            <td>jQuery, bootstrap, Chart.js</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>後端:</td>
+                                                            <td>Django(學習中)</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>App:</td>
+                                                            <td>Android, Qt</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>其他:</td>
+                                                            <td>MySQL, Git, Vim, GoogleExtension</td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+
+
 
                         </div>
                     </div>
@@ -274,10 +283,18 @@
 
     </div>
 
-    <footer class="container-fluid" id="footer">
-        <div class="row">
+    <footer id="footer" style="position: relative;">
 
+        <div style="position:absolute;top:0;left:0;width: 100vw;height: 30%;">
+            <div class="glyphicon glyphicon-chevron-up goToBtn" id="goTopBtn"></div>
         </div>
+
+        <div style="width: 100%;height: 100%;">
+            <div>cover image credit to 建中棒球隊(photo by 陳奕臻)</div>
+            <div>profile image credit to 蕭清元</div>
+            <div style="margin-top: 2em;">Copyright © HubertLin 2016.9</div>
+        </div>
+
     </footer>
 
 </body>

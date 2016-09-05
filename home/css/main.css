@@ -22,6 +22,7 @@ body{
 }
 table tr{
     border-top: 2vh solid transparent;
+    word-break: keep-all;
 }
 table tr td:last-child{
     border-left: 2vw solid transparent;
@@ -93,7 +94,7 @@ table tr td:last-child{
 }
 
 
-#goDownBtn{
+.goToBtn{
     background-color: #2b2b2b;
     display: flex;
     align-items: center;
@@ -111,16 +112,21 @@ table tr td:last-child{
     margin:-2vh auto 0;
     font-size: 2vh;
 }
-#goDownBtn:before{
+.goToBtn:before{
     transition-duration: .7s;
     display: block;
     margin: auto;
+    z-index: 2;
 }
 #goDownBtn:hover:before, #goDownBtn:active:before{
     color: #2b2b2b;
     transform: translateY(2vh);
 }
-#goDownBtn:hover, #goDownBtn:active{
+#goTopBtn:hover:before, #goTopBtn:active:before{
+    color: #2b2b2b;
+    transform: translateY(-2vh);
+}
+.goToBtn:hover, .goToBtn:active{
     height:9vh;
     width:9vh;
     margin:-3vh auto 0;
@@ -128,8 +134,14 @@ table tr td:last-child{
     border: 1.5vh #2b2b2b double;
 }
 
+#allAboutMePage{
+    margin-top: 10vh;
+}
 #me{
     margin-bottom: 30px;
+}
+#abilityBlock{
+    margin-bottom:5vh;
 }
 #skill p{
     margin-left: 10%;
@@ -146,7 +158,7 @@ table tr td:last-child{
 }
 .skillRate{
     position: absolute;
-    background-color: #1fa2c5;
+    background-color: #219bc1;
     /*box-shadow: -3px 3px 5px #21caef inset;*/
     color:white;
     font-weight:900;
@@ -159,7 +171,7 @@ table tr td:last-child{
 }
 .skillRateShadow{
     position: absolute;
-    background-color:#888888;
+    background-color: #21dbff;
     box-shadow: 0 2px 0 black inset, -2px 0 0 black inset;
     top:0;
     left:0;
@@ -167,14 +179,25 @@ table tr td:last-child{
     opacity: 0.5;
 }
 
+.rightColumnHeader{
+    width: 66%;
+    padding-left: 2vh;
+    border-bottom: black solid 3px;
+    margin-bottom: 5vh;
+}
+
 #tools > div{
     margin: 2vh;
 }
 
 #footer{
-    height: 200px;
-    margin-top: 150px;
-    background-color: grey;
+    margin-top: 10vh;
+    background-color: #2E2E2E;
+    color: white;
+    font-weight: 900;
+    padding: 8vh 0 2vh;
+    text-align: center;
+    border-bottom: black 30px solid;
 }
 
 /* md */
@@ -194,7 +217,27 @@ table tr td:last-child{
         font-weight: 500;
     }
     #tools{
-        margin-top: 8vh;
+        margin-top: 8vw;
+    }
+    #allAboutMePage{
+        margin-top: 6vw;
+    }
+    #footer{
+        padding: 8vw 0 2vw;
+        margin-top: 6vw;
+    }
+
+    .rightColumnHeader{
+        padding-left: 2vw;
+        width: 70%;
+        border-bottom: black solid 3px;
+        margin-bottom: 5vw;
+    }
+    .rightColumnHeaderOnlySmall{
+        padding-left: 2vw;
+        width: 70%;
+        border-bottom: black solid 3px;
+        margin-bottom: 5vw;
     }
 }
 
@@ -207,7 +250,7 @@ table tr td:last-child{
 
 /*for smart phones*/
 @media (max-aspect-ratio: 1/1){
-    #goDownBtn{
+    .goToBtn{
         height:6vw;
         width:6vw;
         border: 0.6vw white solid;
@@ -217,7 +260,10 @@ table tr td:last-child{
     #goDownBtn:hover:before, #goDownBtn:active:before {
         transform: translateY(2vw);
     }
-    #goDownBtn:hover, #goDownBtn:active{
+    #goTopBtn:hover:before, #goTopBtn:active:before {
+        transform: translateY(-2vw);
+    }
+    .goToBtn:hover, .goToBtn:active{
         height:9vw;
         width:9vw;
         margin:-3vw auto 0;
