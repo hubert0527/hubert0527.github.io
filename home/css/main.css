@@ -168,7 +168,7 @@ table tr td:last-child{
     color:white;
     font-weight:900;
     height:100%;
-    text-align:end;
+    text-align: right;
     z-index: -1;
 }
 .skillRate>div{
