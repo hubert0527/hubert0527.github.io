@@ -2,7 +2,7 @@
  * Created by hubert lin2 on 2016/9/7.
  */
 
-var vibrateRateBarInst = [];
+var skillBarInst = [];
 
 var SkillBar = function (index,obj) {
     this.inst = obj;
@@ -15,7 +15,7 @@ var SkillBar = function (index,obj) {
     this.amplitude = undefined;
     this.displacement = undefined;
     this.max = undefined;
-    this.errorDegree = undefined;
+    this.isVibrating = false;
 
     this.update().setTimer();
 };
@@ -25,7 +25,7 @@ var RateBarExtender = {
         this.canReplaceFlag = true;
         return this;
     },
-    reset : function () {
+    reset : function (forceRight) {
         // cuz acos only return pos angle, check if prev is in negative angle area,
         //     take 185 cuz want bar go right if it is stopped and trigger again
         // var over180 = this.polarPos%360<180?1:-1;
@@ -62,12 +62,14 @@ var RateBarExtender = {
         this.intervalInst = setInterval(function () {
 
             // cuz the 'new' of RateBar hasn't assigned yet on first trigger
-            var inst = vibrateRateBarInst[that.index];
+            var inst = skillBarInst[that.index];
 
             inst.polarPos += 3.6;
+            inst.isVibrating = true;
 
             if(inst.amplitude<1){
                 clearInterval(inst.intervalInst);
+                inst.isVibrating = false;
                 inst.intervalInst = undefined;
                 inst.canReplaceFlag = true;
                 // inst.polarPos = undefined;
@@ -85,26 +87,25 @@ var RateBarExtender = {
 $.extend(SkillBar.prototype, RateBarExtender);
 
 
-function vibrateRateBar(index,obj,duration) {
+function vibrateRateBar(index,obj,duration,forceRight) {
 
     // stop previous and get its last condition if previous is still working
-    if(vibrateRateBarInst[index]!=undefined){
-        vibrateRateBarInst[index].clear().reset();
-        vibrateRateBarInst[index].amplitude = vibrateRateBarInst[index].max;
+    if(skillBarInst[index]!=undefined){
+        skillBarInst[index].clear().reset(forceRight);
     }
     // create new
     else{
-        vibrateRateBarInst[index] = new SkillBar(index,obj);
+        skillBarInst[index] = new SkillBar(index,obj);
     }
 
-    if(vibrateRateBarInst[index].canReplaceFlag==false) return;
-    vibrateRateBarInst[index].setTimer(duration);
+    if(skillBarInst[index].canReplaceFlag==false) return;
+    skillBarInst[index].setTimer(duration);
 
 }
 
 function updateVibrateRateBar() {
     $('.skillRate').each(function (i,inst) {
-        if(vibrateRateBarInst[i]!=undefined) vibrateRateBarInst[i].update();
+        if(skillBarInst[i]!=undefined) skillBarInst[i].update();
     });
 }
 
@@ -168,6 +169,6 @@ function createSkillRatingBar() {
 function rateBarAnimationOnScroll() {
 
     $('.skillBar').each(function (i, inst) {
-        vibrateRateBar(i,inst,'medium');
+        if(!skillBarInst[i] || !skillBarInst[i].isVibrating) vibrateRateBar(i,inst,'short',true);
     });
 }

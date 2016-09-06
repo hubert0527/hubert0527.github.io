@@ -37,6 +37,9 @@
 .fl{
     float: left;
 }
+.ul{
+    text-decoration: underline;
+}
 .mw{
 }
 .f{
@@ -44,7 +47,7 @@
     height: 100%;
 }
 
-/* md */
+/* < md */
 @media (min-width: 992px) {
     .fs1{
         font-size: 2.5vw;
@@ -66,7 +69,7 @@
     }
 }
 
-/* sm */
+/* < sm */
 @media (max-width: 992px) {
     .fs1{
         font-size: 3.5vw;
@@ -88,6 +91,9 @@
     }
     .smallScreenHide{
         display: none;
+    }
+    .ul{
+        text-decoration: none;
     }
 }
 
