@@ -40,7 +40,7 @@ table tr td:last-child{
 }
 #brand{
     margin: 0;
-    padding: 20px 30px;
+    padding: 0;
     font-size: 30px;
     line-height: 30px;
 }
@@ -51,7 +51,7 @@ table tr td:last-child{
     background-color: black;
 }
 .navItem{
-    padding: 25px 20px;
+    padding: 0;
     margin: 0;
     line-height: 20px;
     font-size: 20px;
@@ -60,6 +60,24 @@ table tr td:last-child{
     color: white;
     transition-delay: .05s;
     transition-duration: .4s;
+}
+.navItem a{
+    padding: 25px 20px !important;
+}
+#brand a{
+    padding: 20px 30px !important;
+}
+.hyperLink, .hyperLink:hover, .hyperLink:active, .hyperLink:visited, .hyperLink:focus{
+    text-decoration: none !important;
+}
+a{
+    position: inherit !important;
+    color: inherit !important;
+    margin:0 !important;
+    background-color: transparent !important;
+    z-index: 1 !important;
+    display: block !important;
+    outline: none !important;
 }
 .iconLink{
     padding: 19px 0.7vw;
