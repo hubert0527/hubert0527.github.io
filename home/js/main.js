@@ -26,7 +26,7 @@ $(window).load(function () {
 
 $(window).resize(function () {
     doLayout();
-    stopAndReMeasureAllRateBarWidth();
+    updateVibrateRateBar();
 });
 
 function doLayout() {
@@ -43,7 +43,6 @@ function init() {
     showTopImage();
     grabMouseScroll();
     setRateBarVibrateAnimation();
-    stopAndReMeasureAllRateBarWidth();
 
     calcTopBgPos();
 
@@ -52,7 +51,7 @@ function init() {
 function scrollAnimation() {
 
     $('.skillBar').each(function (i, inst) {
-        vibrateRateBar(i,inst,'medium',true);
+        vibrateRateBar(i,inst,'medium');
     });
 }
 
@@ -435,57 +434,106 @@ function insertCss( tar, dic ) {
     document.getElementsByTagName("head")[0].appendChild( style );
 }
 
-var rateBarVibrateInst = [];
-var canReplaceFlag = [];
-var originalWidth = [];
-function vibrateRateBar(index,obj,duration,randomTrigger) {
+var SkillBar = function (index,obj) {
+    this.inst = obj;
+    this.index = index;
+    this.rateBar = $(obj).children();
+    this.intervalInst = undefined;
+    this.canReplaceFlag = false;
+    this.lastWidth = undefined;
+    this.polarPos = 90;
+    this.amplitude = undefined;
+    this.displacement = undefined;
+    this.max = undefined;
 
-    var dir = 1;
-    if(randomTrigger){
-        if(Math.random()>0.5) dir = -1;
-    }
+    this.update().setTimer();
+};
+var RateBarExtender = {
+    clear : function () {
+        clearInterval(this.intervalInst);
+        this.canReplaceFlag = true;
+        return this;
+    },
+    reset : function () {
+        // cuz acos only return pos angle, check if prev is in negative angle area
+        var over180 = this.polarPos%360>180?-1:1;
+        this.amplitude = this.max;
+        this.polarPos  = Math.acos(this.displacement/this.max)*180/3.1415926*over180;
+        return this;
+    },
 
-    if(canReplaceFlag[index]==false) return;
-    clearInterval(rateBarVibrateInst[index]);
+    // update layout values not including vibrate timer
+    update : function () {
 
-    var amplitude = $(obj).children('.skillRateShadow').width()/10*2;
-    var rateBar = $(obj).children('.skillRate');
-    var dampRatio = 0.99;
-    if(duration=='short'){
-        dampRatio = 0.95;
-    }
-    else if(duration=='medium'){
-        dampRatio = 0.97;
-    }
-    var deg = 90;
+        var rate = parseInt($(this.rateBar).children().text());
+        this.lastWidth = $(this.inst).width()*rate/10;
 
-    var ww = originalWidth[index];
+        this.max = $(this.inst).children('.skillRateShadow').width()/10*2;
+        if(this.amplitude==undefined) this.amplitude = this.max;
+        return this;
+    },
+    setTimer : function (dampRatio) {
 
-    rateBarVibrateInst[index] = setInterval(function () {
-        deg += (3.6*dir);
-        amplitude *= dampRatio;
-        if(amplitude<0.01){
-            clearInterval(rateBarVibrateInst[index]);
-            canReplaceFlag[index] = true;
-            return;
+        if(dampRatio=="short"){
+            dampRatio = 0.95;
         }
-        var displacement = amplitude*Math.cos(deg/180*3.1415926);
+        else if(dampRatio=="medium"){
+            dampRatio = 0.975;
+        }
+        else{
+            dampRatio = 0.985;
+        }
 
-        rateBar.width(ww-displacement);
 
-    },10);
+        clearInterval(this.intervalInst);
+        var that = this;
+        this.intervalInst = setInterval(function () {
 
-    var i = setInterval(function () {
-        clearInterval(i);
-        canReplaceFlag[i] = true;
-    },1000);
+            // cuz the 'new' of RateBar hasn't assigned yet on first trigger
+            var inst = vibrateRateBarInst[that.index];
+
+            inst.polarPos += 3.6;
+
+            if(inst.amplitude<1){
+                clearInterval(inst.intervalInst);
+                inst.intervalInst = undefined;
+                inst.canReplaceFlag = true;
+                // inst.polarPos = undefined;
+                inst.amplitude = undefined;
+                return;
+            }
+            inst.amplitude *= dampRatio;
+            inst.displacement = inst.amplitude*Math.cos(inst.polarPos/180*3.1415926);
+
+            $(inst.inst).children('.skillRate').width(inst.lastWidth-inst.displacement);
+        },10);
+    }
+};
+$.extend(SkillBar.prototype, RateBarExtender);
+
+
+var vibrateRateBarInst = [];
+
+function vibrateRateBar(index,obj,duration) {
+
+    // stop previous and get its last condition if previous is still working
+    if(vibrateRateBarInst[index]!=undefined){
+        vibrateRateBarInst[index].clear().reset();
+        vibrateRateBarInst[index].amplitude = vibrateRateBarInst[index].max;
+    }
+    // create new
+    else{
+        vibrateRateBarInst[index] = new SkillBar(index,obj);
+    }
+
+    if(vibrateRateBarInst[index].canReplaceFlag==false) return;
+    vibrateRateBarInst[index].setTimer(duration);
+
 }
 
-function stopAndReMeasureAllRateBarWidth() {
+function updateVibrateRateBar() {
     $('.skillRate').each(function (i,inst) {
-        clearInterval(rateBarVibrateInst[i]);
-        var rate = parseInt($(inst).children().text());
-        originalWidth[i] = $(inst).parent().width()*rate/10;
-        $(inst).width(originalWidth[i]);
+        if(vibrateRateBarInst[i]!=undefined) vibrateRateBarInst[i].update();
     });
 }
+

