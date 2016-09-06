@@ -1,14 +1,6 @@
 
 var NAV_BAR_HH = 70;
 
-var BIO = [
-    "想到就立刻去做，有趣就馬上動手做，一直空想只是浪費生命",
-    "傾盡全力去幫助那些努力向上、勤勉不懈的人",
-    "等待、尋找一群願意一起努力做好一件事的人",
-    "要求網頁對IE8和手機端都responsive是寫這個網站過程中最愚蠢的錯誤"
-];
-
-
 $(document).ready(function () {
 
     // prepare bootstrap widget
@@ -24,10 +16,6 @@ $(window).load(function () {
     init();
 });
 
-$(window).resize(function () {
-    doLayout();
-    updateVibrateRateBar();
-});
 
 function doLayout() {
     createSkillRatingBar();
@@ -39,263 +27,11 @@ function init() {
     browserDetect();
 
     setBioRandom();
-    setIconHoverAnimation();
     showTopImage();
-    grabMouseScroll();
     setRateBarVibrateAnimation();
+    attachEventHandlers();
 
     calcTopBgPos();
-
-}
-
-function scrollAnimation() {
-
-    $('.skillBar').each(function (i, inst) {
-        vibrateRateBar(i,inst,'medium');
-    });
-}
-
-// function doSomeAnimationOnLoad() {
-//     $('#abilityBlock').load(function () {
-//         $('.skillBar').each(function (i, inst) {
-//             vibrateRateBar(i,inst,'short');
-//         });
-//     });
-// }
-// doSomeAnimationOnLoad();
-
-function setRateBarVibrateAnimation() {
-    $('.skillBar').each(function (i, inst) {
-        $(inst).mouseover(function () {
-            vibrateRateBar(i,this);
-        });
-    });
-}
-
-function setBioRandom() {
-    var prev,r,ri;
-    setInterval(function () {
-
-        r = Math.random();
-        ri = Math.floor(r * BIO.length);
-
-        if(prev==ri) ri = (ri+1)%BIO.length;
-
-        prev = ri;
-
-        $('#shadowQuote').fadeOut('slow',function () {
-            $(this).text(BIO[ri]).fadeIn('slow');
-        });
-    },5000);
-}
-
-function setIconHoverAnimation() {
-    $('.iconLink').mouseover(function () {
-        $(this).children().css({'background-color': 'orange'});
-    })
-        .mouseleave(function () {
-        $(this).children().css({'background-color': 'white'});
-    });
-}
-
-/**
- * originally set invisible cuz image will have a jump on page load (due to the margin setting)
- */
-function showTopImage() {
-    var topImg = $('#topImage');
-    if(topImg[0].complete){
-        topImg.css('visibility','visible');
-    }
-    else{
-        topImg.load(function () {
-           $(this).css('visibility','visible');
-        });
-    }
-}
-
-function createSkillRatingBar() {
-
-    $('.skillLang').each(function (i, inst) {
-
-        var p = $(inst).parent();
-        var skillLang = $(inst);
-        var skillBar = $(inst).siblings('.skillBar');
-        var skillRate = $(skillBar.children()[0]);
-        var skillRateShadow = $(skillBar.children()[1]);
-
-        var HH = skillLang.height();
-        var WW = p.width();
-        var ow = p.outerWidth();
-        var margin = (ow-WW)/2;
-        var rate = parseInt(p.find('.skillRate').text());
-
-        // var innerMaxWidth = (WW-10) - (HH*0.1)*2;
-
-        skillBar.css({
-            'bottom':0,
-            'width':WW-10+'px',
-            'height':HH*0.7+'px',
-            'margin':HH*0.05+'px 0'
-        });
-        skillRateShadow.css({
-            'width':(WW-10)+'px',
-            'height':HH*0.7+'px',
-            'border-radius':HH/2+'px'
-        });
-        skillRate.css({
-            'width':((WW-10)*rate/10)+'px',
-            'border-radius':HH/2+'px',
-            'font-size':HH*0.5+'px',
-            'line-height':HH*0.7+'px',
-            'height':HH*0.7+'px'
-        });
-    });
-}
-
-var topImageScrolling = false;
-function dealTopImage() {
-
-    $(document).scroll(calcTopBgPos);
-    $(document).on('touchmove',function(){
-        $('body,html').stop();
-        calcTopBgPos();
-    });
-    $(window).resize(function () {
-        calcTopBgPos();
-    });
-
-    $('#goDownBtn').click(function () {
-
-        $(this).blur();
-
-        topImageScrolling = true;
-        clearInterval(interval);
-        interval = undefined;
-
-        var wh = $('#topImageDivWrapper').height();
-        $(document).stop();
-        $(window).stop();
-        $('body,html').stop().animate({scrollTop:wh},1500,'swing',function () {
-            topImageScrolling = false;
-            end = $(window).scrollTop();
-        });
-
-
-    });
-}
-
-function dealFooter() {
-    $('#goTopBtn').click(function () {
-
-        $(this).blur();
-
-        topImageScrolling = true;
-        clearInterval(interval);
-        interval = undefined;
-
-        $(document).stop();
-        $(window).stop();
-        $('body,html').stop().animate({scrollTop:0},1500,'swing',function () {
-            topImageScrolling = false;
-            end = $(window).scrollTop();
-        });
-
-
-    });
-}
-
-function calcTopBgPos(e) {
-
-    // find and set top image margin top
-    var curPos = $(window).scrollTop();
-    if(curPos<0){
-        // $('body').css('marginTop',curPos+70+'px');
-        $('html').css('padding-top',curPos+'px').css('overflow','visible');
-        return;
-    }
-
-    var HH = $(window).outerHeight();
-    var WW = $(window).outerWidth();
-
-    var imgHeight = WW * 1004 / 1234; // aspect original image ratio
-    var remainHeight = imgHeight - (HH-NAV_BAR_HH);
-    var wrapper = $('#topImageDivWrapper');
-    var wrapperHeight;
-    var viewPortRatio = (HH-NAV_BAR_HH)/WW;
-
-    var shadowHeader = $('#shadowHeader');
-
-    // if screen is too square, the go-down button mat overlap Yi-Shen
-    if(viewPortRatio>0.68){
-        var oneThird = imgHeight/3;
-        wrapperHeight = oneThird*2;
-        wrapper.height(wrapperHeight);
-        remainHeight = oneThird;
-    }
-    else{
-        // css calc seems won't update automatically
-        wrapperHeight = HH-NAV_BAR_HH;
-        wrapper.height(wrapperHeight);
-    }
-
-    // deal with shadow part
-    dealWithTopShadow();
-
-
-    var scrolledRatio = curPos/wrapperHeight;
-    var marginTop = (imgHeight) * scrolledRatio - remainHeight;
-    $('#topImage').css({marginTop: marginTop + 'px'}, 1);
-
-    function dealWithTopShadow() {
-        var shadowHeight = (wrapperHeight)*0.32;
-        $('#topImageShadow').height(shadowHeight);
-
-        var headerTopMargin = WW/HH>1 ? '8vh' : '6vw';
-        shadowHeader.css('padding-top',headerTopMargin).css('font-size',shadowHeight/6);
-        $('#shadowQuoteWrapper').height(shadowHeight-shadowHeader.outerHeight());
-        $('#shadowQuote').css('font-size',shadowHeight/10);
-    }
-}
-
-function dealAllAboutMe() {
-    var WW = window.innerWidth;
-    var hh;
-    if(WW>=992) {
-        // right col is strictly higher than left one
-        hh = $('#moreDetailAboutMe').height();
-
-        // clean up unnecessary margin
-        $('#profilePictureDiv').css('margin','auto');
-
-        // prepare separator
-        $('#separator').height(hh * 0.9).width(0).css('margin', hh * 0.05 + 'px ' + ' auto').css('display','block');
-    }
-    else{
-
-        // collapse basic info, one of top block need to vertically align middle
-
-        var right = $('#objectProfile');
-        var left = $('#profilePictureDiv');
-        var left2 = $('#nameAndContactInfo');
-        var rightH = right.outerHeight();
-        // cuz photo may not ready, and my photo aspect 1:1 ratio
-        var leftH = left.width() + left2.outerHeight();
-
-        if(leftH>rightH){
-            hh = leftH;
-            right.css('margin',(hh-rightH)/2+'px auto');
-        }
-        else{
-            hh = rightH;
-            left.css('margin',(hh-leftH)/2+'px auto');
-        }
-
-        // prepare separator
-        var ww = $('#myBasicInfo').width();
-        // $('#separator').width(ww * 0.9).height(0).css('margin',ww*0.05+'px').css('display','block');
-        $('#separator').css('display','none');
-
-    }
 
 }
 
@@ -318,25 +54,39 @@ function browserDetect() {
             || (navigator.MaxTouchPoints > 0)
             || (navigator.msMaxTouchPoints > 0);
     if (touch) { // remove all :hover stylesheets
-    try { // prevent exception on browsers not supporting DOM styleSheets properly
-        for (var si in document.styleSheets) {
-            var styleSheet = document.styleSheets[si];
-            if (!styleSheet.rules) continue;
+        try { // prevent exception on browsers not supporting DOM styleSheets properly
+            for (var si in document.styleSheets) {
+                var styleSheet = document.styleSheets[si];
+                if (!styleSheet.rules) continue;
 
-            for (var ri = styleSheet.rules.length - 1; ri >= 0; ri--) {
-                if (!styleSheet.rules[ri].selectorText) continue;
+                for (var ri = styleSheet.rules.length - 1; ri >= 0; ri--) {
+                    if (!styleSheet.rules[ri].selectorText) continue;
 
-                if (styleSheet.rules[ri].selectorText.match(':hover')) {
-                    styleSheet.deleteRule(ri);
+                    if (styleSheet.rules[ri].selectorText.match(':hover')) {
+                        styleSheet.deleteRule(ri);
+                    }
                 }
             }
-        }
-    } catch (ex) {}
-}
+        } catch (ex) {}
+    }
 
 }
 
-function grabMouseScroll() {
+function attachEventHandlers() {
+    $(document).scroll(function () {
+        calcTopBgPos();
+        rateBarAnimationOnScroll();
+    });
+    $(document).on('touchmove',function(){
+        $('body,html').stop();
+        calcTopBgPos();
+        rateBarAnimationOnScroll();
+    });
+    $(window).resize(function () {
+        calcTopBgPos();
+        doLayout();
+        updateVibrateRateBar();
+    });
     if ('onmousewheel' in window) {
         window.onmousewheel = wheelHandler;
     } else if ('onmousewheel' in document) {
@@ -347,193 +97,6 @@ function grabMouseScroll() {
     }
 }
 
-// code use from
-// http://stackoverflow.com/questions/3656592/how-to-programmatically-disable-page-scrolling-with-jquery
-function wheelHandler(event) {
-
-    scrollAnimation();
-
-    if(topImageScrolling) {
-        end = $(window).scrollTop();
-        $('body,html').stop();
-        topImageScrolling = false;
-    }
-
-    var delta = 0;
-    if (event.wheelDelta) delta = event.wheelDelta / 120;
-    else if (event.detail) delta = -event.detail / 3;
-
-    wheelHandleWorker(delta);
-    if (event.preventDefault) event.preventDefault();
-    event.returnValue = false;
-
-}
-
-var end; // record the last window stop position
-var interval;
-var goUp;
-function wheelHandleWorker(delta) {
-    delta*=5;
-    var animationInterval = 20; //lower is faster
-    var scrollSpeed = 12; //lower is faster
-
-    if (end == null) {
-        end = $(window).scrollTop();
-    }
-    end -= 20 * delta;
-    goUp = delta > 0;
-
-    if (!interval) {
-        interval = setInterval(function () {
-
-            if(topImageScrolling) {
-                clearInterval(interval);
-                interval = undefined;
-            }
-
-            var scrollTop = $(window).scrollTop();
-            var step = Math.round((end - scrollTop) / scrollSpeed);
-            if (scrollTop < 0 ||
-                scrollTop >= $(window).prop("scrollHeight") - $(window).height() ||
-                goUp && step > -1 ||
-                !goUp && step < 1 ) {
-                    clearInterval(interval);
-                    interval = null;
-                    end = null;
-            }
-            else{
-                $(window).scrollTop(scrollTop + step );
-            }
-
-        }, animationInterval);
-    }
-}
-
-function insertCss( tar, dic ) {
-    var style = document.createElement('style');
-    style.type = 'text/css';
-
-    var code,key;
-
-    code = tar+"{";
-    for(key in dic){
-        if(dic.hasOwnProperty(key)){
-            code+=(key+':'+dic[key]+';');
-        }
-    }
-
-        code = code.slice(0,code.length-1) + '}';
-    if (style.styleSheet) {
-        // IE
-        style.styleSheet.cssText = code;
-    } else {
-        // Other browsers
-        style.innerHTML = code;
-    }
-
-    document.getElementsByTagName("head")[0].appendChild( style );
-}
-
-var SkillBar = function (index,obj) {
-    this.inst = obj;
-    this.index = index;
-    this.rateBar = $(obj).children();
-    this.intervalInst = undefined;
-    this.canReplaceFlag = false;
-    this.lastWidth = undefined;
-    this.polarPos = 90;
-    this.amplitude = undefined;
-    this.displacement = undefined;
-    this.max = undefined;
-
-    this.update().setTimer();
-};
-var RateBarExtender = {
-    clear : function () {
-        clearInterval(this.intervalInst);
-        this.canReplaceFlag = true;
-        return this;
-    },
-    reset : function () {
-        // cuz acos only return pos angle, check if prev is in negative angle area
-        var over180 = this.polarPos%360>180?-1:1;
-        this.amplitude = this.max;
-        this.polarPos  = Math.acos(this.displacement/this.max)*180/3.1415926*over180;
-        return this;
-    },
-
-    // update layout values not including vibrate timer
-    update : function () {
-
-        var rate = parseInt($(this.rateBar).children().text());
-        this.lastWidth = $(this.inst).width()*rate/10;
-
-        this.max = $(this.inst).children('.skillRateShadow').width()/10*2;
-        if(this.amplitude==undefined) this.amplitude = this.max;
-        return this;
-    },
-    setTimer : function (dampRatio) {
-
-        if(dampRatio=="short"){
-            dampRatio = 0.95;
-        }
-        else if(dampRatio=="medium"){
-            dampRatio = 0.975;
-        }
-        else{
-            dampRatio = 0.985;
-        }
 
 
-        clearInterval(this.intervalInst);
-        var that = this;
-        this.intervalInst = setInterval(function () {
-
-            // cuz the 'new' of RateBar hasn't assigned yet on first trigger
-            var inst = vibrateRateBarInst[that.index];
-
-            inst.polarPos += 3.6;
-
-            if(inst.amplitude<1){
-                clearInterval(inst.intervalInst);
-                inst.intervalInst = undefined;
-                inst.canReplaceFlag = true;
-                // inst.polarPos = undefined;
-                inst.amplitude = undefined;
-                return;
-            }
-            inst.amplitude *= dampRatio;
-            inst.displacement = inst.amplitude*Math.cos(inst.polarPos/180*3.1415926);
-
-            $(inst.inst).children('.skillRate').width(inst.lastWidth-inst.displacement);
-        },10);
-    }
-};
-$.extend(SkillBar.prototype, RateBarExtender);
-
-
-var vibrateRateBarInst = [];
-
-function vibrateRateBar(index,obj,duration) {
-
-    // stop previous and get its last condition if previous is still working
-    if(vibrateRateBarInst[index]!=undefined){
-        vibrateRateBarInst[index].clear().reset();
-        vibrateRateBarInst[index].amplitude = vibrateRateBarInst[index].max;
-    }
-    // create new
-    else{
-        vibrateRateBarInst[index] = new SkillBar(index,obj);
-    }
-
-    if(vibrateRateBarInst[index].canReplaceFlag==false) return;
-    vibrateRateBarInst[index].setTimer(duration);
-
-}
-
-function updateVibrateRateBar() {
-    $('.skillRate').each(function (i,inst) {
-        if(vibrateRateBarInst[i]!=undefined) vibrateRateBarInst[i].update();
-    });
-}
 

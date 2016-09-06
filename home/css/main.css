@@ -72,6 +72,11 @@ table tr td:last-child{
     transition-delay: .05s;
     transition-duration: .4s;
 }
+.iconLink:hover img{
+    background-color: orange;
+    transition-delay: .05s;
+    transition-duration: .4s;
+}
 .navbar-right{
     float: right;
 }
