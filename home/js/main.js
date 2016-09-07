@@ -1,3 +1,6 @@
+/**
+ * Created by hubert lin2 on 2016/9/7.
+ */
 
 var NAV_BAR_HH = 70;
 
@@ -20,6 +23,7 @@ $(window).load(function () {
 function doLayout() {
     createSkillRatingBar();
     dealAllAboutMe();
+    measureTopImagePlaceHolder();
 }
 
 function init() {

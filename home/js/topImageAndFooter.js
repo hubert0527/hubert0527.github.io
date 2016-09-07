@@ -147,3 +147,23 @@ function haltGoToAction() {
         clearInterval(scrollInterval);
     }
 }
+
+function measureTopImagePlaceHolder() {
+    var HH = $(window).outerHeight();
+    var WW = $(window).outerWidth();
+    var viewPortRatio = (HH-NAV_BAR_HH)/WW;
+
+    if(viewPortRatio>0.68){
+        var imgHeight = WW * 1004 / 1234; // aspect original image ratio
+        $('#topImagePlaceHolder').height(imgHeight*2/3);
+    }
+    else{
+        $('#topImagePlaceHolder').height(HH-NAV_BAR_HH);
+    }
+    
+    $('#topImage').ready(function () {
+        $('#topImagePlaceHolder').css('display','none');
+    });
+    if($('#topImage')[0].complete) $('#topImagePlaceHolder').css('display','none');
+
+}
