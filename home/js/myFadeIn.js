@@ -40,6 +40,7 @@ var FadeIn = function(obj,dir) {
 
             // remove self
             $(document).off('scroll',that.trigger);
+            $(document).off('touchmove',that.trigger);
             $(window).off('resize',that.update);
         }
     };
@@ -69,11 +70,13 @@ function attachFadeInAnimate() {
     $('.fadeFromLeft').each(function (i, inst) {
         fadeFromLeftInst[i] = new FadeIn(inst,-1);
         D.scroll(fadeFromLeftInst[i].trigger);
+        D.on('touchmove',fadeFromRightInst[i].trigger);
         W.resize(fadeFromLeftInst[i].update);
     });
     $('.fadeFromRight').each(function (i, inst) {
         fadeFromRightInst[i] = new FadeIn(inst,1);
         D.scroll(fadeFromRightInst[i].trigger);
+        D.on('touchmove',fadeFromRightInst[i].trigger);
         W.resize(fadeFromRightInst[i].update);
     });
 

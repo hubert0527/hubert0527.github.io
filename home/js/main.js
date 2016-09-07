@@ -33,11 +33,6 @@ function init() {
 
     calcTopBgPos();
 
-    // attach this event only if user is using computer
-    if($.browser.desktop) {
-        attachFadeInAnimate();
-    }
-
 }
 
 function browserDetect() {
@@ -78,6 +73,7 @@ function browserDetect() {
 }
 
 function attachEventHandlers() {
+
     $(document).scroll(function () {
         calcTopBgPos();
         rateBarAnimationOnScroll();
@@ -100,6 +96,9 @@ function attachEventHandlers() {
         window.addEventListener("mousewheel", wheelHandler, false);
         window.addEventListener("DOMMouseScroll", wheelHandler, false);
     }
+
+    attachFadeInAnimate();
+
 }
 
 
