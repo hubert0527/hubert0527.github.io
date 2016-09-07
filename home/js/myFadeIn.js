@@ -27,13 +27,13 @@ var FadeIn = function(obj,dir) {
 
                 // $(that.inst).css('opacity','0').animate(800);
 
-                var pos = that.direction > 1 ? 'left' : 'right';
-                var originalMargin = parseFloat($(that.inst).css(pos));
-                if(!originalMargin) originalMargin = 0;
+                var orientaion = that.direction > 1 ? 'left' : 'right';
+                var originalPos = parseFloat($(that.inst).css(orientaion));
+                if(!originalPos) originalPos = 0;
                 var initCss = {opacity: 0,position: 'relative'};
                 var animate = {opacity: 1};
-                initCss[pos] = that.direction*(-1)*(ww * 0.8 + originalMargin) + 'px';
-                animate[pos] = originalMargin + 'px';
+                initCss[orientaion] = that.direction*(-1)*(ww * 0.9 + originalPos) + 'px';
+                animate[orientaion] = originalPos + 'px';
 
                 $(that.inst).css(initCss).animate(animate, 1000);
             }
