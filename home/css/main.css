@@ -213,6 +213,10 @@ a{
     margin: 2vh;
 }
 
+.fadeFromLeft, .fadeFromRight{
+    opacity: 0;
+}
+
 #footer{
     margin-top: 10vh;
     background-color: #2E2E2E;

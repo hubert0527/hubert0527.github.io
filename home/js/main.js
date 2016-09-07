@@ -26,12 +26,17 @@ function init() {
 
     browserDetect();
 
-    setBioRandom();
+    // setBioRandom();
     showTopImage();
     setRateBarVibrateAnimation();
     attachEventHandlers();
 
     calcTopBgPos();
+
+    // attach this event only if user is using computer
+    if($.browser.desktop) {
+        attachFadeInAnimate();
+    }
 
 }
 
