@@ -2,8 +2,6 @@
  * Created by hubert lin2 on 2016/9/7.
  */
 
-var isGoToActionScrolling = false;
-
 var BIO = [
     "想到就立刻去做，有趣就馬上動手做，一直空想只是浪費生命",
     "傾盡全力去幫助那些努力向上、勤勉不懈的人",
@@ -116,15 +114,6 @@ function calcTopBgPos(e) {
         shadowHeader.css('padding-top',headerTopMargin).css('font-size',shadowHeight/6);
         $('#shadowQuoteWrapper').height(shadowHeight-shadowHeader.outerHeight());
         $('#shadowQuote').css('font-size',shadowHeight/10);
-    }
-}
-
-function haltGoToAction() {
-    if(isGoToActionScrolling) {
-        scrollTargetPosition = $(window).scrollTop();
-        $('body,html').stop();
-        isGoToActionScrolling = false;
-        clearInterval(scrollInterval);
     }
 }
 

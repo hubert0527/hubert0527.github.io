@@ -2,6 +2,8 @@
  * Created by hubert lin2 on 2016/9/7.
  */
 
+var isGoToActionScrolling = false;
+
 var scrollTargetPosition; // record the last window stop position
 var scrollInterval;
 var isScrollDirectionUp;
@@ -20,6 +22,15 @@ function wheelHandler(event) {
     if (event.preventDefault) event.preventDefault();
     event.returnValue = false;
 
+}
+
+function haltGoToAction() {
+    if(isGoToActionScrolling) {
+        scrollTargetPosition = $(window).scrollTop();
+        $('body,html').stop();
+        isGoToActionScrolling = false;
+        clearInterval(scrollInterval);
+    }
 }
 
 function wheelHandleWorker(delta) {
