@@ -70,7 +70,7 @@ function attachFadeInAnimate() {
     $('.fadeFromLeft').each(function (i, inst) {
         fadeFromLeftInst[i] = new FadeIn(inst,-1);
         D.scroll(fadeFromLeftInst[i].trigger);
-        D.on('touchmove',fadeFromRightInst[i].trigger);
+        D.on('touchmove',fadeFromLeftInst[i].trigger);
         W.resize(fadeFromLeftInst[i].update);
     });
     $('.fadeFromRight').each(function (i, inst) {
