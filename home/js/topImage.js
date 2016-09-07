@@ -66,26 +66,6 @@ function dealTopImage() {
     });
 }
 
-function dealFooter() {
-    $('#goTopBtn').click(function () {
-
-        $(this).blur();
-
-        isGoToActionScrolling = true;
-        clearInterval(scrollInterval);
-        scrollInterval = undefined;
-
-        $(document).stop();
-        $(window).stop();
-        $('body,html').stop().animate({scrollTop:0},1500,'swing',function () {
-            isGoToActionScrolling = false;
-            scrollTargetPosition = $(window).scrollTop();
-        });
-
-
-    });
-}
-
 function calcTopBgPos(e) {
 
     // find and set top image margin top

@@ -1,0 +1,23 @@
+
+
+
+
+/* md */
+@media (min-width: 992px) {
+
+}
+
+/* sm */
+@media (max-width: 992px) {
+
+}
+
+/* xs */
+@media (max-width: 767px) {
+
+}
+
+/*for smart phones*/
+@media (max-aspect-ratio: 1/1){
+
+}

@@ -1,7 +1,7 @@
 <!--Created by hubert lin on 2016/9/7.-->
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
 
     <!--     .... ..- -... . .-. -    .-.. .. -.    .. ...    .... . .-. .    .-.-.- .-.-.-    -->
@@ -27,11 +27,13 @@
     <meta name="keywords" content="Hubert Lin, HubertLin, 林杰, github, programmer, software, design">
 
     <link rel="stylesheet" href="home/lib/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="home/css/myFadeIn.css">
     <link rel="stylesheet" href="home/css/main.css">
+    <link rel="stylesheet" href="home/css/index.css">
     <link rel="stylesheet" href="home/css/fastStyle.css">
 
 </head>
-<body style="overflow-x: hidden;">
+<body>
 
     <nav id="nav" class="navbar navbar-fixed-top mw">
         <div class="container-fluid">
@@ -46,7 +48,7 @@
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav" id="navbar_link">
                     <!--<li class="navItem b9"><a class="hyperLink" href="index.html">關於我</a></li>-->
-                    <li class="navItem b9"><a class="hyperLink">作品集</a></li>
+                    <li class="navItem b9"><a class="hyperLink" href="projects.html">作品集</a></li>
                     <li class="navItem b9"><a class="hyperLink">隨筆</a></li>
                 </ul>
                 <div class="nav navbar-nav navbar-right">
@@ -82,7 +84,7 @@
     </nav>
 
     <div id="pageContent" style="position: relative;" class="mw">
-        <div id="topImageDivWrapper" class="container-fluid mw" style="width: 100vw;height: calc(100vh - 50px);overflow: hidden;position: relative;">
+        <section id="topImageDivWrapper" class="container-fluid mw" style="width: 100vw;height: calc(100vh - 50px);overflow: hidden;position: relative;">
             <div id="imageWrapper" class="row" style="position: relative;">
                 <div id="topImagePlaceHolder" style="width: 100vw;"></div>
                 <img id="topImage" class="mw" src="home/img/topNarrow.jpg" style="width: 100vw;visibility: hidden;">
@@ -108,10 +110,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
 
-        <div id="allAboutMePage" class="container" style="position: relative;">
+        <section id="allAboutMePage" class="container" style="position: relative;">
             <div class="row">
                 <div id="myBasicInfo" class="col-xs-12 col-md-3 fadeFromLeft" style="text-align: center;">
                     <div>
@@ -272,7 +274,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
 
     <footer id="footer" style="position: relative;">
@@ -295,8 +297,10 @@
     <script src="home/lib/mouse-scroll-handler/mouseScrollHandler.js"></script>
     <script src="home/js/myFadeIn.js"></script>
     <script src="home/js/rateBar.js"></script>
-    <script src="home/js/topImageAndFooter.js"></script>
+    <script src="home/js/topImage.js"></script>
+    <script src="home/js/footer.js"></script>
     <script src="home/js/aboutMe.js"></script>
+    <script src="home/js/index.js"></script>
     <script src="home/js/main.js"></script>
 
 </body>
