@@ -23,15 +23,13 @@ function doLayout() {
 }
 
 function init() {
-
+    calcTopBgPos();
     browserDetect();
 
     // setBioRandom();
     showTopImage();
     setRateBarVibrateAnimation();
     attachEventHandlers();
-
-    calcTopBgPos();
 
 }
 

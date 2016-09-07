@@ -7,6 +7,9 @@ var FadeIn = function(obj,dir) {
     // 1 for right to left, -1 for left to right
     this.direction = dir;
 
+    var a = $(obj).offset().top;
+    var b = $(window).height() * 0.8;
+
     this.triggerPos = $(obj).offset().top - $(window).height() * 0.8;
     this.hasTriggered = false;
 
@@ -46,8 +49,6 @@ var FadeIn = function(obj,dir) {
     };
 
     this.update = function () {
-            var a = $(obj).offset().top;
-        var b = $(window).height() * 0.8;
         that.triggerPos = $(obj).offset().top - $(window).height() * 0.8;
         that.trigger();
     };
