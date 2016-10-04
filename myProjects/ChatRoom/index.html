@@ -17,7 +17,6 @@
         <script src="js/bootstrap.min.js"></script>
         <script src="js/smooth_scroll.js"></script>
         <script src="ChatRoomPackage/ChatRoom.js"></script>
-        <script src="js/main.js"></script>
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -34,6 +33,19 @@
         </div>
 
         <div id="ChatRoom" style="position: fixed;"></div>
+
+        <script>
+
+            $(function () {
+                var ctx = $('#ChatRoom')[0];
+                var settings = {
+                    serverUrl:'intense-waters-75416.herokuapp.com/chat/',
+                    style: 'default'
+                };
+                window.chatRoom = new ChatRoom(ctx,settings);
+            });
+
+        </script>
 
     </body>
 </html>

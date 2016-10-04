@@ -459,4 +459,3 @@
     global.ChatRoom = ChatRoom;
 
 });
-
