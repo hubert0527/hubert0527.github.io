@@ -206,30 +206,35 @@
     function createSocket(url) {
 
         // TODO: use non-SSL for easy developing, use SSL upon develop done
-        var ws_scheme = "http:";
+        var ws_scheme = "http";
         // var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
 
         console.log('create socket: '+ ws_scheme +'://'+url);
 
-        socketInst = new WebSocket(ws_scheme+"://"+url);
+        var socket = io.connect("http://"+url);
+        socket.on('message', function(data){
+            console.log(data.message);
+        });
 
-        socketInst.onerror = function(e) {
-            socketInst = null;
-            console.log('create socket FAIL!');
-            pushMessageToChatRoom('ERROR, server unreachable!','server');
-        };
-
-        socketInst.onmessage = receiveMessage;
-
-        socketInst.onopen = function() {
-            console.log("create socket SUCCESS! Send 'Hello, world!' ");
-            socketInst.send("Hello, world!");
-        };
-
-        socketInst.onclose = function () {
-            console.log('socket auto close.');
-            socketInst
-        };
+        // socketInst = new WebSocket(ws_scheme+"://"+url);
+        //
+        // socketInst.onerror = function(e) {
+        //     socketInst = null;
+        //     console.log('create socket FAIL!');
+        //     pushMessageToChatRoom('ERROR, server unreachable!','server');
+        // };
+        //
+        // socketInst.onmessage = receiveMessage;
+        //
+        // socketInst.onopen = function() {
+        //     console.log("create socket SUCCESS! Send 'Hello, world!' ");
+        //     socketInst.send("Hello, world!");
+        // };
+        //
+        // socketInst.onclose = function () {
+        //     console.log('socket auto close.');
+        //     socketInst
+        // };
     }
 
     /**
