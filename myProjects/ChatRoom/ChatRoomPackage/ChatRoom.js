@@ -205,8 +205,8 @@
 
     function createSocket(url) {
 
-        var ws_scheme = window.location.protocol;
-        var socket = io.connect(ws_scheme+'//'+url,{secure: true});
+        var wsOption = window.location.protocol == 'https:' ? {secure: true} : {};
+        var socket = io.connect('http://'+url,wsOption);
         console.log('create socket: '+ ws_scheme +'//'+url);
 
         socket.on('create', function(data){
