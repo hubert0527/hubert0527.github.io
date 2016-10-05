@@ -205,29 +205,27 @@
 
     function createSocket(url) {
 
-        var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
-
+        var ws_scheme = window.location.protocol;
+        var socket = io.connect(ws_scheme+'://'+url);
         console.log('create socket: '+ ws_scheme +'://'+url);
 
-        socketInst = new WebSocket(ws_scheme+"://"+url);
-
-        socketInst.onerror = function(e) {
+        socket.on('create', function(data){
+            console.log("create socket SUCCESS! Send 'Hello, world!' ");
+            socketInst.send("Hello, world!");
+        });
+        socket.on('message', function(data){
+            receiveMessage(data);
+            console.log(data.message);
+        });
+        socket.on('close', function(data){
+            console.log('socket auto close.');
+        });
+        socket.on('error', function(data){
             socketInst = null;
             console.log('create socket FAIL!');
             pushMessageToChatRoom('ERROR, server unreachable!','server');
-        };
+        });
 
-        socketInst.onmessage = receiveMessage;
-
-        socketInst.onopen = function() {
-            console.log("create socket SUCCESS! Send 'Hello, world!' ");
-            socketInst.send("Hello, world!");
-        };
-
-        socketInst.onclose = function () {
-            console.log('socket auto close.');
-            socketInst
-        };
     }
 
     /**
