@@ -205,7 +205,9 @@
 
     function createSocket(url) {
 
-        var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+        // TODO: use non-SSL for easy developing, use SSL upon develop done
+        var ws_scheme = "http:";
+        // var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
 
         console.log('create socket: '+ ws_scheme +'://'+url);
 
