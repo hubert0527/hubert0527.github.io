@@ -32,11 +32,14 @@ function attachBasicEventHandlers() {
     $(window).resize(function () {
 
     });
+    
     if ('onmousewheel' in window) {
         window.onmousewheel = wheelHandler;
-    } else if ('onmousewheel' in document) {
+    } 
+    else if ('onmousewheel' in document) {
         document.onmousewheel = wheelHandler;
-    } else if ('addEventListener' in window) {
+    } 
+    else if ('addEventListener' in window) {
         window.addEventListener("mousewheel", wheelHandler, false);
         window.addEventListener("DOMMouseScroll", wheelHandler, false);
     }
