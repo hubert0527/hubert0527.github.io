@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="home/lib/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="home/css/myFadeIn.css">
     <link rel="stylesheet" href="home/css/main.css">
-    <link rel="stylesheet" href="home/css/projects.css">
+    <link rel="stylesheet" href="home/css/myBlog.css">
     <link rel="stylesheet" href="home/css/fastStyle.css">
 
 </head>
@@ -85,7 +85,28 @@
     </nav>
 
     <section>
-        <h1 style="text-align: center">Under construction!</h1>
+        <div class="container">
+        	<div class="row">
+        		<div class="col-xs-4">
+        			<div class="resume-btn" href="ml_resume">
+        				<h3> MachineLearning / DataScience </h3>
+        				<img src="./home/img/pdf.png">
+        			</div>
+        		</div>
+        		<div class="col-xs-4">
+        			<div class="resume-btn">
+        				<h3> Web <br> (Not available) </h3>
+        				<img src="./home/img/pdf.png">
+        			</div>
+        		</div>
+        		<div class="col-xs-4">
+        			<div class="resume-btn">
+        				<h3> Software development <br> (Not available)</h3>
+        				<img src="./home/img/pdf.png">
+        			</div>
+        		</div>
+        	</div>
+        </div>
     </section>
 
 
@@ -109,8 +130,22 @@
     <script src="home/lib/mouse-scroll-handler/mouseScrollHandler.js"></script>
     <script src="home/js/myFadeIn.js"></script>
     <script src="home/js/footer.js"></script>
-    <script src="home/js/projects.js"></script>
+    <script src="home/js/myBlog.js"></script>
     <script src="home/js/main.js"></script>
+
+    <script type="text/javascript">
+    	$(function(){
+    		$('.resume-btn').each(function(idx, inst){
+    			$(inst).click(function(){
+	    			var href = this.attributes.href.value;
+	    			if(href){
+	    				window.location.href = './resumes/' + href + '.pdf';
+	    			}
+	    		});
+    		});
+    	});
+
+    </script>>
 
 </body>
 </html>
