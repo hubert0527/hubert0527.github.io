@@ -1,7 +1,7 @@
 ---
 layout: page
-title: About the Theme
-tags: [about, Jekyll, theme, moon]
+title: Chieh Hubert Lin
+tags: [about]
 date: 2018-06-16
 comments: false
 ---
