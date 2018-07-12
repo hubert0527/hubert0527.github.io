@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Chieh Hubert Lin</title>
+    <link>https://hubert0527.github.io/tags/</link>
+    <description>Recent content in Tags on Chieh Hubert Lin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Thu, 12 Jul 2018 00:00:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://hubert0527.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Computer Vision</title>
+      <link>https://hubert0527.github.io/tags/computer-vision/</link>
+      <pubDate>Thu, 12 Jul 2018 00:00:00 +0800</pubDate>
+      
+      <guid>https://hubert0527.github.io/tags/computer-vision/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Generative Adversarial Networks</title>
+      <link>https://hubert0527.github.io/tags/generative-adversarial-networks/</link>
+      <pubDate>Thu, 12 Jul 2018 00:00:00 +0800</pubDate>
+      
+      <guid>https://hubert0527.github.io/tags/generative-adversarial-networks/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
