@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Thu, 12 Jul 2018 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0800</lastBuildDate>
     
 	<atom:link href="https://hubert0527.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>CV</title>
+      <link>https://hubert0527.github.io/tags/cv/</link>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +0800</pubDate>
+      
+      <guid>https://hubert0527.github.io/tags/cv/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Computer Vision</title>
@@ -22,11 +31,38 @@
     </item>
     
     <item>
+      <title>For Fun</title>
+      <link>https://hubert0527.github.io/tags/for-fun/</link>
+      <pubDate>Fri, 12 Jan 2018 00:00:00 +0800</pubDate>
+      
+      <guid>https://hubert0527.github.io/tags/for-fun/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Generative Adversarial Networks</title>
       <link>https://hubert0527.github.io/tags/generative-adversarial-networks/</link>
       <pubDate>Thu, 12 Jul 2018 00:00:00 +0800</pubDate>
       
       <guid>https://hubert0527.github.io/tags/generative-adversarial-networks/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kaggle</title>
+      <link>https://hubert0527.github.io/tags/kaggle/</link>
+      <pubDate>Thu, 15 Jun 2017 00:00:00 +0800</pubDate>
+      
+      <guid>https://hubert0527.github.io/tags/kaggle/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NLP</title>
+      <link>https://hubert0527.github.io/tags/nlp/</link>
+      <pubDate>Thu, 15 Jun 2017 00:00:00 +0800</pubDate>
+      
+      <guid>https://hubert0527.github.io/tags/nlp/</guid>
       <description></description>
     </item>
     
