@@ -1,0 +1,7 @@
+#chatRoomWrapper{
+    position: fixed;
+    width: 250px;
+    height: 100px;
+    bottom: 0;
+    right: 40px;
+}
