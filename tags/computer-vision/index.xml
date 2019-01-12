@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Thu, 12 Jul 2018 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 28 Sep 2018 00:00:00 +0800</lastBuildDate>
     
 	<atom:link href="https://hubert0527.github.io/tags/computer-vision/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>COCO-GAN: Conditional Coordinate Generative Adversarial Network</title>
+      <link>https://hubert0527.github.io/publication/coco-gan/</link>
+      <pubDate>Fri, 28 Sep 2018 00:00:00 +0800</pubDate>
+      
+      <guid>https://hubert0527.github.io/publication/coco-gan/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Escaping from Collapsing Modes in a Constrained Space</title>
