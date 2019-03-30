@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+  <title>COCO-GAN Project Page</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+<meta property="og:image" content="images/teaser_fb.jpg"/>
+<meta property="og:title" content="COCO-GAN: Generation by Parts via Conditional Coordinating"/>
+
+<script src="lib.js" type="text/javascript"></script>
+<script src="popup.js" type="text/javascript"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-82988202-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-82988202-3');
+</script>
+
+<script type="text/javascript">
+// redefining default features
+var _POPUP_FEATURES = 'width=500,height=300,resizable=1,scrollbars=1,titlebar=1,status=1';
+</script>
+<link media="all" href="glab.css" type="text/css" rel="StyleSheet">
+<style type="text/css" media="all">
+IMG {
+	PADDING-RIGHT: 0px;
+	PADDING-LEFT: 0px;
+	FLOAT: none;
+	PADDING-BOTTOM: 0px;
+	PADDING-TOP: 0px
+}
+#primarycontent {
+	MARGIN-LEFT: auto; ; WIDTH: expression(document.body.clientWidth >
+1000? "1000px": "auto" ); MARGIN-RIGHT: auto; TEXT-ALIGN: left; max-width:
+1000px }
+BODY {
+	TEXT-ALIGN: center
+}
+h1, h2,.bold {
+	font-weight: bold;
+}
+h1 {font-size: 35px}
+h2 {font-size: 27px}
+h3 {font-size: 20px}
+h4 {font-size: 17px}
+</style>
+
+<meta content="MSHTML 6.00.2800.1400" name="GENERATOR"><script src="b5m.js" id="b5mmain" type="text/javascript"></script></head>
+
+<body>
+
+<div id="primarycontent">
+<center><h1>COCO-GAN: Generation by Parts via Conditional Coordinating</h1></center>
+<center><h3>
+	<a href="https://hubert0527.github.io/">Chieh Hubert Lin</a>&nbsp;&nbsp;&nbsp;
+	<a href="https://chang810249.github.io/">Chia-Che Chang</a>&nbsp;&nbsp;&nbsp;
+	<a href="https://www.cmlab.csie.ntu.edu.tw/~nothinglo/">Yu-Sheng Chen</a>&nbsp;&nbsp;&nbsp;
+	<a href="https://ai.google/research/people/DaChengJuan">Da-Cheng Juan</a>&nbsp;&nbsp;&nbsp;
+	<a href="https://ai.google/research/people/105672">Wei Wei</a>&nbsp;&nbsp;&nbsp;
+	<a href="https://htchen.github.io/">Hwann-Tzong Chen</a>&nbsp;&nbsp;&nbsp;
+	</h3>
+	<center><h3>
+		<a href="http://nthu-en.web.nthu.edu.tw/bin/home.php">National Tsing Hua University</a>&nbsp;&nbsp;&nbsp;
+		<a href="https://www.ntu.edu.tw/english/index.html">National Taiwan University</a>&nbsp;&nbsp;&nbsp;
+		<a href="https://ai.google/">Google AI</a>&nbsp;&nbsp;&nbsp;
+	</h3></center>
+<div style="padding-bottom: 40px"></div>
+<center><h3><strong><a href="#">Paper (Arxiv)</a> | <a href="https://goo.gl/5HLynv">Paper (Full Resolution)</a>  | <a href="https://github.com/hubert0527/COCO-GAN">Code (to be released soon)</a> </strong> </h3></center>
+<center><a href="images/teaser.png">
+<img src="images/teaser.png" width="60%" style="margin-top: 20px"> </a></center>
+<p></p>
+
+
+<p>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="10" >
+	<tr>
+		<td width="25%" class="full">
+			<img src="images/demo_gif/CelebA_N2M2S32.gif" style="width:100%;" align="middle">
+		</td >
+		<td width="25%" class="full">
+			<img src="images/demo_gif/CelebA_N4M4S16.gif" style="width:100%;" align="middle">
+		</td>
+		<td width="25%" class="full">
+			<img src="images/demo_gif/CelebA_N8M8S8.gif" style="width:100%;" align="middle">
+		</td >
+		<td width="25%" class="full">
+			<img src="images/demo_gif/CelebA_N16M16S4.gif" style="width:100%;" align="middle">
+		</td>
+	</tr>
+</table>
+
+<h2 class="bold" align="center">Abstract</h2>
+
+<div style="font-size:14px"><p align="justify">Humans can only interact with part of the surrounding environment due to biological restrictions. Therefore, we learn to reason the spatial relationships across a series of observations to piece together the surrounding environment. Inspired by such behavior and the fact that machines also have computational constraints, we propose <u>CO</u>nditional <u>CO</u>ordinate GAN (COCO-GAN) of which the generator generates images by parts based on their spatial coordinates as the condition. On the other hand, the discriminator learns to justify realism across multiple assembled patches by global coherence, local appearance, and edge-crossing continuity. Despite the full images are never generated during training, we show that COCO-GAN can produce <b>state-of-the-art-quality</b> full images during inference. We further demonstrate a variety of novel applications enabled by teaching the network to be aware of coordinates. First, we perform extrapolation to the learned coordinate manifold and generate off-the-boundary patches. Combining with the originally generated full image, COCO-GAN can produce images that are larger than training samples, which we called "beyond-boundary generation". We then showcase panorama generation within a cylindrical coordinate system that inherently preserves horizontally cyclic topology. On the computation side, COCO-GAN has a built-in divide-and-conquer paradigm that reduces memory requisition during training and inference, provides high-parallelism, and can generate parts of images on-demand.</p></div>
+
+
+<div style="width: 30%; float:left;">
+	<a href="https://arxiv.org/abs/TBA"><img style="float: left; margin: 10px; width: 100%;" alt="paper thumbnail" src="images/paper_preview.png"></a>
+</div>
+<div style="width: 70%; float:right;">
+	<h3>Paper</h3>
+	<p><a href="https://arxiv.org/abs/TBA">arxiv</a>,  2019. </p>
+
+	<h3>Code </h3>
+	<p><a href='https://github.com/hubert0527/COCO-GAN'> Tensorflow (TBA)</a></p>
+
+	<h3>Citation</h3>
+	<code style="text-align: left; display: block; background-color: #ddd; padding: 20px; margin: 0px 20px;">
+	@article{chieh2019cocogan, <br/>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title={COCO-GAN: Generation by Parts via Conditional Coordinating}, <br/>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;author={Hubert Lin, Chieh and Chang, Chia-Che and Chen, Yu-Sheng and Juan, Da-Cheng and Wei, Wei and Chen, Hwann-Tzong}, <br/>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;journal={arXiv preprint arXiv:TBA}, <br/>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;year={2019} <br/>
+	}
+</code>
+</div>
+
+
+<br>
+
+<div style="clear: both"></div>
+
+<br>
+<h2 align='center'> Overview of the Method </h1>
+<center><img src="images/model_training.png" width="1000"></center>
+<br>
+<p align="justify"> OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO </p>
+<center><img src="images/model_testing.png" width="1000"></center>
+<p align="justify"> OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO  </p>
+<br>
+
+<br>
+<h2 align='center'> Applications: Beyond-Boundary Image Generation </h1>
+<center><img src="images/TBA" width="1000"></center>
+<p align="justify"> (Will make animation for extrapolation later) OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO  </p>
+<br>
+
+<br>
+<h2 align='center'> Applications: Patch-Guided Image Generation </h1>
+<center><img src="images/TBA" width="1000"></center>
+<p align="justify"> (No animation?) OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO  </p>
+<br>
+
+<br>
+<h2 align='center'> Applications: Panorama Generation </h1>
+<center><img src="images/TBA" width="1000"></center>
+<p align="justify"> (Will make it scrolling animatation later) OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO  </p>
+<br>
+
+<h2>Acknowledgement</h2>
+<p align="justify"> We sincerely thank David Berthelot and Mong-li Shih for the insightful suggestions and advice. We are grateful to the National Center for High-performance Computing for computer time and facilities. Hwann-Tzong Chen was supported in part by MOST grants 107-2634-F-001-002 and 107-2218-E-007-047. </p>
+
+<br>
+<h2>Related Work</h2>
+
+TBA
+
+<!-- <ul id='relatedwork'>
+<div align="left">
+<li font-size: 15px> V. Dumoulin, J. Shlens, and M. Kudlur. <a href="https://arxiv.org/abs/1610.07629"><strong>"A learned representation for artistic style"</strong></a>, in ICLR 2016.
+</li>
+<li font-size: 15px> H. De Vries, F. Strub, J. Mary, H. Larochelle, O. Pietquin, and A. C. Courville. <a href="https://arxiv.org/abs/1707.00683"><strong>"Modulating early visual processing by language"</strong></a>, in NeurIPS 2017.
+</li>
+<li font-size: 15px> T. Wang, M. Liu, J. Zhu, A. Tao, J. Kautz, and B. Catanzaro. <a href="https://tcwang0509.github.io/pix2pixHD/"><strong>"High-Resolution Image Synthesis and Semantic Manipulation with Conditional GANs"</strong></a>, in CVPR 2018. (pix2pixHD)
+</li>
+<li font-size: 15px> P. Isola, J. Zhu, T. Zhou, and A. A. Efros. <a href="https://phillipi.github.io/pix2pix/"><strong>"Image-to-Image Translation with Conditional Adversarial Networks"</strong></a>, in CVPR 2017. (pix2pix)
+</li>
+<li font-size: 15px> Q. Chen and V. Koltun. <a href="https://cqf.io/ImageSynthesis/"><strong>"Photographic image synthesis with cascaded refinement networks.</strong></a>, ICCV 2017. (CRN)
+</li>
+</div>
+</ul> -->
+
+<center style="margin: 20px">
+	(Note) The template of this page is borrowed from <a href="https://nvlabs.github.io/SPADE/">SPADE</a> project page.
+</center>
+
+<div style="display:none">
+<script type="text/javascript" src="http://gostats.com/js/counter.js"></script>
+<script type="text/javascript">_gos='c3.gostats.com';_goa=390583;
+_got=4;_goi=1;_goz=0;_god='hits';_gol='web page statistics from GoStats';_GoStatsRun();</script>
+<noscript><a target="_blank" title="web page statistics from GoStats"
+href="http://gostats.com"><img alt="web page statistics from GoStats"
+src="http://c3.gostats.com/bin/count/a_390583/t_4/i_1/z_0/show_hits/counter.png"
+style="border-width:0" /></a></noscript>
+</div>
+</body></html
+>
