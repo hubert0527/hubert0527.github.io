@@ -133,10 +133,10 @@ h4 {font-size: 17px}
 
 <br>
 <h2 align='center'> Overview of the Method </h1>
-<center><img src="images/model_training.png" width="1000"></center>
+<center><img src="images/model_training.png" width="800"></center>
 <br>
-<p align="justify"> OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO </p>
-<center><img src="images/model_testing.png" width="1000"></center>
+<p align="justify">For the COCO-GAN training, the latent vectors are duplicated multiple times, concatenated with micro coordinates, and feed to the generator to generate micro patches. Then we concatenate multiple micro patches to form a larger macro patch. The discriminator learns to discriminate between real and fake macro patches and an auxiliary task predicting the coordinate of the macro patch.</p>
+<center><img src="images/model_testing.png" width="800"></center>
 <p align="justify"> OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO  </p>
 <br>
 
@@ -154,7 +154,7 @@ h4 {font-size: 17px}
 
 <br>
 <h2 align='center'> Applications: Panorama Generation </h1>
-<center><img src="images/TBA" width="1000"></center>
+<center><img src="images/panorama_samples.gif" width="1000"></center>
 <p align="justify"> (Will make it scrolling animatation later) OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO OuO  </p>
 <br>
 
