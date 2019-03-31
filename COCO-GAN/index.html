@@ -202,8 +202,11 @@ hr {
 
 <br>
 <h2 align='center'> Applications: Patch-Guided Image Generation </h1>
-(Will make simple animations later) 
-<center><img src="images/TBA" width="100%"></center>
+<center>
+<video autoplay loop style="margin-bottom: 10px;" width="700">
+  <source src="images/patch-guided-image-generation.mp4" type="video/mp4">
+</video>
+</center>
 <p align="justify"> Some prior works <a href="#infogan">[1]</a><a href="#ali">[2]</a><a href="#bigan">[3]</a><a href="#began-cs">[4]</a> have shown that we can train a bijective function within the discriminator that maps each image to a corresponding latent vector. Such a component becomes interesting in COCO-GAN setting, since the discriminator of COCO-GAN only consumes macro patches. As a result, COCO-GAN can estimate a latent vector with only a part of an image, then generates a full image that locally retains some characteristics of the given macro patch, while still globally coherent. </p><br>
 <hr>
 
