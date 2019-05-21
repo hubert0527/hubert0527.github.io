@@ -46,7 +46,7 @@ function load_demo_samples() {
     // Load placehodler
     $("#demo-samples").append(
       "<img id=\"demo-sample-"+i+"\" class=\"demo-samples\"" + 
-      "src=\"https://via.placeholder.com/"+preview_res+"\"" +
+      "src=\"data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=\"" +
       "\"height=\""+preview_res+"\" width=\""+preview_res+"\">")
 
     var url = "./images/demo-samples/" + IMG_IDS[i] + ".jpg",
