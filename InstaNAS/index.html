@@ -1,0 +1,269 @@
+<!--
+OuO is the answer to everything.
+OuO can perfectly express anything and any mood.
+Just believe in OuO.
+QuQ
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+  <title>InstaNAS</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+
+<meta property="og:image" content="images/teaser_fb.jpg"/>
+<meta property="og:title" content="InstaNAS: Instance-Aware Neural Architecture Search"/>
+
+<script src="lib.js" type="text/javascript"></script>
+<script src="popup.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/onnxjs/dist/onnx.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.10/jquery.lazy.min.js"></script> -->
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script type="text/javascript" src="./scripts/main.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-82988202-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-82988202-4');
+</script>
+
+<script type="text/javascript">
+// redefining default features
+var _POPUP_FEATURES = 'width=500,height=300,resizable=1,scrollbars=1,titlebar=1,status=1';
+</script>
+<link media="all" href="glab.css" type="text/css" rel="StyleSheet">
+<style type="text/css" media="all">
+IMG {
+	PADDING-RIGHT: 0px;
+	PADDING-LEFT: 0px;
+	FLOAT: none;
+	PADDING-BOTTOM: 0px;
+	PADDING-TOP: 0px
+}
+#primarycontent {
+	MARGIN-LEFT: auto; 
+  WIDTH: expression(document.body.clientWidth > 1200 ? "1200px": "auto" ); 
+  MARGIN-RIGHT: auto; 
+  TEXT-ALIGN: left; 
+  max-width: 1200px;
+}
+BODY {
+	TEXT-ALIGN: center
+}
+h1, h2, .bold {
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+h1 {font-size: 30px}
+h2 {font-size: 27px}
+h3 {font-size: 18px}
+h4 {font-size: 15px}
+
+.caption {
+	color: #666; 
+	font-weight: bold;
+	/*font-style: italic;*/
+	font-size: 15px;
+	margin-top: 10px;
+	width: 95%;
+}
+
+hr {
+  border: 2px 
+  solid #990000;
+  margin: 50px 20px;
+}
+
+.citation-id {
+	display: inline-block; 
+	width:50px; 
+	float: left;
+	font-size: 14px;
+}
+
+.citation-content {
+	display: inline-block; 
+	width:950px; 
+	float: right;
+	font-size: 14px;
+}
+
+.demo-samples {
+  border: 2px transparent solid;
+  padding: 3px;
+}
+.demo-samples:hover {
+  border: 2px #555 solid;
+}
+
+.zoomin {
+	cursor: zoom-in;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.button {
+  padding: 8px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+  background-color: white; 
+  color: black; 
+  border: 2px solid #4CAF50;
+}
+
+.button:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+
+</style>
+
+<meta content="MSHTML 6.00.2800.1400" name="GENERATOR"><script src="b5m.js" id="b5mmain" type="text/javascript"></script></head>
+
+<body>
+
+<div id="primarycontent">
+<center><h1>InstaNAS: Instance-aware Neural Architecture Search</h1></center>
+<center><h3> (Under Review) &nbsp; | &nbsp; ICML'19 AutoML Workshop </h3></center>
+<center><h3>
+  <a href="https://anjiezheng.github.io/">An-Chieh Cheng*</a>&nbsp;&nbsp;&nbsp;
+	<a href="https://hubert0527.github.io/">Chieh Hubert Lin*</a>&nbsp;&nbsp;&nbsp;
+	<a href="https://ai.google/research/people/DaChengJuan">Da-Cheng Juan</a>&nbsp;&nbsp;&nbsp;
+	<a href="https://ai.google/research/people/105672">Wei Wei</a>&nbsp;&nbsp;&nbsp;
+	<a href="https://aliensunmin.github.io/">Min Sun</a>&nbsp;&nbsp;&nbsp;
+	</h3>
+	<center><h3>
+		<a href="http://nthu-en.web.nthu.edu.tw/bin/home.php">National Tsing Hua University</a>&nbsp;&nbsp;&nbsp;
+		<a href="https://ai.google/">Google AI</a>&nbsp;&nbsp;&nbsp;
+	</h3></center>
+<div style="padding-bottom: 40px"></div>
+<center><h3><strong><a href="http://bit.ly/instanas-arxiv">Paper (Arxiv)</a> | <a href="https://github.com/hubert0527/COCO-GAN">Code (to be released soon)</a> </strong> </h3></center>
+<center>
+<a href="images/concept-1.png" class="zoomin"><img src="images/concept-1.png" width="45%" style="margin-top: 20px; margin-bottom: 40px"> </a>
+<a href="images/concept-2.png" class="zoomin"><img src="images/concept-2.png" width="45%" style="margin-top: 20px; margin-bottom: 40px"> </a>
+</center>
+<p class="caption">&#9650; The concept of InstaNAS is to search for a <it><b>distribution</b></it> of architectures. The controller is responsible for selecting a corresponding child architecture for each given input image. Each child architecture within the final <it><b>distribution</b></it> may be an expert of specific domains or speedy inference. In contrast, a conventional NAS method only searches for a single architecture from the search space as the final result.</p>
+
+
+<hr>
+
+
+<h2 class="bold" align="center">Abstract</h2>
+
+<div style="font-size:14px"><p align="justify">Neural Architecture Search (NAS) aims at finding one “single” architecture that achieves the best accuracy for a given task such as image recognition. In this paper, we study the instance-level variation, and demonstrate that instance-awareness is an important yet currently missing component of NAS. Based on this observation, we propose InstaNAS for searching toward instance-level architectures; the controller is trained to search and form a “distribution of architectures” instead of a single final architecture. Then during the inference phase, the controller selects an architecture from the distribution, tailored for each unseen image to achieve both high accuracy and short latency. The experimental results show that InstaNAS reduces the inference latency without compromising classification accuracy. On average, InstaNAS achieves 48.9% latency reduction on CIFAR-10 and 40.2% latency reduction on CIFAR-100 with respect to MobileNetV2 architecture.</p></div>
+
+<div style="width: 30%; float:left;">
+	<a href="http://bit.ly/instanas-arxiv"><img style="float: left; margin: 10px; width: 100%;" alt="paper thumbnail" src="images/paper_preview.png"></a>
+</div>
+<div style="width: 70%; float:right; margin-top: 6%;">
+	<h3>Paper</h3>
+	<p><a href="http://bit.ly/instanas-arxiv">arxiv</a>,  2019. </p>
+
+	<h3>Code</h3>
+	<p><a href='https://github.com/hubert0527/COCO-GAN'> Tensorflow (TBA)</a></p>
+
+	<h3>Citation</h3>
+	<code style="text-align: left; display: block; background-color: #ddd; padding: 20px; margin: 0px 20px;">
+	@article{anchieh2018instanas, <br/>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title={InstaNAS: Instance-aware Neural Architecture Search}, <br/>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;author={An-Chieh Cheng*, Chieh Hubert Lin*, Da-Cheng Juan, Wei Wei, Min Sun}, <br/>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;journal={arXiv preprint arXiv:1811.10201}, <br/>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;year={2018} <br/>
+	}
+</code>
+</div>
+<br>
+
+<div style="clear: both"></div>
+
+<hr>
+
+<br>
+<h2 align='center'> Overview of the Method </h1>
+<center>
+<a href="images/overview.png" class="zoomin">
+  <img src="images/overview.png" style="width:100%;" align="middle">
+</a>
+</center>
+<br>
+<p align="justify"> OuO </p>
+<br>
+
+<hr>
+
+<h2 align='center'> Live Demo </h2>
+
+<div style="font-size:14px"><p align="justify">We deployed one of the ImageNet controller on your browser (with onnx.js)! You may select some of the ImageNet testing samples below and see what architectures are selected by the controller. You may also upload your own testing samples. Enjoy!</p></div>
+
+<div style="display: inline-block;">
+  <div id="demo-samples" style="width: 840px; float: left; display: inline-block;"></div>
+  <div style="width: 350px; display: inline-block; float: right;">
+    <h4 style="font-size: 20px;">Try with your sample!</h4>
+    <img id="demo-thumbnail" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" height="224" width="224" style="margin: 30px auto; background-color: transparent; border: 3px black solid;">
+    <div></div>
+    <label class="button">
+      Upload!
+      <input type="file" id="demo-img-uploader" data-target="file-uploader" accept="image/*" style="margin: 30px auto;" hidden>
+    </label>
+  </div>
+  <div style="clear: both;"></div>
+</div>
+<svg id="demo-graph" height="500" width="1200" style="border:1px black solid; margin: 30px auto 0;"></svg>
+<!-- <canvas id="extractFileCanvas" width="64" height="64"></canvas> -->
+<hr>
+
+
+<br>
+<h2>Acknowledgement</h2>
+<p align="justify"> OuO </p>
+<br>
+
+<hr>
+
+<br>
+<h2>References</h2>
+
+OuO
+
+<!-- <div id="began-cs" class="citation" align="justify"> 
+<p class="citation-id"><b>[4]</b></p>
+<p class="citation-content">C.-C. Chang, C. H. Lin, C.-R. Lee, D.-C. Juan, W. Wei, H.-T. Chen. <a href="http://openaccess.thecvf.com/content_ECCV_2018/html/Chieh_Lin_Escaping_from_Collapsing_ECCV_2018_paper.html">"Escaping from Collapsing Modes in a Constrained Space"</a> in ECCV 2018. </p>
+</div>
+<div style="clear: both;"></div> -->
+
+<br>
+
+<hr>
+
+<center style="margin: 20px">
+	(Note) The template of this page is borrowed from <a href="https://nvlabs.github.io/SPADE/">SPADE</a> project page.
+</center>
+
+<div style="display:none">
+<script type="text/javascript" src="http://gostats.com/js/counter.js"></script>
+<script type="text/javascript">_gos='c3.gostats.com';_goa=390583;
+_got=4;_goi=1;_goz=0;_god='hits';_gol='web page statistics from GoStats';_GoStatsRun();</script>
+<noscript><a target="_blank" title="web page statistics from GoStats"
+href="http://gostats.com"><img alt="web page statistics from GoStats"
+src="http://c3.gostats.com/bin/count/a_390583/t_4/i_1/z_0/show_hits/counter.png"
+style="border-width:0" /></a></noscript>
+</div>
+</body></html
+>
+
