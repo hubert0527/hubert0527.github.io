@@ -45,7 +45,7 @@ $(window).on('load', function () {
 })
 
 function load_demo_samples() {
-  const preview_res = 720/NUM_DEMO_IMGS_PER_ROW - DEMO_IMG_PAD*2;
+  const preview_res = 0.6*window.CANVAS_W/NUM_DEMO_IMGS_PER_ROW - DEMO_IMG_PAD*2;
   for (var i=0; i<NUM_DEMO_IMGS; i++) {
     // Load placehodler
     $("#demo-samples").append(
