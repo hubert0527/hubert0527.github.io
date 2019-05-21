@@ -211,9 +211,9 @@ hr {
 
 <div style="font-size:14px"><p align="justify">We deployed one of the ImageNet controller on your browser (with onnx.js)! You may select some of the ImageNet testing samples below and see what architectures are selected by the controller. You may also upload your own testing samples. Enjoy!</p></div>
 
-<div style="display: inline-block; width: 1200px;">
-  <div id="demo-samples" style="width: 840px; float: left; display: inline-block;"></div>
-  <div style="width: 350px; display: inline-block; float: right;">
+<div style="display: inline-block; width: 100vw; max-width: 1200px; position: relative;">
+  <div id="demo-samples" style="width: 70%; float: left; display: inline-block;"></div>
+  <div style="width: 29%; display: inline-block; float: right;">
     <h4 style="font-size: 20px;">Try with your sample!</h4>
     <img id="demo-thumbnail" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" height="224" width="224" style="margin: 30px auto; background-color: transparent; border: 3px black solid;">
     <div></div>
@@ -224,7 +224,7 @@ hr {
   </div>
   <div style="clear: both;"></div>
 </div>
-<svg id="demo-graph" height="500" width="1200" style="border:1px black solid; margin: 30px auto 0;"></svg>
+<svg id="demo-graph" style="border:1px black solid; margin: 30px auto 0;"></svg>
 <!-- <canvas id="extractFileCanvas" width="64" height="64"></canvas> -->
 <hr>
 

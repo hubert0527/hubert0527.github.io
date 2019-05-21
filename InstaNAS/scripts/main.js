@@ -20,7 +20,6 @@ NODE_DEFS = {
 }
 
 const NUM_LAYERS=17, NUM_OPTIONS=5;
-const CANVAS_H=500, CANVAS_W=1200;
 
 const IMG_IDS = [
   73, 121, 269, 385, 591, 624, 1213, 1685, 2130, 2331, 
@@ -35,6 +34,11 @@ var DEMO_IMG_PAD = 5;
 var DEMO_IMG_CACHE = [];
 
 $(window).on('load', function () {
+  var vw = $(window).innerWidth();
+  if (vw > 1200) vw = 1200;
+  window.CANVAS_H = vw*500/1200, 
+  window.CANVAS_W = vw;
+
   create_demo_app();
   load_demo_samples();
   plot_nodes_only();
@@ -139,6 +143,7 @@ function create_hidden_canvas(){
     } catch (e) {
       context.clearRect(0, 0, $(canvas).attr("width"), $(canvas).attr("height"));
     }
+    $(prevCanvas).attr("width", CANVAS_W).attr("height", CANVAS_H);
     return prevCanvas;
   } else {
     var canvas = document.createElement('canvas');  // Dynamically Create a Canvas Element
