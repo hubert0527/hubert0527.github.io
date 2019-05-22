@@ -276,7 +276,7 @@ function plot_nodes_only(){
 
 const PROBA_MODE = false;
 const KEEP = false;
-const NO_ANIME = true;
+const NO_ANIME = false;
 const TRANSPARENT = false;
 
 function model_to_d3_plot(model_arr){
