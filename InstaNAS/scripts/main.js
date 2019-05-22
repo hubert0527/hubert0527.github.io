@@ -21,17 +21,39 @@ NODE_DEFS = {
 
 const NUM_LAYERS=17, NUM_OPTIONS=5;
 
-const IMG_IDS = [
-  73, 121, 269, 385, 591, 624, 1213, 1685, 2130, 2331, 
-  2473, 2701, 2929, 3636, 6339, 12012, 13175, 18528, 19396, 19663, 
-  19711, 22340, 23206, 23431, 25007, 25417, 36873, 38866, 
-  // 41326, 42412, 47457
-];
+const DEMO_IMGS = {
+  "Objects-in-the-dark": [ // 0.060248374938964844
+    5193, 6648, 9549, 11843, 13952, 17334, 39195,
+  ],
+  "Marine animals": [ // 0.07249873876571655
+    7835, 8529, 12557, 18528, 21870, 42308, 45216,
+  ],
+  "Scattered objects": [  // 0.07145416736602783
+    24543, 21240, 2766, 29132, 16454, 3844, 12637,  
+  ],
+  "Grass in background": [ // 0.06890863180160522
+    1820, 5974, 198, 2701, 54, 11196, 4237,
+  ],
+  "Fluffy animals": [ // 0.06699085235595703 
+    1879, 5139, 8022, 10609, 10830, 16105, 24462, 
+  ],
+  "Round-shaped objects": [ // 0.06479787826538086
+    36873, 36577, 497, 34, 7843, 2565, 5275,
+  ],
+  "Yellow objects": [ // 0.06288009881973267
+    452, 1882, 2632, 9494, 15205, 15340, 16126,
+  ],
+  "Repeating textures": [ // 0.0721781849861145
+    33255, 31397, 25801, 32722, 24421, 18813, 19711, 
+  ],
+};
+var ARCH="";
+const DEBUG = false;
 
-var NUM_DEMO_IMGS = IMG_IDS.length; // 20;
-var NUM_DEMO_IMGS_PER_ROW = 6;
+var NUM_DEMO_IMGS_PER_ROW = 7;
+var NUM_DEMO_IMGS = DEMO_IMGS.length * NUM_DEMO_IMGS_PER_ROW; // 20;
 var DEMO_IMG_PAD = 5;
-var DEMO_IMG_CACHE = [];
+var DEMO_IMG_CACHE = {};
 
 $(window).on('load', function () {
   var vw = $(window).innerWidth();
@@ -45,35 +67,63 @@ $(window).on('load', function () {
 })
 
 function load_demo_samples() {
-  const preview_res = 0.6*window.CANVAS_W/NUM_DEMO_IMGS_PER_ROW - DEMO_IMG_PAD*2;
-  for (var i=0; i<NUM_DEMO_IMGS; i++) {
-    // Load placehodler
-    $("#demo-samples").append(
-      "<img id=\"demo-sample-"+i+"\" class=\"demo-samples\"" + 
-      "src=\"data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=\"" +
-      "\"height=\""+preview_res+"\" width=\""+preview_res+"\">")
-
-    var url = "./images/demo-samples/" + IMG_IDS[i] + ".jpg",
-        full_img = new Image();
-    full_img.height = IMG_RES;
-    full_img.width = IMG_RES;
-    $(full_img).attr("demo-id", i);
-
-    full_img.onload = function() {
-      // use browser cache
-      var demoId = $(this).attr("demo-id");
-      var cached_url = this.src.toString();
-      var thumbnail = $("#demo-sample-"+demoId);
-      thumbnail[0].src = cached_url;
-      thumbnail.on("click", function(){
-        var demoID = $(this).attr("demo-id");
-        $(".demo-samples").css("background-color", "transparent");
-        $(this).css("background-color", "red");
-        run_demo_sample_inference(DEMO_IMG_CACHE[demoId]);
+  const scrollbar_w = 12;
+  const preview_res = (0.6*window.CANVAS_W-scrollbar_w)/NUM_DEMO_IMGS_PER_ROW;
+  for (var category in DEMO_IMGS) {
+    for (var i=0; i<NUM_DEMO_IMGS_PER_ROW; i++){
+      var img_id = DEMO_IMGS[category][i];
+      // Load placehodler
+      var thumbnailId = "demo-sample-"+img_id;
+      $("#demo-samples").append(
+        "<img id=\""+thumbnailId+"\" class=\"demo-samples\"" + 
+        "src=\"data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=\"" +
+        "\"height=\""+preview_res+"\" width=\""+preview_res+"\">")
+      tippy("#"+thumbnailId, {
+        content: category,
+        animation: 'fade',
+        distance: 5,
+        theme: 'my',
+        followCursor: true,
+        placement: 'top-start',
+        size: "large",
+        trigger: "mouseenter focus click",
+        popperOptions: {
+          modifiers: {
+            preventOverflow: {
+              enabled: false
+            },
+            hide: {
+              enabled: false
+            }
+          }
+        }
+        // interactive: true,
       });
+
+      var url = "./images/demo-samples/" + img_id + ".png",
+          full_img = new Image();
+      full_img.height = IMG_RES;
+      full_img.width = IMG_RES;
+      $(full_img).attr("demo-id", img_id);
+      $(full_img).attr("demo-category", category);
+
+      full_img.onload = function() {
+        // use browser cache
+        var demoId = $(this).attr("demo-id");
+        var cached_url = this.src.toString();
+        var thumbnail = $("#demo-sample-"+demoId);
+        thumbnail[0].src = cached_url;
+        thumbnail.on("click", function(){
+          var demoID = $(this).attr("demo-id");
+          var demoCat = $(this).attr("demo-category");
+          $(".demo-samples").css("background-color", "transparent");
+          $(this).css("background-color", "red");
+          run_demo_sample_inference(DEMO_IMG_CACHE[parseInt(demoId)]);
+        });
+      }
+      full_img.src = url;
+      DEMO_IMG_CACHE[img_id]= full_img;
     }
-    full_img.src = url;
-    DEMO_IMG_CACHE.push(full_img)
   }
 }
 
@@ -114,7 +164,8 @@ function run_demo_sample_inference(fullImg) {
       ctx = canvas.getContext('2d');
       ctx.drawImage(fullImg, 0, 0);
       img_data = ctx.getImageData(0, 0, IMG_RES, IMG_RES);
-      img_data = preprocess(img_data.data)
+      img_data = preprocess(img_data.data);
+      console.log(img_data);
       inputTensor = [
         new Tensor(new Float32Array(img_data), "float32", [1, 3, IMG_RES, IMG_RES])
       ];
@@ -170,14 +221,21 @@ function load_image_to_html(fileblob, callback){
 }
 
 function preprocess(html_img){
-  var result = [];
+  // var result = [];
+  var r=[], g=[], b=[];
   for(var i=0; i<html_img.length; i++){
     var ch = i % 4;
-    if(ch==3) continue; // html image has alpha channel
+    if (ch==3) continue; // html image has alpha channel
     var pixel = ((html_img[i]/255) - MEAN[IMG_RES][ch]) / STD[IMG_RES][ch];
-    result.push(pixel);
+    if (ch==0) {
+      r.push(pixel)
+    } else if (ch==1) {
+      g.push(pixel)
+    } else {
+      b.push(pixel)
+    }
   }
-  return result;
+  return r.concat(g, b);
 }
 
 function plot_nodes_only(){
@@ -216,10 +274,17 @@ function plot_nodes_only(){
   construct_plot(nodes, joints, [], []);
 }
 
+const PROBA_MODE = false;
+const KEEP = false;
+const NO_ANIME = true;
+const TRANSPARENT = false;
+
 function model_to_d3_plot(model_arr){
 
   var nodes=[], joints=[],
       input_links=[], output_links=[];
+  var arch = "";
+
   // create node def
   for (var layer=0; layer<NUM_LAYERS; layer++){
     var l_in_x = (layer+0.5) * (CANVAS_W / (NUM_LAYERS+1)),
@@ -245,20 +310,41 @@ function model_to_d3_plot(model_arr){
           y = (opt+1) * (CANVAS_H / (NUM_OPTIONS+1));
       var module_node = { id: "layer-"+layer+"-opt-"+opt, reflexive: false, x: x, y: y };
       nodes.push(module_node);
-      if ( model_arr[idx] > 0.5 ) {
+      if ( PROBA_MODE ) {
         noSelection = false;
         input_links.push({
           l_idx: layer*2,
+          proba: model_arr[idx],
           data: [
             {x: layer_input_node.x, y: layer_input_node.y}, // start
             {x: module_node.x, y: module_node.y}, // end
           ]});
         output_links.push({
           l_idx: layer*2+1,
+          proba: model_arr[idx],
           data: [
             {x: module_node.x, y: module_node.y}, // start
             {x: layer_output_node.x, y: layer_output_node.y}, // end
           ]});
+      } else {
+        if ( model_arr[idx] > 0.5 ) {
+          arch += "1";
+          noSelection = false;
+          input_links.push({
+            l_idx: layer*2,
+            data: [
+              {x: layer_input_node.x, y: layer_input_node.y}, // start
+              {x: module_node.x, y: module_node.y}, // end
+            ]});
+          output_links.push({
+            l_idx: layer*2+1,
+            data: [
+              {x: module_node.x, y: module_node.y}, // start
+              {x: layer_output_node.x, y: layer_output_node.y}, // end
+            ]});
+        } else {
+          arch += "0";
+        }
       }
     }
 
@@ -274,6 +360,15 @@ function model_to_d3_plot(model_arr){
       ]);
     }
   }
+  if (DEBUG) {
+    if (arch===ARCH) {
+      console.log(arch, ARCH, arch==arch, arch===ARCH)
+      $("svg").css("background-color", "green");
+    } else {
+      $("svg").css("background-color", "red");
+    }
+    window.ARCH = arch;
+  }
   joints.push(layer_output_node);
 
   // plot start
@@ -285,7 +380,9 @@ function model_to_d3_plot(model_arr){
 function construct_plot(nodes, joints, input_links, output_links) {
 
   // clear graph
-  d3.selectAll("#demo-graph > *").remove();
+  if (!KEEP) {
+    d3.selectAll("#demo-graph > *").remove();
+  }
 
   var svg = d3.select('#demo-graph')
     // .on('contextmenu', () => { d3.event.preventDefault(); })
@@ -303,15 +400,20 @@ function construct_plot(nodes, joints, input_links, output_links) {
       x: (4*input_link[0].x + input_link[1].x) / 5,
       y: (input_link[0].y + input_link[1].y) / 2,
     }
+    var opacity = PROBA_MODE ? input_links[i].proba : (TRANSPARENT?0.3:1);
+    var stroke = PROBA_MODE ? (2*input_links[i].proba) + 1 : 3;
     input_link.splice(1, 0, interpolate);
-    svg.append('path')
-      .lower()
-      .transition()
-      .duration(50)
-      .delay(30*input_links[i].l_idx)
-      .attr('d', lineGenerator(input_link))
+    path = svg.append('path')
+    if (!NO_ANIME) {
+      path.lower()
+        .transition()
+        .duration(50)
+        .delay(30*input_links[i].l_idx)
+    }
+    path.attr('d', lineGenerator(input_link))
       .attr('stroke', 'black')
-      .attr('stroke-width', '2px')
+      .attr('opacity', opacity )
+      .attr('stroke-width', stroke+'px')
       .attr('fill', 'none');
   }
   for (var i=0; i<output_links.length; i++){
@@ -320,15 +422,20 @@ function construct_plot(nodes, joints, input_links, output_links) {
       x: (output_link[0].x + 4*output_link[1].x) / 5,
       y: (output_link[0].y + output_link[1].y) / 2,
     }
+    var opacity = PROBA_MODE ? output_links[i].proba : (TRANSPARENT?0.3:1);
+    var stroke = PROBA_MODE ? (2*output_links[i].proba) + 1 : 3;
     output_link.splice(1, 0, interpolate);
-    svg.append('path')
-      .lower()
-      .transition()
-      .duration(50)
-      .delay(30*output_links[i].l_idx)
-      .attr('d', lineGenerator(output_link))
+    path = svg.append('path')
+    if (!NO_ANIME) {
+      path.lower()
+        .transition()
+        .duration(50)
+        .delay(30*output_links[i].l_idx)
+    }
+    path.attr('d', lineGenerator(output_link))
       .attr('stroke', 'black')
-      .attr('stroke-width', '2px')
+      .attr('opacity', opacity )
+      .attr('stroke-width', stroke+'px')
       .attr('fill', 'none');
   }
 

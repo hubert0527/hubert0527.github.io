@@ -1,0 +1,24 @@
+vis = [0 for i in range(85)]
+
+m_arch = {}
+m_lat = {}
+with open("./latency.txt", "r") as inputs:
+	with open("./latency_lat_sorted.txt", "w") as outputs_lat:
+		with open("./latency_arch_sorted.txt", "w") as outputs_arch:
+			for line in inputs:
+				if line[-1] == "\n": line = line[:-1]
+				arch, lat = line.split(":")
+				m_arch[arch] = lat
+				m_lat[lat] = arch
+				for i,c in enumerate(arch[1:-1]):
+					vis[i] += int(c)
+
+			lats = sorted(list(m_lat.keys()))
+			for lat in lats:
+				outputs_lat.write("{}:{}\n".format(lat, m_lat[lat]))
+
+			archs = sorted(list(m_arch.keys()))
+			for arch in archs:
+				outputs_arch.write("{}:{}\n".format(arch, m_arch[arch]))
+for i,c in enumerate(vis):
+	print(i, ":", c)
