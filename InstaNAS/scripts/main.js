@@ -276,7 +276,6 @@ function plot_nodes_only(){
 
 const PROBA_MODE = false;
 const KEEP = false;
-const NO_ANIME = false;
 const TRANSPARENT = false;
 
 function model_to_d3_plot(model_arr){
@@ -403,14 +402,11 @@ function construct_plot(nodes, joints, input_links, output_links) {
     var opacity = PROBA_MODE ? input_links[i].proba : (TRANSPARENT?0.3:1);
     var stroke = PROBA_MODE ? (2*input_links[i].proba) + 1 : 3;
     input_link.splice(1, 0, interpolate);
-    path = svg.append('path')
-    if (!NO_ANIME) {
-      path.lower()
-        .transition()
-        .duration(50)
-        .delay(30*input_links[i].l_idx)
-    }
-    path.attr('d', lineGenerator(input_link))
+    svg.append('path')
+      .transition()
+      .duration(50)
+      .delay(30*input_links[i].l_idx)
+      .attr('d', lineGenerator(input_link))
       .attr('stroke', 'black')
       .attr('opacity', opacity )
       .attr('stroke-width', stroke+'px')
@@ -425,14 +421,12 @@ function construct_plot(nodes, joints, input_links, output_links) {
     var opacity = PROBA_MODE ? output_links[i].proba : (TRANSPARENT?0.3:1);
     var stroke = PROBA_MODE ? (2*output_links[i].proba) + 1 : 3;
     output_link.splice(1, 0, interpolate);
-    path = svg.append('path')
-    if (!NO_ANIME) {
-      path.lower()
-        .transition()
-        .duration(50)
-        .delay(30*output_links[i].l_idx)
-    }
-    path.attr('d', lineGenerator(output_link))
+    svg.append('path')
+      .lower()
+      .transition()
+      .duration(50)
+      .delay(30*output_links[i].l_idx)
+      .attr('d', lineGenerator(output_link))
       .attr('stroke', 'black')
       .attr('opacity', opacity )
       .attr('stroke-width', stroke+'px')
