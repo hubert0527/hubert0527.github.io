@@ -1,4 +1,8 @@
 var IMG_RES = 224;
+const PROBA_MODE = false;
+const KEEP = false;
+const NO_ANIME = false;
+const TRANSPARENT = false;
 
 const MEAN = {
   32:  [0.491, 0.482, 0.447],
@@ -61,8 +65,11 @@ $(window).on('load', function () {
   window.CANVAS_H = vw*500/1200, 
   window.CANVAS_W = vw;
 
-  create_demo_app();
-  load_demo_samples();
+  window.InfereceSession = new onnx.InferenceSession();
+  window.InfereceSession.loadModel("./models/exported.onnx").then(function(){
+    create_demo_app();
+    load_demo_samples();
+  });
   plot_nodes_only();
 })
 
@@ -157,32 +164,28 @@ function create_demo_app(){
 }
 
 function run_demo_sample_inference(fullImg) {
-  const session = new onnx.InferenceSession();
-  session.loadModel("./models/exported.onnx").then(() => {
-    canvas = create_hidden_canvas();
-    if (canvas && canvas.getContext) {
-      ctx = canvas.getContext('2d');
-      ctx.drawImage(fullImg, 0, 0);
-      img_data = ctx.getImageData(0, 0, IMG_RES, IMG_RES);
-      img_data = preprocess(img_data.data);
-      console.log(img_data);
-      inputTensor = [
-        new Tensor(new Float32Array(img_data), "float32", [1, 3, IMG_RES, IMG_RES])
-      ];
-      agent_inference(session, inputTensor, function(outputTensor){
-          model_to_d3_plot(outputTensor.data);
-      });
-    }
-  });
+  canvas = create_hidden_canvas();
+  if (canvas && canvas.getContext) {
+    ctx = canvas.getContext('2d');
+    ctx.drawImage(fullImg, 0, 0);
+    img_data = ctx.getImageData(0, 0, IMG_RES, IMG_RES);
+    img_data = preprocess(img_data.data);
+    inputTensor = [
+      new Tensor(new Float32Array(img_data), "float32", [1, 3, IMG_RES, IMG_RES])
+    ];
+    agent_inference(window.InfereceSession, inputTensor, function(outputTensor){
+        model_to_d3_plot(outputTensor.data);
+    });
+  }
 }
 
 function agent_inference(session, input, callback){
-    // execute the model
-    session.run(input).then(output => {
-      // consume the output
-      const outputTensor = output.values().next().value;
-      callback(outputTensor)
-    });
+  // execute the model
+  session.run(input).then(output => {
+    // consume the output
+    const outputTensor = output.values().next().value;
+    callback(outputTensor)
+  });
 }
 
 function create_hidden_canvas(){
@@ -271,12 +274,11 @@ function plot_nodes_only(){
   joints.push(layer_output_node);
 
   // plot start
-  construct_plot(nodes, joints, [], []);
+  var svg = d3.select('#demo-graph')
+    .attr('width', CANVAS_W)
+    .attr('height', CANVAS_H);
+  plot_nodes(svg, nodes, joints);
 }
-
-const PROBA_MODE = false;
-const KEEP = false;
-const TRANSPARENT = false;
 
 function model_to_d3_plot(model_arr){
 
@@ -371,23 +373,37 @@ function model_to_d3_plot(model_arr){
   joints.push(layer_output_node);
 
   // plot start
-  construct_plot(nodes, joints, input_links, output_links);
+  var svg = d3.select('#demo-graph');
+  plot_paths(svg, input_links, output_links);
 }
 
-
+const FADE_OUT_PREV_LAT  = 200;
+const LINE_ANIME_SPEED = 10;
+var INFER_SERIAL_ID = 0;
 // update graph (called when needed)
-function construct_plot(nodes, joints, input_links, output_links) {
+function plot_paths(svg, input_links, output_links) {
 
-  // clear graph
-  if (!KEEP) {
-    d3.selectAll("#demo-graph > *").remove();
-  }
+  window.INFER_SERIAL_ID += 1;
 
-  var svg = d3.select('#demo-graph')
-    // .on('contextmenu', () => { d3.event.preventDefault(); })
-    .attr('width', CANVAS_W)
-    .attr('height', CANVAS_H);
+  // clear previous prev_path
+  d3.selectAll([
+        ".prev-path",
+        ".cur-path:not([infer-serial-id='"+ (INFER_SERIAL_ID-1) +"'])",
+      ].join(", "))
+    .transition()
+    .duration(NO_ANIME ? 0 : FADE_OUT_PREV_LAT)
+    .attr('opacity', 0 )
+    .remove()
 
+  // set current path as prev_path
+  d3.selectAll(".cur-path[infer-serial-id='"+ (INFER_SERIAL_ID-1) +"']")
+    .transition()
+    .duration(NO_ANIME ? 0 : FADE_OUT_PREV_LAT)
+    .attr("class", "prev-path")
+    .attr('opacity', 0.30 )
+    .attr('stroke-width', '18px')
+      // .attr('stroke', 'red');
+  
   var lineGenerator = d3.line()
     .curve(d3.curveCardinal)
     .x(function(d) { return d.x })
@@ -403,14 +419,17 @@ function construct_plot(nodes, joints, input_links, output_links) {
     var stroke = PROBA_MODE ? (2*input_links[i].proba) + 1 : 3;
     input_link.splice(1, 0, interpolate);
     svg.append('path')
+      .datum(function () { return this })
+      .attr("infer-serial-id", INFER_SERIAL_ID)
       .transition()
-      .duration(50)
-      .delay(30*input_links[i].l_idx)
+      .duration(NO_ANIME ? 0 : LINE_ANIME_SPEED)
+      .delay(NO_ANIME ? 0 : FADE_OUT_PREV_LAT + LINE_ANIME_SPEED*input_links[i].l_idx)
       .attr('d', lineGenerator(input_link))
+      .attr('class', 'cur-path')
       .attr('stroke', 'black')
       .attr('opacity', opacity )
       .attr('stroke-width', stroke+'px')
-      .attr('fill', 'none');
+      .attr('fill', 'none')
   }
   for (var i=0; i<output_links.length; i++){
     var output_link = output_links[i].data;
@@ -422,16 +441,45 @@ function construct_plot(nodes, joints, input_links, output_links) {
     var stroke = PROBA_MODE ? (2*output_links[i].proba) + 1 : 3;
     output_link.splice(1, 0, interpolate);
     svg.append('path')
-      .lower()
+      .datum(function () { return this })
+      .attr("infer-serial-id", INFER_SERIAL_ID)
       .transition()
-      .duration(50)
-      .delay(30*output_links[i].l_idx)
+      .duration(NO_ANIME ? 0 : LINE_ANIME_SPEED)
+      .delay(NO_ANIME ? 0 : FADE_OUT_PREV_LAT + LINE_ANIME_SPEED*output_links[i].l_idx)
       .attr('d', lineGenerator(output_link))
+      .attr('class', 'cur-path')
       .attr('stroke', 'black')
       .attr('opacity', opacity )
       .attr('stroke-width', stroke+'px')
-      .attr('fill', 'none');
+      .attr('fill', 'none')
   }
+
+  // enforce all path lower than nodes
+  d3.selectAll("path, circle, rect")
+    .sort(function (a, b) {
+      if (a.nodeName === "path" && b.nodeName === "path") {
+        if (d3.select(a).attr("class") === "prev-path") return -1;
+        else return 1;
+      }
+      if (a.nodeName === "path") return -1;
+      else return 1;
+    });
+
+  // set prev-path lower than current path
+  // var curPaths = d3.selectAll(".cur-path").node();
+  // curPaths.parentNode.appendChild(curPaths);
+
+  // d3.selectAll(".cur-path, .prev-path").sort(function (a, b) {
+  //   try {
+  //     if (d3.select(a.id).attr("class")==="prev-path") return 1;
+  //     else if (d3.select(b.id).attr("class")==="prev-path") return -1;
+  //   } catch (e) {
+  //     console.log(a, b);
+  //   }
+  // });
+}
+
+function plot_nodes(svg, nodes, joints){
 
   var colorsGen = d3.scaleOrdinal([
     "#EA4335",

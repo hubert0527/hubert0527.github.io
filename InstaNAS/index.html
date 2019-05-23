@@ -164,6 +164,50 @@ hr {
   background-color: #F9F9F9;
 }
 
+.legend-group {
+  text-align: center; 
+  margin-top: 10px;
+  vertical-align: middle;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.legend {
+  position: relative;
+  display: inline-block;
+  /*max-width: 200px;*/
+  margin: 0 10px;
+  vertical-align: middle;
+  height: 25px;
+}
+
+.legend:before {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+
+.legend-circle {
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+}
+
+.legend-line {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.legend-text {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+
 </style>
 
 <!-- <meta content="MSHTML 6.00.2800.1400" name="GENERATOR"><script src="b5m.js" id="b5mmain" type="text/javascript"></script></head> -->
@@ -256,8 +300,40 @@ hr {
   </div>
   <div style="clear: both;"></div>
 </div>
+
 <svg id="demo-graph" style="border:1px black solid; margin: 30px auto 0;"></svg>
-<!-- <canvas id="extractFileCanvas" width="64" height="64"></canvas> -->
+
+<div class="legend-group">
+  <div class="legend" style="">
+    <div class="legend-circle" style="background-color: #EA4335"></div>
+    <div class="legend-text"> InvertedResBlock_3x3_6F </div>
+  </div>
+  <div class="legend" style="">
+    <div class="legend-circle" style="background-color: #4285F4"></div>
+    <div class="legend-text"> InvertedResBlock_3x3_3F </div>
+  </div>
+  <div class="legend" style="">
+    <div class="legend-circle" style="background-color: #FBBC05"></div>
+    <div class="legend-text"> InvertedResBlock_5x5_6F </div>
+  </div>
+  <div class="legend" style="">
+    <div class="legend-circle" style="background-color: #34A853"></div>
+    <div class="legend-text"> InvertedResBlock_5x5_3F </div>
+  </div>
+  <div class="legend" style="">
+    <div class="legend-circle" style="background-color: #721E6E"></div>
+    <div class="legend-text"> BasicBlock </div>
+  </div>
+  <div class="legend" style="">
+    <div class="legend-line" style="background-color: black; opacity: 1.0; height: 3px; width: 20px;"></div>
+    <div class="legend-text"> Current Architecture </div>
+  </div>
+  <div class="legend" style="">
+    <div class="legend-line" style="background-color: black; opacity: 0.3; height: 8px; width: 20px;"></div>
+    <div class="legend-text"> Previous Architecture </div>
+  </div>
+</div>
+
 <hr>
 
 
