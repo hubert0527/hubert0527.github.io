@@ -110,6 +110,9 @@ var DEMO_IMG_PAD = 5;
 var DEMO_IMG_CACHE = {};
 
 $(window).on('load', function () {
+
+  onnx.backend.webgl.contextId = 'webgl';
+
   var vw = $(window).innerWidth();
   if (vw > 1200) vw = 1200;
   window.CANVAS_H = vw*400/1200, 
