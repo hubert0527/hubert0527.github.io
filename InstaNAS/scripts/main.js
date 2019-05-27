@@ -3,6 +3,7 @@ const PROBA_MODE = false;
 const KEEP = false;
 const NO_ANIME = false;
 const TRANSPARENT = false;
+const DEBUG = false;
 
 const MEAN = {
   32:  [0.491, 0.482, 0.447],
@@ -26,33 +27,82 @@ NODE_DEFS = {
 const NUM_LAYERS=17, NUM_OPTIONS=5;
 
 const DEMO_IMGS = {
-  "Objects-in-the-dark": [ // 0.060248374938964844
-    5193, 6648, 9549, 11843, 13952, 17334, 39195,
-  ],
-  "Marine animals": [ // 0.07249873876571655
-    7835, 8529, 12557, 18528, 21870, 42308, 45216,
-  ],
-  "Scattered objects": [  // 0.07145416736602783
-    24543, 21240, 2766, 29132, 16454, 3844, 12637,  
-  ],
-  "Grass in background": [ // 0.06890863180160522
-    1820, 5974, 198, 2701, 54, 11196, 4237,
-  ],
-  "Fluffy animals": [ // 0.06699085235595703 
-    1879, 5139, 8022, 10609, 10830, 16105, 24462, 
-  ],
-  "Round-shaped objects": [ // 0.06479787826538086
-    36873, 36577, 497, 34, 7843, 2565, 5275,
-  ],
-  "Yellow objects": [ // 0.06288009881973267
-    452, 1882, 2632, 9494, 15205, 15340, 16126,
-  ],
-  "Repeating textures": [ // 0.0721781849861145
-    33255, 31397, 25801, 32722, 24421, 18813, 19711, 
-  ],
+  "Clear foreground objects": {
+    id: [46724, 42399, 36842, 11112, 32019, 41326, 32108],
+    arch: "0000110000010010010000010010000010000010000100100110001000110100000111000100001000011",
+    archID: "63243567943573",
+  },
+  "Objects-in-the-dark": {
+    id: [5193, 6648, 9549, 11843, 13952, 17334, 39195],
+    arch: "0000110000010010010000010010000010000010000100100010001000100100000101000100001100011",
+    archID: "60248374938964844",
+  },
+  "Marine animals": { 
+    id: [7835, 8529, 12557, 18528, 21870, 42308, 45216],
+    arch: "0000110001010010010000010010000010000010010100100111001000110100000101010110001100011",
+    archID: "7249873876571655",
+  },
+  "Displayed objects": {  
+    id: [24543, 21240, 2766, 29132, 16454, 3844, 12637],
+    arch: "0000110001010010010000010010000010000010010110100110001000110100000101010110001100011",
+    archID: "7145416736602783",
+  },
+  "Grass in background": { 
+    id: [1820, 5974, 198, 2701, 54, 11196, 4237],
+    arch: "0000110000010010010000010010100010000010010100100110001000110100000101010100001100011",
+    archID: "6890863180160522",
+  },
+  "Fluffy animals": {  
+    id: [1879, 5139, 8022, 10609, 10830, 24462, 15408],
+    arch: "0000110000010010010000010010100010000010000100100110001000110100000101010100001100011",
+    archID: "6699085235595703",
+  },
+  "Round-shaped objects": { 
+    id: [36873, 36577, 497, 34, 4387, 2565, 5275],
+    arch: "0000110000010010010000010010000010000010010100100110001000110100000101000100001100011",
+    archID: "6479787826538086",
+  },
+  "Yellow objects": { 
+    id: [452, 1882, 2632, 9494, 15205, 15340, 16126],
+    arch: "0000110000010010010000010010000010000010000100100110001000110100000101000100001100011",
+    archID: "6288009881973267",
+  },
+  "Repeating textures": {
+    id: [3577, 30546, 17036, 24990, 11213, 33671, 24512],
+    arch: "0000110001010010010000010010100010000010010110100110001000110100000101010110001100011",
+    archID: "7327771186828613",
+  },
+  "Black-and-white objects" : {
+    id: [20302, 38866, 32370, 30018, 24862, 41537, 38645],
+    arch: "0000110001010010010000010010000010000010010100100110001000110100000101000100001100011",
+    archID: "665850043296814",
+  },
 };
-var ARCH="";
-const DEBUG = false;
+
+const LATENCY_MAT = [ // Normalized
+  [0.7080, 0.7100, 0.6825, 1.0000, 0.0290],
+  [0.3139, 0.1415, 0.1670, 0.3717, 0.1715],
+  [0.1409, 0.0860, 0.5677, 0.2277, 0.0278],
+  [0.1090, 0.0527, 0.1711, 0.0822, 0.0813],
+  [0.2244, 0.1410, 0.0554, 0.1709, 0.0271],
+  [0.3672, 0.0276, 0.0551, 0.0567, 0.0522],
+  [0.0541, 0.3658, 0.0545, 0.0851, 0.0259],
+  [0.0828, 0.0528, 0.0544, 0.0521, 0.0241],
+  [0.4573, 0.0550, 0.2558, 0.0791, 0.0000],
+  [0.0546, 0.0570, 0.1647, 0.0541, 0.0246],
+  [0.0505, 0.0824, 0.5974, 0.1134, 0.1088],
+  [0.0560, 0.1113, 0.0557, 0.0817, 0.0002],
+  [0.1382, 0.0320, 0.0817, 0.0546, 0.0268],
+  [0.1689, 0.0523, 0.0579, 0.0544, 0.3704],
+  [0.1123, 0.0144, 0.3680, 0.0563, 0.6248],
+  [0.4534, 0.0546, 0.1399, 0.2257, 0.3661],
+  [0.0567, 0.0833, 0.1919, 0.1414, 0.4830],
+]
+const LATENCY_MAX = 14.7388;
+const LATENCY_BASELINE = 3.5481;
+const LATENCY_LOW = LATENCY_BASELINE*0.5;
+const LATENCY_HIGH = LATENCY_BASELINE*1.5;
+window.PREV_LAT = LATENCY_LOW;
 
 var NUM_DEMO_IMGS_PER_ROW = 7;
 var NUM_DEMO_IMGS = DEMO_IMGS.length * NUM_DEMO_IMGS_PER_ROW; // 20;
@@ -62,7 +112,7 @@ var DEMO_IMG_CACHE = {};
 $(window).on('load', function () {
   var vw = $(window).innerWidth();
   if (vw > 1200) vw = 1200;
-  window.CANVAS_H = vw*500/1200, 
+  window.CANVAS_H = vw*400/1200, 
   window.CANVAS_W = vw;
 
   window.InfereceSession = new onnx.InferenceSession();
@@ -70,15 +120,33 @@ $(window).on('load', function () {
     create_demo_app();
     load_demo_samples();
   });
-  plot_nodes_only();
+
+  var svg = d3.select('#demo-graph')
+    .attr('width', CANVAS_W)
+    .attr('height', CANVAS_H);
+  render_nodes(svg);
+  vis_latency(svg, "");
 })
+
+function arch_to_lat(arch){
+  var lat = 0;
+  for (var i=0; i<NUM_LAYERS; i++) {
+    for (var j=0; j<NUM_OPTIONS; j++) {
+      var idx = i*NUM_OPTIONS + j;
+      if (arch[idx]==="1") {
+        lat += LATENCY_MAT[i][j];
+      }
+    }
+  }
+  return lat;
+}
 
 function load_demo_samples() {
   const scrollbar_w = 12;
   const preview_res = (0.6*window.CANVAS_W-scrollbar_w)/NUM_DEMO_IMGS_PER_ROW;
   for (var category in DEMO_IMGS) {
     for (var i=0; i<NUM_DEMO_IMGS_PER_ROW; i++){
-      var img_id = DEMO_IMGS[category][i];
+      var img_id = DEMO_IMGS[category].id[i];
       // Load placehodler
       var thumbnailId = "demo-sample-"+img_id;
       $("#demo-samples").append(
@@ -117,14 +185,18 @@ function load_demo_samples() {
       full_img.onload = function() {
         // use browser cache
         var demoId = $(this).attr("demo-id");
+        var demoCat = $(this).attr("demo-category");
         var cached_url = this.src.toString();
         var thumbnail = $("#demo-sample-"+demoId);
         thumbnail[0].src = cached_url;
+        thumbnail.attr("demo-id", demoId);
+        thumbnail.attr("demo-category", demoCat);
         thumbnail.on("click", function(){
           var demoID = $(this).attr("demo-id");
           var demoCat = $(this).attr("demo-category");
           $(".demo-samples").css("background-color", "transparent");
           $(this).css("background-color", "red");
+          window.ARCH = DEMO_IMGS[demoCat].arch
           run_demo_sample_inference(DEMO_IMG_CACHE[parseInt(demoId)]);
         });
       }
@@ -241,16 +313,16 @@ function preprocess(html_img){
   return r.concat(g, b);
 }
 
-function plot_nodes_only(){
+function render_nodes(svg){
 
   var nodes=[], joints=[],
       input_links=[], output_links=[];
   // create node def
   for (var layer=0; layer<NUM_LAYERS; layer++){
     var l_in_x = (layer+0.5) * (CANVAS_W / (NUM_LAYERS+1)),
-        l_in_y = 3 * (CANVAS_H / (NUM_OPTIONS+1)),
+        l_in_y = 3.5 * (CANVAS_H / (NUM_OPTIONS+1)),
         l_ou_x = (layer+1.5) * (CANVAS_W / (NUM_LAYERS+1)),
-        l_ou_y = 3 * (CANVAS_H / (NUM_OPTIONS+1));
+        l_ou_y = 3.5 * (CANVAS_H / (NUM_OPTIONS+1));
 
     // Input / Output node can have larger space
     if (layer===0) {
@@ -266,7 +338,7 @@ function plot_nodes_only(){
     for (var opt=0; opt<NUM_OPTIONS; opt++) {
       var idx = layer*NUM_OPTIONS + opt,
           x = (layer+1) * (CANVAS_W / (NUM_LAYERS+1)),
-          y = (opt+1) * (CANVAS_H / (NUM_OPTIONS+1));
+          y = (opt+1.5) * (CANVAS_H / (NUM_OPTIONS+1));
       var module_node = { id: "layer-"+layer+"-opt-"+opt, reflexive: false, x: x, y: y };
       nodes.push(module_node);
     }
@@ -274,9 +346,6 @@ function plot_nodes_only(){
   joints.push(layer_output_node);
 
   // plot start
-  var svg = d3.select('#demo-graph')
-    .attr('width', CANVAS_W)
-    .attr('height', CANVAS_H);
   plot_nodes(svg, nodes, joints);
 }
 
@@ -285,13 +354,14 @@ function model_to_d3_plot(model_arr){
   var nodes=[], joints=[],
       input_links=[], output_links=[];
   var arch = "";
+  var total_lat = 0;
 
   // create node def
   for (var layer=0; layer<NUM_LAYERS; layer++){
     var l_in_x = (layer+0.5) * (CANVAS_W / (NUM_LAYERS+1)),
-        l_in_y = 3 * (CANVAS_H / (NUM_OPTIONS+1)),
+        l_in_y = 3.5 * (CANVAS_H / (NUM_OPTIONS+1)),
         l_ou_x = (layer+1.5) * (CANVAS_W / (NUM_LAYERS+1)),
-        l_ou_y = 3 * (CANVAS_H / (NUM_OPTIONS+1));
+        l_ou_y = 3.5 * (CANVAS_H / (NUM_OPTIONS+1));
 
     // Input / Output node can have larger space
     if (layer===0) {
@@ -308,7 +378,7 @@ function model_to_d3_plot(model_arr){
     for (var opt=0; opt<NUM_OPTIONS; opt++) {
       var idx = layer*NUM_OPTIONS + opt,
           x = (layer+1) * (CANVAS_W / (NUM_LAYERS+1)),
-          y = (opt+1) * (CANVAS_H / (NUM_OPTIONS+1));
+          y = (opt+1.5) * (CANVAS_H / (NUM_OPTIONS+1));
       var module_node = { id: "layer-"+layer+"-opt-"+opt, reflexive: false, x: x, y: y };
       nodes.push(module_node);
       if ( PROBA_MODE ) {
@@ -330,6 +400,7 @@ function model_to_d3_plot(model_arr){
       } else {
         if ( model_arr[idx] > 0.5 ) {
           arch += "1";
+          total_lat += LATENCY_MAT[layer][opt];
           noSelection = false;
           input_links.push({
             l_idx: layer*2,
@@ -363,18 +434,125 @@ function model_to_d3_plot(model_arr){
   }
   if (DEBUG) {
     if (arch===ARCH) {
-      console.log(arch, ARCH, arch==arch, arch===ARCH)
-      $("svg").css("background-color", "green");
+      $("svg").css("background-color", "rgba(0, 255, 0, 0.3)");
     } else {
-      $("svg").css("background-color", "red");
+      $("svg").css("background-color", "rgba(255, 0, 0, 0.3)");
     }
     window.ARCH = arch;
   }
   joints.push(layer_output_node);
 
+  latency_ratio = total_lat / LATENCY_MAX;
+
   // plot start
   var svg = d3.select('#demo-graph');
   plot_paths(svg, input_links, output_links);
+  vis_latency(svg, arch);
+}
+
+function ratio_remap (ratio) {
+  var disp = ratio-0.5
+  var new_val = 0.5 + Math.sign(disp) * Math.sqrt(Math.abs(disp));
+  return Math.min(Math.max(new_val, 0), 1); // clamp for safety
+}
+
+function vis_latency(svg, arch){
+  const pad_h = 10,
+        pad_v = 30,
+        text_pad = 70,
+        blue = "#4286f4",
+        red = "#f4418b";
+  var lat = (arch==="") ? LATENCY_LOW : arch_to_lat(arch);
+
+  const color = d3.interpolate({colors: blue}, {colors: red})
+
+  d3.selectAll("#lat-bar, #lat-bar-border, #lat-bar-text, #lat-bar-baseline, .lat-bar-label").remove();
+
+  svg.append("rect")
+    .datum(function () { return this })
+    .attr('id', 'lat-bar-border')
+    .attr("x", text_pad)
+    .attr("y", pad_v)
+    .attr("width", CANVAS_W-(pad_h+text_pad))
+    .attr("height", 20)
+    .style('fill', "transparent")
+    .style('stroke', "black");
+
+  var text = svg.append("text")
+    .attr('id', 'lat-bar-text')
+    .attr("x", pad_h)
+    .attr("y", pad_v)
+    .attr("dy", 15)
+    .style("font-size", "15px")
+    .style("font-weight", "bold")
+    .style('fill', "black")
+    .text("Latency")
+
+  var prev_lat_ratio = (window.PREV_LAT-LATENCY_LOW) / (LATENCY_HIGH-LATENCY_LOW);
+  var cur_lat_ratio = (lat-LATENCY_LOW) / (LATENCY_HIGH-LATENCY_LOW);
+  svg.append('rect')
+    .datum(function () { return this })
+    .attr('id', 'lat-bar')
+    .attr('fill', color(ratio_remap(prev_lat_ratio)).colors)
+    .attr('height', 20)
+    .attr('x', text_pad)
+    .attr('y', pad_v)
+    .attr('width', function(d){
+      return prev_lat_ratio * (CANVAS_W-pad_h-text_pad);
+    })
+    .transition()
+    .duration(500)
+    .delay(0)
+    .attr('fill', color(ratio_remap(cur_lat_ratio)).colors)
+    .attr('width', function(d){
+      return cur_lat_ratio * (CANVAS_W-pad_h-text_pad);
+    })
+
+  var baseline_pos = (LATENCY_BASELINE-LATENCY_LOW) / (LATENCY_HIGH-LATENCY_LOW) * (CANVAS_W-pad_h-text_pad)
+  svg.append("rect")
+    .datum(function () { return this })
+    .attr('id', 'lat-bar-baseline')
+    .attr("x", baseline_pos + text_pad)
+    .attr("y", pad_v)
+    .attr("width", 5)
+    .attr("height", 20)
+    .style('fill', "red")
+    .style('stroke', "red");
+
+  var text = svg.append("text")
+    .attr('class', 'lat-bar-label')
+    .attr("x", baseline_pos + text_pad)
+    .attr("y", 10)
+    .attr("dx", -50)
+    .attr("dy", 10)
+    .style("font-size", "15px")
+    .style("font-weight", "bold")
+    .style('fill', "black")
+    .text("MobileNetV2 (baseline)")
+
+  var text = svg.append("text")
+    .attr('class', 'lat-bar-label')
+    .attr("x", text_pad)
+    .attr("y", 10)
+    .attr("dx", 0)
+    .attr("dy", 10)
+    .style("font-size", "15px")
+    .style("font-weight", "bold")
+    .style('fill', blue)
+    .text("Fast")
+
+  var text = svg.append("text")
+    .attr('class', 'lat-bar-label')
+    .attr("x", CANVAS_W-pad_h)
+    .attr("y", 10)
+    .attr("dx", -40)
+    .attr("dy", 10)
+    .style("font-size", "15px")
+    .style("font-weight", "bold")
+    .style('fill', red)
+    .text("Slow")
+
+  window.PREV_LAT = lat;
 }
 
 const FADE_OUT_PREV_LAT  = 200;
