@@ -1,7 +1,7 @@
 var IMG_RES = 224;
 const PROBA_MODE = false;
 const KEEP = false;
-const NO_ANIME = false;
+const NO_ANIME = true;
 const TRANSPARENT = false;
 const DEBUG = false;
 
