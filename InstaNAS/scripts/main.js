@@ -128,7 +128,7 @@ $(window).on('load', function () {
     .attr('width', CANVAS_W)
     .attr('height', CANVAS_H);
   render_nodes(svg);
-  // vis_latency(svg, "");
+  vis_latency(svg, "");
 })
 
 function arch_to_lat(arch){
@@ -450,7 +450,7 @@ function model_to_d3_plot(model_arr){
   // plot start
   var svg = d3.select('#demo-graph');
   plot_paths(svg, input_links, output_links);
-  // vis_latency(svg, arch);
+  vis_latency(svg, arch);
 }
 
 function ratio_remap (ratio) {
