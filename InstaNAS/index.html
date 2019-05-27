@@ -99,6 +99,7 @@ hr {
 .demo-samples {
   border: 2px transparent solid;
   padding: 3px;
+  cursor: pointer;
 }
 .demo-samples:hover {
   border: 2px #555 solid;
@@ -132,18 +133,18 @@ hr {
   color: white;
 }
 
-#demo-samples {
+#demo-panel {
   max-height: 500px;
   overflow-y: scroll;
 }
-#demo-samples::-webkit-scrollbar { 
+#demo-panel::-webkit-scrollbar { 
     width: 12px;
 }
-#demo-samples::-webkit-scrollbar-track {
+#demo-panel::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
   border-radius: 10px;
 }
-#demo-samples::-webkit-scrollbar-thumb {
+#demo-panel::-webkit-scrollbar-thumb {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
 }
@@ -231,10 +232,16 @@ hr {
 <div style="padding-bottom: 40px"></div>
 <center><h3><strong><a href="http://bit.ly/instanas-arxiv">Paper (Arxiv)</a> | <a href="https://github.com/AnjieZheng/InstaNas">Code (to be released soon)</a> </strong> </h3></center>
 <center>
-<a href="images/concept-1.png" class="zoomin"><img src="images/concept-1.png" width="45%" style="margin-top: 20px; margin-bottom: 40px"> </a>
-<a href="images/concept-2.png" class="zoomin"><img src="images/concept-2.png" width="45%" style="margin-top: 20px; margin-bottom: 40px"> </a>
+<div style="display: flex; justify-content: space-between;">
+  <div style="text-align: left; width: 48%;">
+    <a href="images/concept-1.png" class="zoomin"><img src="images/concept-1.png" style="margin-top: 20px; margin-bottom: 40px; width: 100%;"> </a>
+  </div>
+  <div style="text-align: right; width: 48%;">
+    <a href="images/concept-2.png" class="zoomin"><img src="images/concept-2.png" style="margin-top: 20px; margin-bottom: 40px; width: 100%;"> </a>
+  </div>
+</div>
 </center>
-<p class="caption">&#9650; The concept of InstaNAS is to search for a <it><b>distribution</b></it> of architectures. The controller is responsible for selecting a corresponding child architecture for each given input image. Each child architecture within the final <it><b>distribution</b></it> may be an expert of specific domains or speedy inference. In contrast, a conventional NAS method only searches for a single architecture from the search space as the final result.</p>
+<p class="caption">&#9650; The concept of InstaNAS is to search for a <it><b>distribution</b></it> of architectures. The controller is responsible for selecting a corresponding child architecture for each given input image. Each child architecture within the final <it><b>distribution</b></it> may be an expert of specific domains or speedy inference. In contrast, a conventional NAS method only searches for a single architecture from the search space, which cannot fully exploit the power of NAS while searching with multiple objectives.</p>
 
 
 <hr>
@@ -278,17 +285,19 @@ hr {
 </a>
 </center>
 <br>
-<p align="justify"> OuO </p>
+<p align="justify"> InstaNAS consists of two major componenets: a controller and a meta-graph.</p>
+<p align="justify"> <b>The Instance-aware Controller -- </b> Conventional NAS controller is only responsible for RL sampling process, thus only takes effect during the search phase. On the other hand, the controller of InstaNAS is <b>instance-aware</b> and plays an important role for both search and inference phase. In both stages, the InstaNAS controller takes the input sample and accordingly designs an architecture for the input sample. The controller is trained with policy gradient while considering multiple objectives. As a result, the controller tries to explore and find the best trade-off between the objectives in an <b>instance-wise</b> manner. </p>
+<p align="justify"> <b>The One-Shot Meta-Graph -- </b> Many recent NAS frameworks <a href="#cite-1">[1]</a><a href="#cite-2">[2]</a><a href="#cite-3">[3]</a> share the similar concept of constructing weight-sharing meta-graph. InstaNAS inherits the same line of research. However, different to existing works, InstaNAS controller training insists random exploration within the meta-graph. To resolve this problem, we propose to utilize the recently proposed one-shot architecture search <a href="#cite-4">[4]</a> to pre-train our meta-graph. With such a pre-training strategy, any randomly sampled architecture becomes a valid architecture with decent accuracy, thus the controller can receive stable and correct reward to learn with policy gradient. </p>
 <br>
 
 <hr>
 
-<h2 align='center'> Live Demo </h2>
+<h2 align='center'> Live Demo (Architectures Established by InstaNAS Controller) </h2>
 
-<div style="font-size:14px"><p align="justify">We deployed one of the ImageNet controller on your browser (with onnx.js)! You may select some of the ImageNet testing samples below and see what architectures are selected by the controller. You may also upload your own testing samples. Enjoy!</p></div>
+<div style="font-size:14px"><p align="justify">We deployed one of the InstaNAS controller trained on ImageNet on your browser (with onnx.js)! You may select some of the ImageNet testing samples (each row shares the same architecture) below and see the architectures selected by the InstaNAS controller. You may also upload your own testing samples. Enjoy!</p></div>
 
 <div style="display: inline-block; width: 100vw; max-width: 1200px; position: relative;">
-  <div id="demo-samples" style="width: 70%; float: left; display: inline-block;"></div>
+  <div id="demo-panel" style="width: 70%; float: left; display: inline-block;"></div>
   <div style="width: 29%; display: inline-block; float: right;">
     <h4 style="font-size: 20px;">Try with your sample!</h4>
     <img id="demo-thumbnail" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" height="224" width="224" style="margin: 30px auto; background-color: transparent; border: 3px black solid;">

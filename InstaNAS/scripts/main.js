@@ -149,7 +149,7 @@ function load_demo_samples() {
       var img_id = DEMO_IMGS[category].id[i];
       // Load placehodler
       var thumbnailId = "demo-sample-"+img_id;
-      $("#demo-samples").append(
+      $("#demo-panel").append(
         "<img id=\""+thumbnailId+"\" class=\"demo-samples\"" + 
         "src=\"data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=\"" +
         "\"height=\""+preview_res+"\" width=\""+preview_res+"\">")
