@@ -118,7 +118,7 @@ $(window).on('load', function () {
   window.CANVAS_H = vw*400/1200, 
   window.CANVAS_W = vw;
 
-  window.InferenceSession = new onnx.InferenceSession(backendHint=window.ONNX_BACKEND);
+  window.InferenceSession = new onnx.InferenceSession({backendHint: window.ONNX_BACKEND});
   window.InferenceSession.loadModel("./models/exported.onnx").then(function(){
     create_demo_app();
     load_demo_samples();
