@@ -112,6 +112,7 @@ var DEMO_IMG_CACHE = {};
 $(window).on('load', function () {
 
   onnx.backend.webgl.contextId = get_available_backend();
+  $('#test').text(onnx.backend.webgl.contextId);
 
   var vw = $(window).innerWidth();
   if (vw > 1200) vw = 1200;
