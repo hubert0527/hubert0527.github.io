@@ -111,7 +111,7 @@ var DEMO_IMG_CACHE = {};
 
 $(window).on('load', function () {
 
-  onnx.backend.webgl.contextId = 'webgl';
+  onnx.backend.webgl.contextId = get_available_backend();
 
   var vw = $(window).innerWidth();
   if (vw > 1200) vw = 1200;
@@ -142,6 +142,27 @@ function arch_to_lat(arch){
     }
   }
   return lat;
+}
+
+function get_available_backend () {
+
+  var canvas = document.createElement("canvas");
+  var gl = canvas.getContext("webgl")
+    || canvas.getContext("experimental-webgl");
+  if (gl && gl instanceof WebGLRenderingContext) {
+    return "webgl";
+  }
+
+  try {
+    if (typeof WebAssembly === "object" && typeof WebAssembly.instantiate === "function") {
+      const module = new WebAssembly.Module(Uint8Array.of(0x0, 0x61, 0x73, 0x6d, 0x01, 0x00, 0x00, 0x00));
+      if (module instanceof WebAssembly.Module && new WebAssembly.Instance(module) instanceof WebAssembly.Instance) {
+        return "wasm";
+      }
+    }
+  } catch (e) {}
+
+  return "cpu";
 }
 
 function load_demo_samples() {
