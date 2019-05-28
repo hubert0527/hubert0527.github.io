@@ -111,7 +111,9 @@ var DEMO_IMG_CACHE = {};
 
 $(window).on('load', function () {
 
-  window.ONNX_BACKEND = get_available_backend();
+  const backend = get_available_backend();
+  window.ONNX_BACKEND = backend;
+  onnx.backend.webgl.contextId = backend;
   $('#test').text(window.ONNX_BACKEND);
 
   var vw = $(window).innerWidth();
@@ -147,6 +149,14 @@ function arch_to_lat(arch){
 
 function get_available_backend () {
 
+  var canvas = document.createElement("canvas");
+  if ( canvas.getContext("webgl2") ) {
+    return "webgl2";
+  } else if ( canvas.getContext("webgl") ) {
+    return "webgl";
+  }
+
+
   try {
     if (typeof WebAssembly === "object" && typeof WebAssembly.instantiate === "function") {
       const module = new WebAssembly.Module(Uint8Array.of(0x0, 0x61, 0x73, 0x6d, 0x01, 0x00, 0x00, 0x00));
@@ -155,13 +165,6 @@ function get_available_backend () {
       }
     }
   } catch (e) {}
-
-  var canvas = document.createElement("canvas");
-  var gl = canvas.getContext("webgl")
-    || canvas.getContext("experimental-webgl");
-  if (gl && gl instanceof WebGLRenderingContext) {
-    return "webgl";
-  }
 
   return "cpu";
 }
