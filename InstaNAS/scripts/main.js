@@ -372,6 +372,8 @@ function render_nodes(svg){
 
 function model_to_d3_plot(model_arr){
 
+  window.MODEL_ARR = model_arr;
+
   var nodes=[], joints=[],
       input_links=[], output_links=[];
   var arch = "";
@@ -459,8 +461,8 @@ function model_to_d3_plot(model_arr){
     } else {
       $("svg").css("background-color", "rgba(255, 0, 0, 0.3)");
     }
-    window.ARCH = arch;
   }
+  window.ARCH = arch;
   joints.push(layer_output_node);
 
   latency_ratio = total_lat / LATENCY_MAX;
