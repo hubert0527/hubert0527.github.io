@@ -119,8 +119,8 @@ $(window).on('load', function () {
   window.CANVAS_H = vw*400/1200, 
   window.CANVAS_W = vw;
 
-  window.InfereceSession = new onnx.InferenceSession(backendHint=window.ONNX_BACKEND);
-  window.InfereceSession.loadModel("./models/exported.onnx").then(function(){
+  window.InferenceSession = new onnx.InferenceSession(backendHint=window.ONNX_BACKEND);
+  window.InferenceSession.loadModel("./models/exported.onnx").then(function(){
     create_demo_app();
     load_demo_samples();
   });
@@ -238,24 +238,21 @@ function create_demo_app(){
   const fileUploader = document.querySelector('#demo-img-uploader');
   fileUploader.addEventListener('change', (e) => {
     // Create demo model
-    const session = new onnx.InferenceSession();
-    session.loadModel("./models/exported.onnx").then(() => {
       fileblob = e.target.files[0];
       load_image_to_html(fileblob, function(){
-        canvas = create_hidden_canvas();
-        if (canvas && canvas.getContext) {
-          ctx = canvas.getContext('2d');
-          ctx.drawImage(document.getElementById("demo-thumbnail"), 0, 0);
-          img_data = ctx.getImageData(0, 0, IMG_RES, IMG_RES);
-          img_data = preprocess(img_data.data)
-          inputTensor = [
-            new Tensor(new Float32Array(img_data), "float32", [1, 3, IMG_RES, IMG_RES])
-          ];
-          agent_inference(session, inputTensor, function(outputTensor){
-              model_to_d3_plot(outputTensor.data);
-          });
-        }
-      });  
+      canvas = create_hidden_canvas();
+      if (canvas && canvas.getContext) {
+        ctx = canvas.getContext('2d');
+        ctx.drawImage(document.getElementById("demo-thumbnail"), 0, 0);
+        img_data = ctx.getImageData(0, 0, IMG_RES, IMG_RES);
+        img_data = preprocess(img_data.data)
+        inputTensor = [
+          new Tensor(new Float32Array(img_data), "float32", [1, 3, IMG_RES, IMG_RES])
+        ];
+        agent_inference(window.InferenceSession, inputTensor, function(outputTensor){
+            model_to_d3_plot(outputTensor.data);
+        });
+      }
     });
   });
 }
@@ -270,7 +267,7 @@ function run_demo_sample_inference(fullImg) {
     inputTensor = [
       new Tensor(new Float32Array(img_data), "float32", [1, 3, IMG_RES, IMG_RES])
     ];
-    agent_inference(window.InfereceSession, inputTensor, function(outputTensor){
+    agent_inference(window.InferenceSession, inputTensor, function(outputTensor){
         model_to_d3_plot(outputTensor.data);
     });
   }
