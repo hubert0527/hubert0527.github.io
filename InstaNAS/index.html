@@ -78,9 +78,13 @@ h4 {font-size: 15px}
 }
 
 hr {
-  border: 2px 
-  solid #990000;
+  border: 2px solid #990000;
   margin: 50px 20px;
+}
+
+.citation {
+  width: 1000px;
+  position: relative;
 }
 
 .citation-id {
@@ -210,6 +214,17 @@ hr {
   margin-left: 5px;
 }
 
+.subscript {
+  font-size: 66%;
+}
+
+.small-hr {
+  border: none;
+  border-top: 2px dashed gray;
+  margin: 50px 0;
+  width: 80%;
+}
+
 </style>
 
 <!-- <meta content="MSHTML 6.00.2800.1400" name="GENERATOR"><script src="b5m.js" id="b5mmain" type="text/javascript"></script></head> -->
@@ -235,14 +250,14 @@ hr {
 <center>
 <div style="display: flex; justify-content: space-between;">
   <div style="text-align: left; width: 48%;">
-    <a href="images/concept-1.png" class="zoomin"><img src="images/concept-1.png" style="margin-top: 20px; margin-bottom: 40px; width: 100%;"> </a>
+    <img src="images/concept-1.png" style="margin-top: 20px; width: 100%;">
   </div>
   <div style="text-align: right; width: 48%;">
-    <a href="images/concept-2.png" class="zoomin"><img src="images/concept-2.png" style="margin-top: 20px; margin-bottom: 40px; width: 100%;"> </a>
+    <img src="images/concept-2.png" style="margin-top: 20px; width: 100%;">
   </div>
 </div>
-</center>
 <p class="caption">&#9650; The concept of InstaNAS is to search for a <it><b>distribution</b></it> of architectures. The controller is responsible for selecting a corresponding child architecture for each given input image. Each child architecture within the final <it><b>distribution</b></it> may be an expert of specific domains or speedy inference. In contrast, a conventional NAS method only searches for a single architecture from the search space, which cannot fully exploit the power of NAS while searching with multiple objectives.</p>
+</center>
 
 
 <hr>
@@ -281,14 +296,12 @@ hr {
 <br>
 <h2 align='center'> Overview of the Method </h1>
 <center>
-<a href="images/overview.png" class="zoomin">
-  <img src="images/overview.png" style="width:100%;" align="middle">
-</a>
+<img src="images/overview.png" style="width:100%;" align="middle">
 </center>
 <br>
-<p align="justify"> InstaNAS consists of two major componenets: a controller and a meta-graph.</p>
+<p align="justify"> InstaNAS is a multi-objective (O<span class="subscript">T</span> and O<span class="subscript">A</span>, we target accuracy and latency in our experiments) framework consists of two major componenets: a controller and a meta-graph:</p>
 <p align="justify"> <b>The Instance-aware Controller -- </b> Conventional NAS controller is only responsible for RL sampling process, thus only takes effect during the search phase. On the other hand, the controller of InstaNAS is <b>instance-aware</b> and plays an important role for both search and inference phase. In both stages, the InstaNAS controller takes the input sample and accordingly designs an architecture for the input sample. The controller is trained with policy gradient while considering multiple objectives. As a result, the controller tries to explore and find the best trade-off between the objectives in an <b>instance-wise</b> manner. </p>
-<p align="justify"> <b>The One-Shot Meta-Graph -- </b> Many recent NAS frameworks <a href="#cite-1">[1]</a><a href="#cite-2">[2]</a><a href="#cite-3">[3]</a> share the similar concept of constructing weight-sharing meta-graph. InstaNAS inherits the same line of research. However, different to existing works, InstaNAS controller training insists random exploration within the meta-graph. To resolve this problem, we propose to utilize the recently proposed one-shot architecture search <a href="#cite-4">[4]</a> to pre-train our meta-graph. With such a pre-training strategy, any randomly sampled architecture becomes a valid architecture with decent accuracy, thus the controller can receive stable and correct reward to learn with policy gradient. </p>
+<p align="justify"> <b>The One-Shot Meta-Graph -- </b> Many recent NAS frameworks <a href="#cite-enas">[1]</a><a href="#cite-oneshot">[2]</a><a href="#cite-darts">[3]</a> share the similar concept of constructing weight-sharing meta-graph. InstaNAS inherits the same line of research. However, different to existing works, InstaNAS controller training insists random exploration within the meta-graph. To resolve this problem, we propose to utilize the recently proposed one-shot architecture search <a href="#cite-oneshot">[2]</a> to pre-train our meta-graph. With such a pre-training strategy, any randomly sampled architecture becomes a valid architecture with decent accuracy, thus the controller can receive stable and correct reward to learn with policy gradient. </p>
 <br>
 
 <hr>
@@ -301,7 +314,7 @@ hr {
   <div id="demo-panel" style="width: 70%; float: left; display: inline-block;"></div>
   <div style="width: 29%; display: inline-block; float: right;">
     <h4 style="font-size: 20px;">Try with your sample!</h4>
-    <img id="demo-thumbnail" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" height="224" width="224" style="margin: 30px auto; background-color: transparent; border: 3px black solid;">
+    <img id="demo-thumbnail" src="./images/white.png" height="224" width="224" style="margin: 30px auto; background-color: white; border: 3px black solid;">
     <div></div>
     <label class="button">
       Upload!
@@ -351,25 +364,72 @@ hr {
 <hr>
 
 
-<br>
-<h2>Acknowledgement</h2>
-<p align="justify"> OuO </p>
-<br>
+<h2 align="center"> Experiment: Better Accuracy-Latency Trade-off Frontier </h2>
+<img src="./images/exp-table.png" width="80%" style="margin-top: 20px;">
+<p class="caption">&#9650; We <b style="text-decoration: underline;">highlight</b> values that are better than MobileNetV2 1.0x since we conduct the experiments in a  MobileNetV2-1.0x-based search space. </p>
+<p align="justify" style="margin-top: 20px;"> <b>Performance gain:</b> InstaNAS consistently improves MobileNetV2 accuracy-latency trade-off frontier on a variety of datasets. InstaNAS achieves up to 48.9% latency reduction without accuracy reduction, 82.6% latency reduction if moderate accuracy drop is acceptable, and accuracy improvement in some datasets. </p>
+<p align="justify" style="margin-top: 10px;"> <b>Trade-off frontier in a single search:</b> All InstaNAS variants (InstaNAS A-E or A-C) in each sub-table are obtained in a single search. InstaNAS adopts a dynamic reward design. Such a design makes the controller in each epoch stands for different level of trade-off between latency and accuracy. </p>
 
 <hr>
 
-<br>
-<h2>References</h2>
+<h2 align="center"> Experiment: OutPerforms Other Baselines </h2>
+<img src="./images/baselines.png" width="70%" style="margin-top: 20px;">
+<p align="justify" style="margin-top: 30px;"> We also compared with multiple other baselines on CIFAR-10, including OneshotNAS <a href="#cite-oneshot">[2]</a> (which we used in our pre-training phase) and conditional computation methods (BlockDrop <a href="#cite-blockdrop">[4]</a> and ConvNet-AIG <a href="#cite-aig">[5]</a>). The results suggest InstaNAS outperforms these methods with a large margin. </p>
 
-OuO
+<hr>
 
-<!-- <div id="began-cs" class="citation" align="justify"> 
-<p class="citation-id"><b>[4]</b></p>
-<p class="citation-content">C.-C. Chang, C. H. Lin, C.-R. Lee, D.-C. Juan, W. Wei, H.-T. Chen. <a href="http://openaccess.thecvf.com/content_ECCV_2018/html/Chieh_Lin_Escaping_from_Collapsing_ECCV_2018_paper.html">"Escaping from Collapsing Modes in a Constrained Space"</a> in ECCV 2018. </p>
+<h2 align="center"> Visualization: Computation-by-Difficulty Similar to Human Perception </h2>
+<img src="./images/slow_fast.png" width="80%" style="margin-top: 20px;">
+<p align="justify" style="margin-top: 30px;"> We visualize how InstaNAS handle the high-intra-class variance of ImageNet samples and select architectures according to the difficulty of samples. Hard samples tend to be assigned with more sophisticated architecutures. The estimated difficulty interestingly matches human perception (e.g., cluttered background, high intra-class variation, illumination conditions). </p>
+
+<hr>
+
+<h2 align="center"> Visualization: The Distribution of Architectures </h2>
+<img src="./images/umap.png" width="60%" style="margin-top: 20px;">
+<p class="caption" style="width: 60%;">&#9650; The distribution of architectures predicted by the controller on ImageNet training set. The color indicates the latency of architecture. <span style="color: red;">Red</span> dots indicate slower architectures and <span style="color: blue;">blue</span> points indicate faster architectures </p>
+<p align="justify" style="margin-top: 30px;"> We collect all architectures (in probability form) predicted by InstaNAS controller and project to 2D space with UMAP <a href="#cite-umap">[6]</a>. We observe the controller can distinguish the difficulty of samples and assign architectures with corresponding complexity. Furthermore, the clear clusters indicate the distance between distributions is significant and the controller has definite policy to identify certain features of each input instance. </p>
+
+<hr>
+
+
+<!-- <h2 align="center">Acknowledgement</h2>
+<p align="justify"> OuO </p>
+
+<hr> -->
+
+<h2 align="center">References</h2>
+
+<div id="cite-enas" class="citation" align="justify"> 
+<p class="citation-id"><b>[1]</b></p>
+<p class="citation-content">H. Pham, M. Guan, B. Zoph, Q. Le, J. Dean. <a href="http://proceedings.mlr.press/v80/pham18a.html">"Efficient Neural Architecture Search via Parameter Sharing"</a> in ICML 2018. </p>
 </div>
-<div style="clear: both;"></div> -->
 
-<br>
+<div id="cite-oneshot" class="citation" align="justify"> 
+<p class="citation-id"><b>[2]</b></p>
+<p class="citation-content">G. Bender, P.-J. Kindermans, B. Zoph, V. Vasudevan, Q. Le. <a href="http://proceedings.mlr.press/v80/bender18a.html">"Escaping from Collapsing Modes in a Constrained Space"</a> in ICML 2018. </p>
+</div>
+
+<div id="cite-darts" class="citation" align="justify"> 
+<p class="citation-id"><b>[3]</b></p>
+<p class="citation-content">H. Liu, K. Simonyan, Y. Yang. <a href="https://openreview.net/forum?id=S1eYHoC5FX">"DARTS: Differentiable Architecture Search "</a> in ICLR 2019. </p>
+</div>
+
+<div id="cite-blockdrop" class="citation" align="justify"> 
+<p class="citation-id"><b>[4]</b></p>
+<p class="citation-content">Z. Wu, T. Nagarajan, A. Kumar, S. Rennie, L. S. Davis, K. Grauman, R. Feris. <a href="http://openaccess.thecvf.com/content_cvpr_2018/html/Wu_BlockDrop_Dynamic_Inference_CVPR_2018_paper.html">"BlockDrop: Dynamic Inference Paths in Residual Networks"</a> in CVPR 2018. </p>
+</div>
+
+<div id="cite-aig" class="citation" align="justify"> 
+<p class="citation-id"><b>[5]</b></p>
+<p class="citation-content">A. Veit, S. Belongie. <a href="http://openaccess.thecvf.com/content_ECCV_2018/html/Andreas_Veit_Convolutional_Networks_with_ECCV_2018_paper.html">"Convolutional Networks with Adaptive Inference Graphs"</a> in ECCV 2018. </p>
+</div>
+
+<div id="cite-umap" class="citation" align="justify"> 
+<p class="citation-id"><b>[6]</b></p>
+<p class="citation-content">L. McInnes, J. Healy, N. Saul, L. Grossberger. <a href="https://github.com/lmcinnes/umap">"UMAP: Uniform Manifold Approximation and Projection"</a> in "The Journal of Open Source Software" and Arxiv. </p>
+</div>
+
+<div style="clear: both;"></div>
 
 <hr>
 

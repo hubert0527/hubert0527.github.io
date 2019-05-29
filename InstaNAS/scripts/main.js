@@ -111,15 +111,12 @@ var DEMO_IMG_CACHE = {};
 
 $(window).on('load', function () {
 
-  window.ONNX_BACKEND = get_available_backend();
-
   var vw = $(window).innerWidth();
   if (vw > 1200) vw = 1200;
   window.CANVAS_H = vw*400/1200, 
   window.CANVAS_W = vw;
 
-  window.InferenceSession = new onnx.InferenceSession({backendHint: window.ONNX_BACKEND});
-  window.InferenceSession.loadModel("./models/exported.onnx").then(function(){
+  load_onnx_model(function(){
     create_demo_app();
     load_demo_samples();
   });
@@ -144,25 +141,39 @@ function arch_to_lat(arch){
   return lat;
 }
 
-function get_available_backend () {
+function load_onnx_model (callback) {
 
+  // Use WebAssembly backend
   try {
     if (typeof WebAssembly === "object" && typeof WebAssembly.instantiate === "function") {
       const module = new WebAssembly.Module(Uint8Array.of(0x0, 0x61, 0x73, 0x6d, 0x01, 0x00, 0x00, 0x00));
       if (module instanceof WebAssembly.Module && new WebAssembly.Instance(module) instanceof WebAssembly.Instance) {
-        return "wasm";
+        window.InferenceSession = new onnx.InferenceSession({backendHint: "wasm"});
+        window.InferenceSession.loadModel("./models/exported.onnx").then(callback());
+        return;
       }
     }
   } catch (e) {}
 
-  var canvas = document.createElement("canvas");
-  if ( canvas.getContext("webgl2") ) {
-    return "webgl2";
-  } else if ( canvas.getContext("webgl") ) {
-    return "webgl";
-  }
+  // Use CPU backend
+  window.InferenceSession = new onnx.InferenceSession({backendHint: "cpu"});
+  window.InferenceSession.loadModel("./models/exported.onnx").then(callback());
+  return;
 
-  return "cpu";
+  // Use WebGL backend (currently many flatforms does not support, thus deprecate here)
+  try {
+    var canvas = document.createElement("canvas");
+    var backend = "";
+    if ( canvas.getContext("webgl2") ) {
+      backend = "webgl2";
+    } else if ( canvas.getContext("webgl") ) {
+      backend = "webgl";
+    }
+    window.InferenceSession = new onnx.InferenceSession({backendHint: backend});
+    window.InferenceSession.loadModel("./models/exported.onnx").then(callback());
+    return;
+  } catch (e) {}
+  
 }
 
 function load_demo_samples() {
