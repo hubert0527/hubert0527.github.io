@@ -4070,7 +4070,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 var CSS_UNITS = 96.0 / 72.0;
 exports.CSS_UNITS = CSS_UNITS;
-var DEFAULT_SCALE_VALUE = "page_scale_width";
+var DEFAULT_SCALE_VALUE = "page-width";
 exports.DEFAULT_SCALE_VALUE = DEFAULT_SCALE_VALUE;
 var DEFAULT_SCALE = 1.0;
 exports.DEFAULT_SCALE = DEFAULT_SCALE;
