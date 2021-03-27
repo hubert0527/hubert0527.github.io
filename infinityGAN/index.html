@@ -1,0 +1,359 @@
+<!--
+OuO is the answer to everything.
+OuO can perfectly express anything and any mood.
+Just believe in OuO.
+QuQ
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+
+<head>
+<title>InfinityGAN</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+
+<meta property="og:image" content="images/teaser_fb.jpg"/>
+<meta property="og:title" content="InfinityGAN: Towards Infinite-Resolution Image Synthesis"/>
+
+<script src="lib.js" type="text/javascript"></script>
+<script src="popup.js" type="text/javascript"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3H2WZNYDWT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3H2WZNYDWT');
+</script>
+
+<script type="text/javascript">
+// redefining default features
+var _POPUP_FEATURES = 'width=500,height=300,resizable=1,scrollbars=1,titlebar=1,status=1';
+</script>
+
+<!-- PDF reader -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js" integrity="sha512-Z8CqofpIcnJN80feS2uccz+pXWgZzeKxDsDNMD/dJ6997/LSRY+W4NmEt9acwR+Gt9OHN0kkI1CTianCwoqcjQ==" crossorigin="anonymous"></script>
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<link media="all" href="glab.css" type="text/css" rel="StyleSheet">
+<style type="text/css" media="all">
+IMG {
+	PADDING-RIGHT: 0px;
+	PADDING-LEFT: 0px;
+	FLOAT: none;
+	PADDING-BOTTOM: 0px;
+	PADDING-TOP: 0px
+}
+BODY {
+	TEXT-ALIGN: center
+}
+h1, h2, .bold {
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+h1 {font-size: 30px}
+h2 {font-size: 27px}
+h3 {font-size: 18px}
+h4 {font-size: 15px}
+
+.caption {
+	color: var(--caption-color); 
+	font-weight: bold;
+	/*font-style: italic;*/
+	font-size: 15px;
+	margin-top: 10px;
+	width: 95%;
+}
+
+.citation-id {
+	display: inline-block; 
+	width:50px; 
+	float: left;
+	font-size: 14px;
+}
+
+.citation-content {
+	display: inline-block; 
+	width:950px; 
+	float: right;
+	font-size: 14px;
+}
+
+.zoomin, .zoomin:hover {
+	cursor: -webkit-zoom-in;
+	cursor: zoom-in;
+}
+
+.author-names {
+	font-size: 20px;
+}
+
+.author-names>div, .affiliations>div {
+	padding: 0;
+}
+
+.affiliations {
+	font-size: 14px;
+}
+
+.sm-margin {
+	margin: 15px auto;
+}
+
+.md-margin {
+	margin: 45px auto;
+}
+
+.lg-margin {
+	margin: 90px auto;
+}
+
+.xg-margin {
+	margin: 120px auto;
+}
+
+.section-title {
+	text-align: left;
+}
+.section-title span {
+	border-left: 10px solid var(--face-color);
+	border-bottom: 1px solid var(--face-color);
+	padding: 5px 15px;
+}
+</style>
+
+<!-- <meta content="MSHTML 6.00.2800.1400" name="GENERATOR"><script src="b5m.js" id="b5mmain" type="text/javascript"> -->
+</script>
+</head>
+
+<body>
+
+<div class="container">
+	<h1 class="lg-margin">InfinityGAN: Towards Infinite-Resolution Image Synthesis</h1>
+	<div class="row author-names sm-margin">
+		<div class="col-6   offset-lg-1 col-lg-3">
+			<a href="https://hubert0527.github.io/">Chieh&nbsp;Hubert&nbsp;Lin<sup>1</sup></a>
+		</div>
+		<div class="col-6   col-lg-4">
+			<a href="https://yccyenchicheng.github.io/">Yen-Chi&nbsp;Cheng<sup>2</sup></a>
+		</div>
+		<div class="col-12   col-lg-3">
+			<a href="http://vllab.ucmerced.edu/hylee/">Hsin-Ying&nbsp;Lee<sup>3</sup></a>
+		</div>
+		<div class="col-6   offset-lg-2 col-lg-4">
+			<a href="http://www.stulyakov.com/">Sergey&nbsp;Tulyakov<sup>3</sup></a>
+		</div>
+		<div class="col-6   col-lg-4">
+			<a href="https://faculty.ucmerced.edu/mhyang/">Ming-Hsuan&nbsp;Yang<sup>3 4</sup></a>
+		</div>
+	</div>
+
+	<div class="row sm-margin"></div>
+
+	<div class="row affiliations sm-margin">
+		<div class="col-6   col-lg-2 offset-lg-2">
+			<a href="https://www.ucmerced.edu/"><sup>1</sup>UC&nbsp;Merced</a>
+		</div>
+		<div class="col-6   col-lg-2">
+			<a href="https://www.cmu.edu/"><sup>2</sup>CMU</a>
+		</div>
+		<div class="col-6   col-lg-2">
+			<a href="https://research.snap.com/"><sup>3</sup>Snap&nbsp;Research</a>
+		</div>
+		<div class="col-6   col-lg-2">
+			<a href="https://research.google/"><sup>4</sup>Google&nbsp;Research</a>
+		</div>
+	</div>
+
+	<div class="row md-margin"></div>
+
+	<div class="row md-margin">
+		<div class="offset-2 col-8" style="border-radius: 10px; border: 4px double var(--face-color); padding: 15px">
+			<h3 style="margin-bottom: 20px; font-size: 24px; font-weight: bolder; text-decoration: underline;">Under Submission</h3>
+			<p style="margin: auto">
+				<a href="http://bit.ly/COCO-GAN">Main Paper</a> &nbsp | &nbsp
+				<a href="https://goo.gl/5HLynv">Full Paper w/ Supp</a> &nbsp | &nbsp
+				<a href="http://bit.ly/infinityCodes">Code (Release Upon Publication)</a> 
+			</p> 
+		</div>
+	</div>
+
+	<div class="row">
+		<!-- <a href="images/teaser.png" class="zoomin">
+			<img src="images/teaser.png" width="50%" style="margin-top: 20px; margin-bottom: 40px">
+		</a> -->
+		<iframe
+			src="pdf_reader/viewer.html?file=../assets/teaser.pdf"
+			width="100%"
+			style="margin-top: 20px; margin-bottom: 40px;">
+		</iframe>
+	</div>
+
+	<hr>
+
+	<div class="row">
+		<h2 class="bold section-title"><span>Abstract</span></h2>
+
+		<div class="col-12" style="font-size:14px">
+			<p align="justify">
+				We present InfinityGAN, a method to generate arbitrary-resolution images. 
+				The problem is associated with several key challenges. 
+				First, scaling existing models to a high resolution is resource-constrained, 
+				both in terms of computation and availability of high-resolution training data. 
+				InfinityGAN trains and infers patch-by-patch seamlessly with low computational resources.
+				Second, large images should be locally and globally consistent, avoid repetitive patterns, 
+				and look realistic. To address these, InfinityGAN takes global appearance, local structure 
+				and texture into account. With this formulation, we can generate images with resolution and 
+				level of detail not attainable before. 
+				Experimental evaluation supports that InfinityGAN generates images with superior global 
+				structure compared to baselines at the same time featuring parallelizable inference.
+				Finally, we show several applications unlocked by our approach, such as fusing styles 
+				spatially, multi-modal outpainting and image inbetweening at arbitrary input and output resolutions.
+			</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-4 my-5 my-lg-0">
+			<a href="http://bit.ly/COCO-GAN">
+				<img alt="paper thumbnail" src="assets/paper-preview.png" style="width:100%">
+			</a>
+		</div>
+		<div class="col-8 my-xl-5">
+			<h3>Paper</h3>
+			<p><a>Under Submission</a>,  2021. </p>
+
+			<h3>Code </h3>
+			<p><a href='http://bit.ly/infinityCodes'> PyTorch</a></p>
+
+			<h3>Citation</h3>
+			<code style="text-align: left; display: block; background-color: #ddd; padding: 20px; margin: 0px 20px;">
+				@article{lin2021infinity, <br/>
+				&nbsp;&nbsp;&nbsp;title={InfinityGAN: Towards Infinite-Resolution Image Synthesis}, <br/>
+				&nbsp;&nbsp;&nbsp;author={Lin, Chieh Hubert and Cheng, Yen-Chi and Lee, Hsin-Ying and Tulyakov, Sergey and Yang, Ming-Hsuan}, <br/>
+				&nbsp;&nbsp;&nbsp;journal={arXiv preprint arXiv:???}, <br/>
+				&nbsp;&nbsp;&nbsp;year={2021} <br/>
+				}
+			</code>
+		</div>
+	</div>
+
+	<hr>
+
+
+
+	<div class="row">
+
+		<br>
+		<h2 class="bold section-title"><span>Overview of the Method</span></h2>
+		<center><img src="images/model_training.png" width="80%"></center>
+		<br>
+		<p align="justify">For the COCO-GAN training, the latent vectors are duplicated multiple times, concatenated with micro coordinates, and feed to the generator to generate micro patches. Then we concatenate multiple micro patches to form a larger macro patch. The discriminator learns to discriminate between real and fake macro patches and an auxiliary task predicting the coordinate of the macro patch. Notice that <b><i>none</i></b> of the models requires full images during training.</p>
+		<center><img src="images/model_testing.png" width="80%", style="margin-bottom:20px;"></center>
+		<p align="justify"> During the testing phase, the micro patches generated by the generator are directly combined into a full image as the final output. Still, <b><i>none</i></b> of the models requires full images. Furthermore, the generated images are high-quality without any post-processing in addition to a simple concatenation.</p>
+		<br>
+
+		<hr>
+
+		<br>
+		<h2 class="bold section-title"><span>Applications: Beyond-Boundary Image Generation</span></h2>
+		<center><a href="images/beyond-boundary-generation.gif" class="zoomin"><img src="images/beyond-boundary-generation-small-optim.gif" width="80%", style="margin-bottom: 50px;"></a></center>
+		<p align="justify"> COCO-GAN can generate additional contents by extrapolating the learned coordinate manifold. More specifically, with a fixed latent vector, we extrapolates the coordinate condition <b><i>beyond</i></b> the training coordinates distribution. We show that COCO-GAN generates high-quality 384x384 images: the original size is 256x256, with each direction being extended by one micro patch (64x64 pixels), resulting a size of 384x384. Note that the model is in fact trained on 256x256 images. </p>
+		<br>
+
+		<hr>
+
+		<br>
+		<h2 class="bold section-title"><span>Applications: Patch-Guided Image Generation</span></h2>
+		<center>
+		<video controls autoplay loop muted playsinline style="margin-bottom: 10px;" width="700">
+		<source src="images/patch-guided-image-generation.mp4" type="video/mp4">
+		</video>
+		</center>
+		<p align="justify"> Some prior works <a href="#infogan">[1]</a><a href="#ali">[2]</a><a href="#bigan">[3]</a><a href="#began-cs">[4]</a> have shown that we can train a bijective function within the discriminator that maps each image to a corresponding latent vector. Such a component becomes interesting in COCO-GAN setting, since the discriminator of COCO-GAN only consumes macro patches. As a result, COCO-GAN can estimate a latent vector with only a part of an image, then generates a full image that locally retains some characteristics of the given macro patch, while still globally coherent. </p><br>
+		<hr>
+
+		<br>
+		<h2 class="bold section-title"><span>Applications: Panorama Generation</span></h2>
+		<center><a href="https://i.imgur.com/ro3ud6j.gifv" class="zoomin"><img src="images/panorama_rotate_small2_optim.gif" width="80%"></a></center>
+		<p class="caption" style="width: 80%"> &#9650; By applying a cylindrical coordinate system, the panorama generated by COCO-GAN is natively horizontally cyclic. </p>
+		<br>
+
+		<hr>
+
+		<br>
+		<h2 class="bold section-title"><span>Acknowledgement</span></h2>
+		<p align="justify"> We sincerely thank David Berthelot and Mong-li Shih for the insightful suggestions and advice. We are grateful to the National Center for High-performance Computing for computer time and facilities. Hwann-Tzong Chen was supported in part by MOST grants 107-2634-F-001-002 and 107-2218-E-007-047. </p>
+		<br>
+
+		<hr>
+
+		<br>
+		<h2 class="bold section-title"><span>References</span></h2>
+
+		<div id="infogan" class="citation" align="justify"> 
+		<p class="citation-id"><b>[1]</b></p>
+		<p class="citation-content">X. Chen, Y. Duan, R. Houthooft, J. Schulman, I. Sutskever, P. Abbeel. <a href="https://papers.nips.cc/paper/6399-infogan-interpretable-representation-learning-by-information-maximizing-generative-adversarial-nets">"Infogan: Interpretable representation learning by information maximizing generative adversarial nets"</a>, in NIPS 2016.</p>
+		</div>
+
+		<div style="clear: both;"></div>
+
+		<div id="ali" class="citation" align="justify"> 
+		<p class="citation-id"><b>[2]</b></p>
+		<p class="citation-content">V. Dumoulin, I. Belghazi, B. Poole, A. Lamb, M. Arjovsky, O. Mastropietro, A. Courville. <a href="https://openreview.net/forum?id=B1ElR4cgg">"Adversarially Learned Inference"</a>, in ICLR 2017. </p>
+		</div>
+
+		<div style="clear: both;"></div>
+
+		<div id="bigan" class="citation" align="justify"> 
+		<p class="citation-id"><b>[3]</b></p>
+		<p class="citation-content">J. Donahue, P. Kr&auml;henb&uuml;hl<!--Krähenbühl-->, T. Darrell. <a href="https://openreview.net/forum?id=BJtNZAFgg">"Adversarial Feature Learning"</a>, in ICLR 2017. </p>
+		</div>
+
+		<div style="clear: both;"></div>
+
+		<div id="began-cs" class="citation" align="justify"> 
+		<p class="citation-id"><b>[4]</b></p>
+		<p class="citation-content">C.-C. Chang, C. H. Lin, C.-R. Lee, D.-C. Juan, W. Wei, H.-T. Chen. <a href="http://openaccess.thecvf.com/content_ECCV_2018/html/Chieh_Lin_Escaping_from_Collapsing_ECCV_2018_paper.html">"Escaping from Collapsing Modes in a Constrained Space"</a> in ECCV 2018. </p>
+		</div>
+
+		<div style="clear: both;"></div>
+
+		<br>
+
+		<hr>
+		
+		<!-- <script type="text/javascript">
+			(function(c,o,m,p,u,t,e){
+				c['GoStatsObject']=u;c[u]=c[u]||function(){(c[u].q=c[u].q||[]).push(arguments)},
+				c[u].l=1*new Date();t=o.createElement(m);t.async=1;t.src=p;
+				e=o.getElementsByTagName(m)[0];
+				e.parentNode.insertBefore(t,e);
+			})(window,document,'script','//www.gostats.org/5.js','go');
+			go('init',701071175,{'img_counter_type':4,'img_image_type':1});go('send');
+		</script> -->
+
+		<p>Website # visits: 
+			<!-- GoStats Simple HTML Based Code -->
+			<a target="_blank" title="web site traffic statistics"
+			href="http://www.gostats.org"><img alt="web site traffic statistics"
+			src="//www.gostats.org/0.png?a=701071175&ct=4&ci=1" style="border-width:0" /></a>
+			<!-- End GoStats Simple HTML Based Code -->
+		</p>
+
+	</div>
+
+</div>
+</body>
+
+</html>
