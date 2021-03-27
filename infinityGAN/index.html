@@ -135,7 +135,7 @@ h4 {font-size: 15px}
 
 <script>
 	// Force pdf reader always aspect ratio
-	$(window).on("load resize", function(){
+	$(window).on("ready load resize", function(){
 		$(".pdf-reader").each(function(){
 			var cur_width = $(this).width();
 			var aspect_ratio = parseFloat($(this).attr("hratio"));
