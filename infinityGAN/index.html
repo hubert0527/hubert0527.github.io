@@ -132,8 +132,18 @@ h4 {font-size: 15px}
 }
 </style>
 
-<!-- <meta content="MSHTML 6.00.2800.1400" name="GENERATOR"><script src="b5m.js" id="b5mmain" type="text/javascript"> -->
+
+<script>
+	// Force pdf reader always aspect ratio
+	$(window).on("load resize", function(){
+		$(".pdf-reader").each(function(){
+			var cur_width = $(this).width();
+			var aspect_ratio = parseFloat($(this).attr("hratio"));
+			$(this).height(cur_width * aspect_ratio);
+		});
+	});
 </script>
+
 </head>
 
 <body>
@@ -192,9 +202,10 @@ h4 {font-size: 15px}
 		<!-- <a href="images/teaser.png" class="zoomin">
 			<img src="images/teaser.png" width="50%" style="margin-top: 20px; margin-bottom: 40px">
 		</a> -->
-		<iframe
+		<iframe class="pdf-reader"
 			src="pdf_reader/viewer.html?file=../assets/teaser.pdf"
 			width="100%"
+			hratio="0.5"
 			style="margin-top: 20px; margin-bottom: 40px;">
 		</iframe>
 	</div>
