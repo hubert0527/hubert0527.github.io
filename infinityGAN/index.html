@@ -254,11 +254,11 @@ h4 {font-size: 15px}
 			veryLongDispDir = -1;
 			mouseHoldingTimeout = setTimeout(repetitiveDisp, 1000/fps);
 		});
-		$("#very-long-left-btn").on("mouseup", function(e) {
+		$("#very-long-left-btn").on("mouseup mouseleave", function(e) {
 			clearTimeout(mouseHoldingTimeout);
 			mouseHoldingTimeout = undefined;
 		});
-		$("#very-long-right-btn").on("mouseup", function(e) {
+		$("#very-long-right-btn").on("mouseup mouseleave", function(e) {
 			clearTimeout(mouseHoldingTimeout);
 			mouseHoldingTimeout = undefined;
 		});
