@@ -227,6 +227,7 @@ h4 {font-size: 15px}
 			var evt = e || event;
 			window.veryLongDragging = true;
 			window.veryLongLastX = getClientX(evt);
+			evt.preventDefault();
 		};
 		function veryLongDragMove (e) {
 			var evt = e || event;
@@ -241,9 +242,12 @@ h4 {font-size: 15px}
 		function veryLongDragEnd (e) {
 			window.veryLongDragging = false;
 		};
-		canvas.on('mousedown touchstart', veryLongDragStart);
+		canvas[0].addEventListener('mousedown', veryLongDragStart,  {passive: false});
+		canvas[0].addEventListener('touchstart', veryLongDragStart,  {passive: false});
 		canvas.children().each(function(){
-			$(this).on('mousedown touchstart', veryLongDragStart);
+			// $(this).on('mousedown touchstart', veryLongDragStart);
+			this.addEventListener('mousedown', veryLongDragStart,  {passive: false});
+			this.addEventListener('touchstart', veryLongDragStart,  {passive: false});
 		});
 		$(window).on('mousemove touchmove', veryLongDragMove);
 		$(window).on('mouseup touchend', veryLongDragEnd);
