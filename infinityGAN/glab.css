@@ -222,25 +222,47 @@ TD.coursename {
 	text-align: left;
 }
 
-.carousel-inner > div {
-	display: inline;
+#very-long-wrapper {
+	width: 100%; 
+	height: 256px; 
+	overflow-x: hidden; 
+	overflow-y: hidden;
+	text-align: left;
 }
 
-.carousel-inner img {
-	width: 19%;
+#very-long-canvas img {
+	/* display: inline; */
+	float: left;
+	display: block;
 }
 
-.carousel-inner .carousel-item-right.active,
-.carousel-inner .carousel-item-next {
-  transform: translateX(20%);
+/* #very-long-wrapper::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 8px;
+	background-color: #F5F5F5;
+	opacity: 0.5;
 }
 
-.carousel-inner .carousel-item-left.active, 
-.carousel-inner .carousel-item-prev {
-  transform: translateX(-20%)
+#very-long-wrapper::-webkit-scrollbar
+{
+	height: 10px;
+	background-color: #F5F5F5;
 }
 
-.carousel-inner .carousel-item-right,
-.carousel-inner .carousel-item-left{ 
-  transform: translateX(0);
+#very-long-wrapper::-webkit-scrollbar-thumb
+{
+	border-radius: 8px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #888;
+	opacity: 0.5;
+} */
+
+
+.carousel-indicators li {
+	height: 10px;
+	width: 50px;
+	margin-left: 5px;
+	margin-right: 5px;
+	opacity: 0.9;
 }
