@@ -163,13 +163,6 @@ h4 {font-size: 15px}
 	// For the very-long canvas
 	// https://stackoverflow.com/questions/16128604/scrollable-canvas-inside-div
 
-	var dragging = false;
-	var lastX;
-	var marginLeft = 0;
-
-	var mouseHoldingTimeout = undefined;
-	var veryLongDispDir = 0
-
 	const maxMarginLeft = 32;
 	const minMarginLeft = -10240-32+$( window ).width();
 	function valueProtextion(marginLeft) {
@@ -184,11 +177,25 @@ h4 {font-size: 15px}
 
 	$(document).ready(function(){
 
+		window.veryLongDragging = false;
+		window.veryLongLastX;
+		window.veryLongMarginLeft = 0;
+
+		window.veryLongMouseHoldingTimeout = undefined;
+		window.veryLongDispDir = 0
+
 		var canvas = document.getElementById("very-long-canvas");
 
 		const shardStartIdx = 3;
 		const numShards = 40;
 		var canvas = $("#very-long-canvas");
+
+		// Attach onclick event for mobile
+		canvas[0].onclick = function() {};
+		canvas.children().each(function(){
+			this.onclick = function() {};
+		});
+
 
 		function getShardPath(idx){ // idx is string
 			return "assets/very-long/shard" + idx.padStart(4, '0') + ".png";
@@ -196,7 +203,6 @@ h4 {font-size: 15px}
 		function dfsSequentialLoad(node){
 			var nextIdx = node.attr("next-shard-id");
 			var nextNode = $("#very-long-shard-"+nextIdx);
-			console.log(nextIdx);
 			nextNode.attr("src", getShardPath(nextIdx));
 			nextNode.on("load", function(){
 				dfsSequentialLoad($(this));
@@ -210,27 +216,37 @@ h4 {font-size: 15px}
 		});
 	
 		// Drag 
-		canvas[0].addEventListener('mousedown', function(e) {
-			var evt = e || event;
-			dragging = true;
-			lastX = evt.clientX;
-			e.preventDefault();
-		}, false);
-		window.addEventListener('mousemove', function(e) {
-			var evt = e || event;
-			if (dragging) {
-				var delta = evt.clientX - lastX;
-				lastX = evt.clientX;
-				marginLeft += delta;
-				marginLeft = valueProtextion(marginLeft);
-				canvas[0].style.marginLeft = marginLeft + "px";
+		function getClientX(e) {
+			if (e.clientX !== undefined) {
+				return e.clientX;
+			} else {
+				return e.touches[0].clientX;
 			}
-			e.preventDefault();
-		}, false);
-
-		window.addEventListener('mouseup', function() {
-			dragging = false;
-		}, false);
+		}
+		function veryLongDragStart (e) {
+			var evt = e || event;
+			window.veryLongDragging = true;
+			window.veryLongLastX = getClientX(evt);
+		};
+		function veryLongDragMove (e) {
+			var evt = e || event;
+			if (window.veryLongDragging) {
+				var delta = getClientX(evt) - window.veryLongLastX;
+				window.veryLongLastX = getClientX(evt);
+				window.veryLongMarginLeft += delta;
+				window.veryLongMarginLeft = valueProtextion(window.veryLongMarginLeft);
+				canvas[0].style.marginLeft = window.veryLongMarginLeft + "px";
+			}
+		};
+		function veryLongDragEnd (e) {
+			window.veryLongDragging = false;
+		};
+		canvas.on('mousedown touchstart', veryLongDragStart);
+		canvas.children().each(function(){
+			$(this).on('mousedown touchstart', veryLongDragStart);
+		});
+		$(window).on('mousemove touchmove', veryLongDragMove);
+		$(window).on('mouseup touchend', veryLongDragEnd);
 
 
 		const velocity = 512;
@@ -239,28 +255,28 @@ h4 {font-size: 15px}
 
 		// Click / hold
 		function repetitiveDisp() {
-			marginLeft = marginLeft + veryLongDispDir * dispPerCall;
-			marginLeft = valueProtextion(marginLeft);
-			canvas[0].style.marginLeft = marginLeft + "px";
-			mouseHoldingTimeout = setTimeout(repetitiveDisp, 1000/fps);
+			window.veryLongMarginLeft = window.veryLongMarginLeft + window.veryLongDispDir * dispPerCall;
+			window.veryLongMarginLeft = valueProtextion(window.veryLongMarginLeft);
+			canvas[0].style.marginLeft = window.veryLongMarginLeft + "px";
+			window.veryLongMouseHoldingTimeout = setTimeout(repetitiveDisp, 1000/fps);
 		}
-		$("#very-long-left-btn").on("mousedown", function(e) {
-			if (mouseHoldingTimeout !== undefined) clearTimeout(mouseHoldingTimeout);
-			veryLongDispDir = 1;
-			mouseHoldingTimeout = setTimeout(repetitiveDisp, 1000/fps);
+		$("#very-long-left-btn").on("mousedown touchstart", function(e) {
+			if (window.veryLongMouseHoldingTimeout !== undefined) clearTimeout(window.veryLongMouseHoldingTimeout);
+			window.veryLongDispDir = 1;
+			window.veryLongMouseHoldingTimeout = setTimeout(repetitiveDisp, 1000/fps);
 		});
-		$("#very-long-right-btn").on("mousedown", function(e) {
-			if (mouseHoldingTimeout !== undefined) clearTimeout(mouseHoldingTimeout);
-			veryLongDispDir = -1;
-			mouseHoldingTimeout = setTimeout(repetitiveDisp, 1000/fps);
+		$("#very-long-right-btn").on("mousedown touchstart", function(e) {
+			if (window.veryLongMouseHoldingTimeout !== undefined) clearTimeout(window.veryLongMouseHoldingTimeout);
+			window.veryLongDispDir = -1;
+			window.veryLongMouseHoldingTimeout = setTimeout(repetitiveDisp, 1000/fps);
 		});
-		$("#very-long-left-btn").on("mouseup mouseleave", function(e) {
-			clearTimeout(mouseHoldingTimeout);
-			mouseHoldingTimeout = undefined;
+		$("#very-long-left-btn").on("mouseup mouseleave touchend", function(e) {
+			clearTimeout(window.veryLongMouseHoldingTimeout);
+			window.veryLongMouseHoldingTimeout = undefined;
 		});
-		$("#very-long-right-btn").on("mouseup mouseleave", function(e) {
-			clearTimeout(mouseHoldingTimeout);
-			mouseHoldingTimeout = undefined;
+		$("#very-long-right-btn").on("mouseup mouseleave touchend", function(e) {
+			clearTimeout(window.veryLongMouseHoldingTimeout);
+			window.veryLongMouseHoldingTimeout = undefined;
 		});
 
 	});
@@ -436,7 +452,7 @@ h4 {font-size: 15px}
 
 
 <div class="container-fluid" style="padding: 0;">
-	<div id="carousel-more-qual" class="carousel slide lazy-load" data-ride="carousel" data-interval="false">
+	<div id="carousel-more-qual" class="carousel slide lazy-load" data-ride="carousel" data-interval="5000">
 		<div class="carousel-inner w-100 mx-auto" role="listbox" style="min-height: 25%;">
 			<div class="carousel-item active">
 				<div class="row">
@@ -799,11 +815,11 @@ h4 {font-size: 15px}
 <footer class="footer">
 	<p style="font-size: 12px; margin: 0;">Website # visits:
 		<!-- GoStats Simple HTML Based Code -->
-		<!-- <a target="_blank" title="web site traffic statistics"
+		<a target="_blank" title="web site traffic statistics"
 		href="http://www.gostats.org">
 			<img alt="web site traffic statistics"src="//www.gostats.org/0.png?a=701071175&ct=4&ci=1" style="border-width:0" />
-		</a> -->
-		<script type="text/javascript">
+		</a>
+		<!-- <script type="text/javascript">
 			(function(c,o,m,p,u,t,e){
 				c['GoStatsObject']=u;c[u]=c[u]||function(){(c[u].q=c[u].q||[]).push(arguments)},
 				c[u].l=1*new Date();t=o.createElement(m);t.async=1;t.src=p;
@@ -811,7 +827,7 @@ h4 {font-size: 15px}
 				e.parentNode.insertBefore(t,e);
 			})(window,document,'script','//www.gostats.org/5.js','go');
 			go('init',701071175,{'img_counter_type':4,'img_image_type':1});go('send');
-			</script>
+			</script> -->
 		<!-- End GoStats Simple HTML Based Code -->
 	</p>
 </footer>
