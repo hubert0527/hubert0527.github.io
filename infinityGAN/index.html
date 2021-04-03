@@ -39,8 +39,12 @@ var _POPUP_FEATURES = 'width=500,height=300,resizable=1,scrollbars=1,titlebar=1,
 <!-- PDF reader -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js" integrity="sha512-Z8CqofpIcnJN80feS2uccz+pXWgZzeKxDsDNMD/dJ6997/LSRY+W4NmEt9acwR+Gt9OHN0kkI1CTianCwoqcjQ==" crossorigin="anonymous"></script>
 
+
+
+
 <!-- Bootstrap -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -131,6 +135,15 @@ h4 {font-size: 15px}
 			var cur_width = $(this).width();
 			var aspect_ratio = parseFloat($(this).attr("hratio"));
 			$(this).height(cur_width * aspect_ratio);
+		});
+	});
+
+	// Borrowed from: https://stackoverflow.com/questions/12697216/bootstrap-carousel-lazy-load
+	$(function() {
+		$('.carousel.lazy-load').bind('slide.bs.carousel', function (e) {
+			var image = $(e.relatedTarget).find('img[data-src]');
+			image.attr('src', image.data('src'));
+			image.removeAttr('data-src');
 		});
 	});
 </script>
@@ -246,7 +259,7 @@ h4 {font-size: 15px}
 		</div>
 		<div class="col-8 my-xl-5">
 			<h3>Paper</h3>
-			<p><a>Under Submission</a>,  2021. </p>
+			<p><a>Under Submission</a>, 2021. </p>
 
 			<h3>Code </h3>
 			<p><a href='http://bit.ly/infinityCodes'> PyTorch</a></p>
@@ -265,25 +278,277 @@ h4 {font-size: 15px}
 
 	<hr>
 
-
-
 	<div class="row">
 		<h2 class="bold section-title"><span>Overview of the Method</span></h2>
-		<div class="img-container"><a href="images/beyond-boundary-generation.gif" class="zoomin"><img src="images/beyond-boundary-generation-small-optim.gif" width="80%"></a></div>
+		<div class="col-12 img-container">
+			<a href="assets/pipeline.png" class="zoomin"><img src="assets/pipeline.png" width="100%"></a>
+		</div>
 		<br>
-		<p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras in neque lobortis, ullamcorper tortor a, facilisis diam. Nullam blandit et ante eu posuere. Nam quis quam sed dui accumsan luctus. Integer in nulla ut lacus fermentum bibendum sit amet non diam. Vivamus tincidunt consequat ex ac viverra. Duis semper ligula in sagittis lobortis. Integer feugiat felis velit, ac venenatis enim dignissim ut. Duis rutrum gravida leo, ac lobortis tellus sagittis eu. Duis eget consequat ex. Fusce venenatis est tempor aliquam ultricies. Donec aliquam leo diam. Cras quam neque, dignissim eu ante in, mattis pharetra turpis. Nulla aliquam, tortor at pharetra consectetur, tellus nulla elementum sapien, eget blandit nisi ligula et urna.</p>
-		<div class="img-container"><a href="images/beyond-boundary-generation.gif" class="zoomin"><img src="images/beyond-boundary-generation-small-optim.gif" width="80%"></a></div>
-		<p align="justify">Etiam elit dolor, auctor id libero eu, tempor sodales sem. Praesent elementum lacus at risus gravida, sit amet fringilla metus condimentum. Nunc rhoncus tellus vel faucibus congue. Mauris a metus pulvinar, vulputate nunc id, sodales tellus. Donec lorem purus, posuere suscipit euismod vitae, auctor et mi. Donec mattis pharetra semper. Phasellus id vulputate elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur hendrerit, nisl eu iaculis laoreet, purus nisi porttitor magna, ut hendrerit quam libero vitae leo. Morbi vel efficitur ante. Sed at sem ultricies, convallis neque ac, semper odio. Fusce volutpat dictum sagittis. Aliquam non tortor ut lectus dictum convallis vel nec lacus. Curabitur sagittis eu lectus nec egestas.</p>
+		<div class="col-12">
+			<p align="justify">The generator of InfinityGAN consists of two modules, a structure synthesizer based on a neural implicit function, 
+				and a fully-convolutional texture synthesizer with all positional information removed (see Figure 3 in the paper). The two networks 
+				take four sets of inputs, a global latent variable that defines the holistic appearance of the image, a local latent variable 
+				that represents the local and structural variation, a continuous coordinate for learning the neural implicit structure synthesizer, 
+				and a set of randomized noises to model fine-grained texture. InfinityGAN synthesizes images of arbitrary resolution by learning 
+				spatially extensible representations.</p>
+		</div>
 	</div>
 
 	<div class="row end-section"></div>
 	<hr>
 
 	<div class="row">
+		<h2 class="bold section-title"><span>Qualitative Results</span></h2>
+		<div class="col-12 img-container">
+			<a href="assets/baseline-compare.png" class="zoomin"><img src="assets/baseline-compare.png" width="100%"></a>
+		</div>
+		<br>
+		<div class="col-12 paragraph">
+			<p>
+				<span class="paragraph-title">Comparison with related methods.</span> &nbsp;
+				We show that InfinityGAN can produce more favorable holistic appearances against
+				related methods while testing with an extended resolution 1024&#215;1024. (NCI: Non-Constant Input, FCG: Fully-Convolutional Generator).
+			</p>
+		</div>
+
+		<div class="col-12 paragraph-skip"></div>
+
+
+		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+				<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+				<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+			</ol>
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img class="d-block w-100" src="https://placeimg.com/1080/500/animals" alt="First slide">
+					<div class="carousel-caption d-none d-md-block">
+						<h5>My Caption Title (1st Image)</h5>
+						<p>The whole caption will only show up if the screen is at least medium size.</p>
+					</div>
+				</div>
+				<div class="carousel-item">
+					<img class="d-block w-100" src="https://placeimg.com/1080/500/arch" alt="Second slide">
+				</div>
+				<div class="carousel-item">
+					<img class="d-block w-100" src="https://placeimg.com/1080/500/nature" alt="Third slide">
+				</div>
+			</div>
+			<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+
+
+		<!-- Borrowed from: https://stackoverflow.com/questions/12697216/bootstrap-carousel-lazy-load -->
+
+		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+			<ol class="carousel-indicators">
+			  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+			  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+			  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+			</ol>
+			<div class="carousel-inner">
+			  <div class="carousel-item active">
+				<img class="d-block w-100" src="assets/more-qual/000010.png" alt="First slide">
+			  </div>
+			  <div class="carousel-item">
+				<img class="d-block w-100" src="assets/more-qual/000011.png" alt="Second slide">
+			  </div>
+			  <div class="carousel-item">
+				<img class="d-block w-100" src="assets/more-qual/000018.png" alt="Third slide">
+			  </div>
+			</div>
+			<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+			  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			  <span class="sr-only">Previous</span>
+			</a>
+			<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+			  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+			  <span class="sr-only">Next</span>
+			</a>
+		  </div>
+
+
+
+		<div class="col-12">
+
+			<div id="carousel-more-qual" class="carousel slide lazy-load" data-ride="carousel" data-interval="false">
+			<div class="carousel-inner">
+				<div class="carousel-item active"><img src="assets/more-qual/000010.png"></div>
+				<div class="carousel-item"><img src="assets/more-qual/000013.png"></div>
+				<div class="carousel-item"><img src="assets/more-qual/000014.png"></div>
+				<div class="carousel-item"><img src="assets/more-qual/000015.png"></div>
+				<div class="carousel-item"><img src="assets/more-qual/000016.png"></div>
+				<div class="carousel-item"><img data-src="assets/more-qual/000018.png"></div>
+				<div class="carousel-item"><img data-src="assets/more-qual/000020.png"></div>
+				<div class="carousel-item"><img data-src="assets/more-qual/000021.png"></div>
+				<div class="carousel-item"><img data-src="assets/more-qual/000023.png"></div>
+				<div class="carousel-item"><img data-src="assets/more-qual/000024.png"></div>
+				<div class="carousel-item"><img data-src="assets/more-qual/000025.png"></div>
+				<div class="carousel-item"><img data-src="assets/more-qual/000027.png"></div>
+				<div class="carousel-item"><img data-src="assets/more-qual/000029.png"></div>
+				<div class="carousel-item"><img data-src="assets/more-qual/000030.png"></div>
+				<div class="carousel-item"><img data-src="assets/more-qual/000031.png"></div>
+				<div class="carousel-item"><img data-src="assets/more-qual/000032.png"></div>
+			</div>
+			<!-- controls -->
+			<ol class="carousel-indicators">
+				<li data-target="#carousel-more-qual" data-slide-to="0" class="active"></li>
+				<li data-target="#carousel-more-qual" data-slide-to="1"></li>
+				<li data-target="#carousel-more-qual" data-slide-to="2"></li>
+				<li data-target="#carousel-more-qual" data-slide-to="3"></li>
+				<li data-target="#carousel-more-qual" data-slide-to="4"></li>
+				<li data-target="#carousel-more-qual" data-slide-to="5"></li>
+				<li data-target="#carousel-more-qual" data-slide-to="6"></li>
+				<li data-target="#carousel-more-qual" data-slide-to="7"></li>
+				<li data-target="#carousel-more-qual" data-slide-to="8"></li>
+				<li data-target="#carousel-more-qual" data-slide-to="9"></li>
+				<li data-target="#carousel-more-qual" data-slide-to="10"></li>
+				<li data-target="#carousel-more-qual" data-slide-to="11"></li>
+				<li data-target="#carousel-more-qual" data-slide-to="12"></li>
+				<li data-target="#carousel-more-qual" data-slide-to="13"></li>
+				<li data-target="#carousel-more-qual" data-slide-to="14"></li>
+				<li data-target="#carousel-more-qual" data-slide-to="15"></li>
+			</ol>
+			<a class="carousel-control-prev" href="#carousel-more-qual" role="button" data-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			  </a>
+			  <a class="carousel-control-next" href="#carousel-more-qual" role="button" data-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			  </a>
+		</div>
+
+
+			<!-- <div class="carousel slide lazy">
+				<div class="carousel-inner" role="listbox">
+					<div class="item active">
+						<a href="assets/hr/000010.png" class="zoomin"><img data-src="assets/lr/000010.png"></a>
+					</div>
+					<div class="item">
+						<a href="assets/hr/000011.png" class="zoomin"><img data-src="assets/lr/000011.png"></a>
+					</div>
+				</div>
+			</div> -->
+		</div>
+		<br>
+		<div class="col-12 paragraph">
+			<p>
+				<span class="paragraph-title">More qualitative results.</span> &nbsp;
+				All samples are generated at 1024&#215;1024 resolution with an InfinityGAN trained at 101&#215;101 resolution.
+			</p>
+		</div>
+
+
+	</div>
+</div>
+
+<div class="container-fluid" style="padding: 0;">
+	<div class="row-fluid img-container">
+		<a href="assets/spatial-fusion.png" class="zoomin"><img src="assets/spatial-fusion.png" style="width: 100%;"></a> 
+	</div>
+	<div class="col-12 paragraph">
+		<p>
+			<span class="paragraph-title">Spatial style fusion. </span> &nbsp;
+			We present a mechanism in fusing multiple styles together to increase the interestingness and
+			interactiveness of the generation results. The 512&#215;2048 image fuses four styles across 258 independently generated patches.
+		</p>
+	</div>
+</div>
+
+
+<div class="container">
+
+	<div class="row paragraph-skip"></div>
+
+	<div class="row">
+		<div class="col-12 img-container">
+			<a href="assets/diversity.png" class="zoomin"><img src="assets/diversity.png" width="100%"></a>
+		</div>
+		<br>
+		<div class="col-12 paragraph">
+			<p>
+				<span class="paragraph-title">Generation diversity. </span> &nbsp;
+				We show that the structure
+				synthesizer and texture synthesizer separately models
+				structure and texture by changing either the local latent
+				or textural latent while all other variables are fixed. The
+				results also show that InfinityGAN can synthesize a diverse
+				set of landscape structures at the same coordinate.</p>
+		</div>
+	</div>
+
+	<div class="row paragraph-skip"></div>
+
+	<div class="row">
+		<div class="col-12 img-container">
+			<a href="assets/png" class="zoomin"><img src="assets/png" width="100%"></a>
+		</div>
+		<br>
+		<div class="col-12 paragraph">
+			<p>
+				<span class="paragraph-title">Even longer generation. </span> &nbsp;
+				</p>
+		</div>
+	</div>
+
+	<div class="row end-section"></div>
+	<hr>
+
+
+	<div class="row paragraph-skip"></div>
+
+	<div class="row">
 		<div class="col-12">
 			<h2 class="bold section-title"><span>Applications: Image Outpainting</span></h2>
-			<div class="img-container"><a href="images/beyond-boundary-generation.gif" class="zoomin"><img src="images/beyond-boundary-generation-small-optim.gif" width="80%"></a></div>
-			<p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras in neque lobortis, ullamcorper tortor a, facilisis diam. Nullam blandit et ante eu posuere. Nam quis quam sed dui accumsan luctus. Integer in nulla ut lacus fermentum bibendum sit amet non diam. Vivamus tincidunt consequat ex ac viverra. Duis semper ligula in sagittis lobortis. Integer feugiat felis velit, ac venenatis enim dignissim ut. Duis rutrum gravida leo, ac lobortis tellus sagittis eu. Duis eget consequat ex. Fusce venenatis est tempor aliquam ultricies. Donec aliquam leo diam. Cras quam neque, dignissim eu ante in, mattis pharetra turpis. Nulla aliquam, tortor at pharetra consectetur, tellus nulla elementum sapien, eget blandit nisi ligula et urna.</p>
+
+			<div class="col-12 img-container">
+				<a href="assets/outpaint-compare.png" class="zoomin"><img src="assets/outpaint-compare.png" width="100%"></a>
+			</div>
+			<div class="col-12 paragraph">
+				<p>
+				<span class="paragraph-title">Outpainting long-range area. </span> &nbsp;
+				InfinityGAN synthesizes continuous and more plausible outpainting results for arbitrarily large outpainting areas. 
+				Different from previous methods, InfinityGAN does not need to iteratively outpaint the results.
+				The real image annotated with <span style="color: red;">red</span> box is 256&#215;128 pixels.
+			</div>
+
+
+			<div class="col-12 paragraph-skip"></div>
+
+
+			<div class="col-12 img-container">
+				<a href="assets/multimodal-pano.png" class="zoomin"><img src="assets/multimodal-pano.png" width="100%"></a>
+			</div>
+			<div class="col-12 paragraph">
+				<p>
+				<span class="paragraph-title">Multi-modal outpainting.</span> &nbsp;
+				InfinityGAN can natively
+				achieve multi-modal outpainting by sampling different
+				local latents in the outpainted region. The real image
+				annotated with <span style="color: red;">red</span> box is 256&#215;128 pixels.
+			</div>
+
+
+			<div class="col-12 paragraph-skip"></div>
+
+
+			<div class="col-12 img-container">
+				<a href="assets/outpaint-fid.png" class="zoomin"><img src="assets/outpaint-fid.png" width="50%"></a>
+			</div>
+			<div class="col-12 paragraph">
+				<p>
+				<span class="paragraph-title">Outpainting performance. </span> &nbsp;
+				The combination of In&Out and InfinityGAN achieves state-of-the-art FID (lower better) performance on image outpainting task.
+			</div>
 		</div>
 	</div>
 
@@ -293,19 +558,42 @@ h4 {font-size: 15px}
 	<div class="row">
 		<div class="col-12">
 			<h2 class="bold section-title"><span>Applications: Image Inbetweening</span></h2>
-			<div class="img-container"><a href="images/beyond-boundary-generation.gif" class="zoomin"><img src="images/beyond-boundary-generation-small-optim.gif" width="80%"></a></div>
-			<p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras in neque lobortis, ullamcorper tortor a, facilisis diam. Nullam blandit et ante eu posuere. Nam quis quam sed dui accumsan luctus. Integer in nulla ut lacus fermentum bibendum sit amet non diam. Vivamus tincidunt consequat ex ac viverra. Duis semper ligula in sagittis lobortis. Integer feugiat felis velit, ac venenatis enim dignissim ut. Duis rutrum gravida leo, ac lobortis tellus sagittis eu. Duis eget consequat ex. Fusce venenatis est tempor aliquam ultricies. Donec aliquam leo diam. Cras quam neque, dignissim eu ante in, mattis pharetra turpis. Nulla aliquam, tortor at pharetra consectetur, tellus nulla elementum sapien, eget blandit nisi ligula et urna.</p><br>
 		</div>
 	</div>
+</div>
 
+<div class="container-fluid" style="padding: 0;">
+	<div class="row-fluid img-container">
+		<a href="assets/inbetween.png" class="zoomin"><img src="assets/inbetween.png" style="width: 100%;"></a> 
+	</div>
+	<div class="col-12 paragraph">
+		<p>
+			<span class="paragraph-title">Image inbetweening with inverted latents. </span> &nbsp;
+			We show that our InfinityGAN can synthesize arbitrary-length cyclic
+			panorama and inbetweened images by inverting a real image at different position. The top-row image size is 256&#215;2080 pixels.
+		</p>
+	</div>
+</div>
+
+
+<div class="container">
 	<div class="row end-section"></div>
 	<hr>
 
 	<div class="row">
 		<div class="col-12">
 			<h2 class="bold section-title"><span>Applications: Parallel Batching</span></h2>
-			<div class="img-container"><a href="images/beyond-boundary-generation.gif" class="zoomin"><img src="images/beyond-boundary-generation-small-optim.gif" width="80%"></a></div>
-			<p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras in neque lobortis, ullamcorper tortor a, facilisis diam. Nullam blandit et ante eu posuere. Nam quis quam sed dui accumsan luctus. Integer in nulla ut lacus fermentum bibendum sit amet non diam. Vivamus tincidunt consequat ex ac viverra. Duis semper ligula in sagittis lobortis. Integer feugiat felis velit, ac venenatis enim dignissim ut. Duis rutrum gravida leo, ac lobortis tellus sagittis eu. Duis eget consequat ex. Fusce venenatis est tempor aliquam ultricies. Donec aliquam leo diam. Cras quam neque, dignissim eu ante in, mattis pharetra turpis. Nulla aliquam, tortor at pharetra consectetur, tellus nulla elementum sapien, eget blandit nisi ligula et urna.</p><br>
+			<div class="col-12 img-container">
+				<a href="assets/para-batching.png" class="zoomin"><img src="assets/para-batching.png" width="100%"></a>
+			</div>
+			<div class="col-12 paragraph">
+				<p>
+				<span class="paragraph-title">Inference speed up with parallel batching. </span> &nbsp;
+				Benefit from the spatial independent generation nature, InfinityGAN
+				achieves up to 7.20 inference speed up by with parallel batching. We conduct all experiments at a batch size of 1, and OOM
+				indicates out-of-memory. Note that the GPU time here accounts pure GPU execution time and (if applicable) data parallel
+				scatter-aggregation time.
+			</div>
 		</div>
 	</div>
 
@@ -315,7 +603,7 @@ h4 {font-size: 15px}
 	<div class="row">
 		<div class="col-12">
 			<h2 class="bold section-title"><span>Acknowledgement</span></h2>
-			<p align="justify"> We sincerely thank the great power from OuO. </p>
+			<p align="justify">We sincerely thank the great power from OuO. </p>
 		</div>
 	</div>
 
@@ -332,25 +620,15 @@ h4 {font-size: 15px}
 		</div>
 		<div class="col-11">
 			<p class="citation-content">
-				X. Chen, Y. Duan, R. Houthooft, J. Schulman, I. Sutskever, P. Abbeel. 
-				<a href="https://papers.nips.cc/paper/6399-infogan-interpretable-representation-learning-by-information-maximizing-generative-adversarial-nets">
-					"Infogan: Interpretable representation learning by information maximizing generative adversarial nets"
+				Yen-Chi Cheng, Chieh Hubert Lin, Hsin-Ying Lee, Jian Ren, Sergey Tulyakov, Ming-Hsuan Yang.
+				<a href="https://arxiv.org/abs/2104.00675">
+					"In&Out : Diverse Image Outpainting via GAN Inversion"
 				</a>, 
-				in NIPS 2016.</p>
+				<i>arXiv preprint, 2021.</i></p>
 		</div>
 	</div>
 
 	<hr>
-		
-	<!-- <script type="text/javascript">
-		(function(c,o,m,p,u,t,e){
-			c['GoStatsObject']=u;c[u]=c[u]||function(){(c[u].q=c[u].q||[]).push(arguments)},
-			c[u].l=1*new Date();t=o.createElement(m);t.async=1;t.src=p;
-			e=o.getElementsByTagName(m)[0];
-			e.parentNode.insertBefore(t,e);
-		})(window,document,'script','//www.gostats.org/5.js','go');
-		go('init',701071175,{'img_counter_type':4,'img_image_type':1});go('send');
-		</script> -->
 
 
 </div>
@@ -358,10 +636,19 @@ h4 {font-size: 15px}
 <footer class="footer">
 	<p style="font-size: 12px; margin: 0;">Website # visits:
 		<!-- GoStats Simple HTML Based Code -->
-		<a target="_blank" title="web site traffic statistics"
+		<!-- <a target="_blank" title="web site traffic statistics"
 		href="http://www.gostats.org">
 			<img alt="web site traffic statistics"src="//www.gostats.org/0.png?a=701071175&ct=4&ci=1" style="border-width:0" />
-		</a>
+		</a> -->
+		<script type="text/javascript">
+			(function(c,o,m,p,u,t,e){
+				c['GoStatsObject']=u;c[u]=c[u]||function(){(c[u].q=c[u].q||[]).push(arguments)},
+				c[u].l=1*new Date();t=o.createElement(m);t.async=1;t.src=p;
+				e=o.getElementsByTagName(m)[0];
+				e.parentNode.insertBefore(t,e);
+			})(window,document,'script','//www.gostats.org/5.js','go');
+			go('init',701071175,{'img_counter_type':4,'img_image_type':1});go('send');
+			</script>
 		<!-- End GoStats Simple HTML Based Code -->
 	</p>
 </footer>

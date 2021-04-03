@@ -19,7 +19,7 @@
 H1, H2, H3, H4, H5, H6 {
 	color: var(--text-color);
 }
-P, A, SUP {
+P, A, SUP, .paragraph-text {
 	color: var(--text-color);
 }
 
@@ -53,7 +53,7 @@ H2 {
 H3 {
 	MARGIN-TOP: 6px; FONT-SIZE: small; MARGIN-BOTTOM: 0px
 }
-P {
+P, .paragraph-text {
 	MARGIN-TOP: 0px; font-size: 17px
 }
 
@@ -199,4 +199,48 @@ TD.coursename {
 	margin-bottom: 1em;
 }
 
-.img-container{}
+.paragraph-skip {
+	height: 0;
+	margin-bottom: 3em;
+}
+
+.col-fluid {
+	width: 100vw;
+}
+
+.img-container{
+	margin: 5px auto;
+}
+
+.paragraph-title {
+	color: var(--face-color);
+	font-weight: 900;
+	font-size: large;
+}
+
+.paragraph {
+	text-align: left;
+}
+
+.carousel-inner > div {
+	display: inline;
+}
+
+.carousel-inner img {
+	width: 19%;
+}
+
+.carousel-inner .carousel-item-right.active,
+.carousel-inner .carousel-item-next {
+  transform: translateX(20%);
+}
+
+.carousel-inner .carousel-item-left.active, 
+.carousel-inner .carousel-item-prev {
+  transform: translateX(-20%)
+}
+
+.carousel-inner .carousel-item-right,
+.carousel-inner .carousel-item-left{ 
+  transform: translateX(0);
+}
