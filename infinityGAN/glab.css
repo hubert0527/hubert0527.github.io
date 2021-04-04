@@ -78,7 +78,7 @@ A.inverse:visited {
 
 HR {
 	border-top: 2px dashed var(--face-color);
-	margin: 60px 0;
+	margin: 120px 0;
   }
 LI {
 	MARGIN-TOP: 0px; font-size: 15px
@@ -268,7 +268,7 @@ TD.coursename {
 }
 
 .carousel-control-prev, .carousel-control-next {
-	opacity: 0.8;
+	opacity: 1;
 }
 .carousel-control-prev:hover{
 	opacity: 1;
@@ -281,4 +281,5 @@ TD.coursename {
 .carousel-control-next-icon, .carousel-control-prev-icon {
 	width: 3vw;
 	height: 3vw;
+	filter: drop-shadow(0 0 4px black) drop-shadow(0 0 4px black) drop-shadow(0 0 4px black);
 }

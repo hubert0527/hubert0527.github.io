@@ -438,19 +438,6 @@ h4 {font-size: 15px}
 
 	<div class="row">
 		<h2 class="bold section-title"><span>Qualitative Results</span></h2>
-		<div class="col-12 img-container">
-			<a href="assets/baseline-compare.png" class="zoomin"><img src="assets/baseline-compare.png" width="100%"></a>
-		</div>
-		<br>
-		<div class="col-12 paragraph">
-			<p>
-				<span class="paragraph-title">Comparison with related methods.</span> &nbsp;
-				We show that InfinityGAN can produce more favorable holistic appearances against
-				related methods while testing with an extended resolution 1024&#215;1024. (NCI: Non-Constant Input, FCG: Fully-Convolutional Generator).
-			</p>
-		</div>
-
-		<div class="col-12 paragraph-skip"></div>
 	</div>
 </div>
 
@@ -524,20 +511,39 @@ h4 {font-size: 15px}
 
 
 
-	<div class="row-fluid img-container">
-		<a href="assets/spatial-fusion.png" class="zoomin"><img src="assets/spatial-fusion.png" style="width: 100%;"></a> 
-	</div>
-	<div class="col-12 paragraph">
-		<p>
-			<span class="paragraph-title">Spatial style fusion. </span> &nbsp;
-			We present a mechanism in fusing multiple styles together to increase the interestingness and
-			interactiveness of the generation results. The 512&#215;2048 image fuses four styles across 258 independently generated patches.
-		</p>
+</div>
+<div class="container-fluid" style="padding: 0;">
+	<div class="row-fluid">
+		<div class="carousel">
+			<div id="very-long-wrapper">
+				<div id="very-long-canvas" style="width: 10240px; height: 256px;">
+					<img src="assets/very-long/shard0000.png" width="256px">
+					<img src="assets/very-long/shard0001.png" width="256px">
+					<img src="assets/very-long/shard0002.png" width="256px">
+				</div>
+			</div>
+			<a id="very-long-left-btn" class="carousel-control-prev" role="button" data-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a id="very-long-right-btn" class="carousel-control-next" role="button" data-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+		<div class="col-12 paragraph">
+			<p>
+				<span class="paragraph-title">Very-high-resolution generation. </span> &nbsp;
+				We provide a 256&#215;10240 resolution sample synthesized with InfinityGAN. 
+				The sample shows that (a) our InfinityGAN can generalize to arbitrarily-high resolution, 
+				and (b) the synthesized contents do not self-repeat while using the sample global latent variable.
+				</p>
+		</div>
 	</div>
 </div>
-
-
 <div class="container">
+
+
 
 	<div class="row paragraph-skip"></div>
 
@@ -558,50 +564,63 @@ h4 {font-size: 15px}
 		</div>
 	</div>
 
+
+
 	<div class="row paragraph-skip"></div>
 
-</div>
 
 
-<div class="container-fluid" style="padding: 0;">
-	<div class="row-fluid">
-		<div class="carousel">
-			<div id="very-long-wrapper">
-				<div id="very-long-canvas" style="width: 10240px; height: 256px;">
-					<img src="assets/very-long/shard0000.png" width="256px">
-					<img src="assets/very-long/shard0001.png" width="256px">
-					<img src="assets/very-long/shard0002.png" width="256px">
-				</div>
-			</div>
-			<a id="very-long-left-btn" class="carousel-control-prev" role="button" data-slide="prev">
-				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				<span class="sr-only">Previous</span>
-			</a>
-			<a id="very-long-right-btn" class="carousel-control-next" role="button" data-slide="next">
-				<span class="carousel-control-next-icon" aria-hidden="true"></span>
-				<span class="sr-only">Next</span>
-			</a>
-		</div>
-		<br>
-		<div class="col-12 paragraph">
-			<p>
-				<span class="paragraph-title">Very-high-resolution generation. </span> &nbsp;
-				We provide a 256&#215;10240 resolution sample synthesized with InfinityGAN. 
-				The sample shows that (a) our InfinityGAN can generalize to arbitrarily-high resolution, 
-				and (b) the synthesized contents do not self-repeat while using the sample global latent variable.
-				</p>
-		</div>
+	<div class="col-12 img-container">
+		<a href="assets/baseline-compare.png" class="zoomin"><img src="assets/baseline-compare.png" width="100%"></a>
+	</div>
+	<div class="col-12 paragraph">
+		<p>
+			<span class="paragraph-title">Comparison with related methods.</span> &nbsp;
+			We show that InfinityGAN can produce more favorable holistic appearances against
+			related methods while testing with an extended resolution 1024&#215;1024. (NCI: Non-Constant Input, FCG: Fully-Convolutional Generator).
+		</p>
 	</div>
 
-</div>
 
-
-<div class="container">
 	<div class="row end-section"></div>
 	<hr>
 
 
-	<div class="row paragraph-skip"></div>
+	<div class="row">
+		<div class="col-12">
+			<h2 class="bold section-title"><span>Applications: Spatial Style Fusion</span></h2>
+		</div>
+	</div>
+
+
+
+</div>
+<div class="container-fluid">
+	<div class="row" style="font-weight: 900;">
+		<div class="col-2"><p style="margin: 0;">Style A</p></div>
+		<div class="col-4"><p style="margin: 0;">Style B</p></div>
+		<div class="col-4"><p style="margin: 0;">Style C</p></div>
+		<div class="col-2"><p style="margin: 0;">Style D</p></div>
+	</div>
+	<div class="row">
+		<a href="assets/spatial-fusion.png" class="zoomin"><img src="assets/spatial-fusion.png" style="width: 100%;"></a> 
+	</div>
+	<div class="col-12 paragraph">
+		<p>
+			<span class="paragraph-title">Spatial style fusion. </span> &nbsp;
+			We present a mechanism in fusing multiple styles together to increase the interestingness and
+			interactiveness of the generation results. The 512&#215;2048 image fuses four styles across 258 independently generated patches.
+		</p>
+	</div>
+</div>
+<div class="container">
+
+
+
+	<div class="row end-section"></div>
+	<hr>
+
+	
 
 	<div class="row">
 		<div class="col-12">
@@ -639,7 +658,7 @@ h4 {font-size: 15px}
 
 
 			<div class="col-12 img-container">
-				<a href="assets/outpaint-fid.png" class="zoomin"><img src="assets/outpaint-fid.png" width="50%"></a>
+				<img src="assets/outpaint-fid.png" width="50%">
 			</div>
 			<div class="col-12 paragraph">
 				<p>
@@ -819,10 +838,10 @@ h4 {font-size: 15px}
 <footer class="footer">
 	<p style="font-size: 12px; margin: 0;">Website # visits:
 		<!-- GoStats Simple HTML Based Code -->
-		<a target="_blank" title="web site traffic statistics"
+		<!-- <a target="_blank" title="web site traffic statistics"
 		href="http://www.gostats.org">
 			<img alt="web site traffic statistics"src="//www.gostats.org/0.png?a=701071175&ct=4&ci=1" style="border-width:0" />
-		</a>
+		</a> -->
 		<!-- <script type="text/javascript">
 			(function(c,o,m,p,u,t,e){
 				c['GoStatsObject']=u;c[u]=c[u]||function(){(c[u].q=c[u].q||[]).push(arguments)},
