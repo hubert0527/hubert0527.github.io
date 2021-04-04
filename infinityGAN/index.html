@@ -71,12 +71,13 @@ h3 {font-size: 18px}
 h4 {font-size: 15px}
 
 .caption {
-	color: var(--caption-color); 
-	font-weight: bold;
+	margin-top: 5px;
+	/* color: var(--caption-color); 
+	font-weight: bold; */
 	/*font-style: italic;*/
-	font-size: 15px;
+	/* font-size: 15px;
 	margin-top: 10px;
-	width: 95%;
+	width: 95%; */
 }
 
 .zoomin, .zoomin:hover {
@@ -119,6 +120,9 @@ h4 {font-size: 15px}
 	border-left: 10px solid var(--face-color);
 	border-bottom: 1px solid var(--face-color);
 	padding: 5px 15px;
+}
+.loosen-title {
+	margin-bottom: 40px;
 }
 
 .citation-content {
@@ -164,7 +168,7 @@ h4 {font-size: 15px}
 	// https://stackoverflow.com/questions/16128604/scrollable-canvas-inside-div
 
 	const maxMarginLeft = 32;
-	const minMarginLeft = -10240-32+$( window ).width();
+	const minMarginLeft = -10240-32+$(window).width();
 	function valueProtextion(marginLeft) {
 		if (marginLeft > maxMarginLeft) {
 			marginLeft = maxMarginLeft;
@@ -182,7 +186,7 @@ h4 {font-size: 15px}
 		window.veryLongMarginLeft = 0;
 
 		window.veryLongMouseHoldingTimeout = undefined;
-		window.veryLongDispDir = 0
+		window.veryLongDispDir = 1;
 
 		var canvas = document.getElementById("very-long-canvas");
 
@@ -258,30 +262,33 @@ h4 {font-size: 15px}
 		const dispPerCall = velocity / fps;
 
 		// Click / hold
-		function repetitiveDisp() {
-			window.veryLongMarginLeft = window.veryLongMarginLeft + window.veryLongDispDir * dispPerCall;
+		function repetitiveDisp(multiplier) {
+			window.veryLongMarginLeft = window.veryLongMarginLeft + window.veryLongDispDir * dispPerCall * multiplier;
 			window.veryLongMarginLeft = valueProtextion(window.veryLongMarginLeft);
 			canvas[0].style.marginLeft = window.veryLongMarginLeft + "px";
-			window.veryLongMouseHoldingTimeout = setTimeout(repetitiveDisp, 1000/fps);
+			window.veryLongMouseHoldingTimeout = setTimeout(repetitiveDisp, 1000/fps, multiplier);
 		}
 		$("#very-long-left-btn").on("mousedown touchstart", function(e) {
 			if (window.veryLongMouseHoldingTimeout !== undefined) clearTimeout(window.veryLongMouseHoldingTimeout);
 			window.veryLongDispDir = 1;
-			window.veryLongMouseHoldingTimeout = setTimeout(repetitiveDisp, 1000/fps);
+			window.veryLongMouseHoldingTimeout = setTimeout(repetitiveDisp, 1000/fps, 1);
 		});
 		$("#very-long-right-btn").on("mousedown touchstart", function(e) {
 			if (window.veryLongMouseHoldingTimeout !== undefined) clearTimeout(window.veryLongMouseHoldingTimeout);
 			window.veryLongDispDir = -1;
-			window.veryLongMouseHoldingTimeout = setTimeout(repetitiveDisp, 1000/fps);
+			window.veryLongMouseHoldingTimeout = setTimeout(repetitiveDisp, 1000/fps, 1);
 		});
-		$("#very-long-left-btn").on("mouseup mouseleave touchend", function(e) {
+		$("#very-long-left-btn").on("mouseup touchend", function(e) {
 			clearTimeout(window.veryLongMouseHoldingTimeout);
 			window.veryLongMouseHoldingTimeout = undefined;
 		});
-		$("#very-long-right-btn").on("mouseup mouseleave touchend", function(e) {
+		$("#very-long-right-btn").on("mouseup touchend", function(e) {
 			clearTimeout(window.veryLongMouseHoldingTimeout);
 			window.veryLongMouseHoldingTimeout = undefined;
 		});
+
+		window.veryLongDispDir = -1;
+		window.veryLongMouseHoldingTimeout = setTimeout(repetitiveDisp, 1000/fps, 0.33);
 
 	});
 </script>
@@ -366,8 +373,8 @@ h4 {font-size: 15px}
 	<div class="row">
 		<h2 class="bold section-title"><span>Abstract</span></h2>
 
-		<div class="col-12" style="font-size:14px">
-			<p align="justify">
+		<div class="col-12" style="font-size: 14px; text-align: left;">
+			<p>
 				We present InfinityGAN, a method to generate arbitrary-resolution images. 
 				The problem is associated with several key challenges. 
 				First, scaling existing models to a high resolution is resource-constrained, 
@@ -423,8 +430,8 @@ h4 {font-size: 15px}
 			<a href="assets/pipeline.png" class="zoomin"><img src="assets/pipeline.png" width="100%"></a>
 		</div>
 		<br>
-		<div class="col-12">
-			<p align="justify">The generator of InfinityGAN consists of two modules, a structure synthesizer based on a neural implicit function, 
+		<div class="col-12" style="text-align: left;">
+			<p class="caption">The generator of InfinityGAN consists of two modules, a structure synthesizer based on a neural implicit function, 
 				and a fully-convolutional texture synthesizer with all positional information removed (see Figure 3 in the paper). The two networks 
 				take four sets of inputs, a global latent variable that defines the holistic appearance of the image, a local latent variable 
 				that represents the local and structural variation, a continuous coordinate for learning the neural implicit structure synthesizer, 
@@ -437,7 +444,7 @@ h4 {font-size: 15px}
 	<hr>
 
 	<div class="row">
-		<h2 class="bold section-title"><span>Qualitative Results</span></h2>
+		<h2 class="bold section-title loosen-title"><span>Qualitative Results</span></h2>
 	</div>
 </div>
 
@@ -499,8 +506,8 @@ h4 {font-size: 15px}
 	
 	<div class="row-fluid">
 		<div class="col-12 paragraph">
-			<p>
-				<span class="paragraph-title">More qualitative results.</span> &nbsp;
+			<p class="caption">
+				<span class="paragraph-title">Generation at extended resolution.</span> &nbsp;
 				All samples are generated at 1024&#215;1024 resolution with an InfinityGAN trained at 101&#215;101 resolution.
 			</p>
 		</div>
@@ -532,7 +539,7 @@ h4 {font-size: 15px}
 			</a>
 		</div>
 		<div class="col-12 paragraph">
-			<p>
+			<p class="caption">
 				<span class="paragraph-title">Very-high-resolution generation. </span> &nbsp;
 				We provide a 256&#215;10240 resolution sample synthesized with InfinityGAN. 
 				The sample shows that (a) our InfinityGAN can generalize to arbitrarily-high resolution, 
@@ -553,7 +560,7 @@ h4 {font-size: 15px}
 		</div>
 		<br>
 		<div class="col-12 paragraph">
-			<p>
+			<p class="caption">
 				<span class="paragraph-title">Generation diversity. </span> &nbsp;
 				We show that the structure
 				synthesizer and texture synthesizer separately models
@@ -574,7 +581,7 @@ h4 {font-size: 15px}
 		<a href="assets/baseline-compare.png" class="zoomin"><img src="assets/baseline-compare.png" width="100%"></a>
 	</div>
 	<div class="col-12 paragraph">
-		<p>
+		<p class="caption">
 			<span class="paragraph-title">Comparison with related methods.</span> &nbsp;
 			We show that InfinityGAN can produce more favorable holistic appearances against
 			related methods while testing with an extended resolution 1024&#215;1024. (NCI: Non-Constant Input, FCG: Fully-Convolutional Generator).
@@ -588,7 +595,7 @@ h4 {font-size: 15px}
 
 	<div class="row">
 		<div class="col-12">
-			<h2 class="bold section-title"><span>Applications: Spatial Style Fusion</span></h2>
+			<h2 class="bold section-title loosen-title"><span>Applications: Spatial Style Fusion</span></h2>
 		</div>
 	</div>
 
@@ -606,7 +613,7 @@ h4 {font-size: 15px}
 		<a href="assets/spatial-fusion.png" class="zoomin"><img src="assets/spatial-fusion.png" style="width: 100%;"></a> 
 	</div>
 	<div class="col-12 paragraph">
-		<p>
+		<p class="caption">
 			<span class="paragraph-title">Spatial style fusion. </span> &nbsp;
 			We present a mechanism in fusing multiple styles together to increase the interestingness and
 			interactiveness of the generation results. The 512&#215;2048 image fuses four styles across 258 independently generated patches.
@@ -624,13 +631,13 @@ h4 {font-size: 15px}
 
 	<div class="row">
 		<div class="col-12">
-			<h2 class="bold section-title"><span>Applications: Image Outpainting</span></h2>
+			<h2 class="bold section-title loosen-title"><span>Applications: Image Outpainting</span></h2>
 
 			<div class="col-12 img-container">
 				<a href="assets/outpaint-compare.png" class="zoomin"><img src="assets/outpaint-compare.png" width="100%"></a>
 			</div>
 			<div class="col-12 paragraph">
-				<p>
+				<p class="caption">
 				<span class="paragraph-title">Outpainting long-range area. </span> &nbsp;
 				InfinityGAN synthesizes continuous and more plausible outpainting results for arbitrarily large outpainting areas. 
 				Different from previous methods, InfinityGAN does not need to iteratively outpaint the results.
@@ -645,12 +652,13 @@ h4 {font-size: 15px}
 				<a href="assets/multimodal-pano.png" class="zoomin"><img src="assets/multimodal-pano.png" width="100%"></a>
 			</div>
 			<div class="col-12 paragraph">
-				<p>
-				<span class="paragraph-title">Multi-modal outpainting.</span> &nbsp;
-				InfinityGAN can natively
-				achieve multi-modal outpainting by sampling different
-				local latents in the outpainted region. The real image
-				annotated with <span style="color: red;">red</span> box is 256&#215;128 pixels.
+				<p class="caption">
+					<span class="paragraph-title">Multi-modal outpainting.</span> &nbsp;
+					InfinityGAN can natively
+					achieve multi-modal outpainting by sampling different
+					local latents in the outpainted region. The real image
+					annotated with <span style="color: red;">red</span> box is 256&#215;128 pixels.
+				</p>
 			</div>
 
 
@@ -661,9 +669,10 @@ h4 {font-size: 15px}
 				<img src="assets/outpaint-fid.png" width="50%">
 			</div>
 			<div class="col-12 paragraph">
-				<p>
-				<span class="paragraph-title">Outpainting performance. </span> &nbsp;
-				The combination of In&Out and InfinityGAN achieves state-of-the-art FID (lower better) performance on image outpainting task.
+				<p class="caption">
+					<span class="paragraph-title">Outpainting performance. </span> &nbsp;
+					The combination of In&Out and InfinityGAN achieves state-of-the-art FID (lower better) performance on image outpainting task.
+				</p>
 			</div>
 		</div>
 	</div>
@@ -673,7 +682,7 @@ h4 {font-size: 15px}
 
 	<div class="row">
 		<div class="col-12">
-			<h2 class="bold section-title"><span>Applications: Image Inbetweening</span></h2>
+			<h2 class="bold section-title loosen-title"><span>Applications: Image Inbetweening</span></h2>
 		</div>
 	</div>
 </div>
@@ -683,7 +692,7 @@ h4 {font-size: 15px}
 		<a href="assets/inbetween.png" class="zoomin"><img src="assets/inbetween.png" style="width: 100%;"></a> 
 	</div>
 	<div class="col-12 paragraph">
-		<p>
+		<p class="caption">
 			<span class="paragraph-title">Image inbetweening with inverted latents. </span> &nbsp;
 			We show that our InfinityGAN can synthesize arbitrary-length cyclic
 			panorama and inbetweened images by inverting a real image at different position. The top-row image size is 256&#215;2080 pixels.
@@ -703,12 +712,13 @@ h4 {font-size: 15px}
 				<a href="assets/para-batching.png" class="zoomin"><img src="assets/para-batching.png" width="100%"></a>
 			</div>
 			<div class="col-12 paragraph">
-				<p>
-				<span class="paragraph-title">Inference speed up with parallel batching. </span> &nbsp;
-				Benefit from the spatial independent generation nature, InfinityGAN
-				achieves up to 7.20 inference speed up by with parallel batching. We conduct all experiments at a batch size of 1, and OOM
-				indicates out-of-memory. Note that the GPU time here accounts pure GPU execution time and (if applicable) data parallel
-				scatter-aggregation time.
+				<p class="caption">
+					<span class="paragraph-title">Inference speed up with parallel batching. </span> &nbsp;
+					Benefit from the spatial independent generation nature, InfinityGAN
+					achieves up to 7.20 inference speed up by with parallel batching. We conduct all experiments at a batch size of 1, and OOM
+					indicates out-of-memory. Note that the GPU time here accounts pure GPU execution time and (if applicable) data parallel
+					scatter-aggregation time.
+				</p>
 			</div>
 		</div>
 	</div>
