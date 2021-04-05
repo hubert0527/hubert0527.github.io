@@ -159,19 +159,43 @@ h4 {font-size: 15px}
 	// Borrowed from: https://stackoverflow.com/questions/12697216/bootstrap-carousel-lazy-load
 	const carouselViewSize = 3;
 	$(function() {
-		$('#carousel-more-qual.lazy-load').on('slide.bs.carousel', function (e) {
-			// var image = $(e.relatedTarget).find('img[data-src]');
-			$(e.relatedTarget).find('img[data-src]').each(function(){
-				node = $(this);
-				var src = node.attr('data-src');
-				if (src !== undefined) {
-					node.attr('src', src);
-					node.removeAttr('data-src');
-				};
-			});
+		$('.lazy-load').each(function(){
+			$(this).on('slide.bs.carousel', function (e) {
+				// var image = $(e.relatedTarget).find('img[data-src]');
+				$(e.relatedTarget).find('img[data-src]').each(function(){
+					node = $(this);
+					var src = node.attr('data-src');
+					if (src !== undefined) {
+						node.attr('src', src);
+						node.removeAttr('data-src');
+					};
+				});
 
+			});
 		});
 	});
+
+	// function detachOnClick(node) {
+	// 	if (typeof $().carousel == 'function') {
+	// 		// node.onclick = null;
+	// 		// $(node).attr('onclick', "console.log('OuO')");
+	// 		// console.log("Detached", node)
+	// 		$(node).off();
+	// 	} else {
+	// 		setTimeout(detachOnClick, 10, node);
+	// 	}
+	// }
+	// $(function(){
+	// 	$(".carousel-indicators > li").css({"cursor": "default"}).each(function(){
+	// 		// // $(this).attr('onclick','');
+	// 		// this.onclick = null;
+	// 		// $(this).on('shown.bs', function () {
+	// 		// 	alert('The modal is fully shown.');
+	// 		// 	$(this).find('p').text("This is changed text after alert");
+	// 		// });
+	// 		detachOnClick(this);
+	// 	});
+	// });
 
 
 	// For the very-long canvas
@@ -564,62 +588,62 @@ h4 {font-size: 15px}
 				</div>
 				<div class="item">
 					<div class="carousel-preview4-cell">
-						<img class="img-responsive" src="assets/more-qual/000016.png">
+						<img class="img-responsive" data-src="assets/more-qual/000016.png">
 					</div>
 				</div>
 				<div class="item">
 					<div class="carousel-preview4-cell">
-						<img class="img-responsive" src="assets/more-qual/000018.png">
+						<img class="img-responsive" data-src="assets/more-qual/000018.png">
 					</div>
 				</div>
 				<div class="item">
 					<div class="carousel-preview4-cell">
-						<img class="img-responsive" src="assets/more-qual/000020.png">
+						<img class="img-responsive" data-src="assets/more-qual/000020.png">
 					</div>
 				</div>
 				<div class="item">
 					<div class="carousel-preview4-cell">
-						<img class="img-responsive" src="assets/more-qual/000021.png">
+						<img class="img-responsive" data-src="assets/more-qual/000021.png">
 					</div>
 				</div>
 				<div class="item">
 					<div class="carousel-preview4-cell">
-						<img class="img-responsive" src="assets/more-qual/000023.png">
+						<img class="img-responsive" data-src="assets/more-qual/000023.png">
 					</div>
 				</div>
 				<div class="item">
 					<div class="carousel-preview4-cell">
-						<img class="img-responsive" src="assets/more-qual/000024.png">
+						<img class="img-responsive" data-src="assets/more-qual/000024.png">
 					</div>
 				</div>
 				<div class="item">
 					<div class="carousel-preview4-cell">
-						<img class="img-responsive" src="assets/more-qual/000025.png">
+						<img class="img-responsive" data-src="assets/more-qual/000025.png">
 					</div>
 				</div>
 				<div class="item">
 					<div class="carousel-preview4-cell">
-						<img class="img-responsive" src="assets/more-qual/000027.png">
+						<img class="img-responsive" data-src="assets/more-qual/000027.png">
 					</div>
 				</div>
 				<div class="item">
 					<div class="carousel-preview4-cell">
-						<img class="img-responsive" src="assets/more-qual/000029.png">
+						<img class="img-responsive" data-src="assets/more-qual/000029.png">
 					</div>
 				</div>
 				<div class="item">
 					<div class="carousel-preview4-cell">
-						<img class="img-responsive" src="assets/more-qual/000030.png">
+						<img class="img-responsive" data-src="assets/more-qual/000030.png">
 					</div>
 				</div>
 				<div class="item">
 					<div class="carousel-preview4-cell">
-						<img class="img-responsive" src="assets/more-qual/000031.png">
+						<img class="img-responsive" data-src="assets/more-qual/000031.png">
 					</div>
 				</div>
 				<div class="item">
 					<div class="carousel-preview4-cell">
-						<img class="img-responsive" src="assets/more-qual/000032.png">
+						<img class="img-responsive" data-src="assets/more-qual/000032.png">
 					</div>
 				</div>
 				<!-- <div class="item active">
@@ -657,22 +681,22 @@ h4 {font-size: 15px}
 			</div>
 			<!-- controls -->
 			<ol class="carousel-indicators">
-				<li data-target="#carousel-more-qual" data-slide-to="0" class="active"></li>
-				<li data-target="#carousel-more-qual" data-slide-to="1"></li>
-				<li data-target="#carousel-more-qual" data-slide-to="2"></li>
-				<li data-target="#carousel-more-qual" data-slide-to="3"></li>
-				<li data-target="#carousel-more-qual" data-slide-to="4"></li>
-				<li data-target="#carousel-more-qual" data-slide-to="5"></li>
-				<li data-target="#carousel-more-qual" data-slide-to="6"></li>
-				<li data-target="#carousel-more-qual" data-slide-to="7"></li>
-				<li data-target="#carousel-more-qual" data-slide-to="8"></li>
-				<li data-target="#carousel-more-qual" data-slide-to="9"></li>
-				<li data-target="#carousel-more-qual" data-slide-to="10"></li>
-				<li data-target="#carousel-more-qual" data-slide-to="11"></li>
-				<li data-target="#carousel-more-qual" data-slide-to="12"></li>
-				<li data-target="#carousel-more-qual" data-slide-to="13"></li>
-				<li data-target="#carousel-more-qual" data-slide-to="14"></li>
-				<li data-target="#carousel-more-qual" data-slide-to="15"></li>
+				<li data-target="#carousel-more-qual" data-slide-to="" class="active"></li>
+				<li data-target="#carousel-more-qual" data-slide-to=""></li>
+				<li data-target="#carousel-more-qual" data-slide-to=""></li>
+				<li data-target="#carousel-more-qual" data-slide-to=""></li>
+				<li data-target="#carousel-more-qual" data-slide-to=""></li>
+				<li data-target="#carousel-more-qual" data-slide-to=""></li>
+				<li data-target="#carousel-more-qual" data-slide-to=""></li>
+				<li data-target="#carousel-more-qual" data-slide-to=""></li>
+				<li data-target="#carousel-more-qual" data-slide-to=""></li>
+				<li data-target="#carousel-more-qual" data-slide-to=""></li>
+				<li data-target="#carousel-more-qual" data-slide-to=""></li>
+				<li data-target="#carousel-more-qual" data-slide-to=""></li>
+				<li data-target="#carousel-more-qual" data-slide-to=""></li>
+				<li data-target="#carousel-more-qual" data-slide-to=""></li>
+				<li data-target="#carousel-more-qual" data-slide-to=""></li>
+				<li data-target="#carousel-more-qual" data-slide-to=""></li>
 			</ol>
 			<a class="carousel-control-prev" href="#carousel-more-qual" role="button" data-slide="prev">
 				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -842,64 +866,64 @@ h4 {font-size: 15px}
 				</div>
 				<div class="item">
 					<div class="carousel-preview3-cell">
-						<img class="img-responsive" src="assets/outpaint_supp/beach-001762.png">
+						<img class="img-responsive" data-src="assets/outpaint_supp/beach-001762.png">
 					</div>
 				</div>
 				<div class="item">
 					<div class="carousel-preview3-cell">
-						<img class="img-responsive" src="assets/outpaint_supp/beach-002217.png">
+						<img class="img-responsive" data-src="assets/outpaint_supp/beach-002217.png">
 					</div>
 				</div>
 				<div class="item">
 					<div class="carousel-preview3-cell">
-						<img class="img-responsive" src="assets/outpaint_supp/cliff-000219.png">
+						<img class="img-responsive" data-src="assets/outpaint_supp/cliff-000219.png">
 					</div>
 				</div>
 				<div class="item">
 					<div class="carousel-preview3-cell">
-						<img class="img-responsive" src="assets/outpaint_supp/cliff-000721.png">
+						<img class="img-responsive" data-src="assets/outpaint_supp/cliff-000721.png">
 					</div>
 				</div>
 				<div class="item">
 					<div class="carousel-preview3-cell">
-						<img class="img-responsive" src="assets/outpaint_supp/hayfield-000432.png">
+						<img class="img-responsive" data-src="assets/outpaint_supp/hayfield-000432.png">
 					</div>
 				</div>
 				<div class="item">
 					<div class="carousel-preview3-cell">
-						<img class="img-responsive" src="assets/outpaint_supp/hayfield-001395.png">
+						<img class="img-responsive" data-src="assets/outpaint_supp/hayfield-001395.png">
 					</div>
 				</div>
 				<div class="item">
 					<div class="carousel-preview3-cell">
-						<img class="img-responsive" src="assets/outpaint_supp/ocean-000252.png">
+						<img class="img-responsive" data-src="assets/outpaint_supp/ocean-000252.png">
 					</div>
 				</div>
 				<div class="item">
 					<div class="carousel-preview3-cell">
-						<img class="img-responsive" src="assets/outpaint_supp/maple-000151.png">
+						<img class="img-responsive" data-src="assets/outpaint_supp/maple-000151.png">
 					</div>
 				</div>
 				<div class="item">
 					<div class="carousel-preview3-cell">
-						<img class="img-responsive" src="assets/outpaint_supp/waterfall-002688.png">
+						<img class="img-responsive" data-src="assets/outpaint_supp/waterfall-002688.png">
 					</div>
 				</div>
 			</div>
 			<!-- controls -->
 			<ol class="carousel-indicators">
-				<li data-target="#carousel-more-outpaint" data-slide-to="0" class="active"></li>
-				<li data-target="#carousel-more-outpaint" data-slide-to="1"></li>
-				<li data-target="#carousel-more-outpaint" data-slide-to="2"></li>
-				<li data-target="#carousel-more-outpaint" data-slide-to="3"></li>
-				<li data-target="#carousel-more-outpaint" data-slide-to="4"></li>
-				<li data-target="#carousel-more-outpaint" data-slide-to="5"></li>
-				<li data-target="#carousel-more-outpaint" data-slide-to="6"></li>
-				<li data-target="#carousel-more-outpaint" data-slide-to="7"></li>
-				<li data-target="#carousel-more-outpaint" data-slide-to="8"></li>
-				<li data-target="#carousel-more-outpaint" data-slide-to="9"></li>
-				<li data-target="#carousel-more-outpaint" data-slide-to="10"></li>
-				<li data-target="#carousel-more-outpaint" data-slide-to="11"></li>
+				<li data-target="#carousel-more-outpaint" data-slide-to="" class="active"></li>
+				<li data-target="#carousel-more-outpaint" data-slide-to=""></li>
+				<li data-target="#carousel-more-outpaint" data-slide-to=""></li>
+				<li data-target="#carousel-more-outpaint" data-slide-to=""></li>
+				<li data-target="#carousel-more-outpaint" data-slide-to=""></li>
+				<li data-target="#carousel-more-outpaint" data-slide-to=""></li>
+				<li data-target="#carousel-more-outpaint" data-slide-to=""></li>
+				<li data-target="#carousel-more-outpaint" data-slide-to=""></li>
+				<li data-target="#carousel-more-outpaint" data-slide-to=""></li>
+				<li data-target="#carousel-more-outpaint" data-slide-to=""></li>
+				<li data-target="#carousel-more-outpaint" data-slide-to=""></li>
+				<li data-target="#carousel-more-outpaint" data-slide-to=""></li>
 			</ol>
 			<a class="carousel-control-prev" href="#carousel-more-outpaint" role="button" data-slide="prev">
 				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -1020,28 +1044,28 @@ h4 {font-size: 15px}
 					</div>
 					<div class="item">
 						<div class="carousel-preview3-cell">
-							<img class="img-responsive" src="assets/inbetween_supp/2110140.png">
+							<img class="img-responsive" data-src="assets/inbetween_supp/2110140.png">
 						</div>
 					</div>
 					<div class="item">
 						<div class="carousel-preview3-cell">
-							<img class="img-responsive" src="assets/inbetween_supp/2290178.png">
+							<img class="img-responsive" data-src="assets/inbetween_supp/2290178.png">
 						</div>
 					</div>
 					<div class="item">
 						<div class="carousel-preview3-cell">
-							<img class="img-responsive" src="assets/inbetween_supp/2300050.png">
+							<img class="img-responsive" data-src="assets/inbetween_supp/2300050.png">
 						</div>
 					</div>
 				</div>
 				<!-- controls -->
 				<ol class="carousel-indicators">
-					<li data-target="#carousel-more-inbetween" data-slide-to="0"></li>
-					<li data-target="#carousel-more-inbetween" data-slide-to="1" class="active"></li>
-					<li data-target="#carousel-more-inbetween" data-slide-to="2"></li>
-					<li data-target="#carousel-more-inbetween" data-slide-to="3"></li>
-					<li data-target="#carousel-more-inbetween" data-slide-to="4"></li>
-					<li data-target="#carousel-more-inbetween" data-slide-to="5"></li>
+					<li data-target="#carousel-more-inbetween" data-slide-to="" class="active"></li>
+					<li data-target="#carousel-more-inbetween" data-slide-to=""></li>
+					<li data-target="#carousel-more-inbetween" data-slide-to=""></li>
+					<li data-target="#carousel-more-inbetween" data-slide-to=""></li>
+					<li data-target="#carousel-more-inbetween" data-slide-to=""></li>
+					<li data-target="#carousel-more-inbetween" data-slide-to=""></li>
 				</ol>
 				<a class="carousel-control-prev" href="#carousel-more-inbetween" role="button" data-slide="prev">
 					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -1089,28 +1113,28 @@ h4 {font-size: 15px}
 					</div>
 					<div class="item">
 						<div class="carousel-preview3-cell">
-							<img class="img-responsive" src="assets/cyclic_supp/000097.png">
+							<img class="img-responsive" data-src="assets/cyclic_supp/000097.png">
 						</div>
 					</div>
 					<div class="item">
 						<div class="carousel-preview3-cell">
-							<img class="img-responsive" src="assets/cyclic_supp/000152.png">
+							<img class="img-responsive" data-src="assets/cyclic_supp/000152.png">
 						</div>
 					</div>
 					<div class="item">
 						<div class="carousel-preview3-cell">
-							<img class="img-responsive" src="assets/cyclic_supp/000197.png">
+							<img class="img-responsive" data-src="assets/cyclic_supp/000197.png">
 						</div>
 					</div>
 				</div>
 				<!-- controls -->
 				<ol class="carousel-indicators">
-					<li data-target="#carousel-more-cyclic" data-slide-to="0"></li>
-					<li data-target="#carousel-more-cyclic" data-slide-to="1" class="active"></li>
-					<li data-target="#carousel-more-cyclic" data-slide-to="2"></li>
-					<li data-target="#carousel-more-cyclic" data-slide-to="3"></li>
-					<li data-target="#carousel-more-cyclic" data-slide-to="4"></li>
-					<li data-target="#carousel-more-cyclic" data-slide-to="5"></li>
+					<li data-target="#carousel-more-cyclic" data-slide-to="" class="active"></li>
+					<li data-target="#carousel-more-cyclic" data-slide-to=""></li>
+					<li data-target="#carousel-more-cyclic" data-slide-to=""></li>
+					<li data-target="#carousel-more-cyclic" data-slide-to=""></li>
+					<li data-target="#carousel-more-cyclic" data-slide-to=""></li>
+					<li data-target="#carousel-more-cyclic" data-slide-to=""></li>
 				</ol>
 				<a class="carousel-control-prev" href="#carousel-more-cyclic" role="button" data-slide="prev">
 					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -1285,10 +1309,10 @@ h4 {font-size: 15px}
 <footer class="footer">
 	<p style="font-size: 12px; margin: 0;">Website # visits:
 		<!-- GoStats Simple HTML Based Code -->
-		<!-- <a target="_blank" title="web site traffic statistics"
+		<a target="_blank" title="web site traffic statistics"
 		href="http://www.gostats.org">
 			<img alt="web site traffic statistics"src="//www.gostats.org/0.png?a=701071175&ct=4&ci=1" style="border-width:0" />
-		</a> -->
+		</a>
 		<!-- <script type="text/javascript">
 			(function(c,o,m,p,u,t,e){
 				c['GoStatsObject']=u;c[u]=c[u]||function(){(c[u].q=c[u].q||[]).push(arguments)},
