@@ -13,6 +13,13 @@
 	width: 100%;
 }
 
+.carousel-preview3, 
+.carousel-preview3-shorter,
+.carousel-preview4, 
+.carousel-preview5 {
+	width: 100%;
+}
+
 
 
 .carousel-preview3.carousel,
@@ -49,31 +56,35 @@
 
 
 
-.carousel-preview3 {
+.carousel-preview3 .carousel-inner {
 	width: 250%;
 	margin: 0 -75%;
 }
 .carousel-preview3 .carousel-control-prev{
-	left: 30%;
-	width: 5%;
+	/* left: 30%;
+	width: 5%; */
+	width: 10%;
 }
 .carousel-preview3 .carousel-control-next{
-	right: 30%;
-	width: 5%;
+	/* right: 30%;
+	width: 5%; */
+	width: 10%;
 }
 
 
-.carousel-preview3-shorter {
+.carousel-preview3-shorter .carousel-inner {
 	width: 150%;
 	margin: 0 -25%;
 }
 .carousel-preview3-shorter .carousel-control-prev{
-	left: 17.2%;
-	width: 6.5%;
+	/* left: 17.2%; */
+	/* width: 6.5%; */
+	width: 10%;
 }
 .carousel-preview3-shorter .carousel-control-next{
-	right: 17.2%;
-	width: 6.5%;
+	/* right: 17.2%; */
+	/* width: 6.5%; */
+	width: 10%;
 }
 
 
@@ -116,7 +127,7 @@
 	background-image:none;
 }
 
-/* .carousel-preview4 {
+/* .carousel-preview4 .carousel-inner {
 	width: 250%;
 	margin: 0 -75%;
 }
@@ -173,15 +184,17 @@
 	background-image:none;
 }
 
-.carousel-preview5 {
+.carousel-preview5 .carousel-inner {
 	width: 250%;
 	margin: 0 -75%;
 }
 .carousel-preview5 .carousel-control-prev{
-	left: 30%;
-	width: 5%;
+	/* left: 30%;
+	width: 5%; */
+	width: 10%;
 }
 .carousel-preview5 .carousel-control-next{
-	right: 30%;
-	width: 5%;
+	/* right: 30%;
+	width: 5%; */
+	width: 10%;
 }
