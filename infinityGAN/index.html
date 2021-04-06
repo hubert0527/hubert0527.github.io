@@ -123,6 +123,16 @@ h4 {font-size: 15px}
 	margin: 120px auto;
 }
 
+.row-fluid {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	margin-right: 0;
+	margin-left: 0;
+}
+
 .section-title {
 	text-align: left;
 }
@@ -789,15 +799,17 @@ h4 {font-size: 15px}
 
 
 
-	<div class="col-xs-12 img-container">
-		<a href="assets/baseline-compare.png" class="zoomin"><img src="assets/baseline-compare.png" width="100%"></a>
-	</div>
-	<div class="col-xs-12 paragraph">
-		<p class="caption">
-			<span class="paragraph-title">Comparison with related methods.</span> &nbsp;
-			We show that InfinityGAN can produce more favorable holistic appearances against
-			related methods while testing with an extended resolution 1024&#215;1024. (NCI: Non-Constant Input, FCG: Fully-Convolutional Generator).
-		</p>
+	<div class="row">
+		<div class="col-xs-12 img-container">
+			<a href="assets/baseline-compare.png" class="zoomin"><img src="assets/baseline-compare.png" width="100%"></a>
+		</div>
+		<div class="col-xs-12 paragraph">
+			<p class="caption">
+				<span class="paragraph-title">Comparison with related methods.</span> &nbsp;
+				We show that InfinityGAN can produce more favorable holistic appearances against
+				related methods while testing with an extended resolution 1024&#215;1024. (NCI: Non-Constant Input, FCG: Fully-Convolutional Generator).
+			</p>
+		</div>
 	</div>
 
 
