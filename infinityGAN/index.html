@@ -37,7 +37,7 @@ var _POPUP_FEATURES = 'width=500,height=300,resizable=1,scrollbars=1,titlebar=1,
 </script>
 
 <!-- PDF reader -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js" integrity="sha512-Z8CqofpIcnJN80feS2uccz+pXWgZzeKxDsDNMD/dJ6997/LSRY+W4NmEt9acwR+Gt9OHN0kkI1CTianCwoqcjQ==" crossorigin="anonymous"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js" integrity="sha512-Z8CqofpIcnJN80feS2uccz+pXWgZzeKxDsDNMD/dJ6997/LSRY+W4NmEt9acwR+Gt9OHN0kkI1CTianCwoqcjQ==" crossorigin="anonymous"></script> -->
 
 
 
@@ -158,13 +158,13 @@ h4 {font-size: 15px}
 
 <script>
 	// Force pdf reader always aspect ratio
-	$(window).on("ready load resize", function(){
-		$(".pdf-reader").each(function(){
-			var cur_width = $(this).width();
-			var aspect_ratio = parseFloat($(this).attr("hratio"));
-			$(this).height(cur_width * aspect_ratio);
-		});
-	});
+	// $(window).on("ready load resize", function(){
+	// 	$(".pdf-reader").each(function(){
+	// 		var cur_width = $(this).width();
+	// 		var aspect_ratio = parseFloat($(this).attr("hratio"));
+	// 		$(this).height(cur_width * aspect_ratio);
+	// 	});
+	// });
 
 	// Borrowed from: https://stackoverflow.com/questions/12697216/bootstrap-carousel-lazy-load
 	const carouselViewSize = 3;
