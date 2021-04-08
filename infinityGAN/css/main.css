@@ -169,7 +169,7 @@ TD.coursename {
 }
 
 
-@media only screen and (max-width: 1001px)  {
+@media only screen and (max-width: 992px)  {
 	.full {
 		display:block;
 		width:50%;
@@ -292,3 +292,30 @@ TD.coursename {
 }
 
 
+/* xs */
+#citation-left-block {
+	margin-top: 10%;
+}
+#citation-right-block {
+	margin-top: 0;
+}
+
+/* >= sm */
+@media only screen and (min-width: 768px)  {
+	#citation-left-block {
+		margin-top: 0;
+	}
+	#citation-right-block {
+		margin-top: 0;
+	}
+}
+
+/* >= lg */
+@media only screen and (min-width: 992px)  {
+	#citation-left-block {
+		margin-top: 0;
+	}
+	#citation-right-block {
+		margin-top: 8%;
+	}
+}
