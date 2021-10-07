@@ -16,7 +16,7 @@ QuQ
 <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
 
 <meta property="og:image" content="images/teaser_fb.jpg"/>
-<meta property="og:title" content="InfinityGAN: Towards Infinite-Resolution Image Synthesis"/>
+<meta property="og:title" content="InfinityGAN: Towards Infinite-Pixel Image Synthesis"/>
 
 <script src="lib.js" type="text/javascript"></script>
 <script src="popup.js" type="text/javascript"></script>
@@ -393,7 +393,7 @@ h4 {font-size: 15px}
 <body style="border-top: 10px solid var(--face-color); border-bottom: 10px solid var(--face-color);">
 
 <div class="container">
-	<h1 class="lg-margin">InfinityGAN: Towards Infinite-Resolution Image Synthesis</h1>
+	<h1 class="lg-margin">InfinityGAN: Towards Infinite-Pixel Image Synthesis</h1>
 
 
 	<!-- PC -->
@@ -508,19 +508,15 @@ h4 {font-size: 15px}
 
 		<div class="col-xs-12" style="font-size: 14px; text-align: left;">
 			<p>
-				We present InfinityGAN, a method to generate arbitrary-resolution images. 
-				The problem is associated with several key challenges. 
-				First, scaling existing models to a high resolution is resource-constrained, 
-				both in terms of computation and availability of high-resolution training data. 
-				InfinityGAN trains and infers patch-by-patch seamlessly with low computational resources.
-				Second, large images should be locally and globally consistent, avoid repetitive patterns, 
-				and look realistic. To address these, InfinityGAN takes global appearance, local structure 
-				and texture into account. With this formulation, we can generate images with resolution and 
-				level of detail not attainable before. 
-				Experimental evaluation supports that InfinityGAN generates images with superior global 
-				structure compared to baselines at the same time featuring parallelizable inference.
-				Finally, we show several applications unlocked by our approach, such as fusing styles 
-				spatially, multi-modal outpainting and image inbetweening at arbitrary input and output resolutions.
+				We present a novel framework,  InfinityGAN, for arbitrary-sized image generation.
+                                The task is associated with several key challenges. 
+                                First, scaling existing models to an arbitrarily large image size is resource-constrained, in terms of both computation and availability of large-field-of-view training data. 
+                                InfinityGAN trains and infers in a seamless patch-by-patch manner with low computational resources.
+                                Second, large images should be locally and globally consistent, avoid repetitive patterns, and look realistic. To address these, InfinityGAN disentangles global appearances, local structures, and textures. 
+				With this formulation, we can generate images with spatial size and level of details not attainable before. 
+                                Experimental evaluation validates that InfinityGAN generates images with superior realism compared to baselines and features parallelizable inference.
+                                Finally, we show several applications unlocked by our approach, such as spatial style fusion, multi-modal outpainting, and image inbetweening.
+                                All applications can be operated with arbitrary input and output sizes.
 			</p>
 		</div>
 	</div>
@@ -544,7 +540,7 @@ h4 {font-size: 15px}
 				<h3 style="font-size: 20px;">[Citation]</h3>
 				<code style="text-align: left; display: block; background-color: #383838; padding: 20px; color: var(--face-color)">
 					@article{lin2021infinity, <br/>
-					&nbsp;&nbsp;&nbsp;title={InfinityGAN: Towards Infinite-Resolution Image Synthesis}, <br/>
+					&nbsp;&nbsp;&nbsp;title={InfinityGAN: Towards Infinite-Pixel Image Synthesis}, <br/>
 					&nbsp;&nbsp;&nbsp;author={Lin, Chieh Hubert and Cheng, Yen-Chi and Lee, Hsin-Ying and Tulyakov, Sergey and Yang, Ming-Hsuan}, <br/>
 					&nbsp;&nbsp;&nbsp;journal={arXiv preprint arXiv:2104.03963}, <br/>
 					&nbsp;&nbsp;&nbsp;year={2021} <br/>
@@ -567,7 +563,7 @@ h4 {font-size: 15px}
 				and a fully-convolutional texture synthesizer with all positional information removed (see Figure 3 in the paper). The two networks 
 				take four sets of inputs, a global latent variable that defines the holistic appearance of the image, a local latent variable 
 				that represents the local and structural variation, a continuous coordinate for learning the neural implicit structure synthesizer, 
-				and a set of randomized noises to model fine-grained texture. InfinityGAN synthesizes images of arbitrary resolution by learning 
+				and a set of randomized noises to model fine-grained texture. InfinityGAN synthesizes images of arbitrary sizes by learning 
 				spatially extensible representations.</p>
 		</div>
 	</div>
@@ -731,8 +727,8 @@ h4 {font-size: 15px}
 	<div class="row-fluid">
 		<div class="col-xs-12 paragraph">
 			<p class="caption">
-				<span class="paragraph-title">Generation at extended resolution.</span> &nbsp;
-				All samples are generated at 1024&#215;1024 resolution with an InfinityGAN trained at 101&#215;101 resolution.
+				<span class="paragraph-title">Generation at extended sizes.</span> &nbsp;
+				All samples are generated at 1024&#215;1024 pixels with an InfinityGAN trained at 101&#215;101 pixels.
 			</p>
 		</div>
 	</div>
@@ -763,9 +759,9 @@ h4 {font-size: 15px}
 	</div>
 	<div class="col-xs-12 paragraph">
 		<p class="caption">
-			<span class="paragraph-title">Very-high-resolution generation. </span> &nbsp;
-			We provide a 256&#215;10240 resolution sample synthesized with InfinityGAN. 
-			The sample shows that (a) our InfinityGAN can generalize to arbitrarily-high resolution, 
+			<span class="paragraph-title">Very-long landscape generation. </span> &nbsp;
+			We provide a 256&#215;10240 pixels sample synthesized with InfinityGAN. 
+			The sample shows that (a) our InfinityGAN can generalize to arbitrarily-large image sizes, 
 			and (b) the synthesized contents do not self-repeat while using the sample global latent variable.
 			</p>
 	</div>
@@ -807,7 +803,7 @@ h4 {font-size: 15px}
 			<p class="caption">
 				<span class="paragraph-title">Comparison with related methods.</span> &nbsp;
 				We show that InfinityGAN can produce more favorable holistic appearances against
-				related methods while testing with an extended resolution 1024&#215;1024. (NCI: Non-Constant Input, FCG: Fully-Convolutional Generator).
+				related methods while testing with an extended size 1024&#215;1024. (NCI: Non-Constant Input, PFG: Padding-Free Generator).
 			</p>
 		</div>
 	</div>
@@ -1164,7 +1160,7 @@ h4 {font-size: 15px}
 		<div class="col-xs-12 paragraph">
 			<p class="caption">
 				<span class="paragraph-title">More cyclic inbetweening results.</span> &nbsp;
-				We synthesize cyclic panorama at 256&#215;1280 resolution by inbetweening the same image (<span style="color: red; font-weight: 900;">red</span> boxes, 256&#215;128 pixels) on two sides.
+				We synthesize cyclic panorama at 256&#215;1280 pixels by inbetweening the same image (<span style="color: red; font-weight: 900;">red</span> boxes, 256&#215;128 pixels) on two sides.
 			</p>
 		</div>
 	</div>
