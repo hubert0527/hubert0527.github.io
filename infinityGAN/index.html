@@ -405,7 +405,7 @@ h4 {font-size: 15px}
 		});
 
 		const checkElement = async selector => {
-			while ( document.querySelector(selector) === null) {
+			while ( document.querySelector(selector) === null || document.querySelector(selector).height==0 ) {
 				await new Promise( resolve =>  requestAnimationFrame(resolve) )
 			}
 			return document.querySelector(selector); 
