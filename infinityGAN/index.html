@@ -451,7 +451,7 @@ h4 {font-size: 15px}
 	  init_y = img.height / 4
 	  glass.style.left = (init_x - w) + "px";
 	  glass.style.top = (init_y - h) + "px";
-	  glass.style.backgroundPosition = "-" + (init_x - w + bw) + "px -" + (init_y - h + bw) + "px";
+	  glass.style.backgroundPosition = "-" + (init_x*zoom - w + bw) + "px -" + (init_y*zoom - h + bw) + "px";
 
 	  function moveMagnifier(e) {
 	    var pos, x, y;
