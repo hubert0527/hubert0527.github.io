@@ -444,6 +444,14 @@ h4 {font-size: 15px}
 	  /*and also for touch screens:*/
 	  glass.addEventListener("touchmove", moveMagnifier);
 	  img.addEventListener("touchmove", moveMagnifier);
+
+	  // Set init position
+	  init_x = img.width * zoom / 4
+	  init_y = img.height * zoom / 4
+	  glass.style.left = (init_x - w) + "px";
+	  glass.style.top = (init_y - h) + "px";
+	  glass.style.backgroundPosition = "-" + (init_x - w + bw) + "px -" + (init_y - h + bw) + "px";
+
 	  function moveMagnifier(e) {
 	    var pos, x, y;
 	    /* Prevent any other actions that may occur when moving over the image */
