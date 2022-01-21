@@ -168,8 +168,8 @@ h4 {font-size: 15px}
   border-radius: 50%;
   cursor: none;
   /*Set the size of the magnifier glass:*/
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
 }
 </style>
 
@@ -404,7 +404,9 @@ h4 {font-size: 15px}
 			}
 		});
 
-		magnify("magnify-1", 4);
+		$("#magnify-hr").ready(function () {
+			magnify("magnify-hr", 4);
+		});
 	});
 
 
@@ -827,13 +829,13 @@ h4 {font-size: 15px}
 	<div class="row">
 		<div class="col-xs-12 img-container img-magnifier-container">
 			<a href="https://drive.google.com/drive/folders/1Ej3dgWVagitJR7FYtrlEWu3DSC2cOvJi?usp=sharing">
-				<img id="magnify-1" src="assets/hr/merged.png" width="100%">
+				<img id="magnify-hr" src="assets/hr/merged.png" width="100%">
 			</a>
 		</div>
 		<br>
 		<div class="col-xs-12 paragraph">
 			<p class="caption">
-				<span class="paragraph-title">Generation at high-resolution setting.</span> &nbsp;
+				<span class="paragraph-title">Generation at a higher-resolution setting.</span> &nbsp;
 				We synthesize 4096&#215;4096 pixels images with a model trained at 397&#215;397 pixels. Note that images here are actually 1024&#215;1024 pixels due to file size limit, please click on the image to access the raw image.
 			</p>
 		</div>
