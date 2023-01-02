@@ -192,6 +192,30 @@ h4 {font-size: 15px}
 				$(this).children("img").attr("src", dataToLoad);
 			});
 		});
+
+
+		function replacePipelineToolTip(dataStr){
+			var dataToLoad = "./assets/" + dataStr + ".jpg";
+			$("#pipeline-canvas").children("a").attr("href", dataToLoad);
+			$("#pipeline-canvas").children("a").children("img").attr("src", dataToLoad);
+		}
+		$(".pipeline-tooltip").mouseenter(function() {
+			replacePipelineToolTip($(this).attr("data"));
+		}).mouseleave(function() {
+			replacePipelineToolTip("pipeline");
+		});
+		// $(".pipeline-tooltip").hover(
+		// 	function() {
+		// 		replacePipelineToolTip($(this).attr("data"))}, 
+		// 	function() {
+		// 		replacePipelineToolTip("pipeline");
+		// 	}
+		// );
+		// $(".pipeline-tooltip").on("mousestart touchstart", function() {
+		// 	replacePipelineToolTip($(this).attr("data"));
+		// }).on("mouseout touchend", function() {
+		// 	replacePipelineToolTip("pipeline");
+		// });
 	});
 </script>
 
@@ -313,7 +337,7 @@ h4 {font-size: 15px}
 			</div>
 			<div class="row sm-margin">
 				<div id="paper-first-link" class="col-xs-push-1 col-xs-10">
-					<p style="margin: auto"><a href="">Paper (ArXiv 2022)</a></p> 
+					<p style="margin: auto"><a href="">Paper (ArXiv 2023)</a></p> 
 				</div>
 			</div>
 		</div>
@@ -468,19 +492,19 @@ h4 {font-size: 15px}
 		<h2 class="bold section-title"><span>Methodology</span></h2>
 	</div>
 	<div class="row">
-		<div class="col-xs-12 img-container">
+		<div id="pipeline-canvas" class="col-xs-12 img-container">
 			<a href="assets/pipeline.jpg" class="zoomin"><img src="assets/pipeline.jpg" width="100%"></a>
 		</div>
 		<br>
 		<div class="col-xs-12" style="text-align: left;">
 			<p class="caption">
 				<span class="paragraph-title">InfiniCity consists of three major modules.</span> &nbsp;
-				The <i class="emph">Infinite-pixel satellite image synthesis stage</i> is trained on image
+				The <i class="emph pipeline-tooltip" data="pipeline-map">Infinite-pixel satellite image synthesis stage</i> is trained on image
 				tuples (category, depth, and normal maps) derived from a bird’s-eye view scan of the 3D environment, and is able to synthesize arbitrary-
 				scale satellite maps during inference. 
-				The <i class="emph">3D octree-based voxel completion stage</i>is trained on pairs of surface-scanned and completed
+				The <i class="emph pipeline-tooltip" data="pipeline-completion">3D octree-based voxel completion stage</i>is trained on pairs of surface-scanned and completed
 				octrees. During inference, it takes the surface voxels lifted from the satellite images as inputs and produces the watertight voxel world.
-				Finally, the <i class="emph">voxel-based neural rendering stage</i> performs ray-sampling to retrieve features from the voxel world, then renders the final
+				Finally, the <i class="emph pipeline-tooltip" data="pipeline-render">voxel-based neural rendering stage</i> performs ray-sampling to retrieve features from the voxel world, then renders the final
 				image with a neural renderer. The neural renderer is trained with both real images and pseudo-ground-truths synthesized by a pretrained
 				SPADE generator. With these modules, InfiniCity can synthesize an arbitrary-scale and traversable 3D city environment from noises.</p>
 		</div>
