@@ -194,15 +194,20 @@ h4 {font-size: 15px}
 		});
 
 
-		function replacePipelineToolTip(dataStr){
+		function replaceToolTip(objId, dataStr){
 			var dataToLoad = "./assets/" + dataStr + ".jpg";
-			$("#pipeline-canvas").children("a").attr("href", dataToLoad);
-			$("#pipeline-canvas").children("a").children("img").attr("src", dataToLoad);
+			$(objId).children("a").attr("href", dataToLoad);
+			$(objId).children("a").children("img").attr("src", dataToLoad);
 		}
 		$(".pipeline-tooltip").mouseenter(function() {
-			replacePipelineToolTip($(this).attr("data"));
+			replaceToolTip("#pipeline-canvas", $(this).attr("data"));
 		}).mouseleave(function() {
-			replacePipelineToolTip("pipeline");
+			replaceToolTip("#pipeline-canvas", "pipeline");
+		});
+		$(".teaser-tooltip").mouseenter(function() {
+			replaceToolTip("#teaser-canvas", $(this).attr("data"));
+		}).mouseleave(function() {
+			replaceToolTip("#teaser-canvas", "teaser");
 		});
 		// $(".pipeline-tooltip").hover(
 		// 	function() {
@@ -421,9 +426,7 @@ h4 {font-size: 15px}
 		</div>
 	</div>
 
-	<hr>
-
-	<div class="row">
+	<div class="row md-margin">
 		<div id="citation-right-block" class="col-xs-12 col-lg-7" style="text-align: left;">
 			<div style="margin: 0;">
 				<h3 class="paragraph-title">[Abstract]</h3>
@@ -469,7 +472,7 @@ h4 {font-size: 15px}
 		<h2 class="bold section-title"><span>Framework Overview</span></h2>
 	</div>
 	<div class="row">
-		<div class="col-xs-12 col-md-7 img-container">
+		<div id="teaser-canvas" class="col-xs-12 col-md-7 img-container">
 			<a href="assets/teaser.jpg" class="zoomin"><img src="assets/teaser.jpg" width="100%"></a>
 		</div>
 		<br>
@@ -478,9 +481,8 @@ h4 {font-size: 15px}
 				<span id="teaser-title" class="paragraph-title">We propose InfiniCity, a three-stage synthesis framework toward infinite-scale city scene synthesis.</span>
 				<br class="hidden-xs visible-sm visible-md visible-lg">
 				<br class="hidden-xs visible-sm visible-md visible-lg">
-				Starting from the
-				bottom to the top, we synthesize multi-modality infinite-pixel satellite images, perform octree-based voxel completion to create a watertight
-				voxel world, then finally texturize with voxel neural rendering. In the middle figure, we mark the camera locations (in <b style="color: red;">red</b> and <b style="color: orange;">orange</b>) used
+				Starting from the bottom to the top, we synthesize <i class="emph teaser-tooltip" data="teaser-sat">multi-modality infinite-pixel satellite images</i>, perform <i class="emph teaser-tooltip" data="teaser-completion">octree-based voxel completion</i> to create a watertight
+				voxel world, then finally texturize with <i class="emph teaser-tooltip" data="teaser-render">voxel neural rendering</i>. In the middle figure, we mark the camera locations (in <b style="color: red;">red</b> and <b style="color: orange;">orange</b>) used
 				to render the views in the top figures.</p>
 		</div>
 	</div>
