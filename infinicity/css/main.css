@@ -168,6 +168,24 @@ TD.coursename {
 	FONT-WEIGHT: bolder
 }
 
+.emph {
+	color: var(--face-color);
+	text-decoration: underline;
+	text-decoration-style: dotted;
+	cursor: help;
+}
+.mm-map > img {
+    /* vertical-align: top;
+    display: inline-block;
+    *display: inline; */
+}
+.mm-btn {
+	width: 25%;
+	max-width: 160px;
+	margin: auto;
+	font-weight: bolder;
+}
+
 
 @media only screen and (max-width: 992px)  {
 	.full {

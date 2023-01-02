@@ -178,6 +178,20 @@ h4 {font-size: 15px}
 			$(this).attr("src", new_vid_src).trigger('load').trigger('play');
 			video_id_counter++;
 		});
+
+
+		$(".mm-btn").click(function(){
+			if ($(this).hasClass("active")) return;
+			$(".mm-btn").removeClass("active");
+			$(this).addClass("active");
+			var dataModality = $(this).attr("data");
+			$(".mm-map").each(function(){
+				var dataId = $(this).attr("data");
+				var dataToLoad = "assets/map-"+dataModality+"/"+dataId+".png";
+				$(this).attr("href", dataToLoad);
+				$(this).children("img").attr("src", dataToLoad);
+			});
+		});
 	});
 </script>
 
@@ -432,7 +446,7 @@ h4 {font-size: 15px}
 	</div>
 	<div class="row">
 		<div class="col-xs-12 col-md-7 img-container">
-			<a href="assets/teaser.jpg" class="zoomin"><img src="assets/teaser.jpg" width="100%" style="background-color: white; padding: 4px;"></a>
+			<a href="assets/teaser.jpg" class="zoomin"><img src="assets/teaser.jpg" width="100%"></a>
 		</div>
 		<br>
 		<div class="col-xs-12 col-md-5" style="text-align: left;">
@@ -455,275 +469,106 @@ h4 {font-size: 15px}
 	</div>
 	<div class="row">
 		<div class="col-xs-12 img-container">
-			<a href="assets/pipeline.jpg" class="zoomin"><img src="assets/pipeline.jpg" width="100%" style="background-color: white; padding: 4px;"></a>
+			<a href="assets/pipeline.jpg" class="zoomin"><img src="assets/pipeline.jpg" width="100%"></a>
 		</div>
 		<br>
 		<div class="col-xs-12" style="text-align: left;">
 			<p class="caption">
-				<span class="paragraph-title">InfiniCity consists of three major modules.</span>
-				The Infinite-pixel satellite image synthesis stage is trained on image
+				<span class="paragraph-title">InfiniCity consists of three major modules.</span> &nbsp;
+				The <i class="emph">Infinite-pixel satellite image synthesis stage</i> is trained on image
 				tuples (category, depth, and normal maps) derived from a bird’s-eye view scan of the 3D environment, and is able to synthesize arbitrary-
-				scale satellite maps during inference. The 3D octree-based voxel completion stage is trained on pairs of surface-scanned and completed
+				scale satellite maps during inference. 
+				The <i class="emph">3D octree-based voxel completion stage</i>is trained on pairs of surface-scanned and completed
 				octrees. During inference, it takes the surface voxels lifted from the satellite images as inputs and produces the watertight voxel world.
-				Finally, the voxel-based neural rendering stage performs ray-sampling to retrieve features from the voxel world, then renders the final
+				Finally, the <i class="emph">voxel-based neural rendering stage</i> performs ray-sampling to retrieve features from the voxel world, then renders the final
 				image with a neural renderer. The neural renderer is trained with both real images and pseudo-ground-truths synthesized by a pretrained
 				SPADE generator. With these modules, InfiniCity can synthesize an arbitrary-scale and traversable 3D city environment from noises.</p>
 		</div>
 	</div>
 
-	
 
-</div>
+	<div class="row end-section"></div>
+	<hr>
 
-
-
-<div class="container-fluid" style="padding: 0;">
-	<div id="carousel-more-qual" class="carousel slide lazy-load carousel-preview4" data-ride="carousel" data-interval="7000">
-		<div class="carousel-inner" role="listbox" style="min-height: 25%;">
-			<div class="item active">
-				<div class="carousel-preview4-cell">
-					<img class="img-responsive" src="assets/more-qual/000010.png">
-				</div>
-			</div>
-			<div class="item">
-				<div class="carousel-preview4-cell">
-					<img class="img-responsive" src="assets/more-qual/000013.png">
-				</div>
-			</div>
-			<div class="item">
-				<div class="carousel-preview4-cell">
-					<img class="img-responsive" src="assets/more-qual/000014.png">
-				</div>
-			</div>
-			<div class="item">
-				<div class="carousel-preview4-cell">
-					<img class="img-responsive" src="assets/more-qual/000015.png">
-				</div>
-			</div>
-			<div class="item">
-				<div class="carousel-preview4-cell">
-					<img class="img-responsive" data-src="assets/more-qual/000016.png">
-				</div>
-			</div>
-			<div class="item">
-				<div class="carousel-preview4-cell">
-					<img class="img-responsive" data-src="assets/more-qual/000018.png">
-				</div>
-			</div>
-			<div class="item">
-				<div class="carousel-preview4-cell">
-					<img class="img-responsive" data-src="assets/more-qual/000020.png">
-				</div>
-			</div>
-			<div class="item">
-				<div class="carousel-preview4-cell">
-					<img class="img-responsive" data-src="assets/more-qual/000021.png">
-				</div>
-			</div>
-			<div class="item">
-				<div class="carousel-preview4-cell">
-					<img class="img-responsive" data-src="assets/more-qual/000023.png">
-				</div>
-			</div>
-			<div class="item">
-				<div class="carousel-preview4-cell">
-					<img class="img-responsive" data-src="assets/more-qual/000024.png">
-				</div>
-			</div>
-			<div class="item">
-				<div class="carousel-preview4-cell">
-					<img class="img-responsive" data-src="assets/more-qual/000025.png">
-				</div>
-			</div>
-			<div class="item">
-				<div class="carousel-preview4-cell">
-					<img class="img-responsive" data-src="assets/more-qual/000027.png">
-				</div>
-			</div>
-			<div class="item">
-				<div class="carousel-preview4-cell">
-					<img class="img-responsive" data-src="assets/more-qual/000029.png">
-				</div>
-			</div>
-			<div class="item">
-				<div class="carousel-preview4-cell">
-					<img class="img-responsive" data-src="assets/more-qual/000030.png">
-				</div>
-			</div>
-			<div class="item">
-				<div class="carousel-preview4-cell">
-					<img class="img-responsive" data-src="assets/more-qual/000031.png">
-				</div>
-			</div>
-			<div class="item">
-				<div class="carousel-preview4-cell">
-					<img class="img-responsive" data-src="assets/more-qual/000032.png">
-				</div>
-			</div>
-			<!-- <div class="item active">
-				<div class="row">
-					<div class="col-xs-3"><img class="img-fluid mx-auto" src="assets/more-qual/000010.png"></div>
-					<div class="col-xs-3"><img class="img-fluid mx-auto" src="assets/more-qual/000013.png"></div>
-					<div class="col-xs-3"><img class="img-fluid mx-auto" src="assets/more-qual/000014.png"></div>
-					<div class="col-xs-3"><img class="img-fluid mx-auto" src="assets/more-qual/000015.png"></div>
-				</div>
-			</div>
-			<div class="item">
-				<div class="row">
-					<div class="col-xs-3"><img class="img-fluid mx-auto" src="assets/more-qual/000016.png"></div>
-					<div class="col-xs-3"><img class="img-fluid mx-auto" data-src="assets/more-qual/000018.png"></div>
-					<div class="col-xs-3"><img class="img-fluid mx-auto" data-src="assets/more-qual/000020.png"></div>
-					<div class="col-xs-3"><img class="img-fluid mx-auto" data-src="assets/more-qual/000021.png"></div>
-				</div>
-			</div>
-			<div class="item">
-				<div class="row">
-					<div class="col-xs-3"><img class="img-fluid mx-auto" src="assets/more-qual/000023.png"></div>
-					<div class="col-xs-3"><img class="img-fluid mx-auto" data-src="assets/more-qual/000024.png"></div>
-					<div class="col-xs-3"><img class="img-fluid mx-auto" data-src="assets/more-qual/000025.png"></div>
-					<div class="col-xs-3"><img class="img-fluid mx-auto" data-src="assets/more-qual/000027.png"></div>
-				</div>
-			</div>
-			<div class="item">
-				<div class="row">
-					<div class="col-xs-3"><img class="img-fluid mx-auto" src="assets/more-qual/000029.png"></div>
-					<div class="col-xs-3"><img class="img-fluid mx-auto" data-src="assets/more-qual/000030.png"></div>
-					<div class="col-xs-3"><img class="img-fluid mx-auto" data-src="assets/more-qual/000031.png"></div>
-					<div class="col-xs-3"><img class="img-fluid mx-auto" data-src="assets/more-qual/000032.png"></div>
-				</div>
-			</div> -->
-		</div>
-		<!-- controls -->
-		<ol class="carousel-indicators">
-			<li data-target="#carousel-more-qual" data-slide-to="" class="active"></li>
-			<li data-target="#carousel-more-qual" data-slide-to=""></li>
-			<li data-target="#carousel-more-qual" data-slide-to=""></li>
-			<li data-target="#carousel-more-qual" data-slide-to=""></li>
-			<li data-target="#carousel-more-qual" data-slide-to=""></li>
-			<li data-target="#carousel-more-qual" data-slide-to=""></li>
-			<li data-target="#carousel-more-qual" data-slide-to=""></li>
-			<li data-target="#carousel-more-qual" data-slide-to=""></li>
-			<li data-target="#carousel-more-qual" data-slide-to=""></li>
-			<li data-target="#carousel-more-qual" data-slide-to=""></li>
-			<li data-target="#carousel-more-qual" data-slide-to=""></li>
-			<li data-target="#carousel-more-qual" data-slide-to=""></li>
-			<li data-target="#carousel-more-qual" data-slide-to=""></li>
-			<li data-target="#carousel-more-qual" data-slide-to=""></li>
-			<li data-target="#carousel-more-qual" data-slide-to=""></li>
-			<li data-target="#carousel-more-qual" data-slide-to=""></li>
-		</ol>
-		<a class="carousel-control-prev" href="#carousel-more-qual" role="button" data-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			<span class="sr-only">Previous</span>
-		</a>
-		<a class="carousel-control-next" href="#carousel-more-qual" role="button" data-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span>
-			<span class="sr-only">Next</span>
-		</a>
-	</div>
-
-	
-	<div class="row-fluid">
-		<div class="col-xs-12 paragraph">
-			<p class="caption">
-				<span class="paragraph-title">Generation at extended sizes.</span> &nbsp;
-				All samples are generated at 1024&#215;1024 pixels with an InfinityGAN trained at 101&#215;101 pixels.
-			</p>
-		</div>
-	</div>
-
-
-	<div class="row paragraph-skip"></div>
-
-
-
-</div>
-<div class="container" style="padding: 0;">
 
 	<div class="row">
-		<div class="col-xs-12 img-container img-magnifier-container">
-			<a href="https://drive.google.com/drive/folders/1Ej3dgWVagitJR7FYtrlEWu3DSC2cOvJi?usp=sharing">
-				<img id="magnify-hr" src="assets/hr/merged.png" width="100%">
-			</a>
+		<h2 class="bold section-title"><span>Infinite-Pixel and Multi-Modality Satellite Map Synthesis</span></h2>
+
+		<div class="col-xs-12" style="text-align: left;">
+			<span class="bold paragraph-title">Select Modality:&nbsp;</span>
+			<button type="button" class="btn btn-light mm-btn active" data="img">Category</button>
+			<button type="button" class="btn btn-light mm-btn" data="dep">Depth</button>
+			<button type="button" class="btn btn-light mm-btn" data="nor">Normal</button>
+		</div>
+	</div>
+</div>
+<div class="container-fluid" style="padding: 0;">
+	<div class="row">
+		<div class="col-xs-12 img-container" style="text-align: center;">
+			<a class="mm-map" href="assets/map-img/000000.png" class="zoomin" data="000000"><img src="assets/map-img/000000.png" width="16.2%"></a>
+			<a class="mm-map" href="assets/map-img/000001.png" class="zoomin" data="000001"><img src="assets/map-img/000001.png" width="16.2%"></a>
+			<a class="mm-map" href="assets/map-img/000002.png" class="zoomin" data="000002"><img src="assets/map-img/000002.png" width="16.2%"></a>
+			<a class="mm-map" href="assets/map-img/000003.png" class="zoomin" data="000003"><img src="assets/map-img/000003.png" width="16.2%"></a>
+			<a class="mm-map" href="assets/map-img/000004.png" class="zoomin" data="000004"><img src="assets/map-img/000004.png" width="16.2%"></a>
+			<a class="mm-map" href="assets/map-img/000005.png" class="zoomin" data="000005"><img src="assets/map-img/000005.png" width="16.2%"></a>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<br>
+		<div class="col-xs-12 paragraph">
+			<p class="caption">
+				<span class="paragraph-title">Synthesized satellite maps.</span> &nbsp;
+				We train InfinityGAN [1] with contrastive discriminator in multiple data modalities (category, depth,
+and normal). The demonstrated images are 1024×1024 pixels cropped from the infinite-pixel images</p>
+		</div>
+	</div>
+
+
+	<div class="row end-section"></div>
+	<hr>
+
+
+	<div class="row">
+		<h2 class="bold section-title"><span>Quality and Diversity of Synthesized Voxel</span></h2>
+	</div>
+</div>
+<div class="container-fluid" style="padding: 0;">
+		<div class="col-xs-12 img-container">
+			<a href="assets/voxel-collage.jpg" class="zoomin"><img src="assets/voxel-collage.jpg" width="100%"></a>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 paragraph">
+			<p class="caption">
+				<span class="paragraph-title">Octree-based voxel completion.</span> &nbsp;
+				High-quality and high-diversity voxels completed from synthetic satellite images. 
+				We show synthesized satellite images, lifted surface voxels, then 3D-completed voxels. The samples are 64<sup>3</sup> voxels.</p>
+		</div>
+	</div>
+
+
+	<div class="row end-section"></div>
+	<hr>
+
+
+	<div class="row">
+		<h2 class="bold section-title"><span>Neural Rendering Quality and 3D Consistency</span></h2>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 img-container">
+			<a href="assets/rendering_compare_v2.jpg" class="zoomin"><img src="assets/rendering_compare_v2.jpg" width="100%"></a>
 		</div>
 		<br>
 		<div class="col-xs-12 paragraph">
 			<p class="caption">
-				<span class="paragraph-title">Generation at a higher-resolution setting.</span> &nbsp;
-				We synthesize 4096&#215;4096 pixels images with a model trained at 397&#215;397 pixels. Note that images here are actually 1024&#215;1024 pixels due to file size limit, please click on the image to access the raw image.
-			</p>
-		</div>
-	</div>
-
-	<div class="row paragraph-skip"></div>
-
-</div>
-<div class="container-fluid" style="padding: 0;">
-	<div class="carousel">
-		<div id="very-long-wrapper">
-			<div id="very-long-canvas" style="width: 10240px; height: 256px;">
-				<img src="assets/very-long/shard0000.png" width="256px">
-				<img src="assets/very-long/shard0001.png" width="256px">
-				<img src="assets/very-long/shard0002.png" width="256px">
-			</div>
-		</div>
-		<a id="very-long-left-btn" class="carousel-control-prev" role="button" data-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			<span class="sr-only">Previous</span>
-		</a>
-		<a id="very-long-right-btn" class="carousel-control-next" role="button" data-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span>
-			<span class="sr-only">Next</span>
-		</a>
-	</div>
-	<div class="col-xs-12 paragraph">
-		<p class="caption">
-			<span class="paragraph-title">Very-long landscape generation. </span> &nbsp;
-			We provide a 256&#215;10240 pixels sample synthesized with InfinityGAN. 
-			The sample shows that (a) our InfinityGAN can generalize to arbitrarily-large image sizes, 
-			and (b) the synthesized contents do not self-repeat while using the sample global latent variable.
-			</p>
-	</div>
-</div>
-<div class="container">
-
-
-
-	<div class="row paragraph-skip"></div>
-
-	<div class="row">
-		<div class="col-xs-12 img-container">
-			<a href="assets/diversity.png" class="zoomin"><img src="assets/diversity.png" width="100%"></a>
-		</div>
-		<br>
-		<div class="col-xs-12 paragraph">
-			<p class="caption">
-				<span class="paragraph-title">Generation diversity. </span> &nbsp;
-				We show that the structure
-				synthesizer and texture synthesizer separately models
-				structure and texture by changing either the local latent
-				or textural latent while all other variables are fixed. The
-				results also show that InfinityGAN can synthesize a diverse
-				set of landscape structures at the same coordinate.</p>
-		</div>
-	</div>
-
-
-
-	<div class="row paragraph-skip"></div>
-
-
-
-	<div class="row">
-		<div class="col-xs-12 img-container">
-			<a href="assets/baseline-compare.png" class="zoomin"><img src="assets/baseline-compare.png" width="100%"></a>
-		</div>
-		<div class="col-xs-12 paragraph">
-			<p class="caption">
-				<span class="paragraph-title">Comparison with related methods.</span> &nbsp;
-				We show that InfinityGAN can produce more favorable holistic appearances against
-				related methods while testing with an extended size 1024&#215;1024. (NCI: Non-Constant Input, PFG: Padding-Free Generator).
-			</p>
+				<span class="paragraph-title">Trajectory-wise image rendering results.</span> &nbsp;
+				Our final rendering results present better quality, structural consistency, and diversity,
+				over the competing method GSN [2]. Each group of images is rendered within the same voxel world using a shared global style code,
+				while GSN shares the same global latent vector in each group.</p>
 		</div>
 	</div>
 
@@ -733,387 +578,26 @@ h4 {font-size: 15px}
 
 
 	<div class="row">
-		<div class="col-xs-12">
-			<h2 class="bold section-title loosen-title"><span>Applications: Spatial Style Fusion</span></h2>
+		<h2 class="bold section-title"><span>Rendered Video</span></h2>
+		<div class="col-xs-12 paragraph">
+			<p class="caption">
+				<span class="paragraph-title">Nothing is real.</span> &nbsp;
+		</div>
+		<div class="col-xs-12 video-container">
+			<iframe width="560" 
+				height="560" 
+				src="https://www.youtube.com/embed/eaoTVZSLPH4"
+				title="InfiniCity Video Samples" 
+				frameborder="0" 
+				allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+				allowfullscreen></iframe>
 		</div>
 	</div>
-
-
-
-</div>
-<div class="container-fluid" style="padding: 0;">
-	<div class="" style="font-weight: 900;">
-		<div class="col-xs-2"><p style="margin: 0;">Style A</p></div>
-		<div class="col-xs-4"><p style="margin: 0;">Style B</p></div>
-		<div class="col-xs-4"><p style="margin: 0;">Style C</p></div>
-		<div class="col-xs-2"><p style="margin: 0;">Style D</p></div>
-	</div>
-	<div class="">
-		<a href="assets/spatial-fusion.png" class="zoomin"><img src="assets/spatial-fusion.png" style="width: 100%;"></a>
-	</div>
-	<div class="col-xs-12 paragraph">
-		<p class="caption">
-			<span class="paragraph-title">Spatial style fusion. </span> &nbsp;
-			We present a mechanism in fusing multiple styles together to increase the interestingness and
-			interactiveness of the generation results. The 512&#215;4096 image fuses four styles across 258 independently generated patches.
-		</p>
-	</div>
-</div>
-<div class="container">
-
 
 
 	<div class="row end-section"></div>
 	<hr>
 
-	
-
-	<div class="row">
-		<div class="col-xs-12">
-			<h2 class="bold section-title loosen-title"><span>Applications: Image Outpainting</span></h2>
-		</div>
-	</div>
-
-
-
-</div>
-<div class="container-fluid" style="padding: 0;">
-	<div id="carousel-more-outpaint" class="carousel slide lazy-load carousel-preview3 carousel-preview3-shorter" data-ride="carousel" data-interval="7000">
-		<div class="carousel-inner" role="listbox" style="min-height: 25%;">
-
-			<div class="item active">
-				<div class="carousel-preview3-cell">
-					<img class="img-responsive" src="assets/outpaint_supp/beach-000111.png">
-				</div>
-			</div>
-			<div class="item">
-				<div class="carousel-preview3-cell">
-					<img class="img-responsive" src="assets/outpaint_supp/beach-000335.png">
-				</div>
-			</div>
-			<div class="item">
-				<div class="carousel-preview3-cell">
-					<img class="img-responsive" src="assets/outpaint_supp/beach-001126.png">
-				</div>
-			</div>
-			<div class="item">
-				<div class="carousel-preview3-cell">
-					<img class="img-responsive" data-src="assets/outpaint_supp/beach-001762.png">
-				</div>
-			</div>
-			<div class="item">
-				<div class="carousel-preview3-cell">
-					<img class="img-responsive" data-src="assets/outpaint_supp/beach-002217.png">
-				</div>
-			</div>
-			<div class="item">
-				<div class="carousel-preview3-cell">
-					<img class="img-responsive" data-src="assets/outpaint_supp/cliff-000219.png">
-				</div>
-			</div>
-			<div class="item">
-				<div class="carousel-preview3-cell">
-					<img class="img-responsive" data-src="assets/outpaint_supp/cliff-000721.png">
-				</div>
-			</div>
-			<div class="item">
-				<div class="carousel-preview3-cell">
-					<img class="img-responsive" data-src="assets/outpaint_supp/hayfield-000432.png">
-				</div>
-			</div>
-			<div class="item">
-				<div class="carousel-preview3-cell">
-					<img class="img-responsive" data-src="assets/outpaint_supp/hayfield-001395.png">
-				</div>
-			</div>
-			<div class="item">
-				<div class="carousel-preview3-cell">
-					<img class="img-responsive" data-src="assets/outpaint_supp/ocean-000252.png">
-				</div>
-			</div>
-			<div class="item">
-				<div class="carousel-preview3-cell">
-					<img class="img-responsive" data-src="assets/outpaint_supp/maple-000151.png">
-				</div>
-			</div>
-			<div class="item">
-				<div class="carousel-preview3-cell">
-					<img class="img-responsive" data-src="assets/outpaint_supp/waterfall-002688.png">
-				</div>
-			</div>
-		</div>
-		<!-- controls -->
-		<ol class="carousel-indicators">
-			<li data-target="#carousel-more-outpaint" data-slide-to="" class="active"></li>
-			<li data-target="#carousel-more-outpaint" data-slide-to=""></li>
-			<li data-target="#carousel-more-outpaint" data-slide-to=""></li>
-			<li data-target="#carousel-more-outpaint" data-slide-to=""></li>
-			<li data-target="#carousel-more-outpaint" data-slide-to=""></li>
-			<li data-target="#carousel-more-outpaint" data-slide-to=""></li>
-			<li data-target="#carousel-more-outpaint" data-slide-to=""></li>
-			<li data-target="#carousel-more-outpaint" data-slide-to=""></li>
-			<li data-target="#carousel-more-outpaint" data-slide-to=""></li>
-			<li data-target="#carousel-more-outpaint" data-slide-to=""></li>
-			<li data-target="#carousel-more-outpaint" data-slide-to=""></li>
-			<li data-target="#carousel-more-outpaint" data-slide-to=""></li>
-		</ol>
-		<a class="carousel-control-prev" href="#carousel-more-outpaint" role="button" data-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			<span class="sr-only">Previous</span>
-		</a>
-		<a class="carousel-control-next" href="#carousel-more-outpaint" role="button" data-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span>
-			<span class="sr-only">Next</span>
-		</a>
-	</div>
-
-	<div class="row-fluid">
-		<div class="col-xs-12 paragraph">
-			<p class="caption">
-			<span class="paragraph-title">Our outpainting results. </span> &nbsp;
-			We outpaint real images (<span style="color: red; font-weight: 900;">red</span> box, 256&#215;128 pixels) into 256&#215;768 pixels panorama (equivalent to 5&#215; outpainting).
-		</div>
-
-
-		<div class="col-xs-12 paragraph-skip"></div>
-	</div>
-</div>
-<div class="container">
-
-
-	
-	<div class="row">
-		<div class="col-xs-12 img-container">
-			<a href="assets/outpaint-compare.png" class="zoomin"><img src="assets/outpaint-compare.png" width="100%"></a>
-		</div>
-		<div class="col-xs-12 paragraph">
-			<p class="caption">
-			<span class="paragraph-title">Outpainting long-range area. </span> &nbsp;
-			InfinityGAN synthesizes continuous and more plausible outpainting results for arbitrarily large outpainting areas. 
-			Different from previous methods, InfinityGAN does not need to iteratively outpaint the results.
-			The real image annotated with <span style="color: red; font-weight: 900;">red</span> box is 256&#215;128 pixels.
-		</div>
-
-
-		<div class="col-xs-12 paragraph-skip"></div>
-
-
-		<div class="col-xs-12 img-container">
-			<a href="assets/multimodal-pano.png" class="zoomin"><img src="assets/multimodal-pano.png" width="100%"></a>
-		</div>
-		<div class="col-xs-12 paragraph">
-			<p class="caption">
-				<span class="paragraph-title">Multi-modal outpainting.</span> &nbsp;
-				InfinityGAN can natively
-				achieve multi-modal outpainting by sampling different
-				local latents in the outpainted region. The real image
-				annotated with <span style="color: red; font-weight: 900;">red</span> box is 256&#215;128 pixels.
-			</p>
-		</div>
-
-
-		<div class="col-xs-12 paragraph-skip"></div>
-
-	</div>
-
-	<div class="row">
-		<div class="col-xs-8 col-xs-push-2">
-			<img src="assets/outpaint-fid.png" width="100%">
-		</div>
-		<div class="col-xs-8 col-xs-push-2 paragraph">
-			<p class="caption">
-				<span class="paragraph-title">Outpainting quantitative performance. </span> &nbsp;
-				The combination of In&Out and InfinityGAN achieves state-of-the-art FID (lower better) performance on image outpainting task.
-			</p>
-		</div>
-	</div>
-
-	<div class="row end-section"></div>
-	<hr>
-
-	<div class="row">
-		<div class="col-xs-12">
-			<h2 class="bold section-title loosen-title"><span>Applications: Image Inbetweening</span></h2>
-		</div>
-	</div>
-</div>
-
-<div class="container-fluid" style="padding: 0;">
-	<div class="row-fluid img-container" style="width: 100%;">
-		<a href="assets/inbetween.png" class="zoomin" style="width: 100%;">
-			<img src="assets/inbetween.png" style="width: 100%;">
-		</a> 
-	</div>
-	<div class="row-fluid">
-		<div class="col-xs-12 paragraph">
-			<p class="caption">
-				<span class="paragraph-title">Image inbetweening with inverted latents. </span> &nbsp;
-				We show that our InfinityGAN can synthesize arbitrary-length cyclic
-				panorama and inbetweened images by inverting a real image at different position. The top-row image size is 256&#215;2080 pixels.
-			</p>
-		</div>
-	</div>
-
-	<div class="col-xs-12 paragraph-skip"></div>
-
-
-
-	<div id="carousel-more-inbetween" class="carousel slide lazy-load carousel-preview3" data-ride="carousel" data-interval="7000">
-		<div class="carousel-inner" role="listbox" style="min-height: 25%;">
-			<div class="item active">
-				<div class="carousel-preview3-cell">
-					<img class="img-responsive" src="assets/inbetween_supp/130107.png">
-				</div>
-			</div>
-			<div class="item">
-				<div class="carousel-preview3-cell">
-					<img class="img-responsive" src="assets/inbetween_supp/410059.png">
-				</div>
-			</div>
-			<div class="item">
-				<div class="carousel-preview3-cell">
-					<img class="img-responsive" src="assets/inbetween_supp/980144.png">
-				</div>
-			</div>
-			<div class="item">
-				<div class="carousel-preview3-cell">
-					<img class="img-responsive" data-src="assets/inbetween_supp/2110140.png">
-				</div>
-			</div>
-			<div class="item">
-				<div class="carousel-preview3-cell">
-					<img class="img-responsive" data-src="assets/inbetween_supp/2290178.png">
-				</div>
-			</div>
-			<div class="item">
-				<div class="carousel-preview3-cell">
-					<img class="img-responsive" data-src="assets/inbetween_supp/2300050.png">
-				</div>
-			</div>
-		</div>
-		<!-- controls -->
-		<ol class="carousel-indicators">
-			<li data-target="#carousel-more-inbetween" data-slide-to="" class="active"></li>
-			<li data-target="#carousel-more-inbetween" data-slide-to=""></li>
-			<li data-target="#carousel-more-inbetween" data-slide-to=""></li>
-			<li data-target="#carousel-more-inbetween" data-slide-to=""></li>
-			<li data-target="#carousel-more-inbetween" data-slide-to=""></li>
-			<li data-target="#carousel-more-inbetween" data-slide-to=""></li>
-		</ol>
-		<a class="carousel-control-prev" href="#carousel-more-inbetween" role="button" data-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			<span class="sr-only">Previous</span>
-		</a>
-		<a class="carousel-control-next" href="#carousel-more-inbetween" role="button" data-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span>
-			<span class="sr-only">Next</span>
-		</a>
-	</div>
-	<div class="row-fluid">
-		<div class="col-xs-12 paragraph">
-			<p class="caption">
-				<span class="paragraph-title">More inbetweening results.</span> &nbsp;
-				We inbetween two real images 
-				(<span style="color: red; font-weight: 900;">red</span> and <span style="color: orange; font-weight: 900;">orange</span> boxes, both 256&#215;128 pixels)
-				into a 256&#215;1280 pixels panorama.
-			</p>
-		</div>
-	</div>
-
-	<div class="row"></div><div class="col-xs-12 paragraph-skip"></div></div>
-
-
-
-	<div id="carousel-more-cyclic" class="carousel slide lazy-load carousel-preview3" data-ride="carousel" data-interval="7000">
-		<div class="carousel-inner" role="listbox" style="min-height: 25%;">
-			<div class="item active">
-				<div class="carousel-preview3-cell">
-					<img class="img-responsive" src="assets/cyclic_supp/000001.png">
-				</div>
-			</div>
-			<div class="item">
-				<div class="carousel-preview3-cell">
-					<img class="img-responsive" src="assets/cyclic_supp/000014.png">
-				</div>
-			</div>
-			<div class="item">
-				<div class="carousel-preview3-cell">
-					<img class="img-responsive" src="assets/cyclic_supp/000086.png">
-				</div>
-			</div>
-			<div class="item">
-				<div class="carousel-preview3-cell">
-					<img class="img-responsive" data-src="assets/cyclic_supp/000097.png">
-				</div>
-			</div>
-			<div class="item">
-				<div class="carousel-preview3-cell">
-					<img class="img-responsive" data-src="assets/cyclic_supp/000152.png">
-				</div>
-			</div>
-			<div class="item">
-				<div class="carousel-preview3-cell">
-					<img class="img-responsive" data-src="assets/cyclic_supp/000197.png">
-				</div>
-			</div>
-		</div>
-		<!-- controls -->
-		<ol class="carousel-indicators">
-			<li data-target="#carousel-more-cyclic" data-slide-to="" class="active"></li>
-			<li data-target="#carousel-more-cyclic" data-slide-to=""></li>
-			<li data-target="#carousel-more-cyclic" data-slide-to=""></li>
-			<li data-target="#carousel-more-cyclic" data-slide-to=""></li>
-			<li data-target="#carousel-more-cyclic" data-slide-to=""></li>
-			<li data-target="#carousel-more-cyclic" data-slide-to=""></li>
-		</ol>
-		<a class="carousel-control-prev" href="#carousel-more-cyclic" role="button" data-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			<span class="sr-only">Previous</span>
-		</a>
-		<a class="carousel-control-next" href="#carousel-more-cyclic" role="button" data-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span>
-			<span class="sr-only">Next</span>
-		</a>
-	</div>
-	<div class="row-fluid">
-		<div class="col-xs-12 paragraph">
-			<p class="caption">
-				<span class="paragraph-title">More cyclic inbetweening results.</span> &nbsp;
-				We synthesize cyclic panorama at 256&#215;1280 pixels by inbetweening the same image (<span style="color: red; font-weight: 900;">red</span> boxes, 256&#215;128 pixels) on two sides.
-			</p>
-		</div>
-	</div>
-
-
-
-</div>
-<div class="container">
-
-
-
-	<div class="row end-section"></div>
-	<hr>
-
-	<div class="row">
-		<div class="col-xs-12">
-			<h2 class="bold section-title"><span>Applications: Parallel Batching</span></h2>
-			<div class="col-xs-12 img-container">
-				<a href="assets/para-batching.png" class="zoomin"><img src="assets/para-batching.png" width="100%"></a>
-			</div>
-			<div class="col-xs-12 paragraph">
-				<p class="caption">
-					<span class="paragraph-title">Inference speed up with parallel batching. </span> &nbsp;
-					Benefit from the spatial independent generation nature, InfinityGAN
-					achieves up to 7.20 inference speed up by with parallel batching. We conduct all experiments at a batch size of 1, and OOM
-					indicates out-of-memory. Note that the GPU time here accounts pure GPU execution time and (if applicable) data parallel
-					scatter-aggregation time.
-				</p>
-			</div>
-		</div>
-	</div>
-
-	<div class="row end-section"></div>
-	<hr>
 
 	<div class="row">
 		<div class="col-xs-12">
@@ -1132,101 +616,35 @@ h4 {font-size: 15px}
 
 
 		<div class="col-xs-1"> 
-			<p id="cocogan" class="citation-id"><b>[1]</b></p>
+			<p id="infinitygan" class="citation-id"><b>[1]</b></p>
 		</div>
 		<div class="col-xs-2"> 
-			<p class="citation-abbr">COCO-GAN</p>
+			<p class="citation-abbr">InfinityGAN</p>
 		</div>
 		<div class="col-xs-9">
 			<p class="citation-content">
-				Chieh Hubert Lin, Chia-Che Chang, Yu-Sheng Chen, Da-Cheng Juan, Wei Wei, and Hwann-Tzong Chen.  
-				<a href="https://arxiv.org/abs/1904.00284">
-					"Coco-gan: Generation by parts via conditional coordinating."
+				Chieh Hubert Lin, Hsin-Ying Lee, Yen-Chi Cheng, Sergey Tulyakov, and Ming-Hsuan Yang.  
+				<a href="https://openreview.net/forum?id=ufGMqIM0a4b">
+					"InfinityGAN: Towards Infinite-Pixel Image Synthesis."
 				</a>
-				In <i>ICCV</i>, 2019.</p>
+				In <i>ICLR</i>, 2021.</p>
 		</div>
 
 
 		<div class="col-xs-1"> 
-			<p id="singan" class="citation-id"><b>[2]</b></p>
+			<p id="gsn" class="citation-id"><b>[2]</b></p>
 		</div>
 		<div class="col-xs-2"> 
-			<p class="citation-abbr">SinGAN</p>
+			<p class="citation-abbr">GSN</p>
 		</div>
 		<div class="col-xs-9">
 			<p class="citation-content">
-				Tamar Rott Shaham, Tali Dekel, and Tomer Michaeli.
-				<a href="https://arxiv.org/abs/1905.01164">
-					"Singan: Learning a generative model from a single natural image."
+				Terrance DeVries, Miguel Angel Bautista, Nitish Srivastava, Graham W. Taylor, and Joshua M. Susskind
+				<a href="https://arxiv.org/abs/2104.00670">
+					"Unconstrained Scene Generation with Locally Conditioned Radiance Fields."
 				</a>
-				In <i>ICCV</i>, 2019.</p>
+				In <i>ICCV</i>, 2021.</p>
 		</div>
-
-
-		<div class="col-xs-1"> 
-			<p id="stylegan2" class="citation-id"><b>[3]</b></p>
-		</div>
-		<div class="col-xs-2"> 
-			<p class="citation-abbr">StyleGAN2</p>
-		</div>
-		<div class="col-xs-9">
-			<p class="citation-content">
-				Tero Karras, Samuli Laine, Miika Aittala, Janne Hellsten, Jaakko Lehtinen, and Timo Aila.
-				<a href="https://arxiv.org/abs/1912.04958">
-					"Analyzing and improving the image quality of stylegan."
-				</a>
-				In <i>CVPR</i>, 2020.</p>
-		</div>
-
-
-		<div class="col-xs-1"> 
-			<p id="inout" class="citation-id"><b>[4]</b></p>
-		</div>
-		<div class="col-xs-2"> 
-			<p class="citation-abbr">In&Out</p>
-		</div>
-		<div class="col-xs-9">
-			<p class="citation-content">
-				Yen-Chi Cheng, Chieh Hubert Lin, Hsin-Ying Lee, Jian Ren, Sergey Tulyakov, Ming-Hsuan Yang.
-				<a href="https://arxiv.org/abs/2104.00675">
-					"In&Out : Diverse Image Outpainting via GAN Inversion."
-				</a>
-				<i>arXiv preprint</i>, 2021.</p>
-		</div>
-
-
-		<div class="col-xs-1"> 
-			<p id="boundless" class="citation-id"><b>[5]</b></p>
-		</div>
-		<div class="col-xs-2"> 
-			<p class="citation-abbr">Boundless</p>
-		</div>
-		<div class="col-xs-9">
-			<p class="citation-content">
-				Piotr Teterwak, Aaron Sarna, Dilip Krishnan, Aaron Maschinot, David Belanger, Ce Liu, and William T Freeman.
-				<a href="https://arxiv.org/abs/1908.07007">
-					"Boundless: Generative adversarial networks for image extension."
-				</a>
-				In <i>ICCV</i>, 2019.</p>
-		</div>
-
-
-		<div class="col-xs-1"> 
-			<p id="boundless" class="citation-id"><b>[6]</b></p>
-		</div>
-		<div class="col-xs-2"> 
-			<p class="citation-abbr">NS-Outpaint</p>
-		</div>
-		<div class="col-xs-9">
-			<p class="citation-content">
-				Zongxin Yang, Jian Dong, Ping Liu, Yi Yang, and Shuicheng Yan.
-				<a href="https://arxiv.org/abs/1908.07007">
-					"Very long natural scenery image prediction by outpainting."
-				</a>
-				In <i>ICCV</i>, 2019.</p>
-		</div>
-
-
 	</div>
 
 	<hr>
