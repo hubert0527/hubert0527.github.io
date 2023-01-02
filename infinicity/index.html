@@ -1,0 +1,1260 @@
+<!--
+OuO is the answer to everything.
+OuO can perfectly express anything and any mood.
+Just believe in OuO.
+QuQ
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+
+<head>
+<title>InfinityGAN</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+
+<meta property="og:image" content="images/teaser_fb.jpg"/>
+<meta property="og:title" content="InfiniCity: Infinite-Scale City Synthesis"/>
+
+<script src="lib.js" type="text/javascript"></script>
+<script src="popup.js" type="text/javascript"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3H2WZNYDWT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3H2WZNYDWT');
+</script>
+
+<script type="text/javascript">
+// redefining default features
+var _POPUP_FEATURES = 'width=500,height=300,resizable=1,scrollbars=1,titlebar=1,status=1';
+</script>
+
+<!-- PDF reader -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js" integrity="sha512-Z8CqofpIcnJN80feS2uccz+pXWgZzeKxDsDNMD/dJ6997/LSRY+W4NmEt9acwR+Gt9OHN0kkI1CTianCwoqcjQ==" crossorigin="anonymous"></script> -->
+
+
+
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<link media="all" href="css/main.css" type="text/css" rel="StyleSheet">
+<link media="all" href="css/carousel-preview.css" type="text/css" rel="StyleSheet">
+<style type="text/css" media="all">
+IMG {
+	PADDING-RIGHT: 0px;
+	PADDING-LEFT: 0px;
+	FLOAT: none;
+	PADDING-BOTTOM: 0px;
+	PADDING-TOP: 0px
+}
+BODY {
+	TEXT-ALIGN: center
+}
+h1, h2, .bold {
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+h1 {font-size: 30px}
+h2 {font-size: 27px}
+h3 {font-size: 18px}
+h4 {font-size: 15px}
+
+.b {
+	font-weight: 900;
+}
+
+.caption {
+	margin-top: 5px;
+	/* color: var(--caption-color); 
+	font-weight: bold; */
+	/*font-style: italic;*/
+	/* font-size: 15px;
+	margin-top: 10px;
+	width: 95%; */
+}
+
+.zoomin, .zoomin:hover {
+	cursor: -webkit-zoom-in;
+	cursor: zoom-in;
+}
+
+.author-names {
+	font-size: 20px;
+}
+
+.author-names>div, .affiliations>div {
+	padding: 0;
+}
+
+.affiliations {
+	font-size: 14px;
+}
+
+.xs-margin {
+	margin: 5px auto;
+}
+
+.sm-margin {
+	margin: 10px auto;
+}
+
+.md-margin {
+	margin: 20px auto;
+}
+
+.lg-margin {
+	margin: 30px auto;
+}
+
+.xg-margin {
+	margin: 50px auto;
+}
+
+.row-fluid {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	margin-right: 0;
+	margin-left: 0;
+}
+
+.section-title {
+	text-align: left;
+}
+.section-title span {
+	border-left: 10px solid var(--face-color);
+	border-bottom: 1px solid var(--face-color);
+	padding: 5px 15px;
+}
+.loosen-title {
+	margin-bottom: 40px;
+}
+
+.citation-content {
+	text-align: left;
+	word-wrap: break-word;
+}
+
+.citation-abbr {
+	text-align: left;
+}
+
+#teaser-video {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  z-index: -999;
+}
+</style>
+
+
+<script type='text/javascript'>
+	$(document).ready(function() {
+		var video_id_counter = 0;
+		$("#teaser-video").bind("ended", function(e) {
+			if(!e) {e = window.event;}
+			new_vid_src = "assets/video-" + ((video_id_counter+1) % 3) + ".mp4"
+			$(this).attr("src", new_vid_src).trigger('load').trigger('play');
+			video_id_counter++;
+		});
+	});
+</script>
+
+</head>
+
+<body>
+	<!-- style="border-top: 10px solid var(--face-color); border-bottom: 10px solid var(--face-color);"> -->
+
+<video autoplay muted id="teaser-video">
+	<source src="assets/video-0.mp4" id="teaser-video-source-0" type="video/mp4">
+	<div  style="display: none;">
+		<source src="assets/video-1.mp4" id="teaser-video-source-1" type="video/mp4">
+		<source src="assets/video-2.mp4" id="teaser-video-source-2" type="video/mp4">
+	</div>
+</video>
+
+
+<div class="container-fluid">
+
+	<div class="title-wrapper row hidden-xs hidden-sm hidden-md visible-lg" style="margin-top: 45vh">
+		<!-- PC -->
+		<div style="height: 40vh; width: 90vw; margin: 7.5vh 5vw; padding: 2vh 4vw 4vh 4vw; background-color: rgba(15, 15, 15, 0.6); overflow-wrap: break-word;">
+			<h1 style="font-size: 3.5vw;">InfiniCity: Infinite-Scale City Synthesis</h1>
+			<div class="row author-names sm-margin" style="font-size: 1.5vw; width: 85%;">
+				<div class="col-xs-3 col-xs-push-0">
+					<a href="https://hubert0527.github.io/">Chieh&nbsp;Hubert&nbsp;Lin<sup>1,2</sup></a>
+				</div>
+				<div class="col-xs-3 col-xs-push-0">
+					<a href="http://vllab.ucmerced.edu/hylee/">Hsin-Ying&nbsp;Lee<sup>2</sup></a>
+				</div>
+				<div class="col-xs-3 col-xs-push-0">
+					<a href="https://www.willimenapace.com/">Willi&nbsp;Menapace<sup>2,3</sup></a>
+				</div>
+				<div class="col-xs-3 col-xs-push-0">
+					<a href="https://mlchai.com/">Menglei&nbsp;Chai<sup>2</sup></a>
+				</div>
+				<div class="col-xs-3 col-xs-push-1">
+					<a href="https://aliaksandrsiarohin.github.io/aliaksandr-siarohin-website/">Aliaksandr&nbsp;Siarohin<sup>2</sup></a>
+				</div>
+				<div class="col-xs-4 col-xs-push-1">
+					<a href="https://faculty.ucmerced.edu/mhyang/">Ming-Hsuan&nbsp;Yang<sup>1,4,5</sup></a>
+				</div>
+				<div class="col-xs-3 col-xs-push-1">
+					<a href="http://www.stulyakov.com/">Sergey&nbsp;Tulyakov<sup>2</sup></a>
+				</div>
+			</div>
+			<div class="row affiliations md-margin" style="font-size: 1.1vw; width: 90%;">
+				<div class="col-xs-2 col-xs-push-1">
+					<a href="https://www.ucmerced.edu/"><sup>1</sup>UC&nbsp;Merced</a>
+				</div>
+				<div class="col-xs-2 col-xs-push-1">
+					<a href="https://research.snap.com/"><sup>2</sup>Snap&nbsp;Inc.</a>
+				</div>
+				<div class="col-xs-2 col-xs-push-1">
+					<a href="https://www.unitn.it/en/"><sup>3</sup>University&nbsp;of&nbsp;Trento</a>
+				</div>
+				<div class="col-xs-2 col-xs-push-1">
+					<a href="https://www.yonsei.ac.kr/en_sc/index.jsp"><sup>5</sup>Yonsei&nbsp;University</a>
+				</div>
+				<div class="col-xs-2 col-xs-push-1">
+					<a href="https://research.google/"><sup>4</sup>Google&nbsp;Research</a>
+				</div>
+			</div>
+			<div class="row sm-margin">
+				<div id="paper-first-link" class="col-xs-push-1 col-xs-10">
+					<p style="margin: auto"><a href="">Paper (ArXiv 2022)</a></p> 
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="title-wrapper row hidden-xs hidden-sm visible-md hidden-lg" style="margin-top: 45vh">
+		<!-- Tablet -->
+		<div style="height: 40vh; width: 90vw; margin: 7.5vh 5vw; padding: 2vh 4vw 4vh 4vw; background-color: rgba(15, 15, 15, 0.6); overflow-wrap: break-word;">
+			<h1 style="font-size: 4vw;">InfiniCity: Infinite-Scale City Synthesis</h1>
+			<div class="row author-names sm-margin" style="font-size: 1.8vw;">
+				<div class="col-xs-3 col-xs-push-0">
+					<a href="https://hubert0527.github.io/">Chieh&nbsp;Hubert&nbsp;Lin<sup>1,2</sup></a>
+				</div>
+				<div class="col-xs-3 col-xs-push-0">
+					<a href="http://vllab.ucmerced.edu/hylee/">Hsin-Ying&nbsp;Lee<sup>2</sup></a>
+				</div>
+				<div class="col-xs-3 col-xs-push-0">
+					<a href="https://www.willimenapace.com/">Willi&nbsp;Menapace<sup>2,3</sup></a>
+				</div>
+				<div class="col-xs-3 col-xs-push-0">
+					<a href="https://mlchai.com/">Menglei&nbsp;Chai<sup>2</sup></a>
+				</div>
+				<div class="col-xs-3 col-xs-push-1">
+					<a href="https://aliaksandrsiarohin.github.io/aliaksandr-siarohin-website/">Aliaksandr&nbsp;Siarohin<sup>2</sup></a>
+				</div>
+				<div class="col-xs-4 col-xs-push-1">
+					<a href="https://faculty.ucmerced.edu/mhyang/">Ming-Hsuan&nbsp;Yang<sup>1,4,5</sup></a>
+				</div>
+				<div class="col-xs-3 col-xs-push-1">
+					<a href="http://www.stulyakov.com/">Sergey&nbsp;Tulyakov<sup>2</sup></a>
+				</div>
+			</div>
+			<div class="affiliations md-margin" style="font-size: 1.4vw;">
+				<div class="row">
+					<div class="col-xs-3 col-xs-push-2">
+						<a href="https://www.ucmerced.edu/"><sup>1</sup>UC&nbsp;Merced</a>
+					</div>
+					<div class="col-xs-2 col-xs-push-2">
+						<a href="https://research.snap.com/"><sup>2</sup>Snap&nbsp;Inc.</a>
+					</div>
+					<div class="col-xs-3 col-xs-push-2">
+						<a href="https://www.unitn.it/en/" style="display:inline-block"><sup>3</sup>University&nbsp;of&nbsp;Trento</a>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-3 col-xs-push-3">
+						<a href="https://www.yonsei.ac.kr/en_sc/index.jsp"><sup>5</sup>Yonsei&nbsp;University</a>
+					</div>
+					<div class="col-xs-3 col-xs-push-3">
+						<a href="https://research.google/"><sup>4</sup>Google&nbsp;Research</a>
+					</div>
+				</div>
+			</div>
+			<div class="row sm-margin">
+				<div id="paper-first-link" class="col-xs-push-1 col-xs-10">
+					<p style="margin: auto"><a href="">Paper (ArXiv 2022)</a></p> 
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="title-wrapper-mobile" class="title-wrapper row visible-xs visible-sm hidden-md hidden-lg">
+		<!-- Mobile -->
+		<div style="width: 90vw; margin: 5vh 5vw; padding: 4vh 4vw 6vh 4vw; background-color: rgba(15, 15, 15, 0.6); overflow-wrap: break-word;">
+			<h1>InfiniCity: Infinite-Scale City Synthesis</h1>
+			<div class="row author-names md-margin">
+				<div class="col-xs-6 col-xs-push-0">
+					<a href="https://hubert0527.github.io/">Chieh&nbsp;Hubert&nbsp;Lin<sup>1</sup></a>
+				</div>
+				<div class="col-xs-6 col-xs-push-0">
+					<a href="http://vllab.ucmerced.edu/hylee/">Hsin-Ying&nbsp;Lee<sup>2</sup></a>
+				</div>
+				<div class="col-xs-6 col-xs-push-0">
+					<a href="https://www.willimenapace.com/">Willi&nbsp;Menapace<sup>2,3</sup></a>
+				</div>
+				<div class="col-xs-6 col-xs-push-0">
+					<a href="https://mlchai.com/">Menglei&nbsp;Chai<sup>2</sup></a>
+				</div>
+				<div class="col-xs-6 col-xs-push-0">
+					<a href="https://aliaksandrsiarohin.github.io/aliaksandr-siarohin-website/">Aliaksandr&nbsp;Siarohin<sup>2</sup></a>
+				</div>
+				<div class="col-xs-6 col-xs-push-0">
+					<a href="https://faculty.ucmerced.edu/mhyang/">Ming-Hsuan&nbsp;Yang<sup>1,4</sup></a>
+				</div>
+				<div class="col-xs-12">
+					<a href="http://www.stulyakov.com/">Sergey&nbsp;Tulyakov<sup>2</sup></a>
+				</div>
+			</div>
+			<div class="row affiliations md-margin">
+				<div class="col-xs-4 col-xs-push-0">
+					<a href="https://www.ucmerced.edu/"><sup>1</sup>UC&nbsp;Merced</a>
+				</div>
+				<div class="col-xs-4 col-xs-push-0">
+					<a href="https://research.snap.com/"><sup>2</sup>Snap&nbsp;Inc.</a>
+				</div>
+				<div class="col-xs-4 col-xs-push-0">
+					<a href="https://www.unitn.it/en/" style="display:inline-block"><sup>3</sup>University&nbsp;of&nbsp;Trento</a>
+				</div>
+				<div class="col-xs-4 col-xs-push-2">
+					<a href="https://www.yonsei.ac.kr/en_sc/index.jsp"><sup>5</sup>Yonsei&nbsp;University</a>
+				</div>
+				<div class="col-xs-4 col-xs-push-2">
+					<a href="https://research.google/"><sup>4</sup>Google&nbsp;Research</a>
+				</div>
+			</div>
+			<div class="row sm-margin">
+				<div id="paper-first-link" class="col-xs-push-1 col-xs-10">
+					<p style="margin: auto"><a href="">Paper (ArXiv 2022)</a></p> 
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="container">
+	<div class="row md-margin"></div>
+
+	<div class="row">
+		<!-- <a href="images/teaser.png" class="zoomin">
+			<img src="images/teaser.png" width="50%" style="margin-top: 20px; margin-bottom: 40px">
+		</a> -->
+		<!-- <iframe class="pdf-reader"
+			src="pdf_reader/viewer.html?file=../assets/teaser.pdf"
+			width="100%"
+			hratio="0.57"
+			style="margin-top: 20px; margin-bottom: 40px;">
+		</iframe> -->
+		<div class="col-xs-12 video-container">
+			<iframe width="560" 
+				height="315" 
+				src="https://www.youtube.com/embed/EngMHoyqkGY"
+				title="InfinityGAN video" 
+				frameborder="0" 
+				allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+				allowfullscreen></iframe>
+		</div>
+	</div>
+
+	<hr>
+
+	<div class="row">
+		<div id="citation-right-block" class="col-xs-12 col-lg-7" style="text-align: left;">
+			<div style="margin: 0;">
+				<h3 class="paragraph-title">[Abstract]</h3>
+				<p style="margin-bottom: 20px;">
+					Toward infinite-scale 3D city synthesis, we propose a novel framework, InfiniCity,
+					which constructs and renders an unconstrainedly large and 3D-grounded environment from random noises.
+					InfiniCity decomposes the seemingly impractical task into three feasible modules, taking advantage of both 2D and 3D data.
+					First, an infinite-pixel image synthesis module generates arbitrary-scale 2D maps from the bird's-eye view. 
+					Next, an octree-based voxel completion module lifts the generated 2D map to 3D octrees.
+					Finally, a voxel-based neural rendering module texturizes the voxels and renders 2D images.
+					InfiniCity can thus synthesize arbitrary-scale and traversable 3D city environments, and allow flexible and interactive editing from users. 
+					We quantitatively and qualitatively demonstrate the efficacy of the proposed framework.
+				</p>
+
+				<h3 class="paragraph-title">[Paper]</h3>
+				<p style="margin-bottom: 20px;">
+					<a href="">ArXiv 2022</a>
+				</p>
+
+				<h3 class="paragraph-title">[Citation]</h3>
+				<!-- <div>TBA</div> -->
+				<code style="text-align: left; display: block; background-color: #383838; padding: 20px; color: var(--face-color)">
+					@inproceedings{lin2021infinity, <br/>
+					&nbsp;&nbsp;&nbsp;title={Infinity{GAN}: Towards Infinite-Pixel Image Synthesis}, <br/>
+					&nbsp;&nbsp;&nbsp;author={Lin, Chieh Hubert and Cheng, Yen-Chi and Lee, Hsin-Ying and Tulyakov, Sergey and Yang, Ming-Hsuan}, <br/>
+					&nbsp;&nbsp;&nbsp;booktitle={International Conference on Learning Representations}, <br/>
+					&nbsp;&nbsp;&nbsp;year={2022}, <br/>
+					&nbsp;&nbsp;&nbsp;url={https://openreview.net/forum?id=ufGMqIM0a4b} <br/>
+					}
+				</code>
+			</div>
+		</div>
+		<div id="citation-thumbnail" class="col-lg-5 hidden-xs visible-md visible-lg">
+			<a href="http://bit.ly/InfinityGANPaper">
+				<img alt="paper thumbnail" src="assets/paper-preview.jpg" style="width:100%">
+			</a>
+		</div>
+	</div>
+
+	<hr>
+
+	<div class="row">
+		<h2 class="bold section-title"><span>Framework Overview</span></h2>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-md-7 img-container">
+			<a href="assets/teaser.jpg" class="zoomin"><img src="assets/teaser.jpg" width="100%" style="background-color: white; padding: 4px;"></a>
+		</div>
+		<br>
+		<div class="col-xs-12 col-md-5" style="text-align: left;">
+			<p class="caption">
+				<span id="teaser-title" class="paragraph-title">We propose InfiniCity, a three-stage synthesis framework toward infinite-scale city scene synthesis.</span>
+				<br class="hidden-xs visible-sm visible-md visible-lg">
+				<br class="hidden-xs visible-sm visible-md visible-lg">
+				Starting from the
+				bottom to the top, we synthesize multi-modality infinite-pixel satellite images, perform octree-based voxel completion to create a watertight
+				voxel world, then finally texturize with voxel neural rendering. In the middle figure, we mark the camera locations (in <b style="color: red;">red</b> and <b style="color: orange;">orange</b>) used
+				to render the views in the top figures.</p>
+		</div>
+	</div>
+
+	<div class="row end-section"></div>
+	<hr>
+
+	<div class="row">
+		<h2 class="bold section-title"><span>Methodology</span></h2>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 img-container">
+			<a href="assets/pipeline.jpg" class="zoomin"><img src="assets/pipeline.jpg" width="100%" style="background-color: white; padding: 4px;"></a>
+		</div>
+		<br>
+		<div class="col-xs-12" style="text-align: left;">
+			<p class="caption">
+				<span class="paragraph-title">InfiniCity consists of three major modules.</span>
+				The Infinite-pixel satellite image synthesis stage is trained on image
+				tuples (category, depth, and normal maps) derived from a bird’s-eye view scan of the 3D environment, and is able to synthesize arbitrary-
+				scale satellite maps during inference. The 3D octree-based voxel completion stage is trained on pairs of surface-scanned and completed
+				octrees. During inference, it takes the surface voxels lifted from the satellite images as inputs and produces the watertight voxel world.
+				Finally, the voxel-based neural rendering stage performs ray-sampling to retrieve features from the voxel world, then renders the final
+				image with a neural renderer. The neural renderer is trained with both real images and pseudo-ground-truths synthesized by a pretrained
+				SPADE generator. With these modules, InfiniCity can synthesize an arbitrary-scale and traversable 3D city environment from noises.</p>
+		</div>
+	</div>
+
+	
+
+</div>
+
+
+
+<div class="container-fluid" style="padding: 0;">
+	<div id="carousel-more-qual" class="carousel slide lazy-load carousel-preview4" data-ride="carousel" data-interval="7000">
+		<div class="carousel-inner" role="listbox" style="min-height: 25%;">
+			<div class="item active">
+				<div class="carousel-preview4-cell">
+					<img class="img-responsive" src="assets/more-qual/000010.png">
+				</div>
+			</div>
+			<div class="item">
+				<div class="carousel-preview4-cell">
+					<img class="img-responsive" src="assets/more-qual/000013.png">
+				</div>
+			</div>
+			<div class="item">
+				<div class="carousel-preview4-cell">
+					<img class="img-responsive" src="assets/more-qual/000014.png">
+				</div>
+			</div>
+			<div class="item">
+				<div class="carousel-preview4-cell">
+					<img class="img-responsive" src="assets/more-qual/000015.png">
+				</div>
+			</div>
+			<div class="item">
+				<div class="carousel-preview4-cell">
+					<img class="img-responsive" data-src="assets/more-qual/000016.png">
+				</div>
+			</div>
+			<div class="item">
+				<div class="carousel-preview4-cell">
+					<img class="img-responsive" data-src="assets/more-qual/000018.png">
+				</div>
+			</div>
+			<div class="item">
+				<div class="carousel-preview4-cell">
+					<img class="img-responsive" data-src="assets/more-qual/000020.png">
+				</div>
+			</div>
+			<div class="item">
+				<div class="carousel-preview4-cell">
+					<img class="img-responsive" data-src="assets/more-qual/000021.png">
+				</div>
+			</div>
+			<div class="item">
+				<div class="carousel-preview4-cell">
+					<img class="img-responsive" data-src="assets/more-qual/000023.png">
+				</div>
+			</div>
+			<div class="item">
+				<div class="carousel-preview4-cell">
+					<img class="img-responsive" data-src="assets/more-qual/000024.png">
+				</div>
+			</div>
+			<div class="item">
+				<div class="carousel-preview4-cell">
+					<img class="img-responsive" data-src="assets/more-qual/000025.png">
+				</div>
+			</div>
+			<div class="item">
+				<div class="carousel-preview4-cell">
+					<img class="img-responsive" data-src="assets/more-qual/000027.png">
+				</div>
+			</div>
+			<div class="item">
+				<div class="carousel-preview4-cell">
+					<img class="img-responsive" data-src="assets/more-qual/000029.png">
+				</div>
+			</div>
+			<div class="item">
+				<div class="carousel-preview4-cell">
+					<img class="img-responsive" data-src="assets/more-qual/000030.png">
+				</div>
+			</div>
+			<div class="item">
+				<div class="carousel-preview4-cell">
+					<img class="img-responsive" data-src="assets/more-qual/000031.png">
+				</div>
+			</div>
+			<div class="item">
+				<div class="carousel-preview4-cell">
+					<img class="img-responsive" data-src="assets/more-qual/000032.png">
+				</div>
+			</div>
+			<!-- <div class="item active">
+				<div class="row">
+					<div class="col-xs-3"><img class="img-fluid mx-auto" src="assets/more-qual/000010.png"></div>
+					<div class="col-xs-3"><img class="img-fluid mx-auto" src="assets/more-qual/000013.png"></div>
+					<div class="col-xs-3"><img class="img-fluid mx-auto" src="assets/more-qual/000014.png"></div>
+					<div class="col-xs-3"><img class="img-fluid mx-auto" src="assets/more-qual/000015.png"></div>
+				</div>
+			</div>
+			<div class="item">
+				<div class="row">
+					<div class="col-xs-3"><img class="img-fluid mx-auto" src="assets/more-qual/000016.png"></div>
+					<div class="col-xs-3"><img class="img-fluid mx-auto" data-src="assets/more-qual/000018.png"></div>
+					<div class="col-xs-3"><img class="img-fluid mx-auto" data-src="assets/more-qual/000020.png"></div>
+					<div class="col-xs-3"><img class="img-fluid mx-auto" data-src="assets/more-qual/000021.png"></div>
+				</div>
+			</div>
+			<div class="item">
+				<div class="row">
+					<div class="col-xs-3"><img class="img-fluid mx-auto" src="assets/more-qual/000023.png"></div>
+					<div class="col-xs-3"><img class="img-fluid mx-auto" data-src="assets/more-qual/000024.png"></div>
+					<div class="col-xs-3"><img class="img-fluid mx-auto" data-src="assets/more-qual/000025.png"></div>
+					<div class="col-xs-3"><img class="img-fluid mx-auto" data-src="assets/more-qual/000027.png"></div>
+				</div>
+			</div>
+			<div class="item">
+				<div class="row">
+					<div class="col-xs-3"><img class="img-fluid mx-auto" src="assets/more-qual/000029.png"></div>
+					<div class="col-xs-3"><img class="img-fluid mx-auto" data-src="assets/more-qual/000030.png"></div>
+					<div class="col-xs-3"><img class="img-fluid mx-auto" data-src="assets/more-qual/000031.png"></div>
+					<div class="col-xs-3"><img class="img-fluid mx-auto" data-src="assets/more-qual/000032.png"></div>
+				</div>
+			</div> -->
+		</div>
+		<!-- controls -->
+		<ol class="carousel-indicators">
+			<li data-target="#carousel-more-qual" data-slide-to="" class="active"></li>
+			<li data-target="#carousel-more-qual" data-slide-to=""></li>
+			<li data-target="#carousel-more-qual" data-slide-to=""></li>
+			<li data-target="#carousel-more-qual" data-slide-to=""></li>
+			<li data-target="#carousel-more-qual" data-slide-to=""></li>
+			<li data-target="#carousel-more-qual" data-slide-to=""></li>
+			<li data-target="#carousel-more-qual" data-slide-to=""></li>
+			<li data-target="#carousel-more-qual" data-slide-to=""></li>
+			<li data-target="#carousel-more-qual" data-slide-to=""></li>
+			<li data-target="#carousel-more-qual" data-slide-to=""></li>
+			<li data-target="#carousel-more-qual" data-slide-to=""></li>
+			<li data-target="#carousel-more-qual" data-slide-to=""></li>
+			<li data-target="#carousel-more-qual" data-slide-to=""></li>
+			<li data-target="#carousel-more-qual" data-slide-to=""></li>
+			<li data-target="#carousel-more-qual" data-slide-to=""></li>
+			<li data-target="#carousel-more-qual" data-slide-to=""></li>
+		</ol>
+		<a class="carousel-control-prev" href="#carousel-more-qual" role="button" data-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="carousel-control-next" href="#carousel-more-qual" role="button" data-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+	</div>
+
+	
+	<div class="row-fluid">
+		<div class="col-xs-12 paragraph">
+			<p class="caption">
+				<span class="paragraph-title">Generation at extended sizes.</span> &nbsp;
+				All samples are generated at 1024&#215;1024 pixels with an InfinityGAN trained at 101&#215;101 pixels.
+			</p>
+		</div>
+	</div>
+
+
+	<div class="row paragraph-skip"></div>
+
+
+
+</div>
+<div class="container" style="padding: 0;">
+
+	<div class="row">
+		<div class="col-xs-12 img-container img-magnifier-container">
+			<a href="https://drive.google.com/drive/folders/1Ej3dgWVagitJR7FYtrlEWu3DSC2cOvJi?usp=sharing">
+				<img id="magnify-hr" src="assets/hr/merged.png" width="100%">
+			</a>
+		</div>
+		<br>
+		<div class="col-xs-12 paragraph">
+			<p class="caption">
+				<span class="paragraph-title">Generation at a higher-resolution setting.</span> &nbsp;
+				We synthesize 4096&#215;4096 pixels images with a model trained at 397&#215;397 pixels. Note that images here are actually 1024&#215;1024 pixels due to file size limit, please click on the image to access the raw image.
+			</p>
+		</div>
+	</div>
+
+	<div class="row paragraph-skip"></div>
+
+</div>
+<div class="container-fluid" style="padding: 0;">
+	<div class="carousel">
+		<div id="very-long-wrapper">
+			<div id="very-long-canvas" style="width: 10240px; height: 256px;">
+				<img src="assets/very-long/shard0000.png" width="256px">
+				<img src="assets/very-long/shard0001.png" width="256px">
+				<img src="assets/very-long/shard0002.png" width="256px">
+			</div>
+		</div>
+		<a id="very-long-left-btn" class="carousel-control-prev" role="button" data-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a id="very-long-right-btn" class="carousel-control-next" role="button" data-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+	</div>
+	<div class="col-xs-12 paragraph">
+		<p class="caption">
+			<span class="paragraph-title">Very-long landscape generation. </span> &nbsp;
+			We provide a 256&#215;10240 pixels sample synthesized with InfinityGAN. 
+			The sample shows that (a) our InfinityGAN can generalize to arbitrarily-large image sizes, 
+			and (b) the synthesized contents do not self-repeat while using the sample global latent variable.
+			</p>
+	</div>
+</div>
+<div class="container">
+
+
+
+	<div class="row paragraph-skip"></div>
+
+	<div class="row">
+		<div class="col-xs-12 img-container">
+			<a href="assets/diversity.png" class="zoomin"><img src="assets/diversity.png" width="100%"></a>
+		</div>
+		<br>
+		<div class="col-xs-12 paragraph">
+			<p class="caption">
+				<span class="paragraph-title">Generation diversity. </span> &nbsp;
+				We show that the structure
+				synthesizer and texture synthesizer separately models
+				structure and texture by changing either the local latent
+				or textural latent while all other variables are fixed. The
+				results also show that InfinityGAN can synthesize a diverse
+				set of landscape structures at the same coordinate.</p>
+		</div>
+	</div>
+
+
+
+	<div class="row paragraph-skip"></div>
+
+
+
+	<div class="row">
+		<div class="col-xs-12 img-container">
+			<a href="assets/baseline-compare.png" class="zoomin"><img src="assets/baseline-compare.png" width="100%"></a>
+		</div>
+		<div class="col-xs-12 paragraph">
+			<p class="caption">
+				<span class="paragraph-title">Comparison with related methods.</span> &nbsp;
+				We show that InfinityGAN can produce more favorable holistic appearances against
+				related methods while testing with an extended size 1024&#215;1024. (NCI: Non-Constant Input, PFG: Padding-Free Generator).
+			</p>
+		</div>
+	</div>
+
+
+	<div class="row end-section"></div>
+	<hr>
+
+
+	<div class="row">
+		<div class="col-xs-12">
+			<h2 class="bold section-title loosen-title"><span>Applications: Spatial Style Fusion</span></h2>
+		</div>
+	</div>
+
+
+
+</div>
+<div class="container-fluid" style="padding: 0;">
+	<div class="" style="font-weight: 900;">
+		<div class="col-xs-2"><p style="margin: 0;">Style A</p></div>
+		<div class="col-xs-4"><p style="margin: 0;">Style B</p></div>
+		<div class="col-xs-4"><p style="margin: 0;">Style C</p></div>
+		<div class="col-xs-2"><p style="margin: 0;">Style D</p></div>
+	</div>
+	<div class="">
+		<a href="assets/spatial-fusion.png" class="zoomin"><img src="assets/spatial-fusion.png" style="width: 100%;"></a>
+	</div>
+	<div class="col-xs-12 paragraph">
+		<p class="caption">
+			<span class="paragraph-title">Spatial style fusion. </span> &nbsp;
+			We present a mechanism in fusing multiple styles together to increase the interestingness and
+			interactiveness of the generation results. The 512&#215;4096 image fuses four styles across 258 independently generated patches.
+		</p>
+	</div>
+</div>
+<div class="container">
+
+
+
+	<div class="row end-section"></div>
+	<hr>
+
+	
+
+	<div class="row">
+		<div class="col-xs-12">
+			<h2 class="bold section-title loosen-title"><span>Applications: Image Outpainting</span></h2>
+		</div>
+	</div>
+
+
+
+</div>
+<div class="container-fluid" style="padding: 0;">
+	<div id="carousel-more-outpaint" class="carousel slide lazy-load carousel-preview3 carousel-preview3-shorter" data-ride="carousel" data-interval="7000">
+		<div class="carousel-inner" role="listbox" style="min-height: 25%;">
+
+			<div class="item active">
+				<div class="carousel-preview3-cell">
+					<img class="img-responsive" src="assets/outpaint_supp/beach-000111.png">
+				</div>
+			</div>
+			<div class="item">
+				<div class="carousel-preview3-cell">
+					<img class="img-responsive" src="assets/outpaint_supp/beach-000335.png">
+				</div>
+			</div>
+			<div class="item">
+				<div class="carousel-preview3-cell">
+					<img class="img-responsive" src="assets/outpaint_supp/beach-001126.png">
+				</div>
+			</div>
+			<div class="item">
+				<div class="carousel-preview3-cell">
+					<img class="img-responsive" data-src="assets/outpaint_supp/beach-001762.png">
+				</div>
+			</div>
+			<div class="item">
+				<div class="carousel-preview3-cell">
+					<img class="img-responsive" data-src="assets/outpaint_supp/beach-002217.png">
+				</div>
+			</div>
+			<div class="item">
+				<div class="carousel-preview3-cell">
+					<img class="img-responsive" data-src="assets/outpaint_supp/cliff-000219.png">
+				</div>
+			</div>
+			<div class="item">
+				<div class="carousel-preview3-cell">
+					<img class="img-responsive" data-src="assets/outpaint_supp/cliff-000721.png">
+				</div>
+			</div>
+			<div class="item">
+				<div class="carousel-preview3-cell">
+					<img class="img-responsive" data-src="assets/outpaint_supp/hayfield-000432.png">
+				</div>
+			</div>
+			<div class="item">
+				<div class="carousel-preview3-cell">
+					<img class="img-responsive" data-src="assets/outpaint_supp/hayfield-001395.png">
+				</div>
+			</div>
+			<div class="item">
+				<div class="carousel-preview3-cell">
+					<img class="img-responsive" data-src="assets/outpaint_supp/ocean-000252.png">
+				</div>
+			</div>
+			<div class="item">
+				<div class="carousel-preview3-cell">
+					<img class="img-responsive" data-src="assets/outpaint_supp/maple-000151.png">
+				</div>
+			</div>
+			<div class="item">
+				<div class="carousel-preview3-cell">
+					<img class="img-responsive" data-src="assets/outpaint_supp/waterfall-002688.png">
+				</div>
+			</div>
+		</div>
+		<!-- controls -->
+		<ol class="carousel-indicators">
+			<li data-target="#carousel-more-outpaint" data-slide-to="" class="active"></li>
+			<li data-target="#carousel-more-outpaint" data-slide-to=""></li>
+			<li data-target="#carousel-more-outpaint" data-slide-to=""></li>
+			<li data-target="#carousel-more-outpaint" data-slide-to=""></li>
+			<li data-target="#carousel-more-outpaint" data-slide-to=""></li>
+			<li data-target="#carousel-more-outpaint" data-slide-to=""></li>
+			<li data-target="#carousel-more-outpaint" data-slide-to=""></li>
+			<li data-target="#carousel-more-outpaint" data-slide-to=""></li>
+			<li data-target="#carousel-more-outpaint" data-slide-to=""></li>
+			<li data-target="#carousel-more-outpaint" data-slide-to=""></li>
+			<li data-target="#carousel-more-outpaint" data-slide-to=""></li>
+			<li data-target="#carousel-more-outpaint" data-slide-to=""></li>
+		</ol>
+		<a class="carousel-control-prev" href="#carousel-more-outpaint" role="button" data-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="carousel-control-next" href="#carousel-more-outpaint" role="button" data-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+	</div>
+
+	<div class="row-fluid">
+		<div class="col-xs-12 paragraph">
+			<p class="caption">
+			<span class="paragraph-title">Our outpainting results. </span> &nbsp;
+			We outpaint real images (<span style="color: red; font-weight: 900;">red</span> box, 256&#215;128 pixels) into 256&#215;768 pixels panorama (equivalent to 5&#215; outpainting).
+		</div>
+
+
+		<div class="col-xs-12 paragraph-skip"></div>
+	</div>
+</div>
+<div class="container">
+
+
+	
+	<div class="row">
+		<div class="col-xs-12 img-container">
+			<a href="assets/outpaint-compare.png" class="zoomin"><img src="assets/outpaint-compare.png" width="100%"></a>
+		</div>
+		<div class="col-xs-12 paragraph">
+			<p class="caption">
+			<span class="paragraph-title">Outpainting long-range area. </span> &nbsp;
+			InfinityGAN synthesizes continuous and more plausible outpainting results for arbitrarily large outpainting areas. 
+			Different from previous methods, InfinityGAN does not need to iteratively outpaint the results.
+			The real image annotated with <span style="color: red; font-weight: 900;">red</span> box is 256&#215;128 pixels.
+		</div>
+
+
+		<div class="col-xs-12 paragraph-skip"></div>
+
+
+		<div class="col-xs-12 img-container">
+			<a href="assets/multimodal-pano.png" class="zoomin"><img src="assets/multimodal-pano.png" width="100%"></a>
+		</div>
+		<div class="col-xs-12 paragraph">
+			<p class="caption">
+				<span class="paragraph-title">Multi-modal outpainting.</span> &nbsp;
+				InfinityGAN can natively
+				achieve multi-modal outpainting by sampling different
+				local latents in the outpainted region. The real image
+				annotated with <span style="color: red; font-weight: 900;">red</span> box is 256&#215;128 pixels.
+			</p>
+		</div>
+
+
+		<div class="col-xs-12 paragraph-skip"></div>
+
+	</div>
+
+	<div class="row">
+		<div class="col-xs-8 col-xs-push-2">
+			<img src="assets/outpaint-fid.png" width="100%">
+		</div>
+		<div class="col-xs-8 col-xs-push-2 paragraph">
+			<p class="caption">
+				<span class="paragraph-title">Outpainting quantitative performance. </span> &nbsp;
+				The combination of In&Out and InfinityGAN achieves state-of-the-art FID (lower better) performance on image outpainting task.
+			</p>
+		</div>
+	</div>
+
+	<div class="row end-section"></div>
+	<hr>
+
+	<div class="row">
+		<div class="col-xs-12">
+			<h2 class="bold section-title loosen-title"><span>Applications: Image Inbetweening</span></h2>
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid" style="padding: 0;">
+	<div class="row-fluid img-container" style="width: 100%;">
+		<a href="assets/inbetween.png" class="zoomin" style="width: 100%;">
+			<img src="assets/inbetween.png" style="width: 100%;">
+		</a> 
+	</div>
+	<div class="row-fluid">
+		<div class="col-xs-12 paragraph">
+			<p class="caption">
+				<span class="paragraph-title">Image inbetweening with inverted latents. </span> &nbsp;
+				We show that our InfinityGAN can synthesize arbitrary-length cyclic
+				panorama and inbetweened images by inverting a real image at different position. The top-row image size is 256&#215;2080 pixels.
+			</p>
+		</div>
+	</div>
+
+	<div class="col-xs-12 paragraph-skip"></div>
+
+
+
+	<div id="carousel-more-inbetween" class="carousel slide lazy-load carousel-preview3" data-ride="carousel" data-interval="7000">
+		<div class="carousel-inner" role="listbox" style="min-height: 25%;">
+			<div class="item active">
+				<div class="carousel-preview3-cell">
+					<img class="img-responsive" src="assets/inbetween_supp/130107.png">
+				</div>
+			</div>
+			<div class="item">
+				<div class="carousel-preview3-cell">
+					<img class="img-responsive" src="assets/inbetween_supp/410059.png">
+				</div>
+			</div>
+			<div class="item">
+				<div class="carousel-preview3-cell">
+					<img class="img-responsive" src="assets/inbetween_supp/980144.png">
+				</div>
+			</div>
+			<div class="item">
+				<div class="carousel-preview3-cell">
+					<img class="img-responsive" data-src="assets/inbetween_supp/2110140.png">
+				</div>
+			</div>
+			<div class="item">
+				<div class="carousel-preview3-cell">
+					<img class="img-responsive" data-src="assets/inbetween_supp/2290178.png">
+				</div>
+			</div>
+			<div class="item">
+				<div class="carousel-preview3-cell">
+					<img class="img-responsive" data-src="assets/inbetween_supp/2300050.png">
+				</div>
+			</div>
+		</div>
+		<!-- controls -->
+		<ol class="carousel-indicators">
+			<li data-target="#carousel-more-inbetween" data-slide-to="" class="active"></li>
+			<li data-target="#carousel-more-inbetween" data-slide-to=""></li>
+			<li data-target="#carousel-more-inbetween" data-slide-to=""></li>
+			<li data-target="#carousel-more-inbetween" data-slide-to=""></li>
+			<li data-target="#carousel-more-inbetween" data-slide-to=""></li>
+			<li data-target="#carousel-more-inbetween" data-slide-to=""></li>
+		</ol>
+		<a class="carousel-control-prev" href="#carousel-more-inbetween" role="button" data-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="carousel-control-next" href="#carousel-more-inbetween" role="button" data-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+	</div>
+	<div class="row-fluid">
+		<div class="col-xs-12 paragraph">
+			<p class="caption">
+				<span class="paragraph-title">More inbetweening results.</span> &nbsp;
+				We inbetween two real images 
+				(<span style="color: red; font-weight: 900;">red</span> and <span style="color: orange; font-weight: 900;">orange</span> boxes, both 256&#215;128 pixels)
+				into a 256&#215;1280 pixels panorama.
+			</p>
+		</div>
+	</div>
+
+	<div class="row"></div><div class="col-xs-12 paragraph-skip"></div></div>
+
+
+
+	<div id="carousel-more-cyclic" class="carousel slide lazy-load carousel-preview3" data-ride="carousel" data-interval="7000">
+		<div class="carousel-inner" role="listbox" style="min-height: 25%;">
+			<div class="item active">
+				<div class="carousel-preview3-cell">
+					<img class="img-responsive" src="assets/cyclic_supp/000001.png">
+				</div>
+			</div>
+			<div class="item">
+				<div class="carousel-preview3-cell">
+					<img class="img-responsive" src="assets/cyclic_supp/000014.png">
+				</div>
+			</div>
+			<div class="item">
+				<div class="carousel-preview3-cell">
+					<img class="img-responsive" src="assets/cyclic_supp/000086.png">
+				</div>
+			</div>
+			<div class="item">
+				<div class="carousel-preview3-cell">
+					<img class="img-responsive" data-src="assets/cyclic_supp/000097.png">
+				</div>
+			</div>
+			<div class="item">
+				<div class="carousel-preview3-cell">
+					<img class="img-responsive" data-src="assets/cyclic_supp/000152.png">
+				</div>
+			</div>
+			<div class="item">
+				<div class="carousel-preview3-cell">
+					<img class="img-responsive" data-src="assets/cyclic_supp/000197.png">
+				</div>
+			</div>
+		</div>
+		<!-- controls -->
+		<ol class="carousel-indicators">
+			<li data-target="#carousel-more-cyclic" data-slide-to="" class="active"></li>
+			<li data-target="#carousel-more-cyclic" data-slide-to=""></li>
+			<li data-target="#carousel-more-cyclic" data-slide-to=""></li>
+			<li data-target="#carousel-more-cyclic" data-slide-to=""></li>
+			<li data-target="#carousel-more-cyclic" data-slide-to=""></li>
+			<li data-target="#carousel-more-cyclic" data-slide-to=""></li>
+		</ol>
+		<a class="carousel-control-prev" href="#carousel-more-cyclic" role="button" data-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="carousel-control-next" href="#carousel-more-cyclic" role="button" data-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+	</div>
+	<div class="row-fluid">
+		<div class="col-xs-12 paragraph">
+			<p class="caption">
+				<span class="paragraph-title">More cyclic inbetweening results.</span> &nbsp;
+				We synthesize cyclic panorama at 256&#215;1280 pixels by inbetweening the same image (<span style="color: red; font-weight: 900;">red</span> boxes, 256&#215;128 pixels) on two sides.
+			</p>
+		</div>
+	</div>
+
+
+
+</div>
+<div class="container">
+
+
+
+	<div class="row end-section"></div>
+	<hr>
+
+	<div class="row">
+		<div class="col-xs-12">
+			<h2 class="bold section-title"><span>Applications: Parallel Batching</span></h2>
+			<div class="col-xs-12 img-container">
+				<a href="assets/para-batching.png" class="zoomin"><img src="assets/para-batching.png" width="100%"></a>
+			</div>
+			<div class="col-xs-12 paragraph">
+				<p class="caption">
+					<span class="paragraph-title">Inference speed up with parallel batching. </span> &nbsp;
+					Benefit from the spatial independent generation nature, InfinityGAN
+					achieves up to 7.20 inference speed up by with parallel batching. We conduct all experiments at a batch size of 1, and OOM
+					indicates out-of-memory. Note that the GPU time here accounts pure GPU execution time and (if applicable) data parallel
+					scatter-aggregation time.
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="row end-section"></div>
+	<hr>
+
+	<div class="row">
+		<div class="col-xs-12">
+			<h2 class="bold section-title"><span>Acknowledgement</span></h2>
+			<p align="justify">We sincerely thank the great power from OuO. </p>
+		</div>
+	</div>
+
+	<div class="row end-section"></div>
+	<hr>
+
+	<div class="row">
+		<div class="col-xs-12">
+			<h2 class="bold section-title"><span>References</span></h2>
+		</div>
+
+
+		<div class="col-xs-1"> 
+			<p id="cocogan" class="citation-id"><b>[1]</b></p>
+		</div>
+		<div class="col-xs-2"> 
+			<p class="citation-abbr">COCO-GAN</p>
+		</div>
+		<div class="col-xs-9">
+			<p class="citation-content">
+				Chieh Hubert Lin, Chia-Che Chang, Yu-Sheng Chen, Da-Cheng Juan, Wei Wei, and Hwann-Tzong Chen.  
+				<a href="https://arxiv.org/abs/1904.00284">
+					"Coco-gan: Generation by parts via conditional coordinating."
+				</a>
+				In <i>ICCV</i>, 2019.</p>
+		</div>
+
+
+		<div class="col-xs-1"> 
+			<p id="singan" class="citation-id"><b>[2]</b></p>
+		</div>
+		<div class="col-xs-2"> 
+			<p class="citation-abbr">SinGAN</p>
+		</div>
+		<div class="col-xs-9">
+			<p class="citation-content">
+				Tamar Rott Shaham, Tali Dekel, and Tomer Michaeli.
+				<a href="https://arxiv.org/abs/1905.01164">
+					"Singan: Learning a generative model from a single natural image."
+				</a>
+				In <i>ICCV</i>, 2019.</p>
+		</div>
+
+
+		<div class="col-xs-1"> 
+			<p id="stylegan2" class="citation-id"><b>[3]</b></p>
+		</div>
+		<div class="col-xs-2"> 
+			<p class="citation-abbr">StyleGAN2</p>
+		</div>
+		<div class="col-xs-9">
+			<p class="citation-content">
+				Tero Karras, Samuli Laine, Miika Aittala, Janne Hellsten, Jaakko Lehtinen, and Timo Aila.
+				<a href="https://arxiv.org/abs/1912.04958">
+					"Analyzing and improving the image quality of stylegan."
+				</a>
+				In <i>CVPR</i>, 2020.</p>
+		</div>
+
+
+		<div class="col-xs-1"> 
+			<p id="inout" class="citation-id"><b>[4]</b></p>
+		</div>
+		<div class="col-xs-2"> 
+			<p class="citation-abbr">In&Out</p>
+		</div>
+		<div class="col-xs-9">
+			<p class="citation-content">
+				Yen-Chi Cheng, Chieh Hubert Lin, Hsin-Ying Lee, Jian Ren, Sergey Tulyakov, Ming-Hsuan Yang.
+				<a href="https://arxiv.org/abs/2104.00675">
+					"In&Out : Diverse Image Outpainting via GAN Inversion."
+				</a>
+				<i>arXiv preprint</i>, 2021.</p>
+		</div>
+
+
+		<div class="col-xs-1"> 
+			<p id="boundless" class="citation-id"><b>[5]</b></p>
+		</div>
+		<div class="col-xs-2"> 
+			<p class="citation-abbr">Boundless</p>
+		</div>
+		<div class="col-xs-9">
+			<p class="citation-content">
+				Piotr Teterwak, Aaron Sarna, Dilip Krishnan, Aaron Maschinot, David Belanger, Ce Liu, and William T Freeman.
+				<a href="https://arxiv.org/abs/1908.07007">
+					"Boundless: Generative adversarial networks for image extension."
+				</a>
+				In <i>ICCV</i>, 2019.</p>
+		</div>
+
+
+		<div class="col-xs-1"> 
+			<p id="boundless" class="citation-id"><b>[6]</b></p>
+		</div>
+		<div class="col-xs-2"> 
+			<p class="citation-abbr">NS-Outpaint</p>
+		</div>
+		<div class="col-xs-9">
+			<p class="citation-content">
+				Zongxin Yang, Jian Dong, Ping Liu, Yi Yang, and Shuicheng Yan.
+				<a href="https://arxiv.org/abs/1908.07007">
+					"Very long natural scenery image prediction by outpainting."
+				</a>
+				In <i>ICCV</i>, 2019.</p>
+		</div>
+
+
+	</div>
+
+	<hr>
+
+
+</div>
+
+<footer class="footer">
+	<p style="font-size: 12px; margin: 0;">Website # visits:
+		<!-- GoStats Simple HTML Based Code -->
+		<a target="_blank" title="web site traffic statistics"
+		href="http://www.gostats.org">
+			<img alt="web site traffic statistics"src="//www.gostats.org/0.png?a=701071175&ct=4&ci=1" style="border-width:0" />
+		</a>
+		<!-- <script type="text/javascript">
+			(function(c,o,m,p,u,t,e){
+				c['GoStatsObject']=u;c[u]=c[u]||function(){(c[u].q=c[u].q||[]).push(arguments)},
+				c[u].l=1*new Date();t=o.createElement(m);t.async=1;t.src=p;
+				e=o.getElementsByTagName(m)[0];
+				e.parentNode.insertBefore(t,e);
+			})(window,document,'script','//www.gostats.org/5.js','go');
+			go('init',701071175,{'img_counter_type':4,'img_image_type':1});go('send');
+			</script> -->
+		<!-- End GoStats Simple HTML Based Code -->
+	</p>
+	<p>Copyright &#169; Chieh Hubert Lin 2022</p>
+</footer>
+
+</body>
+
+</html>
