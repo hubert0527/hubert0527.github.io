@@ -44,6 +44,18 @@ var _POPUP_FEATURES = 'width=500,height=300,resizable=1,scrollbars=1,titlebar=1,
 
 <!-- Bootstrap -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<!-- <link href="https://fonts.cdnfonts.com/css/steelfish" rel="stylesheet"> -->
+<style type="text/css" media="all">
+	@font-face {
+		font-family: steelfish-regular;
+		src: url("assets/fonts/steelfish-rg.woff") format("woff");
+	}
+
+	@font-face {
+		font-family: steelfish-bold;
+		src: url("assets/fonts/steelfish-bd.woff") format("woff");
+	}
+</style>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -194,12 +206,12 @@ h4 {font-size: 15px}
 			document["tooltip_state_" + classId] = 0;
 			function nextTimeout() {
 				var curState = document["tooltip_state_" + classId] % numStates;
-				objs.removeClass("emph-pseudo-hover");
+				objs.removeClass("tooltip-pseudo-hover");
 				if (curState == 0) {
 					replaceToolTip("#"+canvasId, defaultState);
 				} else {
 					replaceToolTip("#"+canvasId, $(objs[curState-1]).attr("data"));
-					$(objs[curState-1]).addClass("emph-pseudo-hover");
+					$(objs[curState-1]).addClass("tooltip-pseudo-hover");
 				}
 				document["tooltip_state_" + classId] += 1;
 				document["tooltip_timeout_" + classId] = setTimeout(nextTimeout, 3000);
@@ -209,7 +221,7 @@ h4 {font-size: 15px}
 		function cancelIterate(classId){
 			var timeoutkey = "tooltip_timeout_" + classId;
 			if (document.hasOwnProperty(timeoutkey)) {
-				$("."+classId).removeClass("emph-pseudo-hover");
+				$("."+classId).removeClass("tooltip-pseudo-hover");
 				clearTimeout(document[timeoutkey]);
 				delete document[timeoutkey];
 				document["tooltip_state_" + classId] = -1;
@@ -261,7 +273,7 @@ h4 {font-size: 15px}
 					<a href="https://hubert0527.github.io/">Chieh&nbsp;Hubert&nbsp;Lin<sup>1,2</sup></a>
 				</div>
 				<div class="col-xs-3 col-xs-push-0">
-					<a href="http://vllab.ucmerced.edu/hylee/">Hsin-Ying&nbsp;Lee<sup>2</sup></a>
+					<a href="http://hsinyinglee.com/">Hsin-Ying&nbsp;Lee<sup>2</sup></a>
 				</div>
 				<div class="col-xs-3 col-xs-push-0">
 					<a href="https://www.willimenapace.com/">Willi&nbsp;Menapace<sup>2,3</sup></a>
@@ -298,7 +310,7 @@ h4 {font-size: 15px}
 			</div>
 			<div class="row sm-margin">
 				<div id="paper-first-link" class="col-xs-push-1 col-xs-10">
-					<p style="margin: auto"><a href="">Paper (ArXiv 2022)</a></p> 
+					<p style="margin: auto"><a href="">Paper (ArXiv 2023)</a></p> 
 				</div>
 			</div>
 		</div>
@@ -313,7 +325,7 @@ h4 {font-size: 15px}
 					<a href="https://hubert0527.github.io/">Chieh&nbsp;Hubert&nbsp;Lin<sup>1,2</sup></a>
 				</div>
 				<div class="col-xs-3 col-xs-push-0">
-					<a href="http://vllab.ucmerced.edu/hylee/">Hsin-Ying&nbsp;Lee<sup>2</sup></a>
+					<a href="http://hsinyinglee.com/">Hsin-Ying&nbsp;Lee<sup>2</sup></a>
 				</div>
 				<div class="col-xs-3 col-xs-push-0">
 					<a href="https://www.willimenapace.com/">Willi&nbsp;Menapace<sup>2,3</sup></a>
@@ -369,7 +381,7 @@ h4 {font-size: 15px}
 					<a href="https://hubert0527.github.io/">Chieh&nbsp;Hubert&nbsp;Lin<sup>1</sup></a>
 				</div>
 				<div class="col-xs-6 col-xs-push-0">
-					<a href="http://vllab.ucmerced.edu/hylee/">Hsin-Ying&nbsp;Lee<sup>2</sup></a>
+					<a href="http://hsinyinglee.com/">Hsin-Ying&nbsp;Lee<sup>2</sup></a>
 				</div>
 				<div class="col-xs-6 col-xs-push-0">
 					<a href="https://www.willimenapace.com/">Willi&nbsp;Menapace<sup>2,3</sup></a>
@@ -406,7 +418,7 @@ h4 {font-size: 15px}
 			</div>
 			<div class="row sm-margin">
 				<div id="paper-first-link" class="col-xs-push-1 col-xs-10">
-					<p style="margin: auto"><a href="">Paper (ArXiv 2022)</a></p> 
+					<p style="margin: auto"><a href="">Paper (ArXiv 2023)</a></p> 
 				</div>
 			</div>
 		</div>
@@ -439,6 +451,11 @@ h4 {font-size: 15px}
 	</div>
 
 	<div class="row md-margin">
+		<div id="citation-thumbnail" class="col-lg-5 hidden-xs visible-md visible-lg">
+			<a href="http://bit.ly/InfiniCityPaper">
+				<img alt="paper thumbnail" src="assets/paper-preview.jpg" style="width:100%">
+			</a>
+		</div>
 		<div id="citation-right-block" class="col-xs-12 col-lg-7" style="text-align: left;">
 			<div style="margin: 0;">
 				<h3 class="paragraph-title">[Abstract]</h3>
@@ -455,7 +472,7 @@ h4 {font-size: 15px}
 
 				<h3 class="paragraph-title">[Paper]</h3>
 				<p style="margin-bottom: 20px;">
-					<a href="">ArXiv 2022</a>
+					<a href="">ArXiv 2023</a>
 				</p>
 
 				<!-- <h3 class="paragraph-title">[Codes]</h3>
@@ -482,11 +499,6 @@ h4 {font-size: 15px}
 				</code>
 			</div>
 		</div>
-		<div id="citation-thumbnail" class="col-lg-5 hidden-xs visible-md visible-lg">
-			<a href="http://bit.ly/InfiniCityPaper">
-				<img alt="paper thumbnail" src="assets/paper-preview.jpg" style="width:100%">
-			</a>
-		</div>
 	</div>
 
 	<hr>
@@ -495,18 +507,30 @@ h4 {font-size: 15px}
 		<h2 class="bold section-title"><span>Framework Overview</span></h2>
 	</div>
 	<div class="row">
-		<div id="teaser-canvas" class="col-xs-12 col-md-7 img-container">
-			<a href="assets/teaser.jpg" class="zoomin"><img src="assets/teaser.jpg" width="100%"></a>
+		<div class="col-xs-12 col-md-5" style="text-align: left; position: relative;">
+			<br class="hidden-xs hidden-sm hidden-md visible-lg">
+			<br class="hidden-xs hidden-sm hidden-md visible-lg">
+			<br class="hidden-xs hidden-sm hidden-md visible-lg">
+			<br class="hidden-xs hidden-sm hidden-md visible-lg">
+			<br class="hidden-xs hidden-sm hidden-md visible-lg">
+			<br class="hidden-xs hidden-sm hidden-md visible-lg">
+			<span id="teaser-title" class="paragraph-title" style="font-family: steelfish-bold; font-size: 48px;">We propose InfiniCity, a three-stage synthesis framework toward infinite-scale city scene synthesis.</span>
+			<br>
+			<br>
+			<br class="hidden-xs hidden-sm hidden-md visible-lg">
+			<br class="hidden-xs hidden-sm hidden-md visible-lg">
+			<br class="hidden-xs hidden-sm hidden-md visible-lg">
+			<br class="hidden-xs hidden-sm hidden-md visible-lg">
+			<p id="desc-under-headline" class="caption">
+				Starting from the bottom to the top, we synthesize 
+				<span class="ani-tooltip teaser-tooltip" data="teaser-sat">&#9654; <i>multi-modality infinite-pixel satellite images</i></span>, perform 
+				<span class="ani-tooltip teaser-tooltip" data="teaser-completion">&#9654; <i>octree-based voxel completion</i></span> to create a watertight voxel world, then finally texturize with 
+				<span class="ani-tooltip teaser-tooltip" data="teaser-render">&#9654; <i>voxel neural rendering</i></span>. In the middle figure, we mark the camera locations (in <b style="color: red;">red</b> and <b style="color: orange;">orange</b>) used
+				to render the views in the top figures.</p>
 		</div>
 		<br>
-		<div class="col-xs-12 col-md-5" style="text-align: left;">
-			<p class="caption">
-				<span id="teaser-title" class="paragraph-title">We propose InfiniCity, a three-stage synthesis framework toward infinite-scale city scene synthesis.</span>
-				<br class="hidden-xs visible-sm visible-md visible-lg">
-				<br class="hidden-xs visible-sm visible-md visible-lg">
-				Starting from the bottom to the top, we synthesize <i class="emph teaser-tooltip" data="teaser-sat">multi-modality infinite-pixel satellite images</i>, perform <i class="emph teaser-tooltip" data="teaser-completion">octree-based voxel completion</i> to create a watertight
-				voxel world, then finally texturize with <i class="emph teaser-tooltip" data="teaser-render">voxel neural rendering</i>. In the middle figure, we mark the camera locations (in <b style="color: red;">red</b> and <b style="color: orange;">orange</b>) used
-				to render the views in the top figures.</p>
+		<div id="teaser-canvas" class="col-xs-12 col-md-7 img-container">
+			<a href="assets/teaser.jpg" class="zoomin"><img src="assets/teaser.jpg" width="100%"></a>
 		</div>
 	</div>
 
@@ -524,12 +548,12 @@ h4 {font-size: 15px}
 		<div class="col-xs-12" style="text-align: left;">
 			<p class="caption">
 				<span class="paragraph-title">InfiniCity consists of three major modules.</span> &nbsp;
-				The <i class="emph pipeline-tooltip" data="pipeline-map">Infinite-pixel satellite image synthesis stage</i> is trained on image
+				The <span class="ani-tooltip pipeline-tooltip" data="pipeline-map">&#9654; <i>Infinite-pixel satellite image synthesis stage</i></span> is trained on image
 				tuples (category, depth, and normal maps) derived from a bird’s-eye view scan of the 3D environment, and is able to synthesize arbitrary-
 				scale satellite maps during inference. 
-				The <i class="emph pipeline-tooltip" data="pipeline-completion">3D octree-based voxel completion stage</i>is trained on pairs of surface-scanned and completed
+				The <span class="ani-tooltip pipeline-tooltip" data="pipeline-completion">&#9654; <i>3D octree-based voxel completion stage</i></span> is trained on pairs of surface-scanned and completed
 				octrees. During inference, it takes the surface voxels lifted from the satellite images as inputs and produces the watertight voxel world.
-				Finally, the <i class="emph pipeline-tooltip" data="pipeline-render">voxel-based neural rendering stage</i> performs ray-sampling to retrieve features from the voxel world, then renders the final
+				Finally, the <span class="ani-tooltip pipeline-tooltip" data="pipeline-render">&#9654; <i>voxel-based neural rendering stage</i></span> performs ray-sampling to retrieve features from the voxel world, then renders the final
 				image with a neural renderer. The neural renderer is trained with both real images and pseudo-ground-truths synthesized by a pretrained
 				SPADE generator. With these modules, InfiniCity can synthesize an arbitrary-scale and traversable 3D city environment from noises.</p>
 		</div>
@@ -702,7 +726,7 @@ and normal). The demonstrated images are 1024×1024 pixels cropped from the infi
 </div>
 
 <footer class="footer">
-	<p>Copyright &#169; Chieh Hubert Lin 2022</p>
+	<p>Copyright &#169; Chieh Hubert Lin 2023</p>
 </footer>
 
 </body>

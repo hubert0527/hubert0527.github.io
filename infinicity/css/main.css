@@ -168,15 +168,16 @@ TD.coursename {
 	FONT-WEIGHT: bolder
 }
 
-.emph {
+.ani-tooltip {
 	color: var(--face-color);
 	text-decoration: underline;
 	text-decoration-style: dotted;
 	cursor: help;
 }
-.emph:hover, .emph:focus, .emph-pseudo-hover {
-	color: rgb(128, 255, 0);
+.ani-tooltip:hover, .ani-tooltip:focus, .tooltip-pseudo-hover {
+	/* color: rgb(128, 255, 0); */
 	/* font-weight: bold; */
+	background-color: rgba(255, 255, 0, 0.25);
 	text-decoration-style: solid;
 }
 .mm-map > img {
@@ -189,6 +190,12 @@ TD.coursename {
 	max-width: 160px;
 	margin: auto;
 	font-weight: bolder;
+}
+/* Override bootstrap style */
+.btn-light:not(:disabled):not(.disabled).active, .btn-light:not(:disabled):not(.disabled):active, .show>.btn-light.dropdown-toggle 
+.btn:not(:disabled):not(.disabled).active, .btn:not(:disabled):not(.disabled):active {
+	background-color: #888;
+	border-color: #888;
 }
 
 
@@ -431,5 +438,9 @@ TD.coursename {
 	}
 	#paper-first-link {
 		padding: 7px;
+	}
+	#desc-under-headline {
+		position: absolute; 
+		bottom: 0;
 	}
 }
