@@ -78,7 +78,7 @@ A.inverse:visited {
 
 HR {
 	border-top: 2px dashed var(--face-color);
-	margin: 40px 0;
+	margin: 80px 0;
   }
 LI {
 	MARGIN-TOP: 0px; font-size: 15px
@@ -221,7 +221,8 @@ TD.coursename {
 
 .end-section {
 	height: 0;
-	margin-bottom: 1em;
+	margin-bottom: 80px;
+	/* margin: 4em auto 5em; */
 }
 
 .paragraph-skip {
