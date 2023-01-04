@@ -168,10 +168,14 @@ h4 {font-size: 15px}
 	text-align: left;
 }
 
-#teaser-video-btn {
-	position: absolute;
-	top: 15px;
-	right: 15px;
+#teaser-video-btn-ff {
+	margin-right: 10px;
+	margin-top: 10px;
+	z-index: 1;
+}
+#teaser-video-btn-pause {
+	margin-right: 10px;
+	margin-top: 10px;
 	z-index: 1;
 }
 </style>
@@ -181,6 +185,7 @@ h4 {font-size: 15px}
 	$(document).ready(function() {
 		const numVids = 4;
 		var video_id_counter = 0;
+		var video_is_playing = true;
 		const is_vid_center_align = [true, true, true, false];
 		function nextTeaserVid(e) {
 			console.log("trigger!");
@@ -195,7 +200,19 @@ h4 {font-size: 15px}
 			}
 		}
 		$("#teaser-video").bind("ended", nextTeaserVid);
-		$("#teaser-video-btn").click(nextTeaserVid);
+		$("#teaser-video-btn-ff").click(nextTeaserVid);
+		$("#teaser-video-btn-pause").click(function () {
+			if (video_is_playing) {
+				$("#teaser-video-btn-pause").text("\u23F5")
+				$("#teaser-video").trigger('pause');
+				video_is_playing = false;
+			} else {
+				$("#teaser-video-btn-pause").text("\u23F8");
+				$("#teaser-video").trigger('play');
+				video_is_playing = true;
+			}
+		});
+
 
 		$(".mm-btn").click(function(){
 			if ($(this).hasClass("active")) return;
@@ -269,8 +286,9 @@ h4 {font-size: 15px}
 
 <div>
 
-	<div id="teaser-video-container">
-		<button id="teaser-video-btn" type="button" class="btn btn-light">&#9654;</button>
+	<div id="teaser-video-container" style="display: flex; justify-content: flex-end; align-items: flex-start;">
+		<button id="teaser-video-btn-pause" type="button" class="btn btn-light">&#x23F8;</button>
+		<button id="teaser-video-btn-ff" type="button" class="btn btn-light">&#x23ED;</button>
 		<video autoplay muted id="teaser-video" class="center-aligned-vid">
 			<source src="assets/video-0.mp4" id="teaser-video-source" type="video/mp4">
 		</video>
