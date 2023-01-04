@@ -180,11 +180,6 @@ TD.coursename {
 	background-color: rgba(255, 255, 0, 0.25);
 	text-decoration-style: solid;
 }
-.mm-map > img {
-    /* vertical-align: top;
-    display: inline-block;
-    *display: inline; */
-}
 .mm-btn {
 	width: 25%;
 	max-width: 160px;
@@ -392,6 +387,11 @@ TD.coursename {
 #title-wrapper-mobile > div > div.affiliations {
 	font-size: 2.2vw;
 }
+.mm-map > img {
+	width: 32.9vw;
+	margin: 0;
+	padding: 0.4vw;
+}
 
 /* >= sm */
 @media only screen and (min-width: 768px)  {
@@ -442,5 +442,10 @@ TD.coursename {
 	#desc-under-headline {
 		position: absolute; 
 		bottom: 0;
+	}
+	.mm-map > img {
+		width: 16.4667vw;
+		margin: 0;
+		padding: 0.2vw;
 	}
 }
