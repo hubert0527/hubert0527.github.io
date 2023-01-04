@@ -10,7 +10,7 @@ QuQ
 
 
 <head>
-<title>InfinityGAN</title>
+<title>InfiniCity</title>
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
 
 <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
@@ -22,13 +22,13 @@ QuQ
 <script src="popup.js" type="text/javascript"></script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3H2WZNYDWT"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NMN7W51CE3"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-3H2WZNYDWT');
+  gtag('config', 'G-NMN7W51CE3');
 </script>
 
 <script type="text/javascript">
@@ -183,35 +183,54 @@ h4 {font-size: 15px}
 				$(this).children("img").attr("src", dataToLoad);
 			});
 		});
-
-
 		function replaceToolTip(objId, dataStr){
 			var dataToLoad = "./assets/" + dataStr + ".jpg";
 			$(objId).children("a").attr("href", dataToLoad);
 			$(objId).children("a").children("img").attr("src", dataToLoad);
 		}
+		function iterateToolTip(classId, canvasId, defaultState){
+			var objs = $("."+classId);
+			var numStates = objs.length + 1;
+			document["tooltip_state_" + classId] = 0;
+			function nextTimeout() {
+				var curState = document["tooltip_state_" + classId] % numStates;
+				objs.removeClass("emph-pseudo-hover");
+				if (curState == 0) {
+					replaceToolTip("#"+canvasId, defaultState);
+				} else {
+					replaceToolTip("#"+canvasId, $(objs[curState-1]).attr("data"));
+					$(objs[curState-1]).addClass("emph-pseudo-hover");
+				}
+				document["tooltip_state_" + classId] += 1;
+				document["tooltip_timeout_" + classId] = setTimeout(nextTimeout, 3000);
+			}
+			nextTimeout();
+		}
+		function cancelIterate(classId){
+			var timeoutkey = "tooltip_timeout_" + classId;
+			if (document.hasOwnProperty(timeoutkey)) {
+				$("."+classId).removeClass("emph-pseudo-hover");
+				clearTimeout(document[timeoutkey]);
+				delete document[timeoutkey];
+				document["tooltip_state_" + classId] = -1;
+			}
+		}
 		$(".pipeline-tooltip").mouseenter(function() {
 			replaceToolTip("#pipeline-canvas", $(this).attr("data"));
+			cancelIterate("pipeline-tooltip");
 		}).mouseleave(function() {
 			replaceToolTip("#pipeline-canvas", "pipeline");
+			cancelIterate("pipeline-tooltip");
 		});
 		$(".teaser-tooltip").mouseenter(function() {
 			replaceToolTip("#teaser-canvas", $(this).attr("data"));
+			cancelIterate("teaser-tooltip");
 		}).mouseleave(function() {
 			replaceToolTip("#teaser-canvas", "teaser");
+			cancelIterate("teaser-tooltip");
 		});
-		// $(".pipeline-tooltip").hover(
-		// 	function() {
-		// 		replacePipelineToolTip($(this).attr("data"))}, 
-		// 	function() {
-		// 		replacePipelineToolTip("pipeline");
-		// 	}
-		// );
-		// $(".pipeline-tooltip").on("mousestart touchstart", function() {
-		// 	replacePipelineToolTip($(this).attr("data"));
-		// }).on("mouseout touchend", function() {
-		// 	replacePipelineToolTip("pipeline");
-		// });
+		iterateToolTip("pipeline-tooltip", "pipeline-canvas", "pipeline");
+		iterateToolTip("teaser-tooltip", "teaser-canvas", "teaser");
 	});
 </script>
 
@@ -412,7 +431,7 @@ h4 {font-size: 15px}
 			<iframe width="560" 
 				height="315" 
 				src="https://www.youtube.com/embed/EngMHoyqkGY"
-				title="InfinityGAN video" 
+				title="InfiniCity video" 
 				frameborder="0" 
 				allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
 				allowfullscreen></iframe>
@@ -439,6 +458,17 @@ h4 {font-size: 15px}
 					<a href="">ArXiv 2022</a>
 				</p>
 
+				<!-- <h3 class="paragraph-title">[Codes]</h3>
+				<p style="margin-bottom: 20px;">
+					<a href="">
+						Many people are not releasing their codes, so I find no motivation to release the codes as well.
+						Code release requires substantial dedication, and we basically gains nothing from this.
+						It is fully a community service to support the open-source culture.
+						You may contact me for private code sharing through emails, if you believe your past code-release record qualifies such a free service.
+						But the codes will be difficult to run, as it is not being organized for release.
+					</a>
+				</p> -->
+
 				<h3 class="paragraph-title">[Citation]</h3>
 				<!-- <div>TBA</div> -->
 				<code style="text-align: left; display: block; background-color: #383838; padding: 20px; color: var(--face-color)">
@@ -453,7 +483,7 @@ h4 {font-size: 15px}
 			</div>
 		</div>
 		<div id="citation-thumbnail" class="col-lg-5 hidden-xs visible-md visible-lg">
-			<a href="http://bit.ly/InfinityGANPaper">
+			<a href="http://bit.ly/InfiniCityPaper">
 				<img alt="paper thumbnail" src="assets/paper-preview.jpg" style="width:100%">
 			</a>
 		</div>
@@ -539,8 +569,8 @@ h4 {font-size: 15px}
 		<div class="col-xs-12 paragraph">
 			<p class="caption">
 				<span class="paragraph-title">Synthesized satellite maps.</span> &nbsp;
-				We train InfinityGAN [1] with contrastive discriminator in multiple data modalities (category, depth,
-and normal). The demonstrated images are 1024×1024 pixels cropped from the infinite-pixel images</p>
+				We train InfinityGAN <a id="cite-infinitygan" class="citation-ref" href="#infinitygan">[1]</a> with contrastive discriminator in multiple data modalities (category, depth,
+and normal). The demonstrated images are 1024×1024 pixels cropped from the infinite-pixel images.</p>
 		</div>
 	</div>
 
@@ -586,7 +616,7 @@ and normal). The demonstrated images are 1024×1024 pixels cropped from the infi
 			<p class="caption">
 				<span class="paragraph-title">Trajectory-wise image rendering results.</span> &nbsp;
 				Our final rendering results present better quality, structural consistency, and diversity,
-				over the competing method GSN [2]. Each group of images is rendered within the same voxel world using a shared global style code,
+				over the competing method GSN <a id="cite-gsn" class="citation-ref" href="#gsn">[2]</a>. Each group of images is rendered within the same voxel world using a shared global style code,
 				while GSN shares the same global latent vector in each group.</p>
 		</div>
 	</div>
@@ -672,23 +702,6 @@ and normal). The demonstrated images are 1024×1024 pixels cropped from the infi
 </div>
 
 <footer class="footer">
-	<p style="font-size: 12px; margin: 0;">Website # visits:
-		<!-- GoStats Simple HTML Based Code -->
-		<a target="_blank" title="web site traffic statistics"
-		href="http://www.gostats.org">
-			<img alt="web site traffic statistics"src="//www.gostats.org/0.png?a=701071175&ct=4&ci=1" style="border-width:0" />
-		</a>
-		<!-- <script type="text/javascript">
-			(function(c,o,m,p,u,t,e){
-				c['GoStatsObject']=u;c[u]=c[u]||function(){(c[u].q=c[u].q||[]).push(arguments)},
-				c[u].l=1*new Date();t=o.createElement(m);t.async=1;t.src=p;
-				e=o.getElementsByTagName(m)[0];
-				e.parentNode.insertBefore(t,e);
-			})(window,document,'script','//www.gostats.org/5.js','go');
-			go('init',701071175,{'img_counter_type':4,'img_image_type':1});go('send');
-			</script> -->
-		<!-- End GoStats Simple HTML Based Code -->
-	</p>
 	<p>Copyright &#169; Chieh Hubert Lin 2022</p>
 </footer>
 
