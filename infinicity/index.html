@@ -195,9 +195,10 @@ h4 {font-size: 15px}
 				$(this).children("img").attr("src", dataToLoad);
 			});
 		});
+
 		function replaceToolTip(objId, dataStr){
 			var dataToLoad = "./assets/" + dataStr + ".jpg";
-			$(objId).children("a").attr("href", dataToLoad);
+			// $(objId).children("a").attr("href", dataToLoad); // Still load the original image
 			$(objId).children("a").children("img").attr("src", dataToLoad);
 		}
 		function iterateToolTip(classId, canvasId, defaultState){
@@ -549,7 +550,7 @@ h4 {font-size: 15px}
 			<p class="caption">
 				<span class="paragraph-title">InfiniCity consists of three major modules.</span> &nbsp;
 				The <span class="ani-tooltip pipeline-tooltip" data="pipeline-map">&#9654; <i>Infinite-pixel satellite image synthesis stage</i></span> is trained on image
-				tuples (category, depth, and normal maps) derived from a bird’s-eye view scan of the 3D environment, and is able to synthesize arbitrary-
+				tuples (category, depth, and normal maps) derived from a bird's-eye view scan of the 3D environment, and is able to synthesize arbitrary-
 				scale satellite maps during inference. 
 				The <span class="ani-tooltip pipeline-tooltip" data="pipeline-completion">&#9654; <i>3D octree-based voxel completion stage</i></span> is trained on pairs of surface-scanned and completed
 				octrees. During inference, it takes the surface voxels lifted from the satellite images as inputs and produces the watertight voxel world.
