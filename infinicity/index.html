@@ -167,19 +167,35 @@ h4 {font-size: 15px}
 .citation-abbr {
 	text-align: left;
 }
+
+#teaser-video-btn {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	z-index: 1;
+}
 </style>
 
 
 <script type='text/javascript'>
 	$(document).ready(function() {
+		const numVids = 4;
 		var video_id_counter = 0;
-		$("#teaser-video").bind("ended", function(e) {
+		const is_vid_center_align = [true, true, true, false];
+		function nextTeaserVid(e) {
+			console.log("trigger!");
 			if(!e) {e = window.event;}
-			new_vid_src = "assets/video-" + ((video_id_counter+1) % 3) + ".mp4"
-			$(this).attr("src", new_vid_src).trigger('load').trigger('play');
 			video_id_counter++;
-		});
-
+			new_vid_src = "assets/video-" + (video_id_counter % numVids) + ".mp4"
+			$("#teaser-video").attr("src", new_vid_src).trigger('load').trigger('play');
+			if (is_vid_center_align[video_id_counter % numVids]) {
+				$("#teaser-video").removeClass("left-aligned-vid").addClass("center-aligned-vid");
+			} else {
+				$("#teaser-video").addClass("left-aligned-vid").removeClass("center-aligned-vid");
+			}
+		}
+		$("#teaser-video").bind("ended", nextTeaserVid);
+		$("#teaser-video-btn").click(nextTeaserVid);
 
 		$(".mm-btn").click(function(){
 			if ($(this).hasClass("active")) return;
@@ -250,20 +266,17 @@ h4 {font-size: 15px}
 <body>
 	<!-- style="border-top: 10px solid var(--face-color); border-bottom: 10px solid var(--face-color);"> -->
 
-<div id="teaser-video-container">
-	<video autoplay muted id="teaser-video">
-		<source src="assets/video-0.mp4" id="teaser-video-source-0" type="video/mp4">
-		<div  style="display: none;">
-			<source src="assets/video-1.mp4" id="teaser-video-source-1" type="video/mp4">
-			<source src="assets/video-2.mp4" id="teaser-video-source-2" type="video/mp4">
-		</div>
-	</video>
-</div>
 
+<div>
 
-<div class="container-fluid">
+	<div id="teaser-video-container">
+		<button id="teaser-video-btn" type="button" class="btn btn-light">&#9654;</button>
+		<video autoplay muted id="teaser-video" class="center-aligned-vid">
+			<source src="assets/video-0.mp4" id="teaser-video-source" type="video/mp4">
+		</video>
+	</div>
 
-	<div class="title-wrapper row hidden-xs hidden-sm hidden-md visible-lg">
+	<div class="container-fluid title-wrapper row hidden-xs hidden-sm hidden-md visible-lg">
 		<!-- PC -->
 		<div style="width: 90vw; margin: 7.5vh 5vw; padding: 2vh 4vw 4vh 4vw; background-color: rgba(15, 15, 15, 0.6); overflow-wrap: break-word;">
 			<h1 style="font-size: 3.5vw;">InfiniCity: Infinite-Scale City Synthesis</h1>

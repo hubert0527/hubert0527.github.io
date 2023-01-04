@@ -69,7 +69,7 @@ if __name__ == "__main__":
 		global_buffer.append(pix_buffer)
 		global_buffer.append(vox_buffer)
 
-	fout = imageio.get_writer(OUT_NAME, fps=OUT_FPS, format='FFMPEG', quality=4)
+	fout = imageio.get_writer(OUT_NAME, fps=OUT_FPS, format='FFMPEG', quality=6)
 	for i in tqdm(range(len(global_buffer[0]))):
 		frames = [b[i] for b in global_buffer]
 		comp = comp_frames(frames)
