@@ -44,6 +44,7 @@ var _POPUP_FEATURES = 'width=500,height=300,resizable=1,scrollbars=1,titlebar=1,
 
 <!-- Bootstrap -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <!-- <link href="https://fonts.cdnfonts.com/css/steelfish" rel="stylesheet"> -->
 <style type="text/css" media="all">
 	@font-face {
@@ -200,16 +201,19 @@ h4 {font-size: 15px}
 			} else {
 				$("#teaser-video").addClass("left-aligned-vid").removeClass("center-aligned-vid");
 			}
+			if (!video_is_playing) {
+				$("#teaser-video").trigger('pause');
+			}
 		}
 		$("#teaser-video").bind("ended", nextTeaserVid);
 		$("#teaser-video-btn-ff").click(nextTeaserVid);
 		$("#teaser-video-btn-pause").click(function () {
 			if (video_is_playing) {
-				$("#teaser-video-btn-pause").text("\u23F5")
+				$("#teaser-video-btn-pause").html("<i class='material-icons'>play_arrow</i>")
 				$("#teaser-video").trigger('pause');
 				video_is_playing = false;
 			} else {
-				$("#teaser-video-btn-pause").text("\u23F8");
+				$("#teaser-video-btn-pause").html("<i class='material-icons'>pause</i>");
 				$("#teaser-video").trigger('play');
 				video_is_playing = true;
 			}
@@ -289,8 +293,8 @@ h4 {font-size: 15px}
 <div>
 
 	<div id="teaser-video-container" style="display: flex; justify-content: flex-end; align-items: flex-start;">
-		<button id="teaser-video-btn-pause" type="button" class="btn btn-light">&#x23F8;</button>
-		<button id="teaser-video-btn-ff" type="button" class="btn btn-light">&#x23ED;</button>
+		<button id="teaser-video-btn-pause" type="button" class="btn btn-light"><i class="material-icons">pause</i></button>
+		<button id="teaser-video-btn-ff" type="button" class="btn btn-light"><i class="material-icons">fast_forward</i></button>
 		<video autoplay muted id="teaser-video" class="center-aligned-vid">
 			<source src="assets/video-0.mp4" id="teaser-video-source" type="video/mp4">
 		</video>
