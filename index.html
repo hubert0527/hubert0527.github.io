@@ -11,7 +11,9 @@
   <link rel="alternate" type="application/rss+xml" href="http://hubert0527.github.io/atom.xml">
 
   <style class="anchorjs"></style><link href="./index_files/bootstrap.min.css" rel="stylesheet">
-  <link href="./index_files/font-awesome.min.css" rel="stylesheet">
+  <link href="./index_files/fontawesome.css" rel="stylesheet">
+  <link href="./index_files/brands.css" rel="stylesheet">
+  <link href="./index_files/solid.css" rel="stylesheet">
   <link href="./index_files/academicons.min.css" rel="stylesheet">
   <link href="./index_files/default.css" rel="stylesheet">
   <link href="./index_files/bamos.css" rel="stylesheet">
@@ -36,15 +38,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body data-gr-c-s-loaded="true">
+  
 	<div class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-10 col-md-offset-1">
+				<div class="col-md-12">
 					<div class="navbar-header">
 						  <a href="http://hubert0527.github.io/" class="navbar-brand">
-                  <div>
+                  <div style="color: black;">
                       <img src="./images/me.jpg" class="img-circle">
-                      Chieh Hubert Lin
+                      <span style="padding-left: 10px; font-weight: 900;">Chieh Hubert Lin</span>
                   </div>
               </a>
 						<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
@@ -56,12 +59,16 @@
 					<div class="navbar-collapse collapse" id="navbar-main">
 						<ul class="nav navbar-nav navbar-right" style="font-size: 1.5em">
 							<li>
+                <a href="data/cv.pdf" target="_blank">
+                  <i class="fa-solid fa-file-pdf"></i></a>
+              </li>
+							<li>
 								<a href="http://github.com/hubert0527" target="_blank">
-									<i class="fa fa-lg fa-github"></i></a>
+									<i class="fa-brands fa-github"></i></a>
 							</li>
 							<li>
 								<a href="https://twitter.com/ChiehHubertLin" target="_blank">
-									<i class="fa fa-lg fa-twitter"></i></a>
+									<i class="fa-brands fa-twitter"></i></a>
 							</li>
               <li>
                 <a href="https://scholar.google.com/citations?user=MJcnTa4AAAAJ" target="_blank">
@@ -76,77 +83,84 @@
 
   <div class="container">
   <div class="row">
-    <div class="col-md-5 col-xs-12 col-md-offset-1 vcenter idxHdr">
-      <div style="font-size: 2em; color: #4582ec; font-weight: bold; padding-bottom: 0.3em;">Chieh Hubert Lin</div>
-      <div style="font-size: 1.2em;">
-        Ph.D. student at UC Merced <a href="http://vllab.ucmerced.edu/">Vision and Learning Lab</a>
-      </div>
-      <br>
-      <br>
-
-      <div style="padding: 0.3em; background-color: #4582ec; display: inline-block; border-radius: 4px; font-size: 1.2em;">
-        <a href="data/cv.pdf" target="_blank" style="text-decoration: none;">
-          <i style="color: white" class="fa fa-download"></i>
-        </a>
-        <a href="data/cv.pdf" target="_blank" style="color: white; text-decoration: none;"> CV</a>
+    <div class="col-md-9 col-xs-8 vcenter idxHdr" style="text-align: left;">
+      <div style="font-size: 1.5em; color:black; font-weight: bold; padding-bottom: 0.5em; padding-top: 1em;">Chieh Hubert Lin</div>
+      <div style="padding-bottom: 2em;">
+        Ph.D. student @ UC Merced <a href="http://vllab.ucmerced.edu/">Vision and Learning Lab</a>
       </div>
 
+      <p>
+        I am a third-year Ph.D. student at UC Merced working with <a href="https://faculty.ucmerced.edu/mhyang/">Ming-Hsuan Yang</a>.
+        My research mainly focuses on generative modeling in unconstrained scenes, the missing pieces of future generative models, and some other random things.
+        Please find my <a href="data/cv.pdf" target="_blank">CV</a> for more details.
+        <!-- In the past few years, I, fortunately, had the chance to collaborate with <a href="http://hsinyinglee.com/">Hsin-Ying Lee</a>, <a href="http://www.stulyakov.com/">Sergey Tulyakov</a>, and <a href="https://hytseng0509.github.io/">Hung-Yu Tseng</a>.
+        And many fascinating people, but the list is too long, please forgive me QuQ. -->
+      </p>
+      
       <br>
       <br>
-
-      <ul class="list-inline idxIcons" style="font-size: 1.9em; margin-top: 0.5em;">
-        <li>
-          <a href="http://github.com/hubert0527" target="_blank">
-            <i class="fa fa-fw fa-github"></i></a>
-        </li>
-        <li>
-          <a href="http://twitter.com/ChiehHubertLin" target="_blank">
-            <i class="fa fa-fw fa-twitter"></i></a>
-        </li>
-        <li>
-          <a href="https://scholar.google.com/citations?user=MJcnTa4AAAAJ" target="_blank">
-          <i class="ai ai-google-scholar"></i></a>
-        </li>
-        <!-- <li>
-          <a href="http://www.linkedin.com/in/chieh-hubert-lin" target="_blank">
-            <i class="fa fa-fw fa-linkedin"></i></a>
-        </li> -->
-      </ul>
     </div>
-    <div class="col-md-5 col-xs-12 vcenter idxHdr">
+
+    <div class="col-md-3 col-xs-4 vcenter idxHdr" style="margin-left: -10px;">
       <img src="images/me.jpg" style="border-radius: 20px; margin: 10px; max-width: 300px; width: 100%;" alt="Me.">
+      <!-- <ul class="list-inline idxIcons" style="font-size: 1.9em; margin-top: 0.5em;">
+          <li>
+            <a href="data/cv.pdf" target="_blank">
+              <i class="fa-solid fa-file-pdf"></i>
+          </li>
+          <li>
+            <a href="http://github.com/hubert0527" target="_blank">
+              <i class="fa-brands fa-github"></i></a>
+          </li>
+          <li>
+            <a href="http://twitter.com/ChiehHubertLin" target="_blank">
+              <i class="fa-brands fa-twitter"></i></a>
+          </li>
+          <li>
+            <a href="https://scholar.google.com/citations?user=MJcnTa4AAAAJ" target="_blank">
+            <i class="ai ai-google-scholar"></i></a>
+          </li>
+        </ul> -->
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-md-10 col-md-offset-1">
-      <hr>
+<!-- <hr> -->
 
-<p>
-  I am a third-year Ph.D. student at UC Merced supervised by <a href="https://faculty.ucmerced.edu/mhyang/">Ming-Hsuan Yang</a>.
-  My research mainly focuses on generative modeling in unconstrained scenes, and some other random things.
-  In the past few years, I, fortunately, had the chance to collaborate with <a href="http://hsinyinglee.com/">Hsin-Ying Lee</a>, <a href="http://www.stulyakov.com/">Sergey Tulyakov</a>, and <a href="https://hytseng0509.github.io/">Hung-Yu Tseng</a>.
-  And many fascinating people, but the list is too long, please forgive me QuQ.
-</p>
-
-<hr>
-
-<h2 id="-news"><i class="fa fa-chevron-right"></i> News<a class="anchorjs-link " aria-label="Anchor link for:  news" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
-
+<h2 id="-honors--awards"><i class="fa fa-chevron-right"></i> Honors &amp; Awards<a class="anchorjs-link " aria-label="Anchor link for:  honors  awards" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
 <table class="table table-hover">
   <tbody>
-    <tr>
+  <tr>
       <td class="col-md-3">Dec 2022</td>
       <td>
-          <strong><a href="https://research.snap.com/fellowships.html" style="color: black; text-decoration: underline;">Snap Fellowship</a> Honorable Mention</strong> Thank you Snap!
+          <a href="https://research.snap.com/fellowships.html" style="color: black; text-decoration: underline;">Snap Fellowship</a> Honorable Mention
       </td>
     </tr>
+  <tr>
+    <td class="col-md-2">2021 - 2022</td>
+    <td>
+      Three times Bobcat Fellowship
+      <!--  -->
+    </td>
+  </tr>
+  <tr>
+    <td class="col-md-2">2018 - 2019</td>
+    <td>
+      Two times Appier AI Scholarship
+      <!--  -->
+    </td>
+  </tr>
+  <tr>
+    <td class="col-md-2">2018</td>
+    <td>
+        Yahoo AI Scholarship
+      <!--  -->
+    </td>
+  </tr>
   </tbody>
 </table>
 
-<hr>
 
-<h2 id="-education"><i class="fa fa-chevron-right"></i> Education<a class="anchorjs-link " aria-label="Anchor link for:  education" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+<!-- <h2 id="-education"><i class="fa fa-chevron-right"></i> Education<a class="anchorjs-link " aria-label="Anchor link for:  education" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
 
 <table class="table table-hover">
   <tbody>
@@ -167,68 +181,61 @@
       </td>
     </tr>
   </tbody>
-</table>
+</table> -->
 
 <h2 id="-experience"><i class="fa fa-chevron-right"></i> Experience<a class="anchorjs-link " aria-label="Anchor link for:  experience" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
 <table class="table table-hover">
-<tbody>
-  <tr>
-    <td class="col-md-3">May 2022 - </td>
-    <td><strong>Snap Inc.</strong> Research Intern. <br>
-      Working with 
-      <a href="http://hsinyinglee.com/">Hsin-Ying Lee</a>, 
-      <a href="http://www.stulyakov.com/">Sergey Tulyakov</a>,
-      <a href="https://aliaksandrsiarohin.github.io/aliaksandr-siarohin-website/">Aliaksandr Siarohin</a>, 
-      <a href="https://mlchai.com/">Menglei Chai</a> and
-      <a href="https://www.willimenapace.com/">Willi Menapace</a>.
-    </td>
-  </tr>
-  <tr>
-  </tr>
-<tr>
-  <td class="col-md-3">May 2020 - Aug 2020</td>
-  <td><strong>Military Service in Taiwan</strong>.</td>
-</tr>
-<tr>
-</tr>
-<tr>
-  <td class="col-md-3">Jul 2018 - Sep 2019</td>
-  <td><strong>Naitional Tsing Hua University</strong>, Research Assistant. <br>
-    Published four papers to top conferences (ICCV, IROS, AAAI), and one paper under submission. <br>
-    Working with
-    <a href="https://aliensunmin.github.io/">Prof. Min Sun</a>, 
-    <a href="https://htchen.github.io/">Prof. Hwann-Tzong Chen</a>, 
-    <a href="https://walonchiu.github.io/">Prof. Wei-Chen Chiu</a>, 
-    <a href="https://research.google/people/DaChengJuan/">Dr. Da-Cheng Juan</a> and 
-    <a href="http://www.weiwei.one/">Dr. Wei Wei</a>.
-  </td>
-</tr>
-<tr>
-</tr>
-<tr>
-  <td class="col-md-3">Sep 2013 - Jun 2018</td>
-  <td><strong>National Tsing Hua University</strong>, Undergraduate Research. <br>
-    Published one paper to ECCV 2018 as a co-first author. <br>
-    Working with 
-    <a href="https://htchen.github.io/">Prof. Hwann-Tzong Chen</a>, 
-    <a href="https://research.google/people/DaChengJuan/">Dr. Da-Cheng Juan</a> and 
-    <a href="http://www.weiwei.one/">Dr. Wei Wei</a>.
-</tr>
-<tr>
-</tr>
-<tr>
-  <td class="col-md-3">Sep 2017 - Jun 2018</td>
-  <td><strong>Microsoft Taiwan</strong>, Software Engineering Intern in BingGC team.</td>
-</tr>
-<tr>
-</tr>
-</tbody></table>
+  <tbody>
+    <!-- <tr>
+      <td class="col-md-3">? - ?</td>
+      <td><strong>?</strong> Research Intern. <br>
+        Working with ?.
+      </td>
+    </tr> -->
+    <tr>
+      <td class="col-md-3">May 2022 - </td>
+      <td><strong>Snap Inc.</strong> Research Intern. <br>
+        Working with 
+        <a href="http://hsinyinglee.com/">Hsin-Ying Lee</a>, 
+        <a href="http://www.stulyakov.com/">Sergey Tulyakov</a>,
+        <a href="https://aliaksandrsiarohin.github.io/aliaksandr-siarohin-website/">Aliaksandr Siarohin</a>, 
+        <a href="https://mlchai.com/">Menglei Chai</a> and
+        <a href="https://www.willimenapace.com/">Willi Menapace</a>.
+      </td>
+    </tr>
+    <tr>
+      <td class="col-md-3">Jul 2018 - Sep 2019</td>
+      <td><strong>Naitional Tsing Hua University</strong>, Research Assistant. <br>
+        Published four papers to top conferences (ICCV, IROS, AAAI), and one paper under submission. <br>
+        Working with
+        <a href="https://aliensunmin.github.io/">Min Sun</a>, 
+        <a href="https://htchen.github.io/">Hwann-Tzong Chen</a>, 
+        <a href="https://walonchiu.github.io/">Wei-Chen Chiu</a>, 
+        <a href="https://research.google/people/DaChengJuan/">Da-Cheng Juan</a> and 
+        <a href="http://www.weiwei.one/">Wei Wei</a>.
+      </td>
+    </tr>
+    <tr>
+      <td class="col-md-3">Sep 2013 - Jun 2018</td>
+      <td><strong>National Tsing Hua University</strong>, Undergraduate Research. <br>
+        Published one paper to ECCV 2018 as a co-first author. <br>
+        Working with 
+        <a href="https://htchen.github.io/">Hwann-Tzong Chen</a>, 
+        <a href="https://research.google/people/DaChengJuan/">Da-Cheng Juan</a> and 
+        <a href="http://www.weiwei.one/">Wei Wei</a>.
+    </tr>
+    <tr>
+      <td class="col-md-3">Sep 2017 - Jun 2018</td>
+      <td><strong>Microsoft Taiwan</strong>, Software Engineering Intern in BingGC team.</td>
+    </tr>
+  </tbody>
+</table>
 
 <h2 id="-selected-publications-"><i class="fa fa-chevron-right"></i> Publications <a class="anchorjs-link " aria-label="Anchor link for:  selected publications " data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
 
-<p><a href="https://scholar.google.com/citations?user=MJcnTa4AAAAJ" class="btn btn-primary" style="padding: 0.3em;">
+<!-- <p><a href="https://scholar.google.com/citations?user=MJcnTa4AAAAJ" class="btn btn-primary" style="padding: 0.3em;">
   <i class="ai ai-google-scholar"></i> Google Scholar
-</a></p>
+</a></p> -->
 
 <table class="table table-hover">
 <tbody>
@@ -354,11 +361,9 @@
   </td>
 </tr>
 
-
-<tr>
+<!-- <tr>
   <td><h3 style="margin: 0; padding: 0">Pre-Ph.D.</h3></td>
-  <!-- <td></td> -->
-</tr>
+</tr> -->
 
 <tr>
   <td class="paper-teaser-contrainer col-lg-4 col-md-6 col-xs-6"><img class="paper-teaser" src="./images/instanas.gif"></td>
@@ -515,33 +520,6 @@
 </tbody></table>
 
 
-<h2 id="-honors--awards"><i class="fa fa-chevron-right"></i> Honors &amp; Awards<a class="anchorjs-link " aria-label="Anchor link for:  honors  awards" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
-<table class="table table-hover">
-<tbody>
-<tr>
-  <td class="col-md-2">2021 - 2022</td>
-  <td>
-    Three times Bobcat Fellowship
-    <!--  -->
-  </td>
-</tr>
-<tr>
-  <td class="col-md-2">2018 - 2019</td>
-  <td>
-    Two times Appier AI Scholarship
-    <!--  -->
-  </td>
-</tr>
-<tr>
-  <td class="col-md-2">2018</td>
-  <td>
-      Yahoo AI Scholarship
-    <!--  -->
-  </td>
-</tr>
-</tbody></table>
-
-
 <!-- <h2 id="-service"><i class="fa fa-chevron-right"></i> Service<a class="anchorjs-link " aria-label="Anchor link for:  service" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
 <table class="table table-hover">
 <tbody><tr>
@@ -593,7 +571,20 @@
   <td>OUO</td>
 </tr> -->
 
-</tbody></table>
+<!-- </tbody></table> -->
+
+
+<h2 id="-honors--awards"><i class="fa fa-chevron-right"></i> Press <a class="anchorjs-link " aria-label="Anchor link for:  press" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+<table class="table table-hover">
+  <tbody>
+  <tr>
+    <td>New Scientist</td>
+    <td class="col-md-10">
+      <a href="https://www.newscientist.com/article/2358993-ai-generates-virtual-3d-cities-that-extend-infinitely-in-any-direction/">"AI generates virtual 3D cities that extend infinitely in any direction"</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
 
 
 <hr>
