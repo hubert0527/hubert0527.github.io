@@ -173,7 +173,17 @@
             </td>
           </tr> -->
           <tr>
-            <td class="col-md-3">May 2022 - </td>
+            <td class="col-md-3">Aug 2023 - Mar 2024</td>
+            <td><strong>Meta</strong> Research Intern. <br>
+              Working with 
+              <a href="https://hytseng0509.github.io/">Hung-Yu Tseng</a>,
+              <a href="https://johanneskopf.de/">Johannes Kopf</a>,
+              <a href="https://jbhuang0604.github.io/">Jia-Bin Huang</a>,
+              <a href="https://www.qinboli.com/">Qinbo Li</a>.
+            </td>
+          </tr>
+          <tr>
+            <td class="col-md-3">May 2022 - Aug 2023</td>
             <td><strong>Snap Inc.</strong> Research Intern. <br>
               Working with 
               <a href="http://hsinyinglee.com/">Hsin-Ying Lee</a>, 
@@ -238,7 +248,90 @@
       </tr> -->
 
 
+	      
 
+      <tr>
+        <td class="paper-teaser-contrainer col-lg-4 col-md-6 col-xs-6"><img class="paper-teaser" src="./images/vpets.png"></td>
+        <td>
+            <strong>Virtual Pets: Animatable Animal Generation in 3D Scenes</strong><br>
+            Yen-Chi Cheng, <strong>Chieh Hubert Lin</strong>, Chaoyang Wang, Yash Kant, Sergey Tulyakov, Alexander Schwing, Liangyan Gui, Hsin-Ying Lee <br>
+            ArXiv <br>
+            [<a href="javascript:;" onclick="$(&quot;#abs_vpets&quot;).toggle()">abs</a>]
+            [<a href="https://arxiv.org/abs/2312.14154" target="_blank">paper</a>]
+            [<a href="https://yccyenchicheng.github.io/VirtualPets/" target="_blank">project page</a>]
+            <div id="abs_vpets" style="text-align: justify; display: none">
+              <p>Toward unlocking the potential of generative models in immersive 4D experiences, we introduce 
+		      Virtual Pet, a novel pipeline to model realistic and diverse motions for target animal 
+		      species within a 3D environment. To circumvent the limited availability of 3D motion data 
+		      aligned with environmental geometry, we leverage monocular internet videos and extract 
+		      deformable NeRF representations for the foreground and static NeRF representations for 
+		      the background. For this, we develop a reconstruction strategy, encompassing species-level 
+		      shared template learning and per-video fine-tuning. Utilizing the reconstructed data, 
+		      we then train a conditional 3D motion model to learn the trajectory and articulation of 
+		      foreground animals in the context of 3D backgrounds. We showcase the efficacy of our 
+		      pipeline with comprehensive qualitative and quantitative evaluations using cat videos. 
+		      We also demonstrate versatility across unseen cats and indoor environments, producing 
+		      temporally coherent 4D outputs for enriched virtual experiences.</p>
+            </div>
+        </td>
+      </tr>
+	      
+      <tr>
+        <td class="paper-teaser-contrainer col-lg-4 col-md-6 col-xs-6"><img class="paper-teaser" src="./images/DreaMo.png"></td>
+        <td>
+            <strong>DreaMo: Articulated 3D Reconstruction From A Single Casual Video</strong><br>
+            Tao Tu, Ming-Feng Li, <strong>Chieh Hubert Lin</strong>, Yen-Chi Cheng, Min Sun, Ming-Hsuan Yang <br>
+            ArXiv <br>
+            [<a href="javascript:;" onclick="$(&quot;#abs_dreamo&quot;).toggle()">abs</a>]
+            [<a href="https://arxiv.org/abs/2312.02617" target="_blank">paper</a>]
+            [<a href="https://ttaoretw.github.io/DreaMo/" target="_blank">project page</a>]
+            <div id="abs_dreamo" style="text-align: justify; display: none">
+              <p>Articulated 3D reconstruction has valuable applications in various domains, yet it remains costly and 
+		      demands intensive work from domain experts. Recent advancements in template-free learning methods 
+		      show promising results with monocular videos. Nevertheless, these approaches necessitate a 
+		      comprehensive coverage of all viewpoints of the subject in the input video, thus limiting their 
+		      applicability to casually captured videos from online sources. In this work, we study articulated 
+		      3D shape reconstruction from a single and casually captured internet video, where the subject's 
+		      view coverage is incomplete. We propose DreaMo that jointly performs shape reconstruction while 
+		      solving the challenging low-coverage regions with view-conditioned diffusion prior and several 
+		      tailored regularizations. In addition, we introduce a skeleton generation strategy to create 
+		      human-interpretable skeletons from the learned neural bones and skinning weights. We conduct 
+		      our study on a self-collected internet video collection characterized by incomplete view 
+		      coverage. DreaMo shows promising quality in novel-view rendering, detailed articulated shape 
+		      reconstruction, and skeleton generation. Extensive qualitative and quantitative studies validate 
+		      the efficacy of each proposed component, and show existing methods are unable to solve correct 
+		      geometry due to the incomplete view coverage.</p>
+            </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="paper-teaser-contrainer col-lg-4 col-md-6 col-xs-6"><img class="paper-teaser" src="./images/mcdiff.png"></td>
+        <td>
+            <strong>Motion-Conditioned Diffusion Model for Controllable Video Synthesis</strong><br>
+            Tsai-Shien Chen, <strong>Chieh Hubert Lin</strong>, Hung-Yu Tseng, Tsung-Yi Lin, Ming-Hsuan Yang <br>
+            ArXiv <br>
+            [<a href="javascript:;" onclick="$(&quot;#abs_mcdiff&quot;).toggle()">abs</a>]
+            [<a href="https://arxiv.org/abs/2304.14404" target="_blank">paper</a>]
+            [<a href="https://tsaishien-chen.github.io/MCDiff/" target="_blank">project page</a>]
+            <div id="abs_mcdiff" style="text-align: justify; display: none">
+              <p>Recent advancements in diffusion models have greatly improved the quality and diversity of synthesized 
+		      content. To harness the expressive power of diffusion models, researchers have explored various 
+		      controllable mechanisms that allow users to intuitively guide the content synthesis process. 
+		      Although the latest efforts have primarily focused on video synthesis, there has been a lack of 
+		      effective methods for controlling and describing desired content and motion. In response to this 
+		      gap, we introduce MCDiff, a conditional diffusion model that generates a video from a starting 
+		      image frame and a set of strokes, which allow users to specify the intended content and dynamics 
+		      for synthesis. To tackle the ambiguity of sparse motion inputs and achieve better synthesis 
+		      quality, MCDiff first utilizes a flow completion model to predict the dense video motion based 
+		      on the semantic understanding of the video frame and the sparse motion control. Then, the diffusion 
+		      model synthesizes high-quality future frames to form the output video. We qualitatively and 
+		      quantitatively show that MCDiff achieves the state-the-of-art visual quality in stroke-guided 
+		      controllable video synthesis. Additional experiments on MPII Human Pose further exhibit the 
+		      capability of our model on diverse content and motion synthesis. </p>
+            </div>
+        </td>
+      </tr>
 
       <tr>
         <td class="paper-teaser-contrainer col-lg-4 col-md-6 col-xs-6"><img class="paper-teaser" src="./images/infiniCity.png"></td>
